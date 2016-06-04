@@ -66,10 +66,7 @@
 										</div>
 									</div>
 								</div>
-								
-								
 							</div>
-							
 						</div>
 					
 						<section class="marginTop20" ng-if="evaluacion.info.status != 1">
@@ -90,7 +87,7 @@
 				<div class="content">
 					<template-formulario data="data"></template-formulario>
 					
-					<div class="" ng-if="!gui.cargando && !gui.cargandoRespuestas">
+					<div class="" ng-if="!gui.cargando && !gui.cargandoRespuestas && !gui.sinCuestionrarios">
 						<button class="btn btn-warning pull-left" type="button" ng-click="anterior()" ng-if="!gui.primerCuestionario" ng-disabled="gui.ocupado"><i class="fa fa-chevron-left marginLeft10"></i> Anterior</button>
 						<button class="btn btn-primary pull-right" type="button" ng-click="siguiente()" ng-if="!gui.ultimoCuestionario">Siguiente <i class="fa fa-chevron-right marginLeft10"></i></button>
 						<button class="btn btn-success pull-right" type="button" ng-click="registrar()" ng-if="gui.ultimoCuestionario" ng-disabled="gui.ocupado"><i class="fa fa-floppy-o marginRight10"></i> Registrar</button>

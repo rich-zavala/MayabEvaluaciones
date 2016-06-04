@@ -5,8 +5,9 @@
 		
 			<div class="alert alert-warning marginTop20" ng-if="(gui.cargando || gui.cargandoRespuestas) && !gui.cargandoError"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> Cargando información...</div>
 			<div class="alert alert-danger marginTop20" ng-if="gui.cargandoError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error.</div>
+			<div class="alert alert-danger marginTop20" ng-if="gui.sinCuestionrarios"><i class="fa fa-fw fa-warning marginRight10"></i> Este empleado no tiene cuestionarios asignados. Intente de nuevo más tarde.</div>
 			
-			<div ng-if="!gui.cargando && !gui.cargandoRespuestas && !gui.cargandoError">
+			<div ng-if="!gui.cargando && !gui.cargandoRespuestas && !gui.cargandoError && !gui.sinCuestionrarios">
 				<form name="formGeneral" novalidate>
 					<div ng-repeat="(index, com) in cuestionario">
 						<div ng-if="com.vinculaPuestos == 0">

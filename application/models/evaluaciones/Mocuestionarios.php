@@ -63,7 +63,11 @@ class Mocuestionarios extends CI_Model
 	{
 		$w = array( 'evaluacion' => $this->id );
 		if(count($this->competencias == 0))
-			$this->competencias = $this->db->order_by('orden, id')->get_where('evaluacion_competencias', $w)->result();
+		{
+			$this->competencias = $this->db
+			->order_by('importante DESC, orden, id ASC')->get_where('evaluacion_competencias', $w)
+			->result();
+		}
 		
 		if(count($this->cuestionarios == 0))
 			$this->cuestionarios = $this->db->order_by('orden, nivel')->get_where('evaluacion_cuestionario_listado', $w)->result();
@@ -130,7 +134,8 @@ class Mocuestionarios extends CI_Model
 	public function puestos()
 	{
 		$w = array( 'evaluacion' => $this->id );
-		$this->puestos = $this->db->order_by('nivel_n')->get_where('evaluaciones_puestos_listado', $w)->result();
+		$this->puestos = $this->db
+		->order_by('nivel_n')->get_where('evaluaciones_puestos_listado', $w)->result();
 	}
 	
 	//Aislar información de un sólo puesto
@@ -246,7 +251,7 @@ class Mocuestionarios extends CI_Model
 		$puestoCompetencias = array();
 		$this->setCompetenciasPreguntas(false);
 		foreach($nivelCompetencias->competencias as $keyCompetencia => $competencia)
-			if($competencia->vinculaPuestos == 1)
+			if($competencia->vinculaPuestos == 1) //Tiene posicionador
 			{
 				$vinculaPuestosIndex = $keyCompetencia;
 				$this->setCompetencias(1);
@@ -254,7 +259,7 @@ class Mocuestionarios extends CI_Model
 				$puestoCompetencias = $this->getPuestoInfo();
 				
 				array_splice( $nivelCompetencias->competencias, $keyCompetencia, 0, $puestoCompetencias->competencias );
-				unset($nivelCompetencias->competencias[ ($keyCompetencia + count($puestoCompetencias) + 1) ]); //Remover posicionador
+				unset($nivelCompetencias->competencias[ ($keyCompetencia + count($puestoCompetencias->competencias)) ]); //Remover posicionador
 				break;
 			}
 		
@@ -275,23 +280,10 @@ class Mocuestionarios extends CI_Model
 			'nivel' => $info->nivel
 		);
 		
-		//Para puestos
-		// if($info->tipo == 1)
-		// {
-			// $w['puesto'] = $info->nivel;
-			// unset($w['nivel']);
-		// }
-		
 		//Objetos para conservar
 		$competencias = array();
 		foreach($info->competencias as $k => $com)
 		{
-			// if($info->tipo == 1)
-			// {
-				// $info->competencias[$k]->puesto = $com->nivel;
-				// unset($info->competencias[$k]->nivel);
-			// }
-			
 			if($com->tipo == 'competencia')
 				$competencias[] = $com->id_competencia;
 		}

@@ -249,6 +249,8 @@ app.directive('competenciasFormulario', ['$compile', function($compile) {
 							data: data
 						}
 					});
+					
+					$scope.competenciasCerrar();
 				}
 			};
 			

@@ -29,7 +29,7 @@ class Evaluacion extends CI_Model
 		$w = array(
 			'id' => $this->id
 		);
-		$r = $this->db->get_where('evaluaciones_info', $w)->row();
+		$r = $this->db->get_where('evaluaciones_info_reportable', $w)->row();
 		if(isset($r->id))
 			$r->ok = true;
 		else
@@ -38,11 +38,4 @@ class Evaluacion extends CI_Model
 		$this->info = $r;
 		return $r;
 	}
-	
-	//Agregar modelo de jerarquías
-	// public function jerarquias_set($get = true)
-	// {
-		// $this->load->model('evaluaciones/mojerarquias');
-		// $this->jerarquias = $this->mojerarquias->init($this->id, $get);
-	// }
 }

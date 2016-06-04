@@ -17,7 +17,8 @@ app.directive('templateFormulario', [function() {
 				guardando:						false,	//Guardando respuestas
 				guardandoError:				false,	//Error guardando respuestas
 				ultimoCuestionario:		false,	//Es la última página del último cuestionario
-				primerCuestionario:		true		//Es la primra página del primer cuestionario
+				primerCuestionario:		true,		//Es la primra página del primer cuestionario
+				sinCuestionrarios:		false		//El empleado no tiene cuestionarios asignados
 			};
 			
 			//Actualiza GUI de padre
@@ -83,11 +84,15 @@ app.directive('templateFormulario', [function() {
 			
 			$http.post(cuestionarioUrl + _suffix_, info)
 			.then(function(response){
-				$scope.cuestionario = response.data.competencias;
-				$scope.competenciaActual = $scope.cuestionario[0].id;
-				$scope.seccionActual = $scope.cuestionario[0].secciones[0].id;
-				
-				ordenCuestionarios();
+				if(response.data.competencias.length > 0)
+				{
+					$scope.cuestionario = response.data.competencias;
+					$scope.competenciaActual = $scope.cuestionario[0].id;
+					$scope.seccionActual = $scope.cuestionario[0].secciones[0].id;
+					ordenCuestionarios();
+				}
+				else
+					$scope.gui.sinCuestionrarios = true;
 				$scope.gui.cargando = false;
 			},function(msg){
 				$scope.gui.cargandoError = true;

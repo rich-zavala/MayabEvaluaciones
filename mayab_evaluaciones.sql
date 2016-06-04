@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-05-27 21:56:54
+Date: 2016-06-04 16:26:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `areas` (
   UNIQUE KEY `areakey` (`titulo`),
   KEY `areid` (`codigo`),
   KEY `areti` (`titulo`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of areas
@@ -55,7 +55,7 @@ CREATE TABLE `cartas_envios` (
   KEY `car_usu` (`usuarioRegistrante`),
   CONSTRAINT `car_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `car_usu` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios
@@ -78,7 +78,7 @@ CREATE TABLE `cartas_envios_empleados` (
   KEY `caenem_emp` (`empleado`),
   CONSTRAINT `caenem_emp` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `caenem_env` FOREIGN KEY (`envio`) REFERENCES `cartas_envios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=716 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios_empleados
@@ -119,6 +119,7 @@ CREATE TABLE `ci_sessions` (
 -- ----------------------------
 INSERT INTO `ci_sessions` VALUES ('7e201131d210042bebffee0a3ed4a509363b61dc', '127.0.0.1', '1464222220', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436343134323731303B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30352D32352030343A31383A3332223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 INSERT INTO `ci_sessions` VALUES ('8e7abba370bbd7e1b10908d6d6c002c2f487dad3', '127.0.0.1', '1464233714', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436343233333731343B);
+INSERT INTO `ci_sessions` VALUES ('74a008dddb6fec8e314dd8b34b0ffd71a3654b79', '127.0.0.1', '1465075172', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353036343534303B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30342032303A32323A3232223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 
 -- ----------------------------
 -- Table structure for cuestionarios_competencias
@@ -128,7 +129,8 @@ CREATE TABLE `cuestionarios_competencias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `evaluacion` int(11) NOT NULL,
   `titulo` varchar(255) DEFAULT NULL,
-  `principal` int(1) DEFAULT '1' COMMENT 'Indica si el cuestionario se mostrará con sus preguntas (Principal) o si forma parte de los cuestionarios de puestos (Secundario)\r\n1: Principal, 0: Secundario',
+  `principal` int(1) DEFAULT '1' COMMENT 'PARA NIVELES. Indica si el cuestionario se mostrará con sus preguntas (Principal) o si forma parte de los cuestionarios de puestos (Secundario)\r\n1: Principal, 0: Secundario',
+  `importante` int(1) NOT NULL DEFAULT '0' COMMENT '0: Norma, 1: Importante',
   `vinculaPuestos` int(1) DEFAULT '0' COMMENT 'Indica si este cuestionario mostrará los cuestionarios de puestos.\r\nSólo debería haber un registro marcado con 1 por nivel.',
   `orden` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -141,78 +143,78 @@ CREATE TABLE `cuestionarios_competencias` (
 -- ----------------------------
 -- Records of cuestionarios_competencias
 -- ----------------------------
-INSERT INTO `cuestionarios_competencias` VALUES ('1', '1', 'Competencias institucionales', '1', '0', '0');
-INSERT INTO `cuestionarios_competencias` VALUES ('2', '1', 'Competencias directivas', '1', '0', '1');
-INSERT INTO `cuestionarios_competencias` VALUES ('3', '1', 'Rector', '1', '0', '2');
-INSERT INTO `cuestionarios_competencias` VALUES ('4', '1', 'Mandos medios', '1', '0', '3');
-INSERT INTO `cuestionarios_competencias` VALUES ('5', '1', 'Profesores', '1', '0', '4');
-INSERT INTO `cuestionarios_competencias` VALUES ('6', '1', 'Operativos 1 (Personal administrativo)', '1', '0', '5');
-INSERT INTO `cuestionarios_competencias` VALUES ('7', '1', 'Operativos 2 (Secretarias y asistentes)', '1', '0', '6');
-INSERT INTO `cuestionarios_competencias` VALUES ('8', '1', 'Operativos 3 (Servicios generales)', '1', '0', '7');
-INSERT INTO `cuestionarios_competencias` VALUES ('9', '1', '<i class=\"fa fa-fw fa-info-circle\"></i> Mostrar cuestionario de puestos', '1', '1', '8');
-INSERT INTO `cuestionarios_competencias` VALUES ('10', '1', 'Asesor De Desarrollo Humano (Nivel Mandos Medios 2)', '0', '0', '1');
-INSERT INTO `cuestionarios_competencias` VALUES ('11', '1', 'Asesor Preuniversitario (Nivel Mandos Medios 2)', '0', '0', '2');
-INSERT INTO `cuestionarios_competencias` VALUES ('12', '1', 'Asistente Académico (Nivel Mandos Medios 2)', '0', '0', '3');
-INSERT INTO `cuestionarios_competencias` VALUES ('13', '1', 'Asistente De Dirección (Nivel Mandos Medios 2)', '0', '0', '4');
-INSERT INTO `cuestionarios_competencias` VALUES ('14', '1', 'Asistente Ejecutivo De Rectoría (Nivel Mandos Medios 1)', '0', '0', '5');
-INSERT INTO `cuestionarios_competencias` VALUES ('15', '1', 'Contralor (Nivel Direcciones 2)', '0', '0', '6');
-INSERT INTO `cuestionarios_competencias` VALUES ('16', '1', 'Coodinador De Servicio Y Acción Social (Nivel Mandos Medios 2)', '0', '0', '7');
-INSERT INTO `cuestionarios_competencias` VALUES ('17', '1', 'Coordinación De Atención A Alumnos (Nivel Mandos Medios 2)', '0', '0', '8');
-INSERT INTO `cuestionarios_competencias` VALUES ('18', '1', 'Coordinación De Comunicación (Nivel Mandos Medios 1)', '0', '0', '9');
-INSERT INTO `cuestionarios_competencias` VALUES ('19', '1', 'Coordinador De Becas Alumnos (Nivel Mandos Medios 2)', '0', '0', '10');
-INSERT INTO `cuestionarios_competencias` VALUES ('20', '1', 'Coordinador De Calidad Académica (Nivel Mandos Medios 1)', '0', '0', '11');
-INSERT INTO `cuestionarios_competencias` VALUES ('21', '1', 'Coordinador De Campos Clínicos (Nivel Mandos Medios 2)', '0', '0', '12');
-INSERT INTO `cuestionarios_competencias` VALUES ('22', '1', 'Coordinador De Difusión Cultural (Nivel Mandos Medios 1)', '0', '0', '13');
-INSERT INTO `cuestionarios_competencias` VALUES ('23', '1', 'Coordinador De Investigación (Nivel Mandos Medios 1)', '0', '0', '14');
-INSERT INTO `cuestionarios_competencias` VALUES ('24', '1', 'Coordinador De Operación De  Posgrados Y Extensión (Nivel Mandos Medios 1)', '0', '0', '15');
-INSERT INTO `cuestionarios_competencias` VALUES ('25', '1', 'Coordinador De Operación De Licenciatura (Mandos Medios 1)', '0', '0', '16');
-INSERT INTO `cuestionarios_competencias` VALUES ('26', '1', 'Coordinador De Programa Académico (Nivel Mandos Medios 1)', '0', '0', '17');
-INSERT INTO `cuestionarios_competencias` VALUES ('27', '1', 'Coordinador De Programa De Egresados (Nivel Mandos Medios 2)', '0', '0', '18');
-INSERT INTO `cuestionarios_competencias` VALUES ('28', '1', 'Coordinador De Programas De Liderazgo (Nivel Mandos Medios 1) : Vértice, Red Misión', '0', '0', '19');
-INSERT INTO `cuestionarios_competencias` VALUES ('29', '1', 'Coordinador De Relaciones Académicas (Nivel Mandos Medios 1)', '0', '0', '20');
-INSERT INTO `cuestionarios_competencias` VALUES ('30', '1', 'Coordinador De Selecciones Y Academias Deportivas (Nivel Mandos Medios 1)', '0', '0', '21');
-INSERT INTO `cuestionarios_competencias` VALUES ('31', '1', 'Coordinador De Servicios De Tecnología', '0', '0', '22');
-INSERT INTO `cuestionarios_competencias` VALUES ('32', '1', 'Coordinador De Tutorías Y Apoyo Académico (Nivel Mandos Medios 1)', '0', '0', '23');
-INSERT INTO `cuestionarios_competencias` VALUES ('33', '1', 'Coordinador De Vinculación Y Recaudación De Fondos (Nivel Mandos Medios 1)', '0', '0', '24');
-INSERT INTO `cuestionarios_competencias` VALUES ('34', '1', 'Coordinador Del Centro De Lenguas (Nivel Mandos Medios 1)', '0', '0', '25');
-INSERT INTO `cuestionarios_competencias` VALUES ('35', '1', 'Coordinador General De Humanidades (Direcciones 2)', '0', '0', '26');
-INSERT INTO `cuestionarios_competencias` VALUES ('36', '1', 'Del Director De Pastoral Universitaria (Nivel Direcciones 2)', '0', '0', '27');
-INSERT INTO `cuestionarios_competencias` VALUES ('37', '1', 'Dirección De Comunicación (Nivel Mandos Medios 1)', '0', '0', '28');
-INSERT INTO `cuestionarios_competencias` VALUES ('38', '1', 'Director De Administración Escolar Y Normatividad     (Nivel Direcciones2)', '0', '0', '29');
-INSERT INTO `cuestionarios_competencias` VALUES ('39', '1', 'Director De Atención Preuniversitaria Y Mercadotecnia (Direccciones 2)', '0', '0', '30');
-INSERT INTO `cuestionarios_competencias` VALUES ('40', '1', 'Director De Desarrollo Académico (Nivel Direccciones 2) ', '0', '0', '31');
-INSERT INTO `cuestionarios_competencias` VALUES ('41', '1', 'Director De Desarrollo Institucional ( Nivel Direcciones 2)', '0', '0', '32');
-INSERT INTO `cuestionarios_competencias` VALUES ('42', '1', 'Director De División (Nivel Direccciones 1)', '0', '0', '33');
-INSERT INTO `cuestionarios_competencias` VALUES ('43', '1', 'Director De Programa Académico( Nivel Mandos Medios 1)', '0', '0', '34');
-INSERT INTO `cuestionarios_competencias` VALUES ('44', '1', 'Director De Programas De Posgrado Y Extensión (Nivel Direcciones 2)', '0', '0', '35');
-INSERT INTO `cuestionarios_competencias` VALUES ('45', '1', 'Director De Servicios Institucionales Y Planeación (Nivel Direcciones 1)', '0', '0', '36');
-INSERT INTO `cuestionarios_competencias` VALUES ('46', '1', 'Entrenador De Selecciones Y Academias Deportivas (Nivel Mandos Medios 2)', '0', '0', '38');
-INSERT INTO `cuestionarios_competencias` VALUES ('47', '1', 'Especialista De Certificación Y Titulación (Nivel Mandos Medios 2)', '0', '0', '39');
-INSERT INTO `cuestionarios_competencias` VALUES ('48', '1', 'Especialista De Orientación Vocacional (Nivel Mandos Medios 2)', '0', '0', '40');
-INSERT INTO `cuestionarios_competencias` VALUES ('49', '1', 'Especialista De Presupuestos (Nivel Mandos Medios 2)', '0', '0', '41');
-INSERT INTO `cuestionarios_competencias` VALUES ('50', '1', 'Especialista De Recursos Humanos (Nivel Mandos Medios 2)', '0', '0', '42');
-INSERT INTO `cuestionarios_competencias` VALUES ('51', '1', 'Especialista De Soporte A Sistemas (Nivel Mandos Medios 2)', '0', '0', '43');
-INSERT INTO `cuestionarios_competencias` VALUES ('52', '1', 'Especialista En Desarrollo De Medios (Nivel Mandos Medios 2)', '0', '0', '44');
-INSERT INTO `cuestionarios_competencias` VALUES ('53', '1', 'Gerente De Recursos Humanos (Nivel Mandos Medios 1)', '0', '0', '45');
-INSERT INTO `cuestionarios_competencias` VALUES ('54', '1', 'Jefe De Admisiones (Nivel Mandos Medios 1)', '0', '0', '46');
-INSERT INTO `cuestionarios_competencias` VALUES ('55', '1', 'Jefe De Biblioteca (Nivel Mandos Medios 1)', '0', '0', '47');
-INSERT INTO `cuestionarios_competencias` VALUES ('56', '1', 'Jefe De Compras (Nivel Mandos Medios 2)', '0', '0', '48');
-INSERT INTO `cuestionarios_competencias` VALUES ('57', '1', 'Jefe De Contabilidad (Nivel Mandos Medios 2)', '0', '0', '49');
-INSERT INTO `cuestionarios_competencias` VALUES ('58', '1', 'Jefe De Crédito Y Cobranza (Nivel Mandos Medios 2)', '0', '0', '50');
-INSERT INTO `cuestionarios_competencias` VALUES ('59', '1', 'Jefe De Infraestructura Tecnológica (Nivel Mandos Medios 1)', '0', '0', '51');
-INSERT INTO `cuestionarios_competencias` VALUES ('60', '1', 'Jefe De Servicios Computacionales (Nivel Mandos Medios 1)', '0', '0', '52');
-INSERT INTO `cuestionarios_competencias` VALUES ('61', '1', 'Jefe De Servicios Escolares Externos (Nivel Mandos Medios 1)', '0', '0', '53');
-INSERT INTO `cuestionarios_competencias` VALUES ('62', '1', 'Jefe De Servicios Escolares Internos Y Auditoria (Nivel Mandos Medios 1)', '0', '0', '54');
-INSERT INTO `cuestionarios_competencias` VALUES ('63', '1', 'Jefe De Servicios Generales (Nivel Mandos Medios 2)', '0', '0', '55');
-INSERT INTO `cuestionarios_competencias` VALUES ('64', '1', 'Profesor Universitario (Nivel Mandos Medios 2)', '0', '0', '56');
-INSERT INTO `cuestionarios_competencias` VALUES ('65', '1', 'Se Aplicará Para Personal Administrativo (Nivel Operativo 1-2)', '0', '0', '57');
-INSERT INTO `cuestionarios_competencias` VALUES ('66', '1', 'Secretarias Y Asistentes (Nivel Operativo 2)', '0', '0', '58');
-INSERT INTO `cuestionarios_competencias` VALUES ('67', '1', 'Servicios Generales (Nivel Operativo 2)', '0', '0', '59');
-INSERT INTO `cuestionarios_competencias` VALUES ('68', '1', 'Supervisor De Servicios Al Público (Nivel Mandos Medios 2)', '0', '0', '60');
-INSERT INTO `cuestionarios_competencias` VALUES ('69', '1', 'Vicerrector Académico (Nivel Autoridades 2) ', '0', '0', '61');
-INSERT INTO `cuestionarios_competencias` VALUES ('70', '1', 'Vicerrector De Administración Y Finanzas (Nivel Autoridades 2)', '0', '0', '62');
-INSERT INTO `cuestionarios_competencias` VALUES ('71', '1', 'Vicerrector De Formación Integral (Nivel Autoridades 2)', '0', '0', '63');
-INSERT INTO `cuestionarios_competencias` VALUES ('72', '1', 'Director Del Centro De Investigación (Nivel Direcciones 2)', '0', '0', '37');
+INSERT INTO `cuestionarios_competencias` VALUES ('1', '1', 'Competencias institucionales', '0', '1', '0', '0');
+INSERT INTO `cuestionarios_competencias` VALUES ('2', '1', 'Competencias directivas', '0', '1', '0', '1');
+INSERT INTO `cuestionarios_competencias` VALUES ('3', '1', 'Rector', '1', '0', '0', '2');
+INSERT INTO `cuestionarios_competencias` VALUES ('4', '1', 'Mandos medios', '0', '1', '0', '3');
+INSERT INTO `cuestionarios_competencias` VALUES ('5', '1', 'Profesores', '0', '1', '0', '4');
+INSERT INTO `cuestionarios_competencias` VALUES ('6', '1', 'Operativos 1 (Personal administrativo)', '0', '1', '0', '5');
+INSERT INTO `cuestionarios_competencias` VALUES ('7', '1', 'Operativos 2 (Secretarias y asistentes)', '0', '1', '0', '6');
+INSERT INTO `cuestionarios_competencias` VALUES ('8', '1', 'Operativos 3 (Servicios generales)', '0', '1', '0', '7');
+INSERT INTO `cuestionarios_competencias` VALUES ('9', '1', '<i class=\"fa fa-fw fa-info-circle\"></i> Mostrar cuestionario de puestos', '1', '0', '1', '8');
+INSERT INTO `cuestionarios_competencias` VALUES ('10', '1', 'Asesor De Desarrollo Humano (Nivel Mandos Medios 2)', '0', '0', '0', '1');
+INSERT INTO `cuestionarios_competencias` VALUES ('11', '1', 'Asesor Preuniversitario (Nivel Mandos Medios 2)', '0', '0', '0', '2');
+INSERT INTO `cuestionarios_competencias` VALUES ('12', '1', 'Asistente Académico (Nivel Mandos Medios 2)', '0', '0', '0', '3');
+INSERT INTO `cuestionarios_competencias` VALUES ('13', '1', 'Asistente De Dirección (Nivel Mandos Medios 2)', '0', '0', '0', '4');
+INSERT INTO `cuestionarios_competencias` VALUES ('14', '1', 'Asistente Ejecutivo De Rectoría (Nivel Mandos Medios 1)', '0', '0', '0', '5');
+INSERT INTO `cuestionarios_competencias` VALUES ('15', '1', 'Contralor (Nivel Direcciones 2)', '0', '0', '0', '6');
+INSERT INTO `cuestionarios_competencias` VALUES ('16', '1', 'Coodinador De Servicio Y Acción Social (Nivel Mandos Medios 2)', '0', '0', '0', '7');
+INSERT INTO `cuestionarios_competencias` VALUES ('17', '1', 'Coordinación De Atención A Alumnos (Nivel Mandos Medios 2)', '0', '0', '0', '8');
+INSERT INTO `cuestionarios_competencias` VALUES ('18', '1', 'Coordinación De Comunicación (Nivel Mandos Medios 1)', '0', '0', '0', '9');
+INSERT INTO `cuestionarios_competencias` VALUES ('19', '1', 'Coordinador De Becas Alumnos (Nivel Mandos Medios 2)', '0', '0', '0', '10');
+INSERT INTO `cuestionarios_competencias` VALUES ('20', '1', 'Coordinador De Calidad Académica (Nivel Mandos Medios 1)', '0', '0', '0', '11');
+INSERT INTO `cuestionarios_competencias` VALUES ('21', '1', 'Coordinador De Campos Clínicos (Nivel Mandos Medios 2)', '0', '0', '0', '12');
+INSERT INTO `cuestionarios_competencias` VALUES ('22', '1', 'Coordinador De Difusión Cultural (Nivel Mandos Medios 1)', '0', '0', '0', '13');
+INSERT INTO `cuestionarios_competencias` VALUES ('23', '1', 'Coordinador De Investigación (Nivel Mandos Medios 1)', '0', '0', '0', '14');
+INSERT INTO `cuestionarios_competencias` VALUES ('24', '1', 'Coordinador De Operación De  Posgrados Y Extensión (Nivel Mandos Medios 1)', '0', '0', '0', '15');
+INSERT INTO `cuestionarios_competencias` VALUES ('25', '1', 'Coordinador De Operación De Licenciatura (Mandos Medios 1)', '0', '0', '0', '16');
+INSERT INTO `cuestionarios_competencias` VALUES ('26', '1', 'Coordinador De Programa Académico (Nivel Mandos Medios 1)', '0', '0', '0', '17');
+INSERT INTO `cuestionarios_competencias` VALUES ('27', '1', 'Coordinador De Programa De Egresados (Nivel Mandos Medios 2)', '0', '0', '0', '18');
+INSERT INTO `cuestionarios_competencias` VALUES ('28', '1', 'Coordinador De Programas De Liderazgo (Nivel Mandos Medios 1) : Vértice, Red Misión', '0', '0', '0', '19');
+INSERT INTO `cuestionarios_competencias` VALUES ('29', '1', 'Coordinador De Relaciones Académicas (Nivel Mandos Medios 1)', '0', '0', '0', '20');
+INSERT INTO `cuestionarios_competencias` VALUES ('30', '1', 'Coordinador De Selecciones Y Academias Deportivas (Nivel Mandos Medios 1)', '0', '0', '0', '21');
+INSERT INTO `cuestionarios_competencias` VALUES ('31', '1', 'Coordinador De Servicios De Tecnología', '0', '0', '0', '22');
+INSERT INTO `cuestionarios_competencias` VALUES ('32', '1', 'Coordinador De Tutorías Y Apoyo Académico (Nivel Mandos Medios 1)', '0', '0', '0', '23');
+INSERT INTO `cuestionarios_competencias` VALUES ('33', '1', 'Coordinador De Vinculación Y Recaudación De Fondos (Nivel Mandos Medios 1)', '0', '0', '0', '24');
+INSERT INTO `cuestionarios_competencias` VALUES ('34', '1', 'Coordinador Del Centro De Lenguas (Nivel Mandos Medios 1)', '0', '0', '0', '25');
+INSERT INTO `cuestionarios_competencias` VALUES ('35', '1', 'Coordinador General De Humanidades (Direcciones 2)', '0', '0', '0', '26');
+INSERT INTO `cuestionarios_competencias` VALUES ('36', '1', 'Del Director De Pastoral Universitaria (Nivel Direcciones 2)', '0', '0', '0', '27');
+INSERT INTO `cuestionarios_competencias` VALUES ('37', '1', 'Dirección De Comunicación (Nivel Mandos Medios 1)', '0', '0', '0', '28');
+INSERT INTO `cuestionarios_competencias` VALUES ('38', '1', 'Director De Administración Escolar Y Normatividad     (Nivel Direcciones2)', '0', '0', '0', '29');
+INSERT INTO `cuestionarios_competencias` VALUES ('39', '1', 'Director De Atención Preuniversitaria Y Mercadotecnia (Direccciones 2)', '0', '0', '0', '30');
+INSERT INTO `cuestionarios_competencias` VALUES ('40', '1', 'Director De Desarrollo Académico (Nivel Direccciones 2) ', '0', '0', '0', '31');
+INSERT INTO `cuestionarios_competencias` VALUES ('41', '1', 'Director De Desarrollo Institucional ( Nivel Direcciones 2)', '0', '0', '0', '32');
+INSERT INTO `cuestionarios_competencias` VALUES ('42', '1', 'Director De División (Nivel Direccciones 1)', '0', '0', '0', '33');
+INSERT INTO `cuestionarios_competencias` VALUES ('43', '1', 'Director De Programa Académico( Nivel Mandos Medios 1)', '0', '0', '0', '34');
+INSERT INTO `cuestionarios_competencias` VALUES ('44', '1', 'Director De Programas De Posgrado Y Extensión (Nivel Direcciones 2)', '0', '0', '0', '35');
+INSERT INTO `cuestionarios_competencias` VALUES ('45', '1', 'Director De Servicios Institucionales Y Planeación (Nivel Direcciones 1)', '0', '0', '0', '36');
+INSERT INTO `cuestionarios_competencias` VALUES ('46', '1', 'Entrenador De Selecciones Y Academias Deportivas (Nivel Mandos Medios 2)', '0', '0', '0', '38');
+INSERT INTO `cuestionarios_competencias` VALUES ('47', '1', 'Especialista De Certificación Y Titulación (Nivel Mandos Medios 2)', '0', '0', '0', '39');
+INSERT INTO `cuestionarios_competencias` VALUES ('48', '1', 'Especialista De Orientación Vocacional (Nivel Mandos Medios 2)', '0', '0', '0', '40');
+INSERT INTO `cuestionarios_competencias` VALUES ('49', '1', 'Especialista De Presupuestos (Nivel Mandos Medios 2)', '0', '0', '0', '41');
+INSERT INTO `cuestionarios_competencias` VALUES ('50', '1', 'Especialista De Recursos Humanos (Nivel Mandos Medios 2)', '0', '0', '0', '42');
+INSERT INTO `cuestionarios_competencias` VALUES ('51', '1', 'Especialista De Soporte A Sistemas (Nivel Mandos Medios 2)', '0', '0', '0', '43');
+INSERT INTO `cuestionarios_competencias` VALUES ('52', '1', 'Especialista En Desarrollo De Medios (Nivel Mandos Medios 2)', '0', '0', '0', '44');
+INSERT INTO `cuestionarios_competencias` VALUES ('53', '1', 'Gerente De Recursos Humanos (Nivel Mandos Medios 1)', '0', '0', '0', '45');
+INSERT INTO `cuestionarios_competencias` VALUES ('54', '1', 'Jefe De Admisiones (Nivel Mandos Medios 1)', '0', '0', '0', '46');
+INSERT INTO `cuestionarios_competencias` VALUES ('55', '1', 'Jefe De Biblioteca (Nivel Mandos Medios 1)', '0', '0', '0', '47');
+INSERT INTO `cuestionarios_competencias` VALUES ('56', '1', 'Jefe De Compras (Nivel Mandos Medios 2)', '0', '0', '0', '48');
+INSERT INTO `cuestionarios_competencias` VALUES ('57', '1', 'Jefe De Contabilidad (Nivel Mandos Medios 2)', '0', '0', '0', '49');
+INSERT INTO `cuestionarios_competencias` VALUES ('58', '1', 'Jefe De Crédito Y Cobranza (Nivel Mandos Medios 2)', '0', '0', '0', '50');
+INSERT INTO `cuestionarios_competencias` VALUES ('59', '1', 'Jefe De Infraestructura Tecnológica (Nivel Mandos Medios 1)', '0', '0', '0', '51');
+INSERT INTO `cuestionarios_competencias` VALUES ('60', '1', 'Jefe De Servicios Computacionales (Nivel Mandos Medios 1)', '0', '0', '0', '52');
+INSERT INTO `cuestionarios_competencias` VALUES ('61', '1', 'Jefe De Servicios Escolares Externos (Nivel Mandos Medios 1)', '0', '0', '0', '53');
+INSERT INTO `cuestionarios_competencias` VALUES ('62', '1', 'Jefe De Servicios Escolares Internos Y Auditoria (Nivel Mandos Medios 1)', '0', '0', '0', '54');
+INSERT INTO `cuestionarios_competencias` VALUES ('63', '1', 'Jefe De Servicios Generales (Nivel Mandos Medios 2)', '0', '0', '0', '55');
+INSERT INTO `cuestionarios_competencias` VALUES ('64', '1', 'Profesor Universitario (Nivel Mandos Medios 2)', '0', '0', '0', '56');
+INSERT INTO `cuestionarios_competencias` VALUES ('65', '1', 'Se Aplicará Para Personal Administrativo (Nivel Operativo 1-2)', '0', '0', '0', '57');
+INSERT INTO `cuestionarios_competencias` VALUES ('66', '1', 'Secretarias Y Asistentes (Nivel Operativo 2)', '0', '0', '0', '58');
+INSERT INTO `cuestionarios_competencias` VALUES ('67', '1', 'Servicios Generales (Nivel Operativo 2)', '0', '0', '0', '59');
+INSERT INTO `cuestionarios_competencias` VALUES ('68', '1', 'Supervisor De Servicios Al Público (Nivel Mandos Medios 2)', '0', '0', '0', '60');
+INSERT INTO `cuestionarios_competencias` VALUES ('69', '1', 'Vicerrector Académico (Nivel Autoridades 2) ', '0', '0', '0', '61');
+INSERT INTO `cuestionarios_competencias` VALUES ('70', '1', 'Vicerrector De Administración Y Finanzas (Nivel Autoridades 2)', '0', '0', '0', '62');
+INSERT INTO `cuestionarios_competencias` VALUES ('71', '1', 'Vicerrector De Formación Integral (Nivel Autoridades 2)', '0', '0', '0', '63');
+INSERT INTO `cuestionarios_competencias` VALUES ('72', '1', 'Director Del Centro De Investigación (Nivel Direcciones 2)', '0', '0', '0', '37');
 
 -- ----------------------------
 -- Table structure for cuestionarios_competencias_secciones
@@ -1668,394 +1670,394 @@ CREATE TABLE `empleados` (
 -- ----------------------------
 -- Records of empleados
 -- ----------------------------
-INSERT INTO `empleados` VALUES ('1', 'Rafael', 'Pardo', '	Hervás', 'MXB0034601', '1', '1', '1', 'rafael.pardo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('2', 'Ulises', 'Peñúñuri', '	Munguía', 'MXB0034601', '2', '1', '1', 'ulises.penunuri@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32122411', 'Luis Oscar', 'Anguiano', 'Avila', 'MXB0034001', '7', '4', '9', 'luis.anguiano@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32123111', 'Luis Ernesto', 'Gutierrez', 'Martinez', 'MXB0034606', '50', '1', '4', 'luis.gutierrez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32123705', 'Nina Rosa', 'Allen', 'Novelo', 'MXB0034407', '5', '3', '9', 'nina.allen@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124170', 'Gaspar', 'Flores', 'May', 'MXB0034101', '15', '4', '16', 'gaspar.flores@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124172', 'David', 'Vegue', 'Corbacho', 'MXB0031416', '80', '3', '9', 'david.vegue@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124174', 'Paula Patricia', 'López', 'Rodriguez', 'MXB0031405', '84', '3', '16', 'patricia.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124176', 'Martha Angelica', 'Chi', 'Canul', 'MXB0034001', '81', '4', '19', 'martha.chi@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124178', 'Lidia Maricruz', 'Rejón', 'Martínez', 'MXB0033302', '10', '1', '12', 'maricruz.rejon@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124181', 'Alejandra', 'Mendoza', 'Villalobos', 'MXB0121501', '53', '3', '4', 'alejandra.mendoza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124183', 'Francisco Javier', 'Otero', 'Rejón', 'MXB0031416', '45', '3', '4', 'francisco.otero@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124184', 'María Cristina', 'Carrillo', 'Acosta', 'MXB0034401', '83', '3', '12', 'cristina.carrillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124185', 'Rubí Candelaria', 'Martín', 'Gómez', 'MXB0033305', '84', '1', '16', 'rubi.martin@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124186', 'Lia Regina', 'Narváez', 'Galaz', 'MXB0034604', '67', '1', '5', 'lia.narvaez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124187', 'María Del Carmen', 'Sandoval', 'Vázquez', 'MXB0031410', '10', '3', '12', 'carmen.sandoval@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124188', 'María Del Rocío', 'Chávez', 'Reyes', 'MXB0033302', '76', '1', '5', 'rocio.chavez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124189', 'Julio Antonio', 'Ontiveros', 'Velázquez', 'MXB0034001', '78', '4', '9', 'julio.ontiveros@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124190', 'María Guadalupe', 'Hernández', 'Loeza', 'MXB0031405', '10', '3', '12', 'guadalupe.hernandez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124192', 'Benjamín Ramón', 'Negroe', 'Monforte', 'MXB0031407', '52', '3', '5', 'benjamin.negroe@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124193', 'Annette Dinorah', 'Cirerol', 'León', 'MXB0031407', '10', '3', '12', 'annete.cirerol@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124194', 'María Guadalupe Del Carmen', 'Cervera', null, 'MXB0031607', '10', '5', '12', 'guadalupe.cervera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124195', 'Martha María', 'Tello', 'Rodriguez', 'MXB0031415', '52', '3', '7', 'martha.tello@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124196', 'Mercedes', 'Zárate', 'Medina', 'MXB0034403', '10', '3', '12', 'mercedes.zarate@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124197', 'Eduardo Fernando', 'Cel', 'Briceño', 'MXB0034101', '68', '4', '16', 'eduardo.cel@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124198', 'Debora', 'Ayala', 'Fernández', 'MXB0033301', '10', '3', '12', 'debora.ayala@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124199', 'Enrique De Jesus', 'Cachón', 'Medrano', 'MXB0034001', '18', '4', '16', 'enrique.cachon@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124202', 'Antonio', 'Zaldivar', 'Álvarez', 'MXB0034001', '78', '4', '9', 'antonio.zaldivar@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124206', 'Luciano Diab', 'Dominguez', 'Cherit', 'MXB0031410', '80', '3', '8', 'luciano.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124209', 'Marisol', 'Tello', 'Rodriguez', 'MXB0031403', '52', '3', '7', 'marisol.tello@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124210', 'Francisco Gerardo', 'Barroso', 'Tanoira', 'MXB0031407', '80', '3', '9', 'francisco.barroso@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124213', 'Zolly Herlinda', 'Chin', 'Pool', 'MXB0031411', '88', '3', '12', 'zolly.chin@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124214', 'Pedro Ricardo', 'Aquino', 'Hernández', 'MXB0031411', '88', '3', '12', 'pedro.aquino@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124215', 'Katinka Elizabeth', 'Ibañez', 'Gómez', 'MXB0031411', '23', '3', '10', 'katinka.ibanez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124216', 'Karim Fernando', 'Pedro', 'Fernández', 'MXB0034601', '9', '1', '5', 'karim.pedro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124218', 'Jorge Abraham', 'Carrillo', 'Hernández', 'MXB0034101', '15', '4', '16', 'jorge.carrillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124222', 'Marisol Guadalupe', 'Vera', 'Cardeña', 'MXB0033302', '10', '1', '12', 'marisol.vera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124223', 'Elda Leonor', 'Pacheco', 'Pantoja', 'MXB0031411', '80', '3', '9', 'elda.pacheco@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124224', 'Florángely', 'Herrera', 'Baas', 'MXB0034602', '24', '1', '5', 'florangely.herrera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124225', 'José Alejandro', 'González', 'Novelo', 'MXB0031408', '52', '3', '5', 'alejandro.gonzalezn@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124226', 'Juan Antonio', 'Anaya', 'Sandoval', 'MXB0031410', '51', '3', '4', 'antonio.anaya@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124227', 'Silvia Zuhalia', 'Zapata', 'Carrillo', 'MXB0031403', '80', '3', '9', 'silvia.zapata@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124229', 'Marisol', 'Achach', 'Solís', 'MXB0034401', '37', '3', '5', 'marisol.achach@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124233', 'Inocencio', 'Cohuo', 'Chin', 'MXB0034101', '68', '4', '16', 'inocencio.cohuo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124234', 'María Jazmine Del Carmen', 'Peraza', 'Rosas', 'MXB0033304', '75', '1', '5', 'jazmine.peraza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124235', 'Antonio', 'Barrera', 'Martínez', 'MXB0034601', '9', '1', '5', 'antonio.barrera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124236', 'Anna Karina', 'Cruz', 'López', 'MXB0034407', '63', '3', '10', 'anna.cruz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124238', 'Fernando Antonio', 'Torreblanca', 'Rios', 'MXB0034901', '70', '3', '5', 'fernando.torreblanca@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124243', 'Eugenia Beatriz', 'Euan', 'Calderón', 'MXB0034001', '72', '4', '11', 'eugenia.euan@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124245', 'Susana Enriqueta', 'Guzmán', 'Silva', 'MXB0034407', '49', '3', '4', 'susana.guzman@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124248', 'Yngrid', 'Peniche', 'Rivero', 'MXB0034604', '10', '1', '12', 'yngrid.peniche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124249', 'Carlos Gaspar', 'Pérez', 'Varguez', 'MXB0031403', '80', '3', '9', 'carlos.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124250', 'Anna Carolina', 'Vidal', 'Carrillo', 'MXB0034407', '5', '3', '9', 'anna.vidal@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124253', 'Luis Enrique', 'Santana', 'Cab', 'MXB0034101', '15', '4', '16', 'luis.santana@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124254', 'Lissett Beatriz', 'Pedrero', 'Aguilar', 'MXB0031404', '80', '3', '9', 'lissett.pedrero@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124255', 'Gretty Guadalupe', 'Escalante', 'Góngora', 'MXB0031403', '80', '3', '9', 'gretty.escalante@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124256', 'Rubí Margarita', 'Estrada', 'Medina', 'MXB0034001', '83', '4', '12', 'rubi.estrada@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124257', 'Martha Eugenia', 'Barrera', 'Bustillos', 'MXB0031413', '52', '3', '5', 'martha.barrera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124263', 'Margarita Concepción', 'Durán', 'Yabur', 'MXB0031404', '84', '3', '16', 'margarita.duran@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124267', 'Fermín Orlando', 'Cardós', 'Santoyo', 'MXB0033303', '54', '1', '3', 'fermin.cardos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124269', 'Argel Antonio', 'Farjat', 'Aguilar', 'MXB0034407', '63', '3', '10', 'argel.farjat@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124272', 'Alicia Del Carmen', 'Ortiz', 'Suárez', 'MXB0031408', '10', '3', '12', 'alicia.ortiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124274', 'Julián', 'García', 'Hinojosa', 'MXB0034101', '15', '4', '16', 'julian.garcia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124275', 'Julia Amanda', 'Díaz', 'Aguilar', 'MXB0121504', '29', '3', '5', 'julia.diaz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124276', 'Jose Mauricio', 'Pool', 'Pech', 'MXB0034101', '68', '4', '16', 'jose.pool@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124278', 'Fernando Enrique', 'Acevedo', 'Marentes', 'MXB0121501', '5', '3', '9', 'fernando.acevedo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124279', 'Marisol', 'Cen', 'Caamal', 'MXB0031407', '80', '3', '9', 'marisol.cen@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124281', 'María Eugenia', 'Sansores', 'Sánchez', 'MXB0034403', '84', '3', '16', 'maria.sansores@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124282', 'Andrea Josefina', 'Sansores', 'Ruz', 'MXB0033301', '80', '3', '9', 'andrea.sansores@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124284', 'Carlos Alberto', 'Castillo', 'Pompeyo', 'MXB0031413', '80', '3', '9', 'carlos.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124289', 'Jhoanna', 'Echazarreta', 'Montero', 'MXB0034001', '71', '4', '9', 'jhoanna.echazarreta@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124291', 'Gabriela Del Socorro', 'Herrera', 'Cámara', 'MXB0034401', '83', '3', '12', 'gabriela.herrera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124292', 'Jose Gabriel', 'Urzaiz', 'Lares', 'MXB0031410', '80', '3', '6', 'gabriel.urzaiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124302', 'Francisco Santiago', 'Ruiz', 'Medina', 'MXB0034101', '15', '4', '16', 'francisco.ruiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124303', 'Andrea Susana', 'Urzúa', 'Navarrete', 'MXB0031407', '80', '3', '9', 'andrea.urzua@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124304', 'Beatriz Anilú', 'Mendoza', 'Noh', 'MXB0033304', '62', '1', '9', 'anilu.mendoza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124313', 'Maria Cecilia', 'Martinez', 'Rodriguez', 'MXB0033305', '84', '1', '16', 'cecilia.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124314', 'Ligia Beatriz', 'Biachi', 'Valencia', 'MXB0031404', '10', '3', '12', 'ligia.biachi@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124315', 'Astrid Marvin', 'Peniche', 'Sanguino', 'MXB0033302', '47', '1', '4', 'astrid.peniche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124317', 'Daniel Alberto', 'Correa', 'Cruz', 'MXB0034901', '12', '3', '16', 'daniel.correa@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124320', 'Carlos Manuel', 'Hornelas', 'Pineda', 'MXB0031403', '80', '3', '9', 'carlos.hornelas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124321', 'José Rodrigo', 'Franco', 'Calvillo', 'MXB0031612', '38', '5', '5', 'rodrigo.franco@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124328', 'Eusebio', 'Cohuo', 'Chin', 'MXB0034101', '15', '4', '16', 'eusebio.cohuo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124329', 'Gener Ricardo', 'Crespo', 'Canté', 'MXB0031411', '88', '3', '12', 'gener.crespo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124330', 'Consepción', 'Padrón', 'Chim', 'MXB0034101', '68', '4', '16', 'consepcion.padron@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124331', 'Rosa Eugenia', 'Mijangos', 'Naal', 'MXB0034901', '87', '3', '9', 'rosa.mijangos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124333', 'Elsy Noemi', 'Centeno', 'Sarabia', 'MXB0031416', '10', '3', '12', 'elsy.centeno@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124335', 'José Guillermo', 'Fournier', 'Montiel', 'MXB0031404', '80', '3', '10', 'guillermo.fournier@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124336', 'Martha Patricia', 'Dzib', 'Chan', 'MXB0033302', '10', '1', '9', 'patricia.dzib@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124341', 'Leonor Beatriz Del Socorro', 'Martínez', 'González', 'MXB0034001', '19', '4', '4', 'leonor.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124342', 'Jose Luis', 'Luna', 'Martínez', 'MXB0031411', '23', '3', '9', 'jose.lunam@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124343', 'Aurea Rosa', 'Medina', 'Lara', 'MXB0031413', '10', '3', '12', 'aurea.medina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124344', 'María Adela', 'Escobedo', 'García', 'MXB0033305', '84', '1', '16', 'maria.escobedo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124346', 'Eric José', 'Esquivel', 'Cortés', 'MXB0031407', '80', '3', '9', 'eric.esquivel@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124348', 'Ada Luz', 'Amaya', 'Pérez', 'MXB0121501', '83', '3', '12', 'ada.amaya@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124349', 'Rocio Elizabeth', 'Rodriguez', 'Pantoja', 'MXB0031416', '80', '3', '9', 'rocio.rodriguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124350', 'Absalón', 'Álvarez', 'Escalante', 'MXB0031405', '52', '3', '5', 'absalon.alvarez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124351', 'Andres', 'Kumán', 'Dzul', 'MXB0034101', '68', '4', '16', 'andres.kuman@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124355', 'Africa', 'San Miguel', 'Alvarado', 'MXB0127414', '84', '1', '16', 'africa.sanmiguel@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124359', 'Cándido', 'Guardia', 'Chi', 'MXB0034101', '68', '4', '16', 'candido.guardia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124363', 'Rosa María', 'Casanova', 'López', 'MXB0034001', '10', '4', '12', 'rosa.casanova@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124365', 'Jessica Guadalupe', 'Ramos', 'Medina', 'MXB0033303', '7', '1', '9', 'jessica.ramos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124366', 'Adrián Baltazar', 'Muñoz', 'Zetina', 'MXB0034101', '15', '4', '16', 'adrian.munoz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124370', 'Jose  Alfredo', 'Carrillo', 'Marin', 'MXB0033304', '16', '1', '16', 'jose.carrillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124898', 'Lucy Del Carmen', 'Escamilla', 'Borges', 'MXB0031407', '10', '3', '12', 'lucy.escamilla@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124903', 'María Cristina', 'Burgos', 'Montes De Oca', 'MXB0031405', '80', '3', '9', 'cristina.burgos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32124975', 'Mayte Eugenia', 'Rodríguez', 'Pech', 'MXB0033302', '77', '1', '5', 'mayte.rodriguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32133083', 'Isabel Guadalupe', 'Rosado', 'Richard', 'MXB0033301', '80', '3', '9', 'isabel.rosado@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32133367', 'Marian', 'Alpizar', 'Rodríguez', 'MXB0031413', '80', '3', '9', 'marian.alpizar@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32133467', 'Raúl Armando', 'Osuna', 'Enríquez', 'MXB0031612', '56', '5', '9', 'raoe33@hotmail.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32136613', 'Gilda', 'Henry', 'Caretta', 'MXB0031607', '57', '5', '12', 'gilda.henry@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32136969', 'Orlando Jesús', 'Coello', 'Castañeda', 'MXB0031612', '56', '2', '9', 'orlando_coeca@hotmail.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137035', 'Lucely De Los Angeles', 'Escárcega', 'Galera', 'MXB0034001', '86', '4', '12', 'lucely.escarcega@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137036', 'José Jesús', 'Karam', 'Espósitos', 'MXB0031408', '80', '3', '9', 'jose.karam@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137037', 'Karla Leticia', 'Mézquita', 'Gamboa', 'MXB0034001', '17', '4', '16', 'karla.mezquita@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137040', 'Sofía Constanza', 'Fregoso', 'Lomas', 'MXB0031415', '80', '3', '9', 'sofia.fregoso@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137041', 'Judith Margarete', 'Towle', 'Wachenheim', 'MXB0033301', '43', '3', '5', 'judith.towle@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137185', 'Elena', 'Palomeque', 'Martínez', 'MXB0031407', '14', '3', '16', 'elena.palomeque@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32137726', 'Clara Angélica', 'Góngora', 'Bates', 'MXB0031414', '10', '3', '12', 'angelica.gongora@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32140720', 'Jaime Ermilo', 'Olivera', 'Novelo', 'MXB0034407', '41', '3', '5', 'jaime.olivera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142235', 'Carlos Daniel', 'García', 'López', 'MXB0031609', '3', '5', '9', 'carlos.garcia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142628', 'María José', 'Bolio', 'Romero', 'MXB0034604', '61', '1', '9', 'maria.bolio@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142632', 'Narciso Antonio', 'Acuña', 'González', 'MXB0034401', '90', '3', '2', 'narciso.acuna@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142634', 'Ileana Patricia', 'López', 'Albor', 'MXB0031407', '80', '3', '9', 'ileana.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142649', 'Aida Rosa', 'Muñoz', 'Bello', 'MXB0031606', '25', '5', '5', 'aida.munoz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142651', 'José Manuel', 'Echeverría', 'Y Eguiluz', 'MXB0031411', '52', '3', '5', 'jose.echeverria@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142652', 'Eduardo', 'Castro', 'Avila', 'MXB0033305', '20', '1', '9', 'eduardo.castro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142653', 'Ana Beatriz', 'González', 'Encalada', 'MXB0031603', '10', '5', '12', 'ana.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142658', 'Hansel Francisco', 'Ortiz', 'Heredia', 'MXB0031407', '52', '3', '5', 'hansel.ortiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142661', 'Jorge', 'Rivera', 'Rovelo', 'MXB0031410', '33', '3', '5', 'jorge.rivera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142667', 'María Alicia', 'Castro', 'Landeros', 'MXB0031407', '52', '3', '5', 'maria.castro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142851', 'Karla Yamile', 'Falcón', 'Rivera', 'MXB0033302', '58', '1', '9', 'karla.falcon@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142871', 'Trinidad Rebeca', 'Hernández', 'Cortés', 'MXB0034601', '85', '1', '12', 'rebeca.hernandez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142874', 'Yara Lizette', 'Torres', 'Jiménez', 'MXB0033303', '36', '1', '5', 'yara.torres@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142875', 'Arumi', 'Tuyub', 'España', 'MXB0034407', '22', '3', '5', 'arumi.tuyub@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142985', 'Francisco  Manuel', 'Kú', 'Carrillo', 'MXB0121519', '31', '3', '5', 'francisco.ku@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32142999', 'Guadalupe Nahiely', 'Ayala', 'Parra', 'MXB0031411', '10', '3', '20', 'guadalupe.ayala@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143258', 'Freddy Juventino', 'Valle', 'Moo', 'MXB0033304', '89', '1', '12', 'freddy.valle@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143261', 'Moctezuma', 'Peraza', 'Chuc', 'MXB0033304', '89', '1', '12', 'moctezuma.peraza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143366', 'Martha Georgina Del Socorro', 'Ventura', 'Sabido', 'MXB0034001', '7', '4', '9', 'martha.ventura@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143434', 'Regina', 'Garza', 'Roche', 'MXB0127414', '48', '1', '4', 'regina.garza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143435', 'Rubén', 'Dominguez', 'Maldonado', 'MXB0031410', '80', '3', '8', 'ruben.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143828', 'Georgina Maribel', 'Ojeda', 'Viana', 'MXB0034602', '24', '1', '9', 'maribel.ojeda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32143970', 'Alfredo José', 'Solís', 'Castilla', 'MXB0031612', '56', '5', '9', 'alfredo.solis@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144069', 'Maythe', 'Fraire', 'Torres', 'MXB0123203', '84', '4', '16', 'maythe.fraire@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144113', 'Gladys Ruby', 'Díaz', 'Negrón', 'MXB0031415', '80', '3', '9', 'gladys.diaz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144114', 'José Luis', 'Escalante', 'Macías Valadez', 'MXB0031410', '33', '3', '5', 'jose.escalante@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144190', 'Juan Gualberto', 'Puc', 'Martin', 'MXB0033302', '10', '1', '9', 'juan.puc@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144380', 'Eric Simón', 'Murillo', 'Rodríguez', 'MXB0031411', '80', '3', '9', 'eric.murillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144462', 'Mariela Trinidad', 'Lara', 'Martínez', 'MXB0031411', '88', '3', '12', 'mariela.lara@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144488', 'Mario Ernesto', 'Gamboa', 'Mendez', 'MXB0121519', '31', '3', '10', 'mario.gamboa@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144526', 'Mercedes Del Pilar', 'Piña', 'Quijano', 'MXB0031411', '5', '3', '9', 'mercedes.pina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144555', 'Alfonso', 'Villarreal', 'Vidal', 'MXB0121528', '29', '3', '5', 'alfonso.villarreal@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32144995', 'Sally Yolanda', 'Avilez', 'Briceño', 'MXB0034602', '24', '1', '9', 'sally.avilez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145155', 'Alexis Mauricio', 'Palacios', 'Ruíz', 'MXB0031410', '80', '3', '8', 'alexis.palacios@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145420', 'Adalberto Antonio', 'Martinez', 'Castillo', 'MXB0031411', '80', '3', '9', 'adalberto.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145456', 'Anevi', 'Aranda', 'Morales', 'MXB0034001', '86', '4', '12', 'anevi.aranda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145534', 'Andrés Gaspar', 'Quintal', 'Castillo', 'MXB0031612', '56', '5', '9', 'ossensei@yahoo.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145538', 'María De La Asunción Cecilia', 'Espinosa', 'Garza', 'MXB0033301', '80', '3', '9', 'maria.espinosag@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32145548', 'Mayte José', 'González', 'Madariaga', 'MXB0034001', '10', '4', '12', 'mayte.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146467', 'Olga Paulina', 'Pinzón', 'Balam', 'MXB0034604', '61', '1', '9', 'olga.pinzon@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146480', 'Edsi', 'Gomez', 'Perez', 'MXB0031413', '80', '3', '9', 'edsi.gomez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146510', 'Gerardo Manuel', 'Alonzo', 'Medina', 'MXB0031410', '80', '3', '8', 'gerardo.alonzo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146544', 'María Cristina', 'Osorio', 'Vázquez', 'MXB0031407', '80', '3', '9', 'maria.osoriov@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146674', 'Eduardo Alberto', 'Ramos', 'Arevalo', 'MXB0034901', '12', '3', '16', 'eduardo.ramos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32146961', 'Tatiana Macarena', 'Castillo', 'Salazar', 'MXB0034606', '7', '1', '9', 'tatiana.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147070', 'Beatriz Gabriela', 'Flores', 'Bargas', 'MXB0031403', '84', '3', '18', 'beatriz.flores@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147524', 'Ricardo', 'Ávila', 'Medina', 'MXB0121501', '10', '3', '12', 'ricardo.avila@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147525', 'Carlos Andrés', 'Wabi', 'Peniche', 'MXB0031410', '33', '3', '5', 'carlos.wabi@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147527', 'Cinddy Noemí', 'Reyes', 'Mézquita', 'MXB0034404', '10', '3', '12', 'cinddy.reyes@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147649', 'María Guadalupe', 'Sánchez', 'Trujillo', 'MXB0031405', '80', '3', '9', 'maria.sanchezt@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147655', 'Jesús Arturo', 'Gutiérrez', 'Barrera', 'MXB0031416', '80', '3', '9', 'jesus.gutierrez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147656', 'Diana Patricia', 'Luna', 'Mccarthy', 'MXB0034403', '28', '3', '5', 'diana.luna@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32147708', 'María Anunciata', 'López', 'Vales', 'MXB0034301', '46', '1', '4', 'anunciata.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148067', 'Lili Marlene', 'Estrada', 'Avilés', 'MXB0031411', '33', '3', '5', 'lili.estrada@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148074', 'Dora Elia', 'Martínez', 'Faz', 'MXB0034001', '73', '4', '9', 'dora.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148210', 'Maribel Concepción', 'Castro', 'Flota', 'MXB0034001', '11', '4', '12', 'maribel.castro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148278', 'Armando José', 'González', 'Solís', 'MXB0031414', '80', '3', '9', 'armando.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148332', 'Ana Rosa', 'Puerto', 'Ávila', 'MXB0127414', '84', '1', '16', 'ana.puerto@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148606', 'Diana Carolina', 'Espinosa', 'Pérez', 'MXB0034604', '61', '1', '12', 'diana.espinosa@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148648', 'Dafne', 'Domínguez', 'Nolasco', 'MXB0123203', '8', '4', '9', 'dafne.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148701', 'Jaime Antonio', 'Zaldívar', 'Rae', 'MXB0034401', '27', '3', '5', 'jaime.zaldivar@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148709', 'Ana Lucía', 'Aysa', 'Rodríguez', 'MXB0034608', '44', '1', '9', 'ana.aysa@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148862', 'Miriam Adriana', 'Sanchez', 'Gomez', 'MXB0034001', '60', '4', '9', 'miriam.sanchez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148863', 'Ligia Natalia', 'Gonzalez', 'Gutierrez', 'MXB0031407', '80', '3', '9', 'ligia.gonzalez2@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148865', 'Antonio', 'Rodriguez', 'Alcala', 'MXB0031415', '80', '3', '9', 'antonio.rodriguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148868', 'Claudia Lorena', 'Castillo', 'Espronceda', 'MXB0034001', '7', '4', '9', 'claudia.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148924', 'Fernando', 'Hernandez', 'Tello', 'MXB0031407', '80', '3', '9', 'fernando.hernandez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32148925', 'Raul Jose', 'Espejo', 'Sauri', 'MXB0034301', '4', '1', '9', 'raul.espejo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149072', 'Gilberto Ramon', 'Estrella', 'Suaste', 'MXB0034101', '15', '4', '16', 'gilberto.estrella@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149174', 'Russel Miguel', 'Sanchez', 'Pool', 'MXB0033304', '16', '1', '16', 'russel.sanchez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149175', 'Rosana Patricia', 'Navarro', 'Chim', 'MXB0031411', '88', '3', '12', 'rosana.navarro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149211', 'José Antonio', 'Silveira', 'Bolio', 'MXB0031407', '51', '3', '3', 'jose.silveira@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149218', 'Viridiana', 'Casas', null, 'MXB0033301', '80', '3', '9', 'viridiana.casas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149265', 'Jose Ramiro', 'Ortiz', 'Mier Y Teran', 'MXB0034001', '86', '4', '12', 'ramiro.ortiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149269', 'Alberto Rene', 'Bolio', 'Vales', 'MXB0121519', '80', '3', '9', 'alberto.bolio@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149485', 'Catalina', 'Palomo', 'Gasca', 'MXB0034407', '26', '3', '5', 'catalina.palomo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149706', 'Eduardo', 'Espinosa', 'Y Macin', 'MXB0031411', '33', '3', '5', 'eduardo.espinosa@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149819', 'Melina Leticia', 'Lopez', 'Acosta', 'MXB0034001', '11', '4', '12', 'melina.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149869', 'Javier', 'Ortiz', 'Sauri', 'MXB0031414', '80', '3', '9', 'javier.ortiz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149870', 'Maria Gabriela', 'Pérez', 'Bernal', 'MXB0031415', '80', '3', '9', 'gabriela.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149910', 'Leydi Diana', 'Lopez', 'Moreno', 'MXB0031407', '83', '3', '12', 'leydi.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149970', 'Leopoldo Manuel', 'Castillo', 'Magaña', 'MXB0031416', '80', '3', '9', 'leopoldo.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149973', 'Gary Rusell', 'Murillo', 'Esquivel', 'MXB0033304', '74', '1', '5', 'gary.murillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149975', 'Luis Alonso', 'Vazquez', 'Cruz', 'MXB0031411', '88', '3', '12', 'luis.vazquez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32149977', 'Juliana Margarita', 'Caceres', 'Medina', 'MXB0121527', '29', '3', '9', 'juliana.caceres@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32150470', 'Linabel', 'Novelo', 'Alcocer', 'MXB0034510', '7', '5', '9', 'linabel.novelo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32150583', 'Francisco Javier', 'Rodriguez', 'Martin', 'MXB0031404', '80', '3', '9', 'javier.rodriguezm@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32150757', 'Maricarmen De Atocha', 'Parra', 'Burgos', 'MXB0031410', '84', '3', '16', 'maricarmen.parra@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32150966', 'Ileana Trinidad', 'Varguez', 'Perez', 'MXB0034001', '11', '4', '12', 'ileana.varguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151164', 'Luisa Maria', 'Payeras', 'Sanchez', 'MXB0034301', '4', '1', '5', 'luisa.payeras@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151397', 'Marcelo', 'Canché', 'Can', 'MXB0034101', '68', '4', '16', 'marcelo.canche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151435', 'Daniel Alberto', 'Pérez', 'Domínguez', 'MXB0031414', '80', '3', '9', 'daniel.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151436', 'Roberto Enrique', 'Reyes', 'Castillo', 'MXB0031411', '88', '3', '12', 'roberto.reyes@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151505', 'David', 'Medina', 'Sabido', 'MXB0031413', '23', '3', '9', 'david.medina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151595', 'María Jesús', 'Tuyub', 'Dzul', 'MXB0034001', '11', '4', '12', 'maria.tuyub@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151597', 'José Manuel', 'Campo', 'Marrufo', 'MXB0034407', '16', '3', '16', 'jose.campo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151598', 'Wilberth Bibiano', 'Sulú', 'Balam', 'MXB0034101', '68', '4', '16', 'wilberth.sulu@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151600', 'Beatriz Alejandra', 'Castillo', 'López', 'MXB0034407', '5', '3', '9', 'beatriz.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151603', 'Maricela', 'Marqueda', 'Alcocer', 'MXB0034301', '69', '1', '5', 'maricela.marqueda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151614', 'José Daniel', 'Peraza', 'Zermeño', 'MXB0034407', '16', '3', '16', 'daniel.peraza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151615', 'Angélica Patricia', 'Argaez', 'Morales', 'MXB0031414', '88', '3', '12', 'angelica.argaez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151737', 'Lucía Del Corazón De María', 'Fernández', 'Bandini', 'MXB0031411', '80', '3', '9', 'bandini.lucia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151835', 'Diana Celina', 'Morcillo', 'Bolio', 'MXB0031411', '10', '3', '16', 'diana.morcillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32151854', 'Sofía', 'Chávez', 'Jacquez', 'MXB0034604', '61', '1', '12', 'sofia.chavez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152130', 'Natalia Paulina', 'Lizama', 'Dorantes', 'MXB0031612', '56', '5', '9', 'natalia.lizama@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152177', 'Nidelvia Yolanda', 'Reyes', 'Avila', 'MXB0031411', '88', '3', '12', 'nidelvia.reyes@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152181', 'María Guadalupe', 'Montalvo', 'López', 'MXB0031604', '10', '5', '12', 'maria.montalvol@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152377', 'Jorge Eduardo', 'Santos', 'Villafaña', 'MXB0031607', '7', '5', '9', 'jorge.santos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152425', 'Orlando Humberto', 'López', 'Osorio', 'MXB0031407', '14', '3', '16', 'orlando.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152430', 'Fernando', 'Cadena', 'Mejía', 'MXB0031411', '80', '3', '9', 'fernando.cadena@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152527', 'Porfirio Rodolfo', 'Díaz', 'Negrón', 'MXB0031404', '14', '3', '16', 'porfirio.diaz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152638', 'Helly Maricela', 'Burgos', 'Estrella', 'MXB0121508', '29', '3', '5', 'helly.burgos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152691', 'Eli Vianey', 'López', 'Ortega', 'MXB0031407', '80', '3', '9', 'eli.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32152778', 'Mariela Concepción', 'Argüelles', 'Guerrero', 'MXB0034001', '13', '4', '12', 'mariela.arguelles@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153244', 'Bruno Abraham', 'López', 'Berumen', 'MXB0031404', '80', '3', '9', 'bruno.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153290', 'Edesio Martin', 'Rodríguez', 'Herrera', 'MXB0031612', '56', '5', '9', 'edesio1972@hotmail.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153319', 'Tobías Manuel', 'Blas', 'Zapata', 'MXB0034604', '61', '1', '12', 'tobias.blas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153323', 'Erick José', 'Poot', 'Ortega', 'MXB0034101', '15', '4', '16', 'erick.poot@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153337', 'Felipe', 'García', 'González', 'MXB0033304', '89', '1', '12', 'felipe.garcia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153437', 'Florisela Marlene', 'Castillo', 'Quijano', 'MXB0034001', '17', '4', '16', 'florisela.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153479', 'Ana Paulina', 'González', 'Anaya', 'MXB0034301', '4', '1', '5', 'paulina.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153663', 'José Fernando', 'Pineda', 'Fuentes', 'MXB0033304', '16', '1', '16', 'jose.pineda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153664', 'Abel', 'Conde', 'Burgos', 'MXB0033305', '10', '1', '12', 'abel.conde@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153815', 'Delfina María', 'Guedimín', 'Bojórquez', 'MXB0127414', '7', '1', '9', 'delfina.guedimin@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153840', 'Niurka', 'Trujillo', 'Paredes', 'MXB0031411', '80', '3', '9', 'niurka.trujillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153844', 'Arturo Alfonso', 'Terrazas', 'Brandt', 'MXB0034601', '18', '1', '16', 'arturo.terrazas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153871', 'Elizabeth Del Carmen', 'Pérez', 'Aguilar', 'MXB0034301', '84', '1', '16', 'elizabeth.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153874', 'Ernesto', 'Saldaña', 'Aportela', 'MXB0031605', '39', '5', '9', 'ernesto.saldana@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153970', 'Orfi Guadalupe', 'Aguayo', 'Rosado', 'MXB0034602', '66', '1', '12', 'orfi.aguayo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32153980', 'María Magdalena', 'Uicab', 'Che', 'MXB0031415', '10', '3', '12', 'maria.uicab@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154094', 'Elizabeth', 'Urias', 'Ibarra', 'MXB0034604', '10', '1', '12', 'elizabeth.urias@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154101', 'Greta Nikolai', 'Molina', 'Gutiérrez', 'MXB0031408', '80', '3', '9', 'greta.molina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154166', 'Vanessa Guadalupe', 'Martínez', 'Chan', 'MXB0031403', '10', '3', '14', 'vanessa.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154228', 'Jorge Hiram', 'Perez', 'Gomez', 'MXB0034901', '12', '3', '16', 'jorge.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154232', 'Isabel', 'Lizarraga', 'Castro', 'MXB0033302', '10', '1', '9', 'isabel.lizarraga@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154240', 'María Gabriela', 'Martín', 'Peón', 'MXB0034401', '7', '3', '9', 'gabriela.martin@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154314', 'Yazmín Orquidia', 'Sabido', 'Perera', 'MXB0031410', '88', '3', '12', 'yazmin.sabido@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154463', 'Sergio Gabriel', 'Tut', 'Aké', 'MXB0034101', '15', '4', '16', 'sergio.tut@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154516', 'Manuel Alberto', 'Navarro', 'Tec', 'MXB0034101', '68', '4', '16', 'manuel.navarro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154574', 'Rafael', 'Lima', 'Chim', 'MXB0034101', '68', '4', '16', 'rafael.lima@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154582', 'Monica Georgina', 'León', 'Gil', 'MXB0034407', '5', '3', '9', 'monica.leon@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154629', 'Rolando Gonzalo', 'Peniche', 'Marcin', 'MXB0031414', '52', '3', '8', 'rolando.peniche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154649', 'Wilian Ulises', 'Romero', 'Euan', 'MXB0034101', '15', '4', '16', 'wiliam.romero@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154651', 'Georgina', 'Nieves', 'Metri', 'MXB0034602', '10', '1', '12', 'georgina.nieves@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154693', 'Darling Del Carmen', 'Castillo', 'Cruz', 'MXB0031413', '14', '3', '16', 'darling.castillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154936', 'Luis David', 'Us', 'Vázquez', 'MXB0033304', '16', '1', '16', 'luis.us@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32154937', 'José Roberto', 'Medina', 'Rodriguez', 'MXB0034606', '82', '1', '12', 'jose.medina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155174', 'Efraín Alberto', 'Cervantes', 'Cámara', 'MXB0031612', '56', '5', '9', 'efrain.cervantes.camara@gmail.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155229', 'Lourdes Jhoana', 'Solis', 'Navarrete', 'MXB0034001', '79', '4', '16', 'lourdes.solis@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155231', 'Geovanny Rafael', 'Giorgana', 'Macedo', 'MXB0031410', '80', '3', '8', 'geovanny.giorgana@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155512', 'María Alejandrina', 'Acevedo', 'Vales', 'MXB0034604', '61', '1', '9', 'alejandrina.acevedo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155690', 'Aida Dayanara', 'Tamayo', 'Escalante', 'MXB0121501', '35', '3', '5', 'aida.tamayo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155724', 'Laura Elena', 'Ortega', 'Rosado', 'MXB0121501', '35', '3', '5', 'laura.ortega@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32155726', 'Alejandrina', 'Mejia', 'Ricalde', 'MXB0034001', '72', '4', '9', 'alejandrina.mejia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32156835', 'Yermak Alexandro', 'Duarte', 'Rosado', 'MXB0031404', '52', '3', '5', 'yermak.duarte@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157008', 'Asuncion Del Rosario', 'Dominguez', 'Ayora', 'MXB0031411', '10', '3', '16', 'asuncion.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157009', 'Fernando', 'Rodriguez', 'Vargas', 'MXB0031408', '80', '3', '9', 'fernando.rodriguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157048', 'Ana Meybel', 'Copland', 'Amaya', 'MXB0031407', '80', '3', '9', 'ana.copland@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157288', 'Andrés Iván', 'Oliva', 'Avilés', 'MXB0031410', '80', '3', '8', 'andres.oliva@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157290', 'Jorge Carlos', 'Medina', 'Palma', 'MXB0031416', '80', '3', '9', 'jorge.medina@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157393', 'Leonardo Daniel', 'Yerbes', 'Contreras', 'MXB0031404', '88', '3', '12', 'leonardo.yerbes@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157400', 'Ana Rosa', 'Interian', 'Chuc', 'MXB0034001', '79', '4', '16', 'ana.interian@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157402', 'Ximena', 'Ampudia', 'López Cortijo', 'MXB0034301', '59', '1', '9', 'ximena.ampudia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157411', 'Laura Rosenda', 'Hernandez', 'Moreno', 'MXB0121506', '10', '3', '12', 'laura.hernandez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157412', 'Erika Maria', 'Escalante', 'Ayuso', 'MXB0034407', '10', '3', '12', 'erika.escalante@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157498', 'Alejandro Esteban', 'Fitzmaurice', 'Cahluni', 'MXB0031403', '80', '3', '9', 'alejandro.fitzmaurice@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157535', 'Jorge Ernesto', 'Peniche', 'Rosales', 'MXB0034407', '64', '3', '12', 'jorge.peniche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157581', 'Nancy Marlene', 'Quijano', 'Sosa', 'MXB0034604', '7', '1', '9', 'nancy.quijano@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157582', 'Fabiola', 'Echazarreta', 'Montero', 'MXB0034001', '86', '4', '12', 'fabiola.echazarreta@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157584', 'Maria Rosa', 'Pineda', 'Manzanilla', 'MXB0031606', '10', '5', '12', 'maria.pineda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157585', 'Jossue Alejandro', 'Couoh', 'Guerra', 'MXB0034101', '15', '4', '16', 'josue.couoh@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157586', 'Maria Simoneta', 'Lara', 'Lizarraga', 'MXB0033302', '10', '1', '12', 'maria.lara@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157587', 'Ana Margarita', 'Lavalle', 'Alonso', 'MXB0034301', '10', '1', '12', 'ana.lavalle@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157650', 'Gonzalo Manuel', 'Torres', 'Montalvo', 'MXB0031410', '80', '3', '7', 'gonzalo.torres@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157686', 'Flor Marina', 'Miranda', 'Rosado', 'MXB0034602', '10', '1', '12', 'flor.miranda@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157697', 'Andres Alberto', 'Alpuche', 'Diaz', 'MXB0034101', '15', '4', '16', 'andres.alpuche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157789', 'Luis Alberto', 'González', 'Uruñuela', 'MXB0034101', '15', '4', '16', 'luis.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32157836', 'Nelly Genoveva', 'Garcia', 'Blackaller', 'MXB0031411', '80', '3', '9', 'nelly.garcia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159413', 'David Rene', 'Argüelles', 'Barrancos', 'MXB0034901', '12', '3', '16', 'david.arguelles@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159427', 'Jorge Oswaldo', 'Gómez', 'Ortiz', 'MXB0031407', '80', '3', '9', 'jorge.gomezo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159479', 'Yazmin Antonia', 'Zapata', 'Díaz', 'MXB0034403', '10', '3', '12', 'yazmin.zapata@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159481', 'Maria Irene', 'Valencia', 'Cervera', 'MXB0034608', '10', '1', '12', 'maria.cervera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159619', 'Oscar Melesio', 'Moreno', 'Castillo', 'MXB0034606', '10', '1', '12', 'oscar.moreno@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159728', 'Luis Miguel', 'Romero', 'Euan', 'MXB0034101', '15', '4', '16', 'luis.romero@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159730', 'Rafael Alfonso', 'Dominguez', 'Cervera', 'MXB0121519', '31', '3', '10', 'rafael.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159732', 'Mariana Berenice', 'González', 'Leija', 'MXB0034407', '5', '3', '9', 'mariana.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159785', 'Hilda Ivonne', 'Carrera', 'Pérez', 'MXB0034301', '4', '1', '9', 'hilda.carrera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159786', 'Joaquina Leonor', 'Dominguez', 'Maldonado', 'MXB0034603', '10', '1', '12', 'joaquina.dominguez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159882', 'Ramón', 'Bejarano', 'Carrasco', 'MXB0034601', '7', '1', '9', 'ramon.bejarano@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159883', 'Tania', 'López', 'Ramos', 'MXB0034404', '10', '3', '12', 'tania.lopezr@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32159906', 'Reyna Guadalupe', 'Martinez', 'Valdez', 'MXB0034602', '84', '1', '16', 'reyna.martinez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160002', 'Pamela Elizabeth', 'Cantón', 'Gamboa', 'MXB0034602', '10', '1', '12', 'pamela.canton@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160003', 'Sara Nathali', 'Rafful', 'Soberanis', 'MXB0033302', '10', '1', '12', 'sara.rafful@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160092', 'Luis Alberto', 'González', 'Cincúnegui', 'MXB0033304', '40', '1', '4', 'luis.gonzalezc@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160093', 'Alexandra', 'Pieck', 'Puerto', 'MXB0034608', '10', '1', '12', 'alexandra.pieck@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160205', 'Maricarmen', 'Sabido', 'Basteris', 'MXB0031405', '80', '3', '9', 'maricarmen.sabido@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160207', 'Virginia Meribeth', 'Oropeza', 'Gorocica', 'MXB0031404', '80', '3', '9', 'virginia.oropeza@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160208', 'Jary Davis', 'Couoh', 'Castañeda', 'MXB0031411', '5', '3', '9', 'jary.couoh@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160218', 'Miguel Ángel', 'Rocha', 'Sánchez', 'MXB0031404', '14', '3', '16', 'miguel.rocha@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160223', 'Yerani', 'Recillas', 'Ilizaliturri', 'MXB0034604', '10', '1', '12', 'yerani.recillas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160333', 'Maria Eugenia', 'Farias', 'Fueyo', 'MXB0034301', '4', '1', '9', 'maria.farias@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160334', 'Roberto Antonio', 'Ortega', 'Rios Covian', 'MXB0034602', '55', '1', '12', 'roberto.ortega@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160335', 'Luis Andres', 'Novelo', 'Castro', 'MXB0121548', '32', '3', '5', 'luis.novelo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160340', 'Almendra Ascencion', 'Mena', 'Aranda', 'MXB0034602', '65', '1', '12', 'almendra.mena@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160391', 'Jessica Selene', 'Bleis', 'Yam', 'MXB0034301', '21', '1', '9', 'jessica.bleis@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160394', 'Jesús Alberto', 'Vázquez', 'Navarrete', 'MXB0033304', '89', '1', '12', 'jesus.vazquez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160407', 'María De Guadalupe', 'Nabté', 'Escamilla', 'MXB0031408', '88', '3', '12', 'maria.nabte@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160437', 'Manuel', 'Olea', 'Martínez', 'MXB0031403', '88', '3', '13', 'manuel.olea@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160469', 'Mariel', 'Góngora', 'González', 'MXB0034901', '12', '3', '16', 'mariel.gongora@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160511', 'Brenda', 'Andrade', 'Nuñez', 'MXB0031404', '80', '3', '9', 'brenda.andrade@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160580', 'Ileana Isabel', 'González', 'Angulo', 'MXB0121501', '35', '3', '5', 'ileana.gonzalez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160581', 'Miguel Francisco', 'Pech', 'Argüelles', 'MXB0033304', '16', '1', '16', 'miguel.pech@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160582', 'Adriana Raquel', 'Puc', 'Rodríguez', 'MXB0031606', '10', '5', '12', 'adriana.puc@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160583', 'Stacy', 'Lara', 'Mena', 'MXB0034604', '10', '1', '12', 'stacy.lara@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160755', 'Gloria', 'Peniche', 'Gómez', 'MXB0121501', '6', '3', '10', 'gloria.peniche@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160756', 'María Antonieta', 'Pacheco', 'Pantoja', 'MXB0031407', '80', '3', '9', 'maria.pacheco@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160764', 'Juan Andrés', 'Palomo', null, 'MXB0034606', '82', '1', '12', 'juan.palomo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160812', 'Ileana Cristina', 'Escalante', 'Alpuche', 'MXB0031607', '57', '5', '12', 'ileana.escalante@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160871', 'Elsa Beatriz', 'Jiménez', 'Urcelay', 'MXB0031407', '80', '3', '9', 'elsa.jimenez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160873', 'Karla Yaneth', 'Bravo', 'Vargas', 'MXB0034601', '85', '1', '12', 'karla.bravo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160877', 'Enrique', 'Poot', 'Palma', 'MXB0033304', '16', '1', '16', 'enrique.poot@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160908', 'Daniel Alejandro', 'Xix', 'Tzakum', 'MXB0034001', '18', '4', '16', 'daniel.xix@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160909', 'Mariana', 'Romero', 'García', 'MXB0034602', '55', '1', '12', 'mariana.romero@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32160969', 'Alicia Reneé', 'Carrasco', 'Azcuaga', 'MXB0034602', '10', '1', '12', 'alicia.carrasco@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161036', 'Grecia Estefanía', 'Berber', 'Selem', 'MXB0031413', '14', '3', '20', 'grecia.berber@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161038', 'Gonzalo Enrique', 'Esquivel', 'Martínez', 'MXB0031411', '14', '3', '18', 'gonzalo.esquivel@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161042', 'Erika Astrid', 'Gutiérrez', 'Ramírez', 'MXB0031411', '14', '3', '17', 'erika.gutierrez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161044', 'Yohanna', 'Alfaro', 'Herrera', 'MXB0031414', '14', '3', '16', 'yohanna.alfaro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161047', 'Ileana Guadalupe', 'Ortega', 'González', 'MXB0121506', '30', '3', '5', 'ileana.ortega@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161048', 'Fernando Humberto', 'Aguilar', 'Torres', 'MXB0031411', '14', '3', '20', 'fernando.aguilar@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161083', 'Eduardo José', 'Abreu', 'Pérez', 'MXB0121519', '80', '3', '9', 'eduardo.abreu@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161099', 'Naomy Del Pilar', 'Bastarrachea', 'May', 'MXB0121519', '80', '3', '9', 'naomy.bastarrachea@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161233', 'Lucia Jaqueline', 'Ramos', 'Gómez', 'MXB0121519', '80', '3', '9', 'lucia.ramos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161243', 'Mildred Beatriz', 'Salas', 'Ley', 'MXB0121519', '80', '3', '9', 'mildred.salas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161296', 'Edwin Manuel', 'Rosas', 'Caballero', 'MXB0031410', '88', '3', '12', 'edwin.rosas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161372', 'Manuel Hernán', 'Hoyos', 'Pinzón', 'MXB0031414', '80', '3', '9', 'manuel.hoyos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161402', 'Rubi Del Socorro', 'Moguel', 'Ojeda', 'MXB0121519', '80', '3', '9', 'rubi.moguel@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161632', 'Pedro Antonio', 'Mendoza', 'Aguilar', 'MXB0031612', '56', '5', '9', 'pamakeb@hotmail.com', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161633', 'Yuselmy Fabiola', 'López', 'Nah', 'MXB0034001', '11', '4', '12', 'yuselmy.lopez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161636', 'Yussiff Emmanuel', 'Pérez', 'Méndez', 'MXB0034101', '10', '4', '12', 'yussiff.perez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161674', 'Kevin Alberto', 'Cruz', 'Ricalde', 'MXB0034301', '4', '1', '9', 'kevin.cruz@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161675', 'Nury Fernanda', 'Evia', 'Ceballos', 'MXB0031602', '34', '5', '5', 'nury.evia@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161770', 'Rodrigo', 'González', 'Somonte', 'MXB0031403', '88', '3', '15', 'rodrigo.gonzalez2@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161773', 'Mónica', 'Sierra', 'González', 'MXB0034301', '59', '1', '9', 'monica.sierra@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161867', 'Farrah Silvana', 'Ferro', 'Muñoz', 'MXB0121501', '6', '3', '11', 'farrah.ferro@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161868', 'María Lucía', 'Bolio', 'Martínez', 'MXB0031605', '10', '5', '12', 'lucia.bolio@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32161974', 'Angélica', 'Brizuela', 'Gabriel', 'MXB0031605', '10', '5', '12', 'angelica.brizuela@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162014', 'Gerardo Iván', 'Salgado', 'Ríos', 'MXB0034603', '42', '1', '5', 'gerardo.salgado@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162062', 'Ayerím Del Rosario', 'Vallejo', 'Álvarez', 'MXB0031604', '34', '5', '5', 'ayerim.vallejo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162093', 'Erika Del Socorro', 'Enríquez', 'Vázquez', 'MXB0034407', '41', '3', '8', 'erika.enriquezv@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162270', 'Johann Erasto', 'Jimenez', 'Bautista', 'MXB0034602', '66', '1', '12', 'johann.jimenez@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162275', 'Noé De Jesús', 'Tec', 'Cetina', 'MXB0121519', '80', '3', '9', 'noe.tec@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162282', 'Roberto Iván', 'Puc', 'Pool', 'MXB0121519', '80', '3', '9', 'roberto.puc@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162285', 'Adriana Gabriela', 'Carrillo', 'Peraza', 'MXB0121519', '80', '3', '9', 'adriana.carrillo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162288', 'Minerva Stephani', 'Vargas', 'Chávez', 'MXB0121519', '80', '3', '9', 'minerva.vargas@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162289', 'Eduardo José', 'Gutierrez', 'Peniche', 'MXB0121519', '80', '3', '9', 'eduardo.gutierrezp@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162403', 'Andrea', 'Gómez', 'Domenzáin', 'MXB0031604', '10', '5', '12', 'andrea.gomezd@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162406', 'Marcos Daniel', 'Lugo', 'Ancona', 'MXB0121519', '80', '3', '9', 'marcos.lugo@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162408', 'Patricia Isabel', 'González', 'Calcáneo', 'MXB0031414', '14', '3', '16', 'patricia.gonzalezg@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162409', 'Pamela', 'Kemp', 'Medina', 'MXB0034510', '10', '5', '12', 'pamela.kemp@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162414', 'Marcelo Ulises', 'Quijano', 'Ricalde', 'MXB0034001', '86', '4', '12', 'marcelo.quijano@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162491', 'Gicel', 'Córdoba', 'Pech', 'MXB0033304', '89', '1', '12', 'gicel.cordoba@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162547', 'Carola Hortensia', 'Rivera de Vargas', null, 'MXB0127414', '7', '1', '9', 'carola.rivera@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162548', 'Carlos Alberto', 'Palma', 'Castillo', 'MXB0033302', '10', '1', '12', 'carlos.palma@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162549', 'Marvin', 'Arcos', 'Solis', 'MXB0034606', '82', '1', '12', 'marvin.arcos@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162550', 'Cristina Gisela', 'Canto', 'Herrera', 'MXB0127414', '5', '1', '9', 'cristina.canto@anahuac.mx', '2016-05-27 21:47:06', '0');
-INSERT INTO `empleados` VALUES ('32162559', 'David', 'Mir', 'Gil', 'MXB0031415', '80', '3', '9', 'david.mir@anahuac.mx', '2016-05-27 21:47:06', '0');
+INSERT INTO `empleados` VALUES ('1', 'Rafael', 'Pardo', '	Hervás', 'MXB0034601', '1', '1', '1', 'rafael.pardo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('2', 'Ulises', 'Peñúñuri', '	Munguía', 'MXB0034601', '2', '1', '1', 'ulises.penunuri@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32122411', 'Luis Oscar', 'Anguiano', 'Avila', 'MXB0034001', '6', '4', '6', 'luis.anguiano@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32123111', 'Luis Ernesto', 'Gutierrez', 'Martinez', 'MXB0034606', '47', '1', '4', 'luis.gutierrez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32123705', 'Nina Rosa', 'Allen', 'Novelo', 'MXB0034407', '5', '3', '6', 'nina.allen@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124170', 'Gaspar', 'Flores', 'May', 'MXB0034101', '13', '4', '8', 'gaspar.flores@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124172', 'David', 'Vegue', 'Corbacho', 'MXB0031416', '76', '3', '6', 'david.vegue@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124174', 'Paula Patricia', 'López', 'Rodriguez', 'MXB0031405', '80', '3', '8', 'patricia.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124176', 'Martha Angelica', 'Chi', 'Canul', 'MXB0034001', '77', '4', '8', 'martha.chi@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124178', 'Lidia Maricruz', 'Rejón', 'Martínez', 'MXB0033302', '8', '1', '7', 'maricruz.rejon@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124181', 'Alejandra', 'Mendoza', 'Villalobos', 'MXB0121501', '50', '3', '4', 'alejandra.mendoza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124183', 'Francisco Javier', 'Otero', 'Rejón', 'MXB0031416', '42', '3', '4', 'francisco.otero@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124184', 'María Cristina', 'Carrillo', 'Acosta', 'MXB0034401', '79', '3', '7', 'cristina.carrillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124185', 'Rubí Candelaria', 'Martín', 'Gómez', 'MXB0033305', '80', '1', '8', 'rubi.martin@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124186', 'Lia Regina', 'Narváez', 'Galaz', 'MXB0034604', '63', '1', '5', 'lia.narvaez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124187', 'María Del Carmen', 'Sandoval', 'Vázquez', 'MXB0031410', '8', '3', '7', 'carmen.sandoval@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124188', 'María Del Rocío', 'Chávez', 'Reyes', 'MXB0033302', '72', '1', '5', 'rocio.chavez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124189', 'Julio Antonio', 'Ontiveros', 'Velázquez', 'MXB0034001', '74', '4', '6', 'julio.ontiveros@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124190', 'María Guadalupe', 'Hernández', 'Loeza', 'MXB0031405', '8', '3', '7', 'guadalupe.hernandez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124192', 'Benjamín Ramón', 'Negroe', 'Monforte', 'MXB0031407', '49', '3', '5', 'benjamin.negroe@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124193', 'Annette Dinorah', 'Cirerol', 'León', 'MXB0031407', '8', '3', '7', 'annete.cirerol@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124194', 'María Guadalupe Del Carmen', 'Cervera', null, 'MXB0031607', '8', '5', '7', 'guadalupe.cervera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124195', 'Martha María', 'Tello', 'Rodriguez', 'MXB0031415', '49', '3', '5', 'martha.tello@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124196', 'Mercedes', 'Zárate', 'Medina', 'MXB0034403', '8', '3', '7', 'mercedes.zarate@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124197', 'Eduardo Fernando', 'Cel', 'Briceño', 'MXB0034101', '64', '4', '8', 'eduardo.cel@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124198', 'Debora', 'Ayala', 'Fernández', 'MXB0033301', '8', '3', '7', 'debora.ayala@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124199', 'Enrique De Jesus', 'Cachón', 'Medrano', 'MXB0034001', '16', '4', '8', 'enrique.cachon@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124202', 'Antonio', 'Zaldivar', 'Álvarez', 'MXB0034001', '74', '4', '6', 'antonio.zaldivar@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124206', 'Luciano Diab', 'Dominguez', 'Cherit', 'MXB0031410', '76', '3', '5', 'luciano.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124209', 'Marisol', 'Tello', 'Rodriguez', 'MXB0031403', '49', '3', '5', 'marisol.tello@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124210', 'Francisco Gerardo', 'Barroso', 'Tanoira', 'MXB0031407', '76', '3', '6', 'francisco.barroso@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124213', 'Zolly Herlinda', 'Chin', 'Pool', 'MXB0031411', '84', '3', '7', 'zolly.chin@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124214', 'Pedro Ricardo', 'Aquino', 'Hernández', 'MXB0031411', '84', '3', '7', 'pedro.aquino@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124215', 'Katinka Elizabeth', 'Ibañez', 'Gómez', 'MXB0031411', '21', '3', '6', 'katinka.ibanez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124216', 'Karim Fernando', 'Pedro', 'Fernández', 'MXB0034601', '7', '1', '5', 'karim.pedro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124218', 'Jorge Abraham', 'Carrillo', 'Hernández', 'MXB0034101', '13', '4', '8', 'jorge.carrillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124222', 'Marisol Guadalupe', 'Vera', 'Cardeña', 'MXB0033302', '8', '1', '7', 'marisol.vera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124223', 'Elda Leonor', 'Pacheco', 'Pantoja', 'MXB0031411', '76', '3', '6', 'elda.pacheco@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124224', 'Florángely', 'Herrera', 'Baas', 'MXB0034602', '22', '1', '5', 'florangely.herrera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124225', 'José Alejandro', 'González', 'Novelo', 'MXB0031408', '49', '3', '5', 'alejandro.gonzalezn@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124226', 'Juan Antonio', 'Anaya', 'Sandoval', 'MXB0031410', '48', '3', '4', 'antonio.anaya@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124227', 'Silvia Zuhalia', 'Zapata', 'Carrillo', 'MXB0031403', '76', '3', '6', 'silvia.zapata@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124229', 'Marisol', 'Achach', 'Solís', 'MXB0034401', '34', '3', '5', 'marisol.achach@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124233', 'Inocencio', 'Cohuo', 'Chin', 'MXB0034101', '64', '4', '8', 'inocencio.cohuo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124234', 'María Jazmine Del Carmen', 'Peraza', 'Rosas', 'MXB0033304', '71', '1', '5', 'jazmine.peraza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124235', 'Antonio', 'Barrera', 'Martínez', 'MXB0034601', '7', '1', '5', 'antonio.barrera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124236', 'Anna Karina', 'Cruz', 'López', 'MXB0034407', '60', '3', '6', 'anna.cruz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124238', 'Fernando Antonio', 'Torreblanca', 'Rios', 'MXB0034901', '66', '3', '5', 'fernando.torreblanca@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124243', 'Eugenia Beatriz', 'Euan', 'Calderón', 'MXB0034001', '68', '4', '6', 'eugenia.euan@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124245', 'Susana Enriqueta', 'Guzmán', 'Silva', 'MXB0034407', '46', '3', '4', 'susana.guzman@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124248', 'Yngrid', 'Peniche', 'Rivero', 'MXB0034604', '8', '1', '7', 'yngrid.peniche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124249', 'Carlos Gaspar', 'Pérez', 'Varguez', 'MXB0031403', '76', '3', '6', 'carlos.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124250', 'Anna Carolina', 'Vidal', 'Carrillo', 'MXB0034407', '5', '3', '6', 'anna.vidal@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124253', 'Luis Enrique', 'Santana', 'Cab', 'MXB0034101', '13', '4', '8', 'luis.santana@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124254', 'Lissett Beatriz', 'Pedrero', 'Aguilar', 'MXB0031404', '76', '3', '6', 'lissett.pedrero@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124255', 'Gretty Guadalupe', 'Escalante', 'Góngora', 'MXB0031403', '76', '3', '6', 'gretty.escalante@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124256', 'Rubí Margarita', 'Estrada', 'Medina', 'MXB0034001', '79', '4', '7', 'rubi.estrada@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124257', 'Martha Eugenia', 'Barrera', 'Bustillos', 'MXB0031413', '49', '3', '5', 'martha.barrera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124263', 'Margarita Concepción', 'Durán', 'Yabur', 'MXB0031404', '80', '3', '8', 'margarita.duran@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124267', 'Fermín Orlando', 'Cardós', 'Santoyo', 'MXB0033303', '51', '1', '3', 'fermin.cardos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124269', 'Argel Antonio', 'Farjat', 'Aguilar', 'MXB0034407', '60', '3', '6', 'argel.farjat@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124272', 'Alicia Del Carmen', 'Ortiz', 'Suárez', 'MXB0031408', '8', '3', '7', 'alicia.ortiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124274', 'Julián', 'García', 'Hinojosa', 'MXB0034101', '13', '4', '8', 'julian.garcia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124275', 'Julia Amanda', 'Díaz', 'Aguilar', 'MXB0121504', '27', '3', '5', 'julia.diaz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124276', 'Jose Mauricio', 'Pool', 'Pech', 'MXB0034101', '64', '4', '8', 'jose.pool@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124278', 'Fernando Enrique', 'Acevedo', 'Marentes', 'MXB0121501', '5', '3', '6', 'fernando.acevedo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124279', 'Marisol', 'Cen', 'Caamal', 'MXB0031407', '76', '3', '6', 'marisol.cen@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124281', 'María Eugenia', 'Sansores', 'Sánchez', 'MXB0034403', '80', '3', '8', 'maria.sansores@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124282', 'Andrea Josefina', 'Sansores', 'Ruz', 'MXB0033301', '76', '3', '6', 'andrea.sansores@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124284', 'Carlos Alberto', 'Castillo', 'Pompeyo', 'MXB0031413', '76', '3', '6', 'carlos.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124289', 'Jhoanna', 'Echazarreta', 'Montero', 'MXB0034001', '67', '4', '6', 'jhoanna.echazarreta@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124291', 'Gabriela Del Socorro', 'Herrera', 'Cámara', 'MXB0034401', '79', '3', '7', 'gabriela.herrera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124292', 'Jose Gabriel', 'Urzaiz', 'Lares', 'MXB0031410', '76', '3', '5', 'gabriel.urzaiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124302', 'Francisco Santiago', 'Ruiz', 'Medina', 'MXB0034101', '13', '4', '8', 'francisco.ruiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124303', 'Andrea Susana', 'Urzúa', 'Navarrete', 'MXB0031407', '76', '3', '6', 'andrea.urzua@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124304', 'Beatriz Anilú', 'Mendoza', 'Noh', 'MXB0033304', '59', '1', '6', 'anilu.mendoza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124313', 'Maria Cecilia', 'Martinez', 'Rodriguez', 'MXB0033305', '80', '1', '8', 'cecilia.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124314', 'Ligia Beatriz', 'Biachi', 'Valencia', 'MXB0031404', '8', '3', '7', 'ligia.biachi@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124315', 'Astrid Marvin', 'Peniche', 'Sanguino', 'MXB0033302', '44', '1', '4', 'astrid.peniche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124317', 'Daniel Alberto', 'Correa', 'Cruz', 'MXB0034901', '10', '3', '8', 'daniel.correa@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124320', 'Carlos Manuel', 'Hornelas', 'Pineda', 'MXB0031403', '76', '3', '6', 'carlos.hornelas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124321', 'José Rodrigo', 'Franco', 'Calvillo', 'MXB0031612', '35', '5', '5', 'rodrigo.franco@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124328', 'Eusebio', 'Cohuo', 'Chin', 'MXB0034101', '13', '4', '8', 'eusebio.cohuo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124329', 'Gener Ricardo', 'Crespo', 'Canté', 'MXB0031411', '84', '3', '7', 'gener.crespo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124330', 'Consepción', 'Padrón', 'Chim', 'MXB0034101', '64', '4', '8', 'consepcion.padron@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124331', 'Rosa Eugenia', 'Mijangos', 'Naal', 'MXB0034901', '83', '3', '6', 'rosa.mijangos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124333', 'Elsy Noemi', 'Centeno', 'Sarabia', 'MXB0031416', '8', '3', '7', 'elsy.centeno@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124335', 'José Guillermo', 'Fournier', 'Montiel', 'MXB0031404', '76', '3', '6', 'guillermo.fournier@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124336', 'Martha Patricia', 'Dzib', 'Chan', 'MXB0033302', '8', '1', '6', 'patricia.dzib@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124341', 'Leonor Beatriz Del Socorro', 'Martínez', 'González', 'MXB0034001', '17', '4', '4', 'leonor.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124342', 'Jose Luis', 'Luna', 'Martínez', 'MXB0031411', '21', '3', '6', 'jose.lunam@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124343', 'Aurea Rosa', 'Medina', 'Lara', 'MXB0031413', '8', '3', '7', 'aurea.medina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124344', 'María Adela', 'Escobedo', 'García', 'MXB0033305', '80', '1', '8', 'maria.escobedo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124346', 'Eric José', 'Esquivel', 'Cortés', 'MXB0031407', '76', '3', '6', 'eric.esquivel@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124348', 'Ada Luz', 'Amaya', 'Pérez', 'MXB0121501', '79', '3', '7', 'ada.amaya@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124349', 'Rocio Elizabeth', 'Rodriguez', 'Pantoja', 'MXB0031416', '76', '3', '6', 'rocio.rodriguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124350', 'Absalón', 'Álvarez', 'Escalante', 'MXB0031405', '49', '3', '5', 'absalon.alvarez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124351', 'Andres', 'Kumán', 'Dzul', 'MXB0034101', '64', '4', '8', 'andres.kuman@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124355', 'Africa', 'San Miguel', 'Alvarado', 'MXB0127414', '80', '1', '8', 'africa.sanmiguel@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124359', 'Cándido', 'Guardia', 'Chi', 'MXB0034101', '64', '4', '8', 'candido.guardia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124363', 'Rosa María', 'Casanova', 'López', 'MXB0034001', '8', '4', '7', 'rosa.casanova@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124365', 'Jessica Guadalupe', 'Ramos', 'Medina', 'MXB0033303', '6', '1', '6', 'jessica.ramos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124366', 'Adrián Baltazar', 'Muñoz', 'Zetina', 'MXB0034101', '13', '4', '8', 'adrian.munoz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124370', 'Jose  Alfredo', 'Carrillo', 'Marin', 'MXB0033304', '14', '1', '8', 'jose.carrillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124898', 'Lucy Del Carmen', 'Escamilla', 'Borges', 'MXB0031407', '8', '3', '7', 'lucy.escamilla@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124903', 'María Cristina', 'Burgos', 'Montes De Oca', 'MXB0031405', '76', '3', '6', 'cristina.burgos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32124975', 'Mayte Eugenia', 'Rodríguez', 'Pech', 'MXB0033302', '73', '1', '5', 'mayte.rodriguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32133083', 'Isabel Guadalupe', 'Rosado', 'Richard', 'MXB0033301', '76', '3', '6', 'isabel.rosado@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32133367', 'Marian', 'Alpizar', 'Rodríguez', 'MXB0031413', '76', '3', '6', 'marian.alpizar@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32133467', 'Raúl Armando', 'Osuna', 'Enríquez', 'MXB0031612', '53', '5', '6', 'raoe33@hotmail.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32136613', 'Gilda', 'Henry', 'Caretta', 'MXB0031607', '54', '5', '7', 'gilda.henry@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32136969', 'Orlando Jesús', 'Coello', 'Castañeda', 'MXB0031612', '53', '2', '6', 'orlando_coeca@hotmail.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137035', 'Lucely De Los Angeles', 'Escárcega', 'Galera', 'MXB0034001', '82', '4', '7', 'lucely.escarcega@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137036', 'José Jesús', 'Karam', 'Espósitos', 'MXB0031408', '76', '3', '6', 'jose.karam@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137037', 'Karla Leticia', 'Mézquita', 'Gamboa', 'MXB0034001', '15', '4', '8', 'karla.mezquita@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137040', 'Sofía Constanza', 'Fregoso', 'Lomas', 'MXB0031415', '76', '3', '6', 'sofia.fregoso@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137041', 'Judith Margarete', 'Towle', 'Wachenheim', 'MXB0033301', '40', '3', '5', 'judith.towle@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137185', 'Elena', 'Palomeque', 'Martínez', 'MXB0031407', '12', '3', '8', 'elena.palomeque@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32137726', 'Clara Angélica', 'Góngora', 'Bates', 'MXB0031414', '8', '3', '7', 'angelica.gongora@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32140720', 'Jaime Ermilo', 'Olivera', 'Novelo', 'MXB0034407', '38', '3', '5', 'jaime.olivera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142235', 'Carlos Daniel', 'García', 'López', 'MXB0031609', '3', '5', '6', 'carlos.garcia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142628', 'María José', 'Bolio', 'Romero', 'MXB0034604', '58', '1', '6', 'maria.bolio@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142632', 'Narciso Antonio', 'Acuña', 'González', 'MXB0034401', '86', '3', '2', 'narciso.acuna@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142634', 'Ileana Patricia', 'López', 'Albor', 'MXB0031407', '76', '3', '6', 'ileana.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142649', 'Aida Rosa', 'Muñoz', 'Bello', 'MXB0031606', '23', '5', '5', 'aida.munoz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142651', 'José Manuel', 'Echeverría', 'Y Eguiluz', 'MXB0031411', '49', '3', '5', 'jose.echeverria@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142652', 'Eduardo', 'Castro', 'Avila', 'MXB0033305', '18', '1', '6', 'eduardo.castro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142653', 'Ana Beatriz', 'González', 'Encalada', 'MXB0031603', '8', '5', '7', 'ana.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142658', 'Hansel Francisco', 'Ortiz', 'Heredia', 'MXB0031407', '49', '3', '5', 'hansel.ortiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142661', 'Jorge', 'Rivera', 'Rovelo', 'MXB0031410', '30', '3', '5', 'jorge.rivera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142667', 'María Alicia', 'Castro', 'Landeros', 'MXB0031407', '49', '3', '5', 'maria.castro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142851', 'Karla Yamile', 'Falcón', 'Rivera', 'MXB0033302', '55', '1', '6', 'karla.falcon@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142871', 'Trinidad Rebeca', 'Hernández', 'Cortés', 'MXB0034601', '81', '1', '7', 'rebeca.hernandez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142874', 'Yara Lizette', 'Torres', 'Jiménez', 'MXB0033303', '33', '1', '5', 'yara.torres@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142875', 'Arumi', 'Tuyub', 'España', 'MXB0034407', '20', '3', '5', 'arumi.tuyub@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142985', 'Francisco  Manuel', 'Kú', 'Carrillo', 'MXB0121519', '29', '3', '5', 'francisco.ku@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32142999', 'Guadalupe Nahiely', 'Ayala', 'Parra', 'MXB0031411', '8', '3', '8', 'guadalupe.ayala@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143258', 'Freddy Juventino', 'Valle', 'Moo', 'MXB0033304', '85', '1', '7', 'freddy.valle@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143261', 'Moctezuma', 'Peraza', 'Chuc', 'MXB0033304', '85', '1', '7', 'moctezuma.peraza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143366', 'Martha Georgina Del Socorro', 'Ventura', 'Sabido', 'MXB0034001', '6', '4', '6', 'martha.ventura@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143434', 'Regina', 'Garza', 'Roche', 'MXB0127414', '45', '1', '4', 'regina.garza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143435', 'Rubén', 'Dominguez', 'Maldonado', 'MXB0031410', '76', '3', '5', 'ruben.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143828', 'Georgina Maribel', 'Ojeda', 'Viana', 'MXB0034602', '22', '1', '6', 'maribel.ojeda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32143970', 'Alfredo José', 'Solís', 'Castilla', 'MXB0031612', '53', '5', '6', 'alfredo.solis@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144069', 'Maythe', 'Fraire', 'Torres', 'MXB0123203', '80', '4', '8', 'maythe.fraire@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144113', 'Gladys Ruby', 'Díaz', 'Negrón', 'MXB0031415', '76', '3', '6', 'gladys.diaz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144114', 'José Luis', 'Escalante', 'Macías Valadez', 'MXB0031410', '30', '3', '5', 'jose.escalante@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144190', 'Juan Gualberto', 'Puc', 'Martin', 'MXB0033302', '8', '1', '6', 'juan.puc@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144380', 'Eric Simón', 'Murillo', 'Rodríguez', 'MXB0031411', '76', '3', '6', 'eric.murillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144462', 'Mariela Trinidad', 'Lara', 'Martínez', 'MXB0031411', '84', '3', '7', 'mariela.lara@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144488', 'Mario Ernesto', 'Gamboa', 'Mendez', 'MXB0121519', '29', '3', '6', 'mario.gamboa@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144526', 'Mercedes Del Pilar', 'Piña', 'Quijano', 'MXB0031411', '5', '3', '6', 'mercedes.pina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144555', 'Alfonso', 'Villarreal', 'Vidal', 'MXB0121528', '27', '3', '5', 'alfonso.villarreal@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32144995', 'Sally Yolanda', 'Avilez', 'Briceño', 'MXB0034602', '22', '1', '6', 'sally.avilez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145155', 'Alexis Mauricio', 'Palacios', 'Ruíz', 'MXB0031410', '76', '3', '5', 'alexis.palacios@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145420', 'Adalberto Antonio', 'Martinez', 'Castillo', 'MXB0031411', '76', '3', '6', 'adalberto.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145456', 'Anevi', 'Aranda', 'Morales', 'MXB0034001', '82', '4', '7', 'anevi.aranda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145534', 'Andrés Gaspar', 'Quintal', 'Castillo', 'MXB0031612', '53', '5', '6', 'ossensei@yahoo.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145538', 'María De La Asunción Cecilia', 'Espinosa', 'Garza', 'MXB0033301', '76', '3', '6', 'maria.espinosag@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32145548', 'Mayte José', 'González', 'Madariaga', 'MXB0034001', '8', '4', '7', 'mayte.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146467', 'Olga Paulina', 'Pinzón', 'Balam', 'MXB0034604', '58', '1', '6', 'olga.pinzon@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146480', 'Edsi', 'Gomez', 'Perez', 'MXB0031413', '76', '3', '6', 'edsi.gomez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146510', 'Gerardo Manuel', 'Alonzo', 'Medina', 'MXB0031410', '76', '3', '5', 'gerardo.alonzo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146544', 'María Cristina', 'Osorio', 'Vázquez', 'MXB0031407', '76', '3', '6', 'maria.osoriov@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146674', 'Eduardo Alberto', 'Ramos', 'Arevalo', 'MXB0034901', '10', '3', '8', 'eduardo.ramos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32146961', 'Tatiana Macarena', 'Castillo', 'Salazar', 'MXB0034606', '6', '1', '6', 'tatiana.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147070', 'Beatriz Gabriela', 'Flores', 'Bargas', 'MXB0031403', '80', '3', '8', 'beatriz.flores@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147524', 'Ricardo', 'Ávila', 'Medina', 'MXB0121501', '8', '3', '7', 'ricardo.avila@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147525', 'Carlos Andrés', 'Wabi', 'Peniche', 'MXB0031410', '30', '3', '5', 'carlos.wabi@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147527', 'Cinddy Noemí', 'Reyes', 'Mézquita', 'MXB0034404', '8', '3', '7', 'cinddy.reyes@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147649', 'María Guadalupe', 'Sánchez', 'Trujillo', 'MXB0031405', '76', '3', '6', 'maria.sanchezt@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147655', 'Jesús Arturo', 'Gutiérrez', 'Barrera', 'MXB0031416', '76', '3', '6', 'jesus.gutierrez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147656', 'Diana Patricia', 'Luna', 'Mccarthy', 'MXB0034403', '26', '3', '5', 'diana.luna@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32147708', 'María Anunciata', 'López', 'Vales', 'MXB0034301', '43', '1', '4', 'anunciata.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148067', 'Lili Marlene', 'Estrada', 'Avilés', 'MXB0031411', '30', '3', '5', 'lili.estrada@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148074', 'Dora Elia', 'Martínez', 'Faz', 'MXB0034001', '69', '4', '6', 'dora.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148210', 'Maribel Concepción', 'Castro', 'Flota', 'MXB0034001', '9', '4', '7', 'maribel.castro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148278', 'Armando José', 'González', 'Solís', 'MXB0031414', '76', '3', '6', 'armando.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148332', 'Ana Rosa', 'Puerto', 'Ávila', 'MXB0127414', '80', '1', '8', 'ana.puerto@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148606', 'Diana Carolina', 'Espinosa', 'Pérez', 'MXB0034604', '58', '1', '7', 'diana.espinosa@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148648', 'Dafne', 'Domínguez', 'Nolasco', 'MXB0123203', '6', '4', '6', 'dafne.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148701', 'Jaime Antonio', 'Zaldívar', 'Rae', 'MXB0034401', '25', '3', '5', 'jaime.zaldivar@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148709', 'Ana Lucía', 'Aysa', 'Rodríguez', 'MXB0034608', '41', '1', '6', 'ana.aysa@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148862', 'Miriam Adriana', 'Sanchez', 'Gomez', 'MXB0034001', '57', '4', '6', 'miriam.sanchez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148863', 'Ligia Natalia', 'Gonzalez', 'Gutierrez', 'MXB0031407', '76', '3', '6', 'ligia.gonzalez2@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148865', 'Antonio', 'Rodriguez', 'Alcala', 'MXB0031415', '76', '3', '6', 'antonio.rodriguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148868', 'Claudia Lorena', 'Castillo', 'Espronceda', 'MXB0034001', '6', '4', '6', 'claudia.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148924', 'Fernando', 'Hernandez', 'Tello', 'MXB0031407', '76', '3', '6', 'fernando.hernandez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32148925', 'Raul Jose', 'Espejo', 'Sauri', 'MXB0034301', '4', '1', '6', 'raul.espejo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149072', 'Gilberto Ramon', 'Estrella', 'Suaste', 'MXB0034101', '13', '4', '8', 'gilberto.estrella@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149174', 'Russel Miguel', 'Sanchez', 'Pool', 'MXB0033304', '14', '1', '8', 'russel.sanchez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149175', 'Rosana Patricia', 'Navarro', 'Chim', 'MXB0031411', '84', '3', '7', 'rosana.navarro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149211', 'José Antonio', 'Silveira', 'Bolio', 'MXB0031407', '48', '3', '3', 'jose.silveira@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149218', 'Viridiana', 'Casas', null, 'MXB0033301', '76', '3', '6', 'viridiana.casas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149265', 'Jose Ramiro', 'Ortiz', 'Mier Y Teran', 'MXB0034001', '82', '4', '7', 'ramiro.ortiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149269', 'Alberto Rene', 'Bolio', 'Vales', 'MXB0121519', '76', '3', '6', 'alberto.bolio@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149485', 'Catalina', 'Palomo', 'Gasca', 'MXB0034407', '24', '3', '5', 'catalina.palomo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149706', 'Eduardo', 'Espinosa', 'Y Macin', 'MXB0031411', '30', '3', '5', 'eduardo.espinosa@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149819', 'Melina Leticia', 'Lopez', 'Acosta', 'MXB0034001', '9', '4', '7', 'melina.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149869', 'Javier', 'Ortiz', 'Sauri', 'MXB0031414', '76', '3', '6', 'javier.ortiz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149870', 'Maria Gabriela', 'Pérez', 'Bernal', 'MXB0031415', '76', '3', '6', 'gabriela.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149910', 'Leydi Diana', 'Lopez', 'Moreno', 'MXB0031407', '79', '3', '7', 'leydi.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149970', 'Leopoldo Manuel', 'Castillo', 'Magaña', 'MXB0031416', '76', '3', '6', 'leopoldo.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149973', 'Gary Rusell', 'Murillo', 'Esquivel', 'MXB0033304', '70', '1', '5', 'gary.murillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149975', 'Luis Alonso', 'Vazquez', 'Cruz', 'MXB0031411', '84', '3', '7', 'luis.vazquez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32149977', 'Juliana Margarita', 'Caceres', 'Medina', 'MXB0121527', '27', '3', '6', 'juliana.caceres@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32150470', 'Linabel', 'Novelo', 'Alcocer', 'MXB0034510', '6', '5', '6', 'linabel.novelo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32150583', 'Francisco Javier', 'Rodriguez', 'Martin', 'MXB0031404', '76', '3', '6', 'javier.rodriguezm@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32150757', 'Maricarmen De Atocha', 'Parra', 'Burgos', 'MXB0031410', '80', '3', '8', 'maricarmen.parra@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32150966', 'Ileana Trinidad', 'Varguez', 'Perez', 'MXB0034001', '9', '4', '7', 'ileana.varguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151164', 'Luisa Maria', 'Payeras', 'Sanchez', 'MXB0034301', '4', '1', '5', 'luisa.payeras@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151397', 'Marcelo', 'Canché', 'Can', 'MXB0034101', '64', '4', '8', 'marcelo.canche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151435', 'Daniel Alberto', 'Pérez', 'Domínguez', 'MXB0031414', '76', '3', '6', 'daniel.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151436', 'Roberto Enrique', 'Reyes', 'Castillo', 'MXB0031411', '84', '3', '7', 'roberto.reyes@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151505', 'David', 'Medina', 'Sabido', 'MXB0031413', '21', '3', '6', 'david.medina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151595', 'María Jesús', 'Tuyub', 'Dzul', 'MXB0034001', '9', '4', '7', 'maria.tuyub@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151597', 'José Manuel', 'Campo', 'Marrufo', 'MXB0034407', '14', '3', '8', 'jose.campo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151598', 'Wilberth Bibiano', 'Sulú', 'Balam', 'MXB0034101', '64', '4', '8', 'wilberth.sulu@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151600', 'Beatriz Alejandra', 'Castillo', 'López', 'MXB0034407', '5', '3', '6', 'beatriz.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151603', 'Maricela', 'Marqueda', 'Alcocer', 'MXB0034301', '65', '1', '5', 'maricela.marqueda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151614', 'José Daniel', 'Peraza', 'Zermeño', 'MXB0034407', '14', '3', '8', 'daniel.peraza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151615', 'Angélica Patricia', 'Argaez', 'Morales', 'MXB0031414', '84', '3', '7', 'angelica.argaez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151737', 'Lucía Del Corazón De María', 'Fernández', 'Bandini', 'MXB0031411', '76', '3', '6', 'bandini.lucia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151835', 'Diana Celina', 'Morcillo', 'Bolio', 'MXB0031411', '8', '3', '8', 'diana.morcillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32151854', 'Sofía', 'Chávez', 'Jacquez', 'MXB0034604', '58', '1', '7', 'sofia.chavez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152130', 'Natalia Paulina', 'Lizama', 'Dorantes', 'MXB0031612', '53', '5', '6', 'natalia.lizama@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152177', 'Nidelvia Yolanda', 'Reyes', 'Avila', 'MXB0031411', '84', '3', '7', 'nidelvia.reyes@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152181', 'María Guadalupe', 'Montalvo', 'López', 'MXB0031604', '8', '5', '7', 'maria.montalvol@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152377', 'Jorge Eduardo', 'Santos', 'Villafaña', 'MXB0031607', '6', '5', '6', 'jorge.santos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152425', 'Orlando Humberto', 'López', 'Osorio', 'MXB0031407', '12', '3', '8', 'orlando.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152430', 'Fernando', 'Cadena', 'Mejía', 'MXB0031411', '76', '3', '6', 'fernando.cadena@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152527', 'Porfirio Rodolfo', 'Díaz', 'Negrón', 'MXB0031404', '12', '3', '8', 'porfirio.diaz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152638', 'Helly Maricela', 'Burgos', 'Estrella', 'MXB0121508', '27', '3', '5', 'helly.burgos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152691', 'Eli Vianey', 'López', 'Ortega', 'MXB0031407', '76', '3', '6', 'eli.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32152778', 'Mariela Concepción', 'Argüelles', 'Guerrero', 'MXB0034001', '11', '4', '7', 'mariela.arguelles@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153244', 'Bruno Abraham', 'López', 'Berumen', 'MXB0031404', '76', '3', '6', 'bruno.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153290', 'Edesio Martin', 'Rodríguez', 'Herrera', 'MXB0031612', '53', '5', '6', 'edesio1972@hotmail.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153319', 'Tobías Manuel', 'Blas', 'Zapata', 'MXB0034604', '58', '1', '7', 'tobias.blas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153323', 'Erick José', 'Poot', 'Ortega', 'MXB0034101', '13', '4', '8', 'erick.poot@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153337', 'Felipe', 'García', 'González', 'MXB0033304', '85', '1', '7', 'felipe.garcia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153437', 'Florisela Marlene', 'Castillo', 'Quijano', 'MXB0034001', '15', '4', '8', 'florisela.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153479', 'Ana Paulina', 'González', 'Anaya', 'MXB0034301', '4', '1', '5', 'paulina.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153663', 'José Fernando', 'Pineda', 'Fuentes', 'MXB0033304', '14', '1', '8', 'jose.pineda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153664', 'Abel', 'Conde', 'Burgos', 'MXB0033305', '8', '1', '7', 'abel.conde@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153815', 'Delfina María', 'Guedimín', 'Bojórquez', 'MXB0127414', '6', '1', '6', 'delfina.guedimin@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153840', 'Niurka', 'Trujillo', 'Paredes', 'MXB0031411', '76', '3', '6', 'niurka.trujillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153844', 'Arturo Alfonso', 'Terrazas', 'Brandt', 'MXB0034601', '16', '1', '8', 'arturo.terrazas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153871', 'Elizabeth Del Carmen', 'Pérez', 'Aguilar', 'MXB0034301', '80', '1', '8', 'elizabeth.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153874', 'Ernesto', 'Saldaña', 'Aportela', 'MXB0031605', '36', '5', '6', 'ernesto.saldana@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153970', 'Orfi Guadalupe', 'Aguayo', 'Rosado', 'MXB0034602', '62', '1', '7', 'orfi.aguayo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32153980', 'María Magdalena', 'Uicab', 'Che', 'MXB0031415', '8', '3', '7', 'maria.uicab@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154094', 'Elizabeth', 'Urias', 'Ibarra', 'MXB0034604', '8', '1', '7', 'elizabeth.urias@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154101', 'Greta Nikolai', 'Molina', 'Gutiérrez', 'MXB0031408', '76', '3', '6', 'greta.molina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154166', 'Vanessa Guadalupe', 'Martínez', 'Chan', 'MXB0031403', '8', '3', '7', 'vanessa.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154228', 'Jorge Hiram', 'Perez', 'Gomez', 'MXB0034901', '10', '3', '8', 'jorge.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154232', 'Isabel', 'Lizarraga', 'Castro', 'MXB0033302', '8', '1', '6', 'isabel.lizarraga@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154240', 'María Gabriela', 'Martín', 'Peón', 'MXB0034401', '6', '3', '6', 'gabriela.martin@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154314', 'Yazmín Orquidia', 'Sabido', 'Perera', 'MXB0031410', '84', '3', '7', 'yazmin.sabido@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154463', 'Sergio Gabriel', 'Tut', 'Aké', 'MXB0034101', '13', '4', '8', 'sergio.tut@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154516', 'Manuel Alberto', 'Navarro', 'Tec', 'MXB0034101', '64', '4', '8', 'manuel.navarro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154574', 'Rafael', 'Lima', 'Chim', 'MXB0034101', '64', '4', '8', 'rafael.lima@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154582', 'Monica Georgina', 'León', 'Gil', 'MXB0034407', '5', '3', '6', 'monica.leon@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154629', 'Rolando Gonzalo', 'Peniche', 'Marcin', 'MXB0031414', '49', '3', '5', 'rolando.peniche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154649', 'Wilian Ulises', 'Romero', 'Euan', 'MXB0034101', '13', '4', '8', 'wiliam.romero@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154651', 'Georgina', 'Nieves', 'Metri', 'MXB0034602', '8', '1', '7', 'georgina.nieves@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154693', 'Darling Del Carmen', 'Castillo', 'Cruz', 'MXB0031413', '12', '3', '8', 'darling.castillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154936', 'Luis David', 'Us', 'Vázquez', 'MXB0033304', '14', '1', '8', 'luis.us@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32154937', 'José Roberto', 'Medina', 'Rodriguez', 'MXB0034606', '78', '1', '7', 'jose.medina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155174', 'Efraín Alberto', 'Cervantes', 'Cámara', 'MXB0031612', '53', '5', '6', 'efrain.cervantes.camara@gmail.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155229', 'Lourdes Jhoana', 'Solis', 'Navarrete', 'MXB0034001', '75', '4', '8', 'lourdes.solis@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155231', 'Geovanny Rafael', 'Giorgana', 'Macedo', 'MXB0031410', '76', '3', '5', 'geovanny.giorgana@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155512', 'María Alejandrina', 'Acevedo', 'Vales', 'MXB0034604', '58', '1', '6', 'alejandrina.acevedo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155690', 'Aida Dayanara', 'Tamayo', 'Escalante', 'MXB0121501', '32', '3', '5', 'aida.tamayo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155724', 'Laura Elena', 'Ortega', 'Rosado', 'MXB0121501', '32', '3', '5', 'laura.ortega@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32155726', 'Alejandrina', 'Mejia', 'Ricalde', 'MXB0034001', '68', '4', '6', 'alejandrina.mejia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32156835', 'Yermak Alexandro', 'Duarte', 'Rosado', 'MXB0031404', '49', '3', '5', 'yermak.duarte@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157008', 'Asuncion Del Rosario', 'Dominguez', 'Ayora', 'MXB0031411', '8', '3', '8', 'asuncion.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157009', 'Fernando', 'Rodriguez', 'Vargas', 'MXB0031408', '76', '3', '6', 'fernando.rodriguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157048', 'Ana Meybel', 'Copland', 'Amaya', 'MXB0031407', '76', '3', '6', 'ana.copland@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157288', 'Andrés Iván', 'Oliva', 'Avilés', 'MXB0031410', '76', '3', '5', 'andres.oliva@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157290', 'Jorge Carlos', 'Medina', 'Palma', 'MXB0031416', '76', '3', '6', 'jorge.medina@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157393', 'Leonardo Daniel', 'Yerbes', 'Contreras', 'MXB0031404', '84', '3', '7', 'leonardo.yerbes@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157400', 'Ana Rosa', 'Interian', 'Chuc', 'MXB0034001', '75', '4', '8', 'ana.interian@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157402', 'Ximena', 'Ampudia', 'López Cortijo', 'MXB0034301', '56', '1', '6', 'ximena.ampudia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157411', 'Laura Rosenda', 'Hernandez', 'Moreno', 'MXB0121506', '8', '3', '7', 'laura.hernandez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157412', 'Erika Maria', 'Escalante', 'Ayuso', 'MXB0034407', '8', '3', '7', 'erika.escalante@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157498', 'Alejandro Esteban', 'Fitzmaurice', 'Cahluni', 'MXB0031403', '76', '3', '6', 'alejandro.fitzmaurice@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157535', 'Jorge Ernesto', 'Peniche', 'Rosales', 'MXB0034407', '61', '3', '7', 'jorge.peniche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157581', 'Nancy Marlene', 'Quijano', 'Sosa', 'MXB0034604', '6', '1', '6', 'nancy.quijano@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157582', 'Fabiola', 'Echazarreta', 'Montero', 'MXB0034001', '82', '4', '7', 'fabiola.echazarreta@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157584', 'Maria Rosa', 'Pineda', 'Manzanilla', 'MXB0031606', '8', '5', '7', 'maria.pineda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157585', 'Jossue Alejandro', 'Couoh', 'Guerra', 'MXB0034101', '13', '4', '8', 'josue.couoh@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157586', 'Maria Simoneta', 'Lara', 'Lizarraga', 'MXB0033302', '8', '1', '7', 'maria.lara@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157587', 'Ana Margarita', 'Lavalle', 'Alonso', 'MXB0034301', '8', '1', '7', 'ana.lavalle@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157650', 'Gonzalo Manuel', 'Torres', 'Montalvo', 'MXB0031410', '76', '3', '5', 'gonzalo.torres@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157686', 'Flor Marina', 'Miranda', 'Rosado', 'MXB0034602', '8', '1', '7', 'flor.miranda@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157697', 'Andres Alberto', 'Alpuche', 'Diaz', 'MXB0034101', '13', '4', '8', 'andres.alpuche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157789', 'Luis Alberto', 'González', 'Uruñuela', 'MXB0034101', '13', '4', '8', 'luis.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32157836', 'Nelly Genoveva', 'Garcia', 'Blackaller', 'MXB0031411', '76', '3', '6', 'nelly.garcia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159413', 'David Rene', 'Argüelles', 'Barrancos', 'MXB0034901', '10', '3', '8', 'david.arguelles@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159427', 'Jorge Oswaldo', 'Gómez', 'Ortiz', 'MXB0031407', '76', '3', '6', 'jorge.gomezo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159479', 'Yazmin Antonia', 'Zapata', 'Díaz', 'MXB0034403', '8', '3', '7', 'yazmin.zapata@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159481', 'Maria Irene', 'Valencia', 'Cervera', 'MXB0034608', '8', '1', '7', 'maria.cervera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159619', 'Oscar Melesio', 'Moreno', 'Castillo', 'MXB0034606', '8', '1', '7', 'oscar.moreno@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159728', 'Luis Miguel', 'Romero', 'Euan', 'MXB0034101', '13', '4', '8', 'luis.romero@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159730', 'Rafael Alfonso', 'Dominguez', 'Cervera', 'MXB0121519', '29', '3', '6', 'rafael.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159732', 'Mariana Berenice', 'González', 'Leija', 'MXB0034407', '5', '3', '6', 'mariana.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159785', 'Hilda Ivonne', 'Carrera', 'Pérez', 'MXB0034301', '4', '1', '6', 'hilda.carrera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159786', 'Joaquina Leonor', 'Dominguez', 'Maldonado', 'MXB0034603', '8', '1', '7', 'joaquina.dominguez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159882', 'Ramón', 'Bejarano', 'Carrasco', 'MXB0034601', '6', '1', '6', 'ramon.bejarano@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159883', 'Tania', 'López', 'Ramos', 'MXB0034404', '8', '3', '7', 'tania.lopezr@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32159906', 'Reyna Guadalupe', 'Martinez', 'Valdez', 'MXB0034602', '80', '1', '8', 'reyna.martinez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160002', 'Pamela Elizabeth', 'Cantón', 'Gamboa', 'MXB0034602', '8', '1', '7', 'pamela.canton@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160003', 'Sara Nathali', 'Rafful', 'Soberanis', 'MXB0033302', '8', '1', '7', 'sara.rafful@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160092', 'Luis Alberto', 'González', 'Cincúnegui', 'MXB0033304', '37', '1', '4', 'luis.gonzalezc@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160093', 'Alexandra', 'Pieck', 'Puerto', 'MXB0034608', '8', '1', '7', 'alexandra.pieck@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160205', 'Maricarmen', 'Sabido', 'Basteris', 'MXB0031405', '76', '3', '6', 'maricarmen.sabido@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160207', 'Virginia Meribeth', 'Oropeza', 'Gorocica', 'MXB0031404', '76', '3', '6', 'virginia.oropeza@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160208', 'Jary Davis', 'Couoh', 'Castañeda', 'MXB0031411', '5', '3', '6', 'jary.couoh@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160218', 'Miguel Ángel', 'Rocha', 'Sánchez', 'MXB0031404', '12', '3', '8', 'miguel.rocha@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160223', 'Yerani', 'Recillas', 'Ilizaliturri', 'MXB0034604', '8', '1', '7', 'yerani.recillas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160333', 'Maria Eugenia', 'Farias', 'Fueyo', 'MXB0034301', '4', '1', '6', 'maria.farias@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160334', 'Roberto Antonio', 'Ortega', 'Rios Covian', 'MXB0034602', '52', '1', '7', 'roberto.ortega@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160335', 'Luis Andres', 'Novelo', 'Castro', 'MXB0121548', '29', '3', '5', 'luis.novelo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160340', 'Almendra Ascencion', 'Mena', 'Aranda', 'MXB0034602', '62', '1', '7', 'almendra.mena@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160391', 'Jessica Selene', 'Bleis', 'Yam', 'MXB0034301', '19', '1', '6', 'jessica.bleis@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160394', 'Jesús Alberto', 'Vázquez', 'Navarrete', 'MXB0033304', '85', '1', '7', 'jesus.vazquez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160407', 'María De Guadalupe', 'Nabté', 'Escamilla', 'MXB0031408', '84', '3', '7', 'maria.nabte@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160437', 'Manuel', 'Olea', 'Martínez', 'MXB0031403', '84', '3', '7', 'manuel.olea@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160469', 'Mariel', 'Góngora', 'González', 'MXB0034901', '10', '3', '8', 'mariel.gongora@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160511', 'Brenda', 'Andrade', 'Nuñez', 'MXB0031404', '76', '3', '6', 'brenda.andrade@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160580', 'Ileana Isabel', 'González', 'Angulo', 'MXB0121501', '32', '3', '5', 'ileana.gonzalez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160581', 'Miguel Francisco', 'Pech', 'Argüelles', 'MXB0033304', '14', '1', '8', 'miguel.pech@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160582', 'Adriana Raquel', 'Puc', 'Rodríguez', 'MXB0031606', '8', '5', '7', 'adriana.puc@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160583', 'Stacy', 'Lara', 'Mena', 'MXB0034604', '8', '1', '7', 'stacy.lara@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160755', 'Gloria', 'Peniche', 'Gómez', 'MXB0121501', '5', '3', '6', 'gloria.peniche@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160756', 'María Antonieta', 'Pacheco', 'Pantoja', 'MXB0031407', '76', '3', '6', 'maria.pacheco@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160764', 'Juan Andrés', 'Palomo', null, 'MXB0034606', '78', '1', '7', 'juan.palomo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160812', 'Ileana Cristina', 'Escalante', 'Alpuche', 'MXB0031607', '54', '5', '7', 'ileana.escalante@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160871', 'Elsa Beatriz', 'Jiménez', 'Urcelay', 'MXB0031407', '76', '3', '6', 'elsa.jimenez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160873', 'Karla Yaneth', 'Bravo', 'Vargas', 'MXB0034601', '81', '1', '7', 'karla.bravo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160877', 'Enrique', 'Poot', 'Palma', 'MXB0033304', '14', '1', '8', 'enrique.poot@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160908', 'Daniel Alejandro', 'Xix', 'Tzakum', 'MXB0034001', '16', '4', '8', 'daniel.xix@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160909', 'Mariana', 'Romero', 'García', 'MXB0034602', '52', '1', '7', 'mariana.romero@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32160969', 'Alicia Reneé', 'Carrasco', 'Azcuaga', 'MXB0034602', '8', '1', '7', 'alicia.carrasco@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161036', 'Grecia Estefanía', 'Berber', 'Selem', 'MXB0031413', '12', '3', '8', 'grecia.berber@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161038', 'Gonzalo Enrique', 'Esquivel', 'Martínez', 'MXB0031411', '12', '3', '8', 'gonzalo.esquivel@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161042', 'Erika Astrid', 'Gutiérrez', 'Ramírez', 'MXB0031411', '12', '3', '8', 'erika.gutierrez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161044', 'Yohanna', 'Alfaro', 'Herrera', 'MXB0031414', '12', '3', '8', 'yohanna.alfaro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161047', 'Ileana Guadalupe', 'Ortega', 'González', 'MXB0121506', '28', '3', '5', 'ileana.ortega@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161048', 'Fernando Humberto', 'Aguilar', 'Torres', 'MXB0031411', '12', '3', '8', 'fernando.aguilar@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161083', 'Eduardo José', 'Abreu', 'Pérez', 'MXB0121519', '76', '3', '6', 'eduardo.abreu@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161099', 'Naomy Del Pilar', 'Bastarrachea', 'May', 'MXB0121519', '76', '3', '6', 'naomy.bastarrachea@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161233', 'Lucia Jaqueline', 'Ramos', 'Gómez', 'MXB0121519', '76', '3', '6', 'lucia.ramos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161243', 'Mildred Beatriz', 'Salas', 'Ley', 'MXB0121519', '76', '3', '6', 'mildred.salas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161296', 'Edwin Manuel', 'Rosas', 'Caballero', 'MXB0031410', '84', '3', '7', 'edwin.rosas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161372', 'Manuel Hernán', 'Hoyos', 'Pinzón', 'MXB0031414', '76', '3', '6', 'manuel.hoyos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161402', 'Rubi Del Socorro', 'Moguel', 'Ojeda', 'MXB0121519', '76', '3', '6', 'rubi.moguel@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161632', 'Pedro Antonio', 'Mendoza', 'Aguilar', 'MXB0031612', '53', '5', '6', 'pamakeb@hotmail.com', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161633', 'Yuselmy Fabiola', 'López', 'Nah', 'MXB0034001', '9', '4', '7', 'yuselmy.lopez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161636', 'Yussiff Emmanuel', 'Pérez', 'Méndez', 'MXB0034101', '8', '4', '7', 'yussiff.perez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161674', 'Kevin Alberto', 'Cruz', 'Ricalde', 'MXB0034301', '4', '1', '6', 'kevin.cruz@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161675', 'Nury Fernanda', 'Evia', 'Ceballos', 'MXB0031602', '31', '5', '5', 'nury.evia@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161770', 'Rodrigo', 'González', 'Somonte', 'MXB0031403', '84', '3', '7', 'rodrigo.gonzalez2@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161773', 'Mónica', 'Sierra', 'González', 'MXB0034301', '56', '1', '6', 'monica.sierra@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161867', 'Farrah Silvana', 'Ferro', 'Muñoz', 'MXB0121501', '5', '3', '6', 'farrah.ferro@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161868', 'María Lucía', 'Bolio', 'Martínez', 'MXB0031605', '8', '5', '7', 'lucia.bolio@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32161974', 'Angélica', 'Brizuela', 'Gabriel', 'MXB0031605', '8', '5', '7', 'angelica.brizuela@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162014', 'Gerardo Iván', 'Salgado', 'Ríos', 'MXB0034603', '39', '1', '5', 'gerardo.salgado@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162062', 'Ayerím Del Rosario', 'Vallejo', 'Álvarez', 'MXB0031604', '31', '5', '5', 'ayerim.vallejo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162093', 'Erika Del Socorro', 'Enríquez', 'Vázquez', 'MXB0034407', '38', '3', '5', 'erika.enriquezv@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162270', 'Johann Erasto', 'Jimenez', 'Bautista', 'MXB0034602', '62', '1', '7', 'johann.jimenez@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162275', 'Noé De Jesús', 'Tec', 'Cetina', 'MXB0121519', '76', '3', '6', 'noe.tec@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162282', 'Roberto Iván', 'Puc', 'Pool', 'MXB0121519', '76', '3', '6', 'roberto.puc@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162285', 'Adriana Gabriela', 'Carrillo', 'Peraza', 'MXB0121519', '76', '3', '6', 'adriana.carrillo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162288', 'Minerva Stephani', 'Vargas', 'Chávez', 'MXB0121519', '76', '3', '6', 'minerva.vargas@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162289', 'Eduardo José', 'Gutierrez', 'Peniche', 'MXB0121519', '76', '3', '6', 'eduardo.gutierrezp@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162403', 'Andrea', 'Gómez', 'Domenzáin', 'MXB0031604', '8', '5', '7', 'andrea.gomezd@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162406', 'Marcos Daniel', 'Lugo', 'Ancona', 'MXB0121519', '76', '3', '6', 'marcos.lugo@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162408', 'Patricia Isabel', 'González', 'Calcáneo', 'MXB0031414', '12', '3', '8', 'patricia.gonzalezg@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162409', 'Pamela', 'Kemp', 'Medina', 'MXB0034510', '8', '5', '7', 'pamela.kemp@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162414', 'Marcelo Ulises', 'Quijano', 'Ricalde', 'MXB0034001', '82', '4', '7', 'marcelo.quijano@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162491', 'Gicel', 'Córdoba', 'Pech', 'MXB0033304', '85', '1', '7', 'gicel.cordoba@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162547', 'Carola Hortensia', 'Rivera de Vargas', null, 'MXB0127414', '6', '1', '6', 'carola.rivera@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162548', 'Carlos Alberto', 'Palma', 'Castillo', 'MXB0033302', '8', '1', '7', 'carlos.palma@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162549', 'Marvin', 'Arcos', 'Solis', 'MXB0034606', '78', '1', '7', 'marvin.arcos@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162550', 'Cristina Gisela', 'Canto', 'Herrera', 'MXB0127414', '5', '1', '6', 'cristina.canto@anahuac.mx', '2016-05-30 19:02:43', '0');
+INSERT INTO `empleados` VALUES ('32162559', 'David', 'Mir', 'Gil', 'MXB0031415', '76', '3', '6', 'david.mir@anahuac.mx', '2016-05-30 19:02:43', '0');
 
 -- ----------------------------
 -- Table structure for empleados_source
@@ -2086,7 +2088,7 @@ INSERT INTO `empleados_source` VALUES ('32123705', 'Allen', 'Novelo', 'Nina Rosa
 INSERT INTO `empleados_source` VALUES ('32124170', 'Flores', 'May', 'Gaspar', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'gaspar.flores@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124172', 'Vegue', 'Corbacho', 'David', '10000222', 'Vicerrectoría Académica', 'MXB0031416 - Coordinación de humanidades', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124183', 'Otero Rejón Francisco Javier', 'david.vegue@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124174', 'López', 'Rodriguez', 'Paula Patricia', '10000213', 'Vicerrectoría Académica', 'MXB0031405 - Derecho', 'Secretario(a) de departamento           ', 'Operativos 2', '32124350', 'Álvarez Escalante Absalón', 'patricia.lopez@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124176', 'Chi', 'Canul', 'Martha Angelica', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Secretaria de depto.', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2', '32124289', 'Echazarreta Montero Jhoanna', 'martha.chi@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124176', 'Chi', 'Canul', 'Martha Angelica', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Secretaria de depto.', 'Operativos 2', '32124289', 'Echazarreta Montero Jhoanna', 'martha.chi@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124178', 'Rejón', 'Martínez', 'Lidia Maricruz', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Operativos 1', '32124975', 'Rodriguez Pech Mayte Eugenia', 'maricruz.rejon@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124181', 'Mendoza', 'Villalobos', 'Alejandra', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Director de programas de posgrado y exte', 'Direcciones 2', '32142632', 'Acuña González Narciso Antonio', 'alejandra.mendoza@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124183', 'Otero', 'Rejón', 'Francisco Javier', '10000222', 'Vicerrectoría Académica', 'MXB0031416 - Coordinación de humanidades', 'Coordinador general de humanidades      ', 'Direcciones 2', '32142632', 'Acuña González Narciso Antonio', 'francisco.otero@anahuac.mx');
@@ -2100,18 +2102,18 @@ INSERT INTO `empleados_source` VALUES ('32124190', 'Hernández', 'Loeza', 'Marí
 INSERT INTO `empleados_source` VALUES ('32124192', 'Negroe', 'Monforte', 'Benjamín Ramón', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - Economía y Negocios', 'Director de programa académico          ', 'Mandos medios y profesorado 1 ', '32149211', 'Silveira Bolio José Antonio', 'benjamin.negroe@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124193', 'Cirerol', 'León', 'Annette Dinorah', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Auxiliar administrativo                 ', 'Operativos 1', '32142667', 'Castro Landeros María Alicia', 'annete.cirerol@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124194', 'Cervera', null, 'María Guadalupe Del Carmen', '10004057', 'Vicerrectoría de Formación Integral', 'MXB0031607 - Vicerrectoría de Formación Integral', 'Auxiliar administrativo                 ', 'Operativos 1', '32124321', 'Franco Calvillo José Rodrigo ', 'guadalupe.cervera@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124195', 'Tello', 'Rodriguez', 'Martha María', '10000221', 'Vicerrectoría Académica', 'MXB0031415 - Arquitectura', 'Director de programa académico          ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 ', '32142632', 'Acuña González Narciso Antonio', 'martha.tello@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124195', 'Tello', 'Rodriguez', 'Martha María', '10000221', 'Vicerrectoría Académica', 'MXB0031415 - Arquitectura', 'Director de programa académico          ', 'Mandos medios y profesorado 1', '32142632', 'Acuña González Narciso Antonio', 'martha.tello@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124196', 'Zárate', 'Medina', 'Mercedes', '10000268', 'Vicerrectoría Académica', 'MXB0034403 - Operación Académica', 'Auxiliar administrativo                 ', 'Operativos 1', '32147656', 'Luna McCarthy Diana Patricia', 'mercedes.zarate@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124197', 'Cel', 'Briceño', 'Eduardo Fernando', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Jardinero                               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'eduardo.cel@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124198', 'Ayala', 'Fernández', 'Debora', '10004061', 'Vicerrectoría Académica', 'MXB0033301 - Centro de Lenguas', 'Auxiliar administrativo                 ', 'Operativos 1', '32137041', 'Towle Wachenheim Judith Margarete', 'debora.ayala@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124199', 'Cachón', 'Medrano', 'Enrique De Jesus', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Chofer mensajero                        ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'enrique.cachon@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124202', 'Zaldivar', 'Álvarez', 'Antonio', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Jefe de servicios generales             ', 'Mandos medios y profesorado 2', '2', 'Peñúñuri Munguía P. Ulises', 'antonio.zaldivar@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124206', 'Dominguez', 'Cherit', 'Luciano Diab', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142661', 'Rivera Rovelo Jorge', 'luciano.dominguez@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124209', 'Tello', 'Rodriguez', 'Marisol', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Director de programa académico          ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 ', '32142632', 'Acuña González Narciso Antonio', 'marisol.tello@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124206', 'Dominguez', 'Cherit', 'Luciano Diab', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'luciano.dominguez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124209', 'Tello', 'Rodriguez', 'Marisol', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Director de programa académico          ', 'Mandos medios y profesorado 1', '32142632', 'Acuña González Narciso Antonio', 'marisol.tello@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124210', 'Barroso', 'Tanoira', 'Francisco Gerardo', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124192', 'Negroe Monforte Benjamín Ramón', 'francisco.barroso@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124213', 'Chin', 'Pool', 'Zolly Herlinda', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32142651', 'Echeverría y Eguiluz José Manuel', 'zolly.chin@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124214', 'Aquino', 'Hernández', 'Pedro Ricardo', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32142651', 'Echeverría y Eguiluz José Manuel', 'pedro.aquino@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124215', 'Ibañez', 'Gómez', 'Katinka Elizabeth', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Coordinador de campos clínicos          ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32142651', 'Echeverría y Eguiluz José Manuel', 'katinka.ibanez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124215', 'Ibañez', 'Gómez', 'Katinka Elizabeth', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Coordinador de campos clínicos          ', 'Mandos medios y profesorado 2', '32142651', 'Echeverría y Eguiluz José Manuel', 'katinka.ibanez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124216', 'Pedro', 'Fernández', 'Karim Fernando', '10000279', 'Rectoría', 'MXB0034601 - Rectoría UA Mayab', 'Asistente ejecutivo de rectoría         ', 'Mandos medios y profesorado 1 ', '1', 'Pardo Hervás P.Rafael', 'karim.pedro@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124218', 'Carrillo', 'Hernández', 'Jorge Abraham', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'jorge.carrillo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124222', 'Vera', 'Cardeña', 'Marisol Guadalupe', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Operativos 1', '32124975', 'Rodriguez Pech Mayte Eugenia', 'marisol.vera@anahuac.mx');
@@ -2124,9 +2126,9 @@ INSERT INTO `empleados_source` VALUES ('32124229', 'Achach', 'Solís', 'Marisol'
 INSERT INTO `empleados_source` VALUES ('32124233', 'Cohuo', 'Chin', 'Inocencio', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Jardinero                               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'inocencio.cohuo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124234', 'Peraza', 'Rosas', 'María Jazmine Del Carmen', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Jefe de servicios computacionales       ', 'Mandos medios y profesorado 1 ', '32160092', 'González Cincúnegui Luis Alberto', 'jazmine.peraza@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124235', 'Barrera', 'Martínez', 'Antonio', '10000279', 'Rectoría', 'MXB0034601 - Rectoría UA Mayab', 'Asistente ejecutivo de rectoría         ', 'Mandos medios y profesorado 1 ', '1', 'Pardo Hervás P.Rafael', 'antonio.barrera@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124236', 'Cruz', 'López', 'Anna Karina', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Especialista en Desarrollo de Medios    ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32124245', 'Guzmán Silva Susana', 'anna.cruz@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124236', 'Cruz', 'López', 'Anna Karina', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Especialista en Desarrollo de Medios    ', 'Mandos medios y profesorado 2', '32124245', 'Guzmán Silva Susana', 'anna.cruz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124238', 'Torreblanca', 'Rios', 'Fernando Antonio', '10000287', 'Vicerrectoría Académica', 'MXB0034901 - Biblioteca', 'Jefe de biblioteca                      ', 'Mandos medios y profesorado 1 ', '32147656', 'Acuña González Narciso Antonio', 'fernando.torreblanca@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124243', 'Euan', 'Calderón', 'Eugenia Beatriz', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Jefe de Contabilidad                    ', 'Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profeso', '32124341', 'Martínez González Leonor Beatriz', 'eugenia.euan@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124243', 'Euan', 'Calderón', 'Eugenia Beatriz', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Jefe de Contabilidad                    ', 'Mandos medios y profesorado 2', '32124341', 'Martínez González Leonor Beatriz', 'eugenia.euan@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124245', 'Guzmán', 'Silva', 'Susana Enriqueta', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico e Investigación', 'Director de desarrollo académico        ', 'Direcciones 2', '32142632', 'Acuña González Narciso Antonio', 'susana.guzman@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124248', 'Peniche', 'Rivero', 'Yngrid', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Auxiliar administrativo                 ', 'Operativos 1', '32124186', 'Narváez Galaz Lia Regina', 'yngrid.peniche@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124249', 'Pérez', 'Varguez', 'Carlos Gaspar', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124209', 'Tello Rodriguez Marisol', 'carlos.perez@anahuac.mx');
@@ -2137,8 +2139,8 @@ INSERT INTO `empleados_source` VALUES ('32124255', 'Escalante', 'Góngora', 'Gre
 INSERT INTO `empleados_source` VALUES ('32124256', 'Estrada', 'Medina', 'Rubí Margarita', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Secretario (a) de la Dirección          ', 'Operativos 1', '2', 'Peñúñuri Munguía P. Ulises', 'rubi.estrada@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124257', 'Barrera', 'Bustillos', 'Martha Eugenia', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Director de programa académico          ', 'Mandos medios y profesorado 1 ', '32142632', 'Acuña González Narciso Antonio', 'martha.barrera@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124263', 'Durán', 'Yabur', 'Margarita Concepción', '10000212', 'Vicerrectoría Académica', 'MXB0031404 - Diseño', 'Secretario(a) de departamento           ', 'Operativos 2', '32156835', 'Duarte Rosado Yermak Alexandro', 'margarita.duran@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124267', 'Cardós', 'Santoyo', 'Fermín Orlando', '10004063', 'Rectoría', 'MXB0033303 - Dirección Servicios Institucionales y Pl', 'Director de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirec', 'Direcciones 1', '1', 'Pardo Hervás P.Rafael', 'fermin.cardos@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124269', 'Farjat', 'Aguilar', 'Argel Antonio', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Especialista en Desarrollo de Medios    ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32124245', 'Guzmán Silva Susana', 'argel.farjat@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124267', 'Cardós', 'Santoyo', 'Fermín Orlando', '10004063', 'Rectoría', 'MXB0033303 - Dirección Servicios Institucionales y Pl', 'Director de Servicios Institucionales y Planeación', 'Direcciones 1', '1', 'Pardo Hervás P.Rafael', 'fermin.cardos@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124269', 'Farjat', 'Aguilar', 'Argel Antonio', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Especialista en Desarrollo de Medios    ', 'Mandos medios y profesorado 2', '32124245', 'Guzmán Silva Susana', 'argel.farjat@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124272', 'Ortiz', 'Suárez', 'Alicia Del Carmen', '10000215', 'Vicerrectoría Académica', 'MXB0031408 - Psicología', 'Auxiliar administrativo                 ', 'Operativos 1', '32124225', 'González Novelo José Alejandro', 'alicia.ortiz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124274', 'García', 'Hinojosa', 'Julián', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'julian.garcia@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124275', 'Díaz', 'Aguilar', 'Julia Amanda', '10003298', 'Vicerrectoría Académica', 'MXB0121504 - Mtria. Admon. Publica (mid)', 'Coordinador de posgrados                ', 'Mandos medios y profesorado 1 ', '32124350', 'Álvarez Escalante Absalón', 'julia.diaz@anahuac.mx');
@@ -2150,7 +2152,7 @@ INSERT INTO `empleados_source` VALUES ('32124282', 'Sansores', 'Ruz', 'Andrea Jo
 INSERT INTO `empleados_source` VALUES ('32124284', 'Castillo', 'Pompeyo', 'Carlos Alberto', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124257', 'Barrera Bustillo Martha Eugenia', 'carlos.castillo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124289', 'Echazarreta', 'Montero', 'Jhoanna', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Jefe de compras                         ', 'Mandos medios y profesorado 2', '2', 'Peñúñuri Munguía P. Ulises', 'jhoanna.echazarreta@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124291', 'Herrera', 'Cámara', 'Gabriela Del Socorro', '10000267', 'Vicerrectoría Académica', 'MXB0034401 - Vicerrectoría Académica', 'Secretario (a) de la Dirección          ', 'Operativos 1', '32142632', 'Acuña González Narciso Antonio', 'gabriela.herrera@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124292', 'Urzaiz', 'Lares', 'Jose Gabriel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 ', '32142661', 'Rivera Rovelo Jorge', 'gabriel.urzaiz@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124292', 'Urzaiz', 'Lares', 'Jose Gabriel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'gabriel.urzaiz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124302', 'Ruiz', 'Medina', 'Francisco Santiago', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'francisco.ruiz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124303', 'Urzúa', 'Navarrete', 'Andrea Susana', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32142658', 'Ortiz Heredia Hansel Francisco', 'andrea.urzua@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124304', 'Mendoza', 'Noh', 'Beatriz Anilú', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Especialista de soporte a sistemas      ', 'Mandos medios y profesorado 2', '32160092', 'González Cincúnegui Luis Alberto', 'anilu.mendoza@anahuac.mx');
@@ -2165,7 +2167,7 @@ INSERT INTO `empleados_source` VALUES ('32124329', 'Crespo', 'Canté', 'Gener Ri
 INSERT INTO `empleados_source` VALUES ('32124330', 'Padrón', 'Chim', 'Consepción', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Jardinero                               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'consepcion.padron@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124331', 'Mijangos', 'Naal', 'Rosa Eugenia', '10000287', 'Vicerrectoría Académica', 'MXB0034901 - Biblioteca', 'Supervisor de servicios al público      ', 'Mandos medios y profesorado 2', '32124238', 'Torreblanca Rios Fernando Antonio', 'rosa.mijangos@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124333', 'Centeno', 'Sarabia', 'Elsy Noemi', '10000222', 'Vicerrectoría Académica', 'MXB0031416 - Coordinación de humanidades', 'Auxiliar administrativo                 ', 'Operativos 1', '32124183', 'Otero Rejón Francisco Javier', 'elsy.centeno@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32124335', 'Fournier', 'Montiel', 'José Guillermo', '10000212', 'Vicerrectoría Académica', 'MXB0031404 - Diseño', 'Profesor universitario                  ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32156835', 'Duarte Rosado Yermak Alexandro', 'guillermo.fournier@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32124335', 'Fournier', 'Montiel', 'José Guillermo', '10000212', 'Vicerrectoría Académica', 'MXB0031404 - Diseño', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32156835', 'Duarte Rosado Yermak Alexandro', 'guillermo.fournier@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124336', 'Dzib', 'Chan', 'Martha Patricia', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Mandos medios y profesorado 2', '32124975', 'Rodriguez Pech Mayte Eugenia', 'patricia.dzib@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124341', 'Martínez', 'González', 'Leonor Beatriz Del Socorro', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Contralor                               ', 'Direcciones 2', '2', 'Peñúñuri Munguía P. Ulises', 'leonor.martinez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32124342', 'Luna', 'Martínez', 'Jose Luis', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Coordinador de campos clínicos          ', 'Mandos medios y profesorado 2', '32142651', 'Echeverría y Eguiluz José Manuel', 'jose.lunam@anahuac.mx');
@@ -2194,7 +2196,7 @@ INSERT INTO `empleados_source` VALUES ('32137035', 'Escárcega', 'Galera', 'Luce
 INSERT INTO `empleados_source` VALUES ('32137036', 'Karam', 'Espósitos', 'José Jesús', '10000215', 'Vicerrectoría Académica', 'MXB0031408 - Psicología', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124225', 'González Novelo José Alejandro', 'jose.karam@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32137037', 'Mézquita', 'Gamboa', 'Karla Leticia', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Cajero                                  ', 'Operativos 2', '32124341', 'Martínez González Leonor Beatriz', 'karla.mezquita@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32137040', 'Fregoso', 'Lomas', 'Sofía Constanza', '10000221', 'Vicerrectoría Académica', 'MXB0031415 - Arquitectura', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124195', 'Tello Rodriguez Martha María', 'sofia.fregoso@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32137041', 'Towle', 'Wachenheim', 'Judith Margarete', '10004061', 'Vicerrectoría Académica', 'MXB0033301 - Centro de Lenguas', 'Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas       ', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'judith.towle@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32137041', 'Towle', 'Wachenheim', 'Judith Margarete', '10004061', 'Vicerrectoría Académica', 'MXB0033301 - Centro de Lenguas', 'Coordinador del Centro de Lenguas', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'judith.towle@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32137185', 'Palomeque', 'Martínez', 'Elena', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32142667', 'Castro Landeros María Alicia', 'elena.palomeque@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32137726', 'Góngora', 'Bates', 'Clara Angélica', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Auxiliar administrativo                 ', 'Operativos 1', '32154629', 'Peniche Marcín Rolando Gonzalo', 'angelica.gongora@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32140720', 'Olivera', 'Novelo', 'Jaime Ermilo', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de tutorías y apoyo académic', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'jaime.olivera@anahuac.mx');
@@ -2212,14 +2214,14 @@ INSERT INTO `empleados_source` VALUES ('32142667', 'Castro', 'Landeros', 'María
 INSERT INTO `empleados_source` VALUES ('32142851', 'Falcón', 'Rivera', 'Karla Yamile', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Especialista de certificación y titulaci', 'Mandos medios y profesorado 2', '32124188', 'Chávez Reyes María Del Rocío', 'karla.falcon@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32142871', 'Hernández', 'Cortés', 'Trinidad Rebeca', '10000279', 'Rectoría', 'MXB0034601 - Rectoría UA Mayab', 'Secretario(a) de rectoría               ', 'Operativos 1', '1', 'Pardo Hervás P.Rafael', 'rebeca.hernandez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32142874', 'Torres', 'Jiménez', 'Yara Lizette', '10004063', 'Rectoría', 'MXB0033303 - Dirección Servicios Institucionales y Pl', 'Coordinador de proyectos                ', 'Mandos medios y profesorado 1 ', '32124267', 'Cardós Santoyo Fermín', 'yara.torres@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32142875', 'Tuyub', 'España', 'Arumi', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de Calidad Académica        ', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'arumi.tuyub@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32142985', 'Kú', 'Carrillo', 'Francisco  Manuel', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               ', 'Mandos medios y profesorado 1 ', '32154629', 'Peniche Marcín Rolando Gonzalo', 'francisco.ku@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32142999', 'Ayala', 'Parra', 'Guadalupe Nahiely', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar administrativo                 ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Ope', '32142651', 'Echeverría y Eguiluz José Manuel', 'guadalupe.ayala@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32142875', 'Tuyub', 'España', 'Arumi', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de Calidad Académica', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'arumi.tuyub@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32142985', 'Kú', 'Carrillo', 'Francisco  Manuel', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión', 'Mandos medios y profesorado 1 ', '32154629', 'Peniche Marcín Rolando Gonzalo', 'francisco.ku@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32142999', 'Ayala', 'Parra', 'Guadalupe Nahiely', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar administrativo                 ', 'Operativos 2', '32142651', 'Echeverría y Eguiluz José Manuel', 'guadalupe.ayala@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143258', 'Valle', 'Moo', 'Freddy Juventino', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Técnico de soporte                      ', 'Operativos 1', '32124304', 'Mendoza Noh Beatriz Anilú', 'freddy.valle@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143261', 'Peraza', 'Chuc', 'Moctezuma', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Técnico de soporte                      ', 'Operativos 1', '32149973', 'Murillo Esquivel Gary', 'moctezuma.peraza@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143366', 'Ventura', 'Sabido', 'Martha Georgina Del Socorro', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Asistente de dirección                  ', 'Mandos medios y profesorado 2', '32124289', 'Echazarreta Montero Jhoanna', 'martha.ventura@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143434', 'Garza', 'Roche', 'Regina', '10004090', 'Rectoría', 'MXB0127414 - Oficina de Transferencia', 'Director de centro de investigación     ', 'Direcciones 2', '1', 'Pardo Hervás P.Rafael', 'regina.garza@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32143435', 'Dominguez', 'Maldonado', 'Rubén', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32144114', 'Escalante Macías Valadez José Luis', 'ruben.dominguez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32143435', 'Dominguez', 'Maldonado', 'Rubén', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32144114', 'Escalante Macías Valadez José Luis', 'ruben.dominguez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143828', 'Ojeda', 'Viana', 'Georgina Maribel', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Coordinador de comunicación             ', 'Mandos medios y profesorado 2', '32124224', 'Herrera Baas Florángely', 'maribel.ojeda@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32143970', 'Solís', 'Castilla', 'Alfredo José', '10004203', 'Vicerrectoría de Formación Integral', 'MXB0031612 - Coordinación de Selecciones y Ac. Deport', 'Entrenador de Selecciones               ', 'Mandos medios y profesorado 2', '32124321', 'Franco Calvillo José Rodrigo ', 'alfredo.solis@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144069', 'Fraire', 'Torres', 'Maythe', '10002656', 'Vicerrectoría de Administración y Finanzas', 'MXB0123203 - Clínica Universitaria', 'Secretario(a) de departamento           ', 'Operativos 2', '32148648', 'Domínguez Nolasco Dafne', 'maythe.fraire@anahuac.mx');
@@ -2228,11 +2230,11 @@ INSERT INTO `empleados_source` VALUES ('32144114', 'Escalante', 'Macías Valadez
 INSERT INTO `empleados_source` VALUES ('32144190', 'Puc', 'Martin', 'Juan Gualberto', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Mandos medios y profesorado 2', '32124975', 'Rodriguez Pech Mayte Eugenia', 'juan.puc@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144380', 'Murillo', 'Rodríguez', 'Eric Simón', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32149706', 'Espinosa Y Macin Eduardo', 'eric.murillo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144462', 'Lara', 'Martínez', 'Mariela Trinidad', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32142651', 'Echeverría y Eguiluz José Manuel', 'mariela.lara@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32144488', 'Gamboa', 'Mendez', 'Mario Ernesto', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32154629', 'Peniche Marcín Rolando Gonzalo', 'mario.gamboa@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32144488', 'Gamboa', 'Mendez', 'Mario Ernesto', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'mario.gamboa@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144526', 'Piña', 'Quijano', 'Mercedes Del Pilar', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Asistente académico                     ', 'Mandos medios y profesorado 2', '32142651', 'Echeverría y Eguiluz José Manuel', 'mercedes.pina@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144555', 'Villarreal', 'Vidal', 'Alfonso', '10002653', 'Vicerrectoría Académica', 'MXB0121528 - Mtria. Terapia Familiar (mid)', 'Coordinador de posgrados                ', 'Mandos medios y profesorado 1 ', '32124225', 'González Novelo José Alejandro', 'alfonso.villarreal@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32144995', 'Avilez', 'Briceño', 'Sally Yolanda', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Coordinador de comunicación             ', 'Mandos medios y profesorado 2', '32124224', 'Herrera Baas Florángely', 'sally.avilez@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32145155', 'Palacios', 'Ruíz', 'Alexis Mauricio', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142661', 'Rivera Rovelo Jorge', 'alexis.palacios@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32145155', 'Palacios', 'Ruíz', 'Alexis Mauricio', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'alexis.palacios@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32145420', 'Martinez', 'Castillo', 'Adalberto Antonio', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32148067', 'Estrada Avilés Lili Marlene', 'adalberto.martinez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32145456', 'Aranda', 'Morales', 'Anevi', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Supervisor Administrativo               ', 'Operativos 1 ', '32148074', 'Martínez Faz Dora Elia', 'anevi.aranda@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32145534', 'Quintal', 'Castillo', 'Andrés Gaspar', '10004203', 'Vicerrectoría de Formación Integral', 'MXB0031612 - Coordinación de Selecciones y Ac. Deport', 'Entrenador de Selecciones               ', 'Mandos medios y profesorado 2', '32124321', 'Franco Calvillo José Rodrigo ', 'ossensei@yahoo.com');
@@ -2240,11 +2242,11 @@ INSERT INTO `empleados_source` VALUES ('32145538', 'Espinosa', 'Garza', 'María 
 INSERT INTO `empleados_source` VALUES ('32145548', 'González', 'Madariaga', 'Mayte José', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Auxiliar administrativo                 ', 'Operativos 1', '32124341', 'Martínez González Leonor Beatriz', 'mayte.gonzalez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32146467', 'Pinzón', 'Balam', 'Olga Paulina', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Especialista de recursos humanos        ', 'Mandos medios y profesorado 2', '32124186', 'Narváez Galaz Lia Regina', 'olga.pinzon@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32146480', 'Gomez', 'Perez', 'Edsi', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124257', 'Barrera Bustillo Martha Eugenia', 'edsi.gomez@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32146510', 'Alonzo', 'Medina', 'Gerardo Manuel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142661', 'Rivera Rovelo Jorge', 'gerardo.alonzo@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32146510', 'Alonzo', 'Medina', 'Gerardo Manuel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'gerardo.alonzo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32146544', 'Osorio', 'Vázquez', 'María Cristina', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32142658', 'Ortiz Heredia Hansel Francisco', 'maria.osoriov@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32146674', 'Ramos', 'Arevalo', 'Eduardo Alberto', '10000287', 'Vicerrectoría Académica', 'MXB0034901 - Biblioteca', 'Auxiliar de Biblioteca                  ', 'Operativos 2', '32124238', 'Torreblanca Rios Fernando Antonio', 'eduardo.ramos@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32146961', 'Castillo', 'Salazar', 'Tatiana Macarena', '10000284', 'Rectoría', 'MXB0034606 - Dirección de Desarrollo Institucional', 'Asistente de dirección                  ', 'Mandos medios y profesorado 2', '32123111', 'Gutiérrez Martínez Luis Ernesto', 'tatiana.castillo@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32147070', 'Flores', 'Bargas', 'Beatriz Gabriela', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Secretario(a) de departamento           ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2', '32124209', 'Tello Rodriguez Marisol', 'beatriz.flores@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32147070', 'Flores', 'Bargas', 'Beatriz Gabriela', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Secretario(a) de departamento           ', 'Operativos 2', '32124209', 'Tello Rodriguez Marisol', 'beatriz.flores@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32147524', 'Ávila', 'Medina', 'Ricardo', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Auxiliar administrativo                 ', 'Operativos 1', '32124278', 'Acevedo Marentes Fernando Enrique', 'ricardo.avila@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32147525', 'Wabi', 'Peniche', 'Carlos Andrés', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de IngenieríaMXB0031410 - División de Ingeniería', 'Coordinador de programa académico       ', 'Mandos medios y profesorado 1 ', '32124226', 'Anaya Sandoval Juan Antonio', 'carlos.wabi@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32147527', 'Reyes', 'Mézquita', 'Cinddy Noemí', '10000269', 'Vicerrectoría Académica', 'MXB0034404 - Relaciones Académicas', 'Auxiliar administrativo                 ', 'Operativos 1', '32124229', 'Achach Solís Marisol', 'cinddy.reyes@anahuac.mx');
@@ -2258,7 +2260,7 @@ INSERT INTO `empleados_source` VALUES ('32148210', 'Castro', 'Flota', 'Maribel C
 INSERT INTO `empleados_source` VALUES ('32148278', 'González', 'Solís', 'Armando José', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'armando.gonzalez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32148332', 'Puerto', 'Ávila', 'Ana Rosa', '10004090', 'Rectoría', 'MXB0127414 - Oficina de Transferencia', 'Secretario(a) de departamento           ', 'Operativos 2', '32143434', 'Garza Roche Regina', 'ana.puerto@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32148606', 'Espinosa', 'Pérez', 'Diana Carolina', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Especialista de recursos humanos        ', 'Operativos 1', '32146467', 'Pinzón Balam Olga Paulina', 'diana.espinosa@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32148648', 'Domínguez', 'Nolasco', 'Dafne', '10002656', 'Vicerrectoría de Administración y Finanzas', 'MXB0123203 - Clínica Universitaria', 'Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de di', 'Mandos medios y profesorado 2', '2', 'Peñúñuri Munguía P. Ulises', 'dafne.dominguez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32148648', 'Domínguez', 'Nolasco', 'Dafne', '10002656', 'Vicerrectoría de Administración y Finanzas', 'MXB0123203 - Clínica Universitaria', 'Asistente de dirección', 'Mandos medios y profesorado 2', '2', 'Peñúñuri Munguía P. Ulises', 'dafne.dominguez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32148701', 'Zaldívar', 'Rae', 'Jaime Antonio', '10000271', 'Vicerrectoría Académica', 'MXB0034401 - Vicerrectoría Académica', 'Coordinador de investigación            ', 'Mandos medios y profesorado 1 ', '32142632', 'Acuña González Narciso Antonio', 'jaime.zaldivar@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32148709', 'Aysa', 'Rodríguez', 'Ana Lucía', '10000286', 'Rectoría', 'MXB0034608 - Programa de Egresados', 'Coordinador del programa                ', 'Mandos medios y profesorado 2', '32123111', 'Gutiérrez Martínez Luis Ernesto', 'ana.aysa@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32148862', 'Sanchez', 'Gomez', 'Miriam Adriana', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Especialista de presupuestos            ', 'Mandos medios y profesorado 2', '32124341', 'Martínez González Leonor Beatriz', 'miriam.sanchez@anahuac.mx');
@@ -2274,7 +2276,7 @@ INSERT INTO `empleados_source` VALUES ('32149211', 'Silveira', 'Bolio', 'José A
 INSERT INTO `empleados_source` VALUES ('32149218', 'Casas', null, 'Viridiana', '10004061', 'Vicerrectoría Académica', 'MXB0033301 - Centro de Lenguas', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32137041', 'Towle Wachenheim Judith Margarete', 'viridiana.casas@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32149265', 'Ortiz', 'Mier Y Teran', 'Jose Ramiro', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Supervisor Administrativo               ', 'Operativos 1', '2', 'Peñúñuri Munguía P. Ulises', 'ramiro.ortiz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32149269', 'Bolio', 'Vales', 'Alberto Rene', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'alberto.bolio@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32149485', 'Palomo', 'Gasca', 'Catalina', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educat', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'catalina.palomo@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32149485', 'Palomo', 'Gasca', 'Catalina', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de Formación Educativa y Apoyo Académico', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'catalina.palomo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32149706', 'Espinosa', 'Y Macin', 'Eduardo', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Coordinador de programa académico       ', 'Mandos medios y profesorado 1 ', '32142651', 'Echeverría y Eguiluz José Manuel', 'eduardo.espinosa@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32149819', 'Lopez', 'Acosta', 'Melina Leticia', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Auxiliar Contable                       ', 'Operativos 1', '32124243', 'Euan Calderón Eugenia Beatriz', 'melina.lopez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32149869', 'Ortiz', 'Sauri', 'Javier', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'javier.ortiz@anahuac.mx');
@@ -2327,11 +2329,11 @@ INSERT INTO `empleados_source` VALUES ('32153840', 'Trujillo', 'Paredes', 'Niurk
 INSERT INTO `empleados_source` VALUES ('32153844', 'Terrazas', 'Brandt', 'Arturo Alfonso', '10000279', 'Rectoría', 'MXB0034601 - Rectoría UA Mayab', 'Chofer mensajero                        ', 'Operativos 2', '1', 'Pardo Hervás P.Rafael', 'arturo.terrazas@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32153871', 'Pérez', 'Aguilar', 'Elizabeth Del Carmen', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Secretario(a) de departamento           ', 'Operativos 2', '32147708', 'López Vales María Anunciata', 'elizabeth.perez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32153874', 'Saldaña', 'Aportela', 'Ernesto', '10004056', 'Vicerrectoría de Formación Integral', 'MXB0031605 - Servicio y Acción Social', 'Coordinador de Servicio y Acción Social   ', 'Mandos medios y profesorado 2', '32124321', 'Franco Calvillo José Rodrigo ', 'ernesto.saldana@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32153970', 'Aguayo', 'Rosado', 'Orfi Guadalupe', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'orfi.aguayo@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32153970', 'Aguayo', 'Rosado', 'Orfi Guadalupe', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Especialista en página WEB', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'orfi.aguayo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32153980', 'Uicab', 'Che', 'María Magdalena', '10000221', 'Vicerrectoría Académica', 'MXB0031415 - Arquitectura', 'Auxiliar administrativo                 ', 'Operativos 1', '32124195', 'Tello Rodriguez Martha María', 'maria.uicab@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154094', 'Urias', 'Ibarra', 'Elizabeth', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Auxiliar administrativo                 ', 'Operativos 1', '32124186', 'Narváez Galaz Lia Regina', 'elizabeth.urias@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154101', 'Molina', 'Gutiérrez', 'Greta Nikolai', '10000215', 'Vicerrectoría Académica', 'MXB0031408 - Psicología', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124225', 'González Novelo José Alejandro', 'greta.molina@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32154166', 'Martínez', 'Chan', 'Vanessa Guadalupe', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Auxiliar administrativo                 ', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'vanessa.martinez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32154166', 'Martínez', 'Chan', 'Vanessa Guadalupe', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Auxiliar administrativo                 ', 'Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'vanessa.martinez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154228', 'Perez', 'Gomez', 'Jorge Hiram', '10000287', 'Vicerrectoría Académica', 'MXB0034901 - Biblioteca', 'Auxiliar de Biblioteca                  ', 'Operativos 2', '32124238', 'Torreblanca Rios Fernando Antonio', 'jorge.perez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154232', 'Lizarraga', 'Castro', 'Isabel', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Mandos medios y profesorado 2', '32124315', 'Peniche Sanguino Astrid Marvin', 'isabel.lizarraga@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154240', 'Martín', 'Peón', 'María Gabriela', '10000267', 'Vicerrectoría Académica', 'MXB0034401 - Vicerrectoría Académica', 'Asistente de dirección                  ', 'Mandos medios y profesorado 2', '32142632', 'Acuña González Narciso Antonio', 'gabriela.martin@anahuac.mx');
@@ -2340,7 +2342,7 @@ INSERT INTO `empleados_source` VALUES ('32154463', 'Tut', 'Aké', 'Sergio Gabrie
 INSERT INTO `empleados_source` VALUES ('32154516', 'Navarro', 'Tec', 'Manuel Alberto', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Jardinero                               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'manuel.navarro@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154574', 'Lima', 'Chim', 'Rafael', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Jardinero                               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'rafael.lima@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154582', 'León', 'Gil', 'Monica Georgina', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Asistente académico                     ', 'Mandos medios y profesorado 2', '32162093', 'Enríquez Vázquez Ericka Del Socorro', 'monica.leon@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32154629', 'Peniche', 'Marcin', 'Rolando Gonzalo', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Director de programa académico          ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142632', 'Acuña González Narciso Antonio', 'rolando.peniche@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32154629', 'Peniche', 'Marcin', 'Rolando Gonzalo', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Director de programa académico          ', 'Mandos medios y profesorado 1', '32142632', 'Acuña González Narciso Antonio', 'rolando.peniche@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154649', 'Romero', 'Euan', 'Wilian Ulises', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'wiliam.romero@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154651', 'Nieves', 'Metri', 'Georgina', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Auxiliar administrativo                 ', 'Operativos 1', '32143828', 'Ojeda Viana Georgina Maribel', 'georgina.nieves@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32154693', 'Castillo', 'Cruz', 'Darling Del Carmen', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32124257', 'Barrera Bustillo Martha Eugenia', 'darling.castillo@anahuac.mx');
@@ -2348,7 +2350,7 @@ INSERT INTO `empleados_source` VALUES ('32154936', 'Us', 'Vázquez', 'Luis David
 INSERT INTO `empleados_source` VALUES ('32154937', 'Medina', 'Rodriguez', 'José Roberto', '10000284', 'Rectoría', 'MXB0034606 - Dirección de Desarrollo Institucional', 'Secretario  de depto.', 'Operativos 1', '32146961', 'Castillo Salazar Tatiana Macarena', 'jose.medina@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32155174', 'Cervantes', 'Cámara', 'Efraín Alberto', '10004203', 'Vicerrectoría de Formación Integral', 'MXB0031612 - Coordinación de Selecciones y Ac. Deport', 'Entrenador de Selecciones               ', 'Mandos medios y profesorado 2', '32124321', 'Franco Calvillo José Rodrigo ', 'efrain.cervantes.camara@gmail.com');
 INSERT INTO `empleados_source` VALUES ('32155229', 'Solis', 'Navarrete', 'Lourdes Jhoana', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Operador de Conmutador                  ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'lourdes.solis@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32155231', 'Giorgana', 'Macedo', 'Geovanny Rafael', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142661', 'Rivera Rovelo Jorge', 'geovanny.giorgana@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32155231', 'Giorgana', 'Macedo', 'Geovanny Rafael', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'geovanny.giorgana@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32155512', 'Acevedo', 'Vales', 'María Alejandrina', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Especialista de recursos humanos        ', 'Mandos medios y profesorado 2', '32124186', 'Narváez Galaz Lia Regina', 'alejandrina.acevedo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32155690', 'Tamayo', 'Escalante', 'Aida Dayanara', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Coordinador de Programas Posgrado y Exte', 'Mandos medios y profesorado 1 ', '32124181', 'Mendoza Villalobos Alejandra', 'aida.tamayo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32155724', 'Ortega', 'Rosado', 'Laura Elena', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Coordinador de Programas Posgrado y Exte', 'Mandos medios y profesorado 1 ', '32124181', 'Mendoza Villalobos Alejandra', 'laura.ortega@anahuac.mx');
@@ -2357,7 +2359,7 @@ INSERT INTO `empleados_source` VALUES ('32156835', 'Duarte', 'Rosado', 'Yermak A
 INSERT INTO `empleados_source` VALUES ('32157008', 'Dominguez', 'Ayora', 'Asuncion Del Rosario', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar administrativo                 ', 'Operativos 2', '32142651', 'Echeverría y Eguiluz José Manuel', 'asuncion.dominguez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157009', 'Rodriguez', 'Vargas', 'Fernando', '10000215', 'Vicerrectoría Académica', 'MXB0031408 - Psicología', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124225', 'González Novelo José Alejandro', 'fernando.rodriguez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157048', 'Copland', 'Amaya', 'Ana Meybel', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32142658', 'Ortiz Heredia Hansel Francisco', 'ana.copland@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32157288', 'Oliva', 'Avilés', 'Andrés Iván', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32142661', 'Rivera Rovelo Jorge', 'andres.oliva@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32157288', 'Oliva', 'Avilés', 'Andrés Iván', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32142661', 'Rivera Rovelo Jorge', 'andres.oliva@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157290', 'Medina', 'Palma', 'Jorge Carlos', '10000222', 'Vicerrectoría Académica', 'MXB0031416 - Coordinación de humanidades', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32124183', 'Otero Rejón Francisco Javier', 'jorge.medina@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157393', 'Yerbes', 'Contreras', 'Leonardo Daniel', '10000212', 'Vicerrectoría Académica', 'MXB0031404 - Diseño', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32156835', 'Duarte Rosado Yermak Alexandro', 'leonardo.yerbes@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157400', 'Interian', 'Chuc', 'Ana Rosa', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Operador de Conmutador                  ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'ana.interian@anahuac.mx');
@@ -2372,7 +2374,7 @@ INSERT INTO `empleados_source` VALUES ('32157584', 'Pineda', 'Manzanilla', 'Mari
 INSERT INTO `empleados_source` VALUES ('32157585', 'Couoh', 'Guerra', 'Jossue Alejandro', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'josue.couoh@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157586', 'Lara', 'Lizarraga', 'Maria Simoneta', '10004062', 'Rectoría', 'MXB0033302 - Dirección de Administraci', 'Auxiliar administrativo                 ', 'Operativos 1', '32154232', 'Lizarraga Castro Isabel', 'maria.lara@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157587', 'Lavalle', 'Alonso', 'Ana Margarita', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Auxiliar administrativo                 ', 'Operativos 1', '32147708', 'López Vales María Anunciata', 'ana.lavalle@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32157650', 'Torres', 'Montalvo', 'Gonzalo Manuel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 ', '32147525', 'Wabi Peniche Carlos Andrés', 'gonzalo.torres@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32157650', 'Torres', 'Montalvo', 'Gonzalo Manuel', '10000216', 'Vicerrectoría Académica', 'MXB0031410 - División de Ingeniería', 'Profesor universitario                  ', 'Mandos medios y profesorado 1', '32147525', 'Wabi Peniche Carlos Andrés', 'gonzalo.torres@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157686', 'Miranda', 'Rosado', 'Flor Marina', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Auxiliar administrativo                 ', 'Operativos 1', '32144995', 'Avilez Briceño Sally Yolanda', 'flor.miranda@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157697', 'Alpuche', 'Diaz', 'Andres Alberto', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124189', 'Ontiveros Velázquez Julio Antonio', 'andres.alpuche@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32157789', 'González', 'Uruñuela', 'Luis Alberto', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'luis.gonzalez@anahuac.mx');
@@ -2383,7 +2385,7 @@ INSERT INTO `empleados_source` VALUES ('32159479', 'Zapata', 'Díaz', 'Yazmin An
 INSERT INTO `empleados_source` VALUES ('32159481', 'Valencia', 'Cervera', 'Maria Irene', '10000286', 'Rectoría', 'MXB0034608 - Programa de Egresados', 'Auxiliar administrativo                 ', 'Operativos 1', '32148709', 'Aysa Rodríguez Ana Lucía', 'maria.cervera@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32159619', 'Moreno', 'Castillo', 'Oscar Melesio', '10000284', 'Rectoría', 'MXB0034606 - Dirección de Desarrollo Institucional', 'Auxiliar administrativo                 ', 'Operativos 1', '32123111', 'Gutiérrez Martínez Luis Ernesto', 'oscar.moreno@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32159728', 'Romero', 'Euan', 'Luis Miguel', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar de mantenimiento               ', 'Operativos 2', '32124202', 'Zaldivar Álvarez Antonio', 'luis.romero@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32159730', 'Dominguez', 'Cervera', 'Rafael Alfonso', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               ', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32154629', 'Peniche Marcín Rolando Gonzalo', 'rafael.dominguez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32159730', 'Dominguez', 'Cervera', 'Rafael Alfonso', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Coordinador de posgrados y extensión', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'rafael.dominguez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32159732', 'González', 'Leija', 'Mariana Berenice', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Investigación', 'Asistente académico                     ', 'Mandos medios y profesorado 2', '32148701', 'Zaldívar Rae Jaime Antonio', 'mariana.gonzalez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32159785', 'Carrera', 'Pérez', 'Hilda Ivonne', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Asesor preuniversitario                 ', 'Mandos medios y profesorado 2', '32151164', 'Payeras Sanchez Luisa Maria', 'hilda.carrera@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32159786', 'Dominguez', 'Maldonado', 'Joaquina Leonor', '10000281', 'Rectoría', 'MXB0034603 - Coordinación de Vinculación y Recaudació', 'Auxiliar administrativo                 ', 'Operativos 1', '32123111', 'Salgado  Ríos Gerardo Iván', 'joaquina.dominguez@anahuac.mx');
@@ -2401,19 +2403,19 @@ INSERT INTO `empleados_source` VALUES ('32160218', 'Rocha', 'Sánchez', 'Miguel 
 INSERT INTO `empleados_source` VALUES ('32160223', 'Recillas', 'Ilizaliturri', 'Yerani', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Auxiliar administrativo                 ', 'Operativos 1', '32124186', 'Narváez Galaz Lia Regina', 'yerani.recillas@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160333', 'Farias', 'Fueyo', 'Maria Eugenia', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Asesor preuniversitario                 ', 'Mandos medios y profesorado 2', '32153479', 'González Anaya Ana Paulina', 'maria.farias@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160334', 'Ortega', 'Rios Covian', 'Roberto Antonio', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Diseñador                               ', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'roberto.ortega@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32160335', 'Novelo', 'Castro', 'Luis Andres', '10004628', 'Vicerrectoría Académica', 'MXB0121548 - Mtria.DirTecnEnInfyTel MID', 'Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coord', 'Mandos medios y profesorado 1 ', '32124226', 'Anaya Sandoval Juan Antonio', 'luis.novelo@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32160335', 'Novelo', 'Castro', 'Luis Andres', '10004628', 'Vicerrectoría Académica', 'MXB0121548 - Mtria.DirTecnEnInfyTel MID', 'Coordinador de posgrados y extensión', 'Mandos medios y profesorado 1 ', '32124226', 'Anaya Sandoval Juan Antonio', 'luis.novelo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160340', 'Mena', 'Aranda', 'Almendra Ascencion', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Especialista en página WEB', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'almendra.mena@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160391', 'Bleis', 'Yam', 'Jessica Selene', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Coordinador de becas a alumnos          ', 'Mandos medios y profesorado 2', '32147708', 'López Vales María Anunciata', 'jessica.bleis@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160394', 'Vázquez', 'Navarrete', 'Jesús Alberto', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Técnico de soporte                      ', 'Operativos 1', '32124304', 'Mendoza Noh Beatriz Anilú', 'jesus.vazquez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160407', 'Nabté', 'Escamilla', 'María De Guadalupe', '10000215', 'Vicerrectoría Académica', 'MXB0031408 - Psicología', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32124225', 'González Novelo José Alejandro', 'maria.nabte@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32160437', 'Olea', 'Martínez', 'Manuel', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Técnico de laboratorio y/o taller       ', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'manuel.olea@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32160437', 'Olea', 'Martínez', 'Manuel', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'manuel.olea@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160469', 'Góngora', 'González', 'Mariel', '10000287', 'Vicerrectoría Académica', 'MXB0034901 - Biblioteca', 'Auxiliar de Biblioteca                  ', 'Operativos 2', '32124238', 'Torreblanca Rios Fernando Antonio', 'mariel.gongora@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160511', 'Andrade', 'Nuñez', 'Brenda', '10000212', 'Vicerrectoría Académica', 'MXB0031404 - Diseño', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32156835', 'Duarte Rosado Yermak Alexandro', 'brenda.andrade@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160580', 'González', 'Angulo', 'Ileana Isabel', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Coordinador de Programas Posgrado y Exte', 'Mandos medios y profesorado 1 ', '32124181', 'Mendoza Villalobos Alejandra', 'ileana.gonzalez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160581', 'Pech', 'Argüelles', 'Miguel Francisco', '10004064', 'Rectoría', 'MXB0033304 - Coordinación de Servicios Tecnológicos', 'Auxiliar técnico                        ', 'Operativos 2', '32124234', 'Peraza Rosas María Jazmine del Carmen', 'miguel.pech@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160582', 'Puc', 'Rodríguez', 'Adriana Raquel', '10004202', 'Vicerrectoría de Formación Integral', 'MXB0031606 - Difusión Cultural', 'Auxiliar administrativo                 ', 'Operativos 1', '32142649', 'Muñoz Bello Aida Rosa', 'adriana.puc@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160583', 'Lara', 'Mena', 'Stacy', '10000282', 'Rectoría', 'MXB0034604 - Gerencia de Recursos humanos', 'Auxiliar administrativo                 ', 'Operativos 1', '32124186', 'Narváez Galaz Lia Regina', 'stacy.lara@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32160755', 'Peniche', 'Gómez', 'Gloria', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Acadé', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y', '32155724', 'Ortega Rosado Laura Elena', 'gloria.peniche@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32160755', 'Peniche', 'Gómez', 'Gloria', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Asistente Académico', 'Mandos medios y profesorado 2', '32155724', 'Ortega Rosado Laura Elena', 'gloria.peniche@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160756', 'Pacheco', 'Pantoja', 'María Antonieta', '10000214', 'Vicerrectoría Académica', 'MXB0031407 - División de Negocios', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32142658', 'Ortiz Heredia Hansel Francisco', 'maria.pacheco@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160764', 'Palomo', null, 'Juan Andrés', '10000284', 'Rectoría', 'MXB0034606 - Dirección de Desarrollo Institucional', 'Secretario  de depto.', 'Operativos 1', '32146961', 'Castillo Salazar Tatiana Macarena', 'juan.palomo@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160812', 'Escalante', 'Alpuche', 'Ileana Cristina', '10004054', 'Vicerrectoría de Formación Integral', 'MXB0031607 - Vicerrectoría de Formación Integral', 'Especialista de atención a foráneos     ', 'Operativos 1', '32124321', 'Franco Calvillo José Rodrigo ', 'ileana.escalante@anahuac.mx');
@@ -2423,12 +2425,12 @@ INSERT INTO `empleados_source` VALUES ('32160877', 'Poot', 'Palma', 'Enrique', '
 INSERT INTO `empleados_source` VALUES ('32160908', 'Xix', 'Tzakum', 'Daniel Alejandro', '10000264', 'Vicerrectoría de Administración y Finanzas', 'MXB0034001 - Vicerrectoría Administración y Finanzas', 'Chofer mensajero                        ', 'Operativos 2', '32124289', 'Echazarreta Montero Jhoanna', 'daniel.xix@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160909', 'Romero', 'García', 'Mariana', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Diseñador                               ', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'mariana.romero@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32160969', 'Carrasco', 'Azcuaga', 'Alicia Reneé', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Auxiliar administrativo                 ', 'Operativos 1', '32143828', 'Ojeda Viana Georgina Maribel', 'alicia.carrasco@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161036', 'Berber', 'Selem', 'Grecia Estefanía', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Ope', '32124257', 'Barrera Bustillo Martha Eugenia', 'grecia.berber@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161038', 'Esquivel', 'Martínez', 'Gonzalo Enrique', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2', '32124342', 'Luna Martínez José Luis', 'gonzalo.esquivel@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161042', 'Gutiérrez', 'Ramírez', 'Erika Astrid', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2', '32124342', 'Luna Martínez José Luis', 'erika.gutierrez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161036', 'Berber', 'Selem', 'Grecia Estefanía', '10000219', 'Vicerrectoría Académica', 'MXB0031413 - Nutrición', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32124257', 'Barrera Bustillo Martha Eugenia', 'grecia.berber@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161038', 'Esquivel', 'Martínez', 'Gonzalo Enrique', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32124342', 'Luna Martínez José Luis', 'gonzalo.esquivel@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161042', 'Gutiérrez', 'Ramírez', 'Erika Astrid', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32124342', 'Luna Martínez José Luis', 'erika.gutierrez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161044', 'Alfaro', 'Herrera', 'Yohanna', '10000220', 'Vicerrectoría Académica', 'MXB0031414 - Cirujano Dentista', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'yohanna.alfaro@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161047', 'Ortega', 'González', 'Ileana Guadalupe', '10003300', 'Vicerrectoría Académica', 'MXB0121506 - Mtria. Alta Dirección y Neg. (mid)', 'Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coord', 'Mandos medios y profesorado 1 ', '32142658', 'Ortiz Heredia Hansel Francisco', 'ileana.ortega@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161048', 'Aguilar', 'Torres', 'Fernando Humberto', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Ope', '32124342', 'Luna Martínez José Luis', 'fernando.aguilar@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161047', 'Ortega', 'González', 'Ileana Guadalupe', '10003300', 'Vicerrectoría Académica', 'MXB0121506 - Mtria. Alta Dirección y Neg. (mid)', 'Coordinador de posgrados  y extensión', 'Mandos medios y profesorado 1 ', '32142658', 'Ortiz Heredia Hansel Francisco', 'ileana.ortega@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161048', 'Aguilar', 'Torres', 'Fernando Humberto', '10000217', 'Vicerrectoría Académica', 'MXB0031411 - Médico Cirujano', 'Auxiliar de laboratorio y/o taller      ', 'Operativos 2', '32124342', 'Luna Martínez José Luis', 'fernando.aguilar@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161083', 'Abreu', 'Pérez', 'Eduardo José', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'eduardo.abreu@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161099', 'Bastarrachea', 'May', 'Naomy Del Pilar', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'naomy.bastarrachea@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161233', 'Ramos', 'Gómez', 'Lucia Jaqueline', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'lucia.ramos@anahuac.mx');
@@ -2441,15 +2443,15 @@ INSERT INTO `empleados_source` VALUES ('32161633', 'López', 'Nah', 'Yuselmy Fab
 INSERT INTO `empleados_source` VALUES ('32161636', 'Pérez', 'Méndez', 'Yussiff Emmanuel', '10000265', 'Vicerrectoría de Administración y Finanzas', 'MXB0034101 - Mantenimiento', 'Auxiliar administrativo                 ', 'Operativos 1', '32124202', 'Zaldivar Álvarez Antonio', 'yussiff.perez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161674', 'Cruz', 'Ricalde', 'Kevin Alberto', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Asesor preuniversitario                 ', 'Mandos medios y profesorado 2', '32153479', 'González Anaya Ana Paulina', 'kevin.cruz@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161675', 'Evia', 'Ceballos', 'Nury Fernanda', '10004053', 'Vicerrectoría de Formación Integral', 'MXB0031602 - Programas de liderazgo VERTICE', 'Coordinador de programas de liderazgo   ', 'Mandos medios y profesorado 1 ', '32124321', 'Franco Calvillo José Rodrigo ', 'nury.evia@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161770', 'González', 'Somonte', 'Rodrigo', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Técnico de laboratorio y/o taller       ', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'rodrigo.gonzalez2@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161770', 'González', 'Somonte', 'Rodrigo', '10000211', 'Vicerrectoría Académica', 'MXB0031403 - Ciencias de la Comunicación', 'Técnico de laboratorio y/o taller       ', 'Operativos 1', '32124209', 'Tello Rodriguez Marisol', 'rodrigo.gonzalez2@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161773', 'Sierra', 'González', 'Mónica', '10000266', 'Rectoría', 'MXB0034301 - Promoción', 'Especialista de orientación vocacional  ', 'Mandos medios y profesorado 2', '32151603', 'Marqueda Alcocer Maricela ', 'monica.sierra@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32161867', 'Ferro', 'Muñoz', 'Farrah Silvana', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Acadé', 'Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profeso', '32124181', 'Mendoza Villalobos Alejandra', 'farrah.ferro@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32161867', 'Ferro', 'Muñoz', 'Farrah Silvana', '10002630', 'Vicerrectoría Académica', 'MXB0121501 - Dirección de Posgrados y Extensión', 'Asistente Académico', 'Mandos medios y profesorado 2', '32124181', 'Mendoza Villalobos Alejandra', 'farrah.ferro@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161868', 'Bolio', 'Martínez', 'María Lucía', '10004056', 'Vicerrectoría de Formación Integral', 'MXB0031605 - Servicio y Acción Social', 'Auxiliar administrativo                 ', 'Operativos 1', '32153874', 'Saldaña Aportela Ernesto', 'lucia.bolio@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32161974', 'Brizuela', 'Gabriel', 'Angélica', '10004056', 'Vicerrectoría de Formación Integral', 'MXB0031605 - Servicio y Acción Social', 'Auxiliar administrativo                 ', 'Operativos 1', '32153874', 'Saldaña Aportela Ernesto', 'angelica.brizuela@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32162014', 'Salgado', 'Ríos', 'Gerardo Iván', '10000281', 'Rectoría', 'MXB0034603 - Coordinación de Vinculación y Recaudación', 'Coordinador de vinculación y recaud fond', 'Mandos medios y profesorado 1 ', '32123111', 'Gutiérrez Martínez Luis Ernesto', 'gerardo.salgado@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32162062', 'Vallejo', 'Álvarez', 'Ayerím Del Rosario', '10004055', 'Vicerrectoría de Formación Integral', 'MXB0031604 - Red Misión', 'Coordinador de programas de liderazgo   ', 'Mandos medios y profesorado 1 ', '32124321', 'Franco Calvillo José Rodrigo ', 'ayerim.vallejo@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32162093', 'Enríquez', 'Vázquez', 'Erika Del Socorro', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de tutorías y apoyo académic', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y', '32124245', 'Guzmán Silva Susana', 'erika.enriquezv@anahuac.mx');
-INSERT INTO `empleados_source` VALUES ('32162270', 'Jimenez', 'Bautista', 'Johann Erasto', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'johann.jimenez@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32162093', 'Enríquez', 'Vázquez', 'Erika Del Socorro', '10000271', 'Vicerrectoría Académica', 'MXB0034407 - Desarrollo Académico', 'Coordinador de tutorías y apoyo académic', 'Mandos medios y profesorado 1 ', '32124245', 'Guzmán Silva Susana', 'erika.enriquezv@anahuac.mx');
+INSERT INTO `empleados_source` VALUES ('32162270', 'Jimenez', 'Bautista', 'Johann Erasto', '10000280', 'Rectoría', 'MXB0034602 - Coordinación de Comunicación', 'Especialista en página WEB', 'Operativos 1', '32124224', 'Herrera Baas Florángely', 'johann.jimenez@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32162275', 'Tec', 'Cetina', 'Noé De Jesús', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'noe.tec@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32162282', 'Puc', 'Pool', 'Roberto Iván', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'roberto.puc@anahuac.mx');
 INSERT INTO `empleados_source` VALUES ('32162285', 'Carrillo', 'Peraza', 'Adriana Gabriela', '10002646', 'Vicerrectoría Académica', 'MXB0121519 - Esp. Odontologia', 'Profesor universitario                  ', 'Mandos medios y profesorado 2', '32154629', 'Peniche Marcín Rolando Gonzalo', 'adriana.carrillo@anahuac.mx');
@@ -2516,11 +2518,19 @@ CREATE TABLE `evaluaciones_cuestionario_niveles` (
   CONSTRAINT `ec_eval` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ec_man` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ec_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of evaluaciones_cuestionario_niveles
 -- ----------------------------
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('6', '1', '8', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('7', '1', '8', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('8', '1', '1', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('9', '1', '1', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('10', '1', '2', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('11', '1', '2', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('12', '1', '3', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('13', '1', '3', 'manual', null, '1');
 
 -- ----------------------------
 -- Table structure for evaluaciones_cuestionario_puestos
@@ -2544,11 +2554,17 @@ CREATE TABLE `evaluaciones_cuestionario_puestos` (
   CONSTRAINT `ecp2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ecp3` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ecp4` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of evaluaciones_cuestionario_puestos
 -- ----------------------------
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('1', '1', '80', 'competencia', '13', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('11', '1', '4', 'competencia', '5', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('12', '1', '4', 'competencia', '7', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('13', '1', '3', 'competencia', '7', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('17', '1', '3', 'competencia', '11', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('19', '1', '3', 'competencia', '8', null);
 
 -- ----------------------------
 -- Table structure for jerarquias
@@ -2573,399 +2589,399 @@ CREATE TABLE `jerarquias` (
   CONSTRAINT `jerarquias_ibfk_2` FOREIGN KEY (`subordinado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `jerarquias_ibfk_3` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `jerarquias_ibfk_4` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=515 DEFAULT CHARSET=utf8 COMMENT='Índice de relaciones entre jefes y subordinados por aplicación.';
+) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=utf8 COMMENT='Índice de relaciones entre jefes y subordinados por aplicación.';
 
 -- ----------------------------
 -- Records of jerarquias
 -- ----------------------------
-INSERT INTO `jerarquias` VALUES ('1', '1', null, '1', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('2', '1', null, '2', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('4', '1', '1', '32123111', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('5', '1', '1', '32124186', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('6', '1', '1', '32124216', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('7', '1', '1', '32124224', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('8', '1', '1', '32124235', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('9', '1', '1', '32124267', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('10', '1', '1', '32124321', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('11', '1', '1', '32142632', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('12', '1', '1', '32142652', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('13', '1', '1', '32142871', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('14', '1', '1', '32143434', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('15', '1', '1', '32147708', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('16', '1', '1', '32153844', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('17', '1', '1', '32159882', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('18', '1', '1', '32160873', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('19', '1', '2', '32122411', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('20', '1', '2', '32124189', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('21', '1', '2', '32124202', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('22', '1', '2', '32124256', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('23', '1', '2', '32124289', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('24', '1', '2', '32124341', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('25', '1', '2', '32148648', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('26', '1', '2', '32149265', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('27', '1', '32123111', '32146961', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('28', '1', '32123111', '32148709', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('29', '1', '32123111', '32159619', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('30', '1', '32123111', '32159786', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('31', '1', '32123111', '32162014', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('32', '1', '32124181', '32124278', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('33', '1', '32124181', '32124348', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('34', '1', '32124181', '32155690', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('35', '1', '32124181', '32155724', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('36', '1', '32124181', '32160580', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('37', '1', '32124181', '32161867', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('38', '1', '32124183', '32124172', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('39', '1', '32124183', '32124333', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('40', '1', '32124183', '32124349', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('41', '1', '32124183', '32147655', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('42', '1', '32124183', '32149970', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('43', '1', '32124183', '32157290', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('44', '1', '32124186', '32124248', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('45', '1', '32124186', '32142628', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('46', '1', '32124186', '32146467', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('47', '1', '32124186', '32154094', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('48', '1', '32124186', '32155512', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('49', '1', '32124186', '32157581', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('50', '1', '32124186', '32160223', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('51', '1', '32124186', '32160583', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('52', '1', '32124188', '32142851', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('53', '1', '32124189', '32124197', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('54', '1', '32124189', '32124199', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('55', '1', '32124189', '32124233', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('56', '1', '32124189', '32124276', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('57', '1', '32124189', '32124330', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('58', '1', '32124189', '32124351', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('59', '1', '32124189', '32124359', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('60', '1', '32124189', '32137035', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('61', '1', '32124189', '32151397', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('62', '1', '32124189', '32151598', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('63', '1', '32124189', '32153323', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('64', '1', '32124189', '32154516', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('65', '1', '32124189', '32154574', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('66', '1', '32124189', '32155229', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('67', '1', '32124189', '32157400', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('68', '1', '32124189', '32157585', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('69', '1', '32124189', '32157697', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('70', '1', '32124189', '32162414', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('71', '1', '32124192', '32124210', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('72', '1', '32124192', '32124279', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('73', '1', '32124192', '32124346', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('74', '1', '32124192', '32124898', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('75', '1', '32124192', '32142634', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('76', '1', '32124192', '32160871', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('77', '1', '32124195', '32137040', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('78', '1', '32124195', '32144113', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('79', '1', '32124195', '32148865', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('80', '1', '32124195', '32149870', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('81', '1', '32124195', '32153980', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('82', '1', '32124195', '32162559', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('83', '1', '32124202', '32124170', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('84', '1', '32124202', '32124218', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('85', '1', '32124202', '32124253', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('86', '1', '32124202', '32124274', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('87', '1', '32124202', '32124302', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('88', '1', '32124202', '32124328', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('89', '1', '32124202', '32124366', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('90', '1', '32124202', '32149072', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('91', '1', '32124202', '32154463', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('92', '1', '32124202', '32154649', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('93', '1', '32124202', '32157789', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('94', '1', '32124202', '32159728', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('95', '1', '32124202', '32161636', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('96', '1', '32124209', '32124227', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('97', '1', '32124209', '32124249', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('98', '1', '32124209', '32124255', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('99', '1', '32124209', '32124320', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('100', '1', '32124209', '32147070', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('101', '1', '32124209', '32154166', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('102', '1', '32124209', '32157498', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('103', '1', '32124209', '32160437', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('104', '1', '32124209', '32161770', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('105', '1', '32124224', '32143828', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('106', '1', '32124224', '32144995', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('107', '1', '32124224', '32153970', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('108', '1', '32124224', '32159906', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('109', '1', '32124224', '32160334', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('110', '1', '32124224', '32160340', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('111', '1', '32124224', '32160909', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('112', '1', '32124224', '32162270', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('113', '1', '32124225', '32124272', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('114', '1', '32124225', '32137036', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('115', '1', '32124225', '32144555', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('116', '1', '32124225', '32152638', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('117', '1', '32124225', '32154101', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('118', '1', '32124225', '32157009', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('119', '1', '32124225', '32160407', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('120', '1', '32124226', '32124187', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('121', '1', '32124226', '32142661', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('122', '1', '32124226', '32144114', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('123', '1', '32124226', '32147525', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('124', '1', '32124226', '32150757', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('125', '1', '32124226', '32154314', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('126', '1', '32124226', '32160335', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('127', '1', '32124226', '32161296', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('128', '1', '32124229', '32147527', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('129', '1', '32124229', '32159883', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('130', '1', '32124234', '32124370', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('131', '1', '32124234', '32149174', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('132', '1', '32124234', '32153663', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('133', '1', '32124234', '32154936', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('134', '1', '32124234', '32160581', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('135', '1', '32124234', '32160877', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('136', '1', '32124236', '32151597', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('137', '1', '32124236', '32151614', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('138', '1', '32124236', '32157535', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('139', '1', '32124238', '32124317', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('140', '1', '32124238', '32124331', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('141', '1', '32124238', '32146674', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('142', '1', '32124238', '32154228', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('143', '1', '32124238', '32159413', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('144', '1', '32124238', '32160469', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('145', '1', '32124243', '32148210', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('146', '1', '32124243', '32149819', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('147', '1', '32124243', '32150966', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('148', '1', '32124243', '32151595', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('149', '1', '32124243', '32161633', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('150', '1', '32124245', '32123705', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('151', '1', '32124245', '32124236', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('152', '1', '32124245', '32124269', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('153', '1', '32124245', '32137041', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('154', '1', '32124245', '32140720', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('155', '1', '32124245', '32142875', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('156', '1', '32124245', '32149485', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('157', '1', '32124245', '32162093', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('158', '1', '32124257', '32124284', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('159', '1', '32124257', '32124343', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('160', '1', '32124257', '32133367', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('161', '1', '32124257', '32146480', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('162', '1', '32124257', '32149977', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('163', '1', '32124257', '32151505', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('164', '1', '32124257', '32154693', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('165', '1', '32124257', '32161036', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('166', '1', '32124267', '32124315', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('167', '1', '32124267', '32124365', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('168', '1', '32124267', '32142874', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('169', '1', '32124267', '32160092', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('170', '1', '32124278', '32147524', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('171', '1', '32124289', '32124176', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('172', '1', '32124289', '32143366', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('173', '1', '32124289', '32152778', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('174', '1', '32124289', '32160908', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('175', '1', '32124304', '32143258', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('176', '1', '32124304', '32160394', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('177', '1', '32124304', '32162491', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('178', '1', '32124315', '32124188', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('179', '1', '32124315', '32124975', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('180', '1', '32124315', '32154232', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('181', '1', '32124321', '32124194', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('182', '1', '32124321', '32133467', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('183', '1', '32124321', '32136613', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('184', '1', '32124321', '32136969', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('185', '1', '32124321', '32142235', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('186', '1', '32124321', '32142649', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('187', '1', '32124321', '32142653', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('188', '1', '32124321', '32143970', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('189', '1', '32124321', '32145534', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('190', '1', '32124321', '32150470', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('191', '1', '32124321', '32152130', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('192', '1', '32124321', '32152377', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('193', '1', '32124321', '32153290', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('194', '1', '32124321', '32153874', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('195', '1', '32124321', '32155174', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('196', '1', '32124321', '32160812', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('197', '1', '32124321', '32161632', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('198', '1', '32124321', '32161675', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('199', '1', '32124321', '32162062', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('200', '1', '32124341', '32124243', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('201', '1', '32124341', '32137037', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('202', '1', '32124341', '32145548', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('203', '1', '32124341', '32148074', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('204', '1', '32124341', '32148862', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('205', '1', '32124341', '32148868', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('206', '1', '32124341', '32153437', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('207', '1', '32124341', '32155726', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('208', '1', '32124341', '32157582', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('209', '1', '32124342', '32161038', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('210', '1', '32124342', '32161042', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('211', '1', '32124342', '32161048', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('212', '1', '32124350', '32124174', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('213', '1', '32124350', '32124190', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('214', '1', '32124350', '32124275', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('215', '1', '32124350', '32124903', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('216', '1', '32124350', '32147649', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('217', '1', '32124350', '32160205', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('218', '1', '32124975', '32124178', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('219', '1', '32124975', '32124222', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('220', '1', '32124975', '32124336', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('221', '1', '32124975', '32144190', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('222', '1', '32124975', '32162548', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('223', '1', '32137041', '32124198', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('224', '1', '32137041', '32124282', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('225', '1', '32137041', '32133083', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('226', '1', '32137041', '32145538', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('227', '1', '32137041', '32149218', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('228', '1', '32142628', '32151854', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('229', '1', '32142632', '32124181', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('230', '1', '32142632', '32124183', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('231', '1', '32142632', '32124184', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('232', '1', '32142632', '32124195', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('233', '1', '32142632', '32124209', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('234', '1', '32142632', '32124225', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('235', '1', '32142632', '32124226', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('236', '1', '32142632', '32124229', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('237', '1', '32142632', '32124245', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('238', '1', '32142632', '32124257', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('239', '1', '32142632', '32124291', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('240', '1', '32142632', '32124350', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('241', '1', '32142632', '32142651', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('242', '1', '32142632', '32147656', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('243', '1', '32142632', '32148701', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('244', '1', '32142632', '32149211', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('245', '1', '32142632', '32154240', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('246', '1', '32142632', '32154629', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('247', '1', '32142632', '32156835', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('248', '1', '32142649', '32157584', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('249', '1', '32142649', '32160582', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('250', '1', '32142651', '32124213', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('251', '1', '32142651', '32124214', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('252', '1', '32142651', '32124215', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('253', '1', '32142651', '32124329', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('254', '1', '32142651', '32124342', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('255', '1', '32142651', '32142999', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('256', '1', '32142651', '32144462', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('257', '1', '32142651', '32144526', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('258', '1', '32142651', '32148067', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('259', '1', '32142651', '32149175', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('260', '1', '32142651', '32149706', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('261', '1', '32142651', '32149975', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('262', '1', '32142651', '32151436', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('263', '1', '32142651', '32151835', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('264', '1', '32142651', '32152177', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('265', '1', '32142651', '32157008', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('266', '1', '32142651', '32160208', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('267', '1', '32142652', '32124185', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('268', '1', '32142652', '32124313', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('269', '1', '32142652', '32124344', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('270', '1', '32142652', '32153664', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('271', '1', '32142658', '32124303', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('272', '1', '32142658', '32146544', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('273', '1', '32142658', '32157048', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('274', '1', '32142658', '32160756', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('275', '1', '32142658', '32161047', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('276', '1', '32142661', '32124206', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('277', '1', '32142661', '32124292', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('278', '1', '32142661', '32145155', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('279', '1', '32142661', '32146510', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('280', '1', '32142661', '32155231', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('281', '1', '32142661', '32157288', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('282', '1', '32142667', '32124193', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('283', '1', '32142667', '32137185', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('284', '1', '32142667', '32148863', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('285', '1', '32142667', '32148924', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('286', '1', '32142667', '32152425', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('287', '1', '32142667', '32152691', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('288', '1', '32142667', '32159427', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('289', '1', '32142851', '32160003', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('290', '1', '32143434', '32124355', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('291', '1', '32143434', '32148332', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('292', '1', '32143434', '32153815', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('293', '1', '32143434', '32162547', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('294', '1', '32143434', '32162550', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('295', '1', '32143828', '32154651', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('296', '1', '32143828', '32160969', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('297', '1', '32144114', '32143435', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('298', '1', '32144995', '32157686', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('299', '1', '32144995', '32160002', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('300', '1', '32146467', '32148606', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('301', '1', '32146467', '32153319', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('302', '1', '32146961', '32154937', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('303', '1', '32146961', '32160764', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('304', '1', '32146961', '32162549', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('305', '1', '32147525', '32157650', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('306', '1', '32147656', '32124196', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('307', '1', '32147656', '32124238', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('308', '1', '32147656', '32124281', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('309', '1', '32147656', '32159479', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('310', '1', '32147708', '32151164', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('311', '1', '32147708', '32151603', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('312', '1', '32147708', '32153479', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('313', '1', '32147708', '32153871', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('314', '1', '32147708', '32157587', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('315', '1', '32147708', '32160391', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('316', '1', '32148067', '32124223', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('317', '1', '32148067', '32145420', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('318', '1', '32148067', '32151737', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('319', '1', '32148067', '32153840', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('320', '1', '32148067', '32157836', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('321', '1', '32148074', '32124363', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('322', '1', '32148074', '32145456', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('323', '1', '32148648', '32144069', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('324', '1', '32148701', '32157412', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('325', '1', '32148701', '32159732', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('326', '1', '32148709', '32159481', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('327', '1', '32148709', '32160093', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('328', '1', '32149211', '32124192', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('329', '1', '32149211', '32142658', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('330', '1', '32149211', '32142667', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('331', '1', '32149211', '32149910', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('332', '1', '32149706', '32144380', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('333', '1', '32149706', '32152430', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('334', '1', '32149973', '32143261', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('335', '1', '32149973', '32153337', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('336', '1', '32150470', '32162409', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('337', '1', '32151164', '32148925', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('338', '1', '32151164', '32159785', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('339', '1', '32151603', '32157402', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('340', '1', '32151603', '32161773', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('341', '1', '32153479', '32160333', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('342', '1', '32153479', '32161674', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('343', '1', '32153874', '32161868', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('344', '1', '32153874', '32161974', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('345', '1', '32154232', '32157586', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('346', '1', '32154629', '32137726', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('347', '1', '32154629', '32142985', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('348', '1', '32154629', '32144488', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('349', '1', '32154629', '32148278', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('350', '1', '32154629', '32149269', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('351', '1', '32154629', '32149869', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('352', '1', '32154629', '32151435', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('353', '1', '32154629', '32151615', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('354', '1', '32154629', '32159730', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('355', '1', '32154629', '32161044', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('356', '1', '32154629', '32161083', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('357', '1', '32154629', '32161099', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('358', '1', '32154629', '32161233', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('359', '1', '32154629', '32161243', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('360', '1', '32154629', '32161372', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('361', '1', '32154629', '32161402', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('362', '1', '32154629', '32162275', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('363', '1', '32154629', '32162282', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('364', '1', '32154629', '32162285', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('365', '1', '32154629', '32162288', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('366', '1', '32154629', '32162289', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('367', '1', '32154629', '32162406', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('368', '1', '32154629', '32162408', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('369', '1', '32155724', '32160755', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('370', '1', '32156835', '32124254', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('371', '1', '32156835', '32124263', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('372', '1', '32156835', '32124314', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('373', '1', '32156835', '32124335', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('374', '1', '32156835', '32150583', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('375', '1', '32156835', '32152527', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('376', '1', '32156835', '32153244', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('377', '1', '32156835', '32157393', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('378', '1', '32156835', '32160207', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('379', '1', '32156835', '32160218', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('380', '1', '32156835', '32160511', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('381', '1', '32160092', '32124234', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('382', '1', '32160092', '32124304', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('383', '1', '32160092', '32149973', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('384', '1', '32161047', '32157411', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('385', '1', '32162062', '32152181', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('386', '1', '32162062', '32162403', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('387', '1', '32162093', '32124250', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('388', '1', '32162093', '32151600', '2016-05-27 21:47:06', 'admin');
-INSERT INTO `jerarquias` VALUES ('389', '1', '32162093', '32154582', '2016-05-27 21:47:06', 'admin');
+INSERT INTO `jerarquias` VALUES ('1', '1', null, '1', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('2', '1', null, '2', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('4', '1', '1', '32123111', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('5', '1', '1', '32124186', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('6', '1', '1', '32124216', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('7', '1', '1', '32124224', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('8', '1', '1', '32124235', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('9', '1', '1', '32124267', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('10', '1', '1', '32124321', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('11', '1', '1', '32142632', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('12', '1', '1', '32142652', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('13', '1', '1', '32142871', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('14', '1', '1', '32143434', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('15', '1', '1', '32147708', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('16', '1', '1', '32153844', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('17', '1', '1', '32159882', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('18', '1', '1', '32160873', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('19', '1', '2', '32122411', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('20', '1', '2', '32124189', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('21', '1', '2', '32124202', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('22', '1', '2', '32124256', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('23', '1', '2', '32124289', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('24', '1', '2', '32124341', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('25', '1', '2', '32148648', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('26', '1', '2', '32149265', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('27', '1', '32123111', '32146961', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('28', '1', '32123111', '32148709', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('29', '1', '32123111', '32159619', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('30', '1', '32123111', '32159786', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('31', '1', '32123111', '32162014', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('32', '1', '32124181', '32124278', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('33', '1', '32124181', '32124348', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('34', '1', '32124181', '32155690', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('35', '1', '32124181', '32155724', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('36', '1', '32124181', '32160580', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('37', '1', '32124181', '32161867', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('38', '1', '32124183', '32124172', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('39', '1', '32124183', '32124333', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('40', '1', '32124183', '32124349', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('41', '1', '32124183', '32147655', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('42', '1', '32124183', '32149970', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('43', '1', '32124183', '32157290', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('44', '1', '32124186', '32124248', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('45', '1', '32124186', '32142628', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('46', '1', '32124186', '32146467', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('47', '1', '32124186', '32154094', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('48', '1', '32124186', '32155512', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('49', '1', '32124186', '32157581', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('50', '1', '32124186', '32160223', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('51', '1', '32124186', '32160583', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('52', '1', '32124188', '32142851', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('53', '1', '32124189', '32124197', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('54', '1', '32124189', '32124199', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('55', '1', '32124189', '32124233', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('56', '1', '32124189', '32124276', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('57', '1', '32124189', '32124330', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('58', '1', '32124189', '32124351', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('59', '1', '32124189', '32124359', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('60', '1', '32124189', '32137035', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('61', '1', '32124189', '32151397', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('62', '1', '32124189', '32151598', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('63', '1', '32124189', '32153323', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('64', '1', '32124189', '32154516', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('65', '1', '32124189', '32154574', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('66', '1', '32124189', '32155229', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('67', '1', '32124189', '32157400', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('68', '1', '32124189', '32157585', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('69', '1', '32124189', '32157697', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('70', '1', '32124189', '32162414', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('71', '1', '32124192', '32124210', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('72', '1', '32124192', '32124279', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('73', '1', '32124192', '32124346', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('74', '1', '32124192', '32124898', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('75', '1', '32124192', '32142634', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('76', '1', '32124192', '32160871', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('77', '1', '32124195', '32137040', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('78', '1', '32124195', '32144113', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('79', '1', '32124195', '32148865', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('80', '1', '32124195', '32149870', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('81', '1', '32124195', '32153980', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('82', '1', '32124195', '32162559', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('83', '1', '32124202', '32124170', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('84', '1', '32124202', '32124218', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('85', '1', '32124202', '32124253', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('86', '1', '32124202', '32124274', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('87', '1', '32124202', '32124302', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('88', '1', '32124202', '32124328', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('89', '1', '32124202', '32124366', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('90', '1', '32124202', '32149072', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('91', '1', '32124202', '32154463', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('92', '1', '32124202', '32154649', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('93', '1', '32124202', '32157789', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('94', '1', '32124202', '32159728', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('95', '1', '32124202', '32161636', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('96', '1', '32124209', '32124227', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('97', '1', '32124209', '32124249', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('98', '1', '32124209', '32124255', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('99', '1', '32124209', '32124320', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('100', '1', '32124209', '32147070', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('101', '1', '32124209', '32154166', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('102', '1', '32124209', '32157498', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('103', '1', '32124209', '32160437', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('104', '1', '32124209', '32161770', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('105', '1', '32124224', '32143828', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('106', '1', '32124224', '32144995', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('107', '1', '32124224', '32153970', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('108', '1', '32124224', '32159906', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('109', '1', '32124224', '32160334', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('110', '1', '32124224', '32160340', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('111', '1', '32124224', '32160909', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('112', '1', '32124224', '32162270', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('113', '1', '32124225', '32124272', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('114', '1', '32124225', '32137036', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('115', '1', '32124225', '32144555', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('116', '1', '32124225', '32152638', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('117', '1', '32124225', '32154101', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('118', '1', '32124225', '32157009', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('119', '1', '32124225', '32160407', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('120', '1', '32124226', '32124187', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('121', '1', '32124226', '32142661', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('122', '1', '32124226', '32144114', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('123', '1', '32124226', '32147525', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('124', '1', '32124226', '32150757', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('125', '1', '32124226', '32154314', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('126', '1', '32124226', '32160335', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('127', '1', '32124226', '32161296', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('128', '1', '32124229', '32147527', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('129', '1', '32124229', '32159883', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('130', '1', '32124234', '32124370', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('131', '1', '32124234', '32149174', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('132', '1', '32124234', '32153663', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('133', '1', '32124234', '32154936', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('134', '1', '32124234', '32160581', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('135', '1', '32124234', '32160877', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('136', '1', '32124236', '32151597', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('137', '1', '32124236', '32151614', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('138', '1', '32124236', '32157535', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('139', '1', '32124238', '32124317', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('140', '1', '32124238', '32124331', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('141', '1', '32124238', '32146674', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('142', '1', '32124238', '32154228', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('143', '1', '32124238', '32159413', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('144', '1', '32124238', '32160469', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('145', '1', '32124243', '32148210', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('146', '1', '32124243', '32149819', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('147', '1', '32124243', '32150966', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('148', '1', '32124243', '32151595', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('149', '1', '32124243', '32161633', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('150', '1', '32124245', '32123705', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('151', '1', '32124245', '32124236', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('152', '1', '32124245', '32124269', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('153', '1', '32124245', '32137041', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('154', '1', '32124245', '32140720', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('155', '1', '32124245', '32142875', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('156', '1', '32124245', '32149485', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('157', '1', '32124245', '32162093', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('158', '1', '32124257', '32124284', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('159', '1', '32124257', '32124343', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('160', '1', '32124257', '32133367', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('161', '1', '32124257', '32146480', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('162', '1', '32124257', '32149977', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('163', '1', '32124257', '32151505', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('164', '1', '32124257', '32154693', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('165', '1', '32124257', '32161036', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('166', '1', '32124267', '32124315', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('167', '1', '32124267', '32124365', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('168', '1', '32124267', '32142874', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('169', '1', '32124267', '32160092', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('170', '1', '32124278', '32147524', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('171', '1', '32124289', '32124176', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('172', '1', '32124289', '32143366', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('173', '1', '32124289', '32152778', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('174', '1', '32124289', '32160908', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('175', '1', '32124304', '32143258', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('176', '1', '32124304', '32160394', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('177', '1', '32124304', '32162491', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('178', '1', '32124315', '32124188', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('179', '1', '32124315', '32124975', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('180', '1', '32124315', '32154232', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('181', '1', '32124321', '32124194', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('182', '1', '32124321', '32133467', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('183', '1', '32124321', '32136613', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('184', '1', '32124321', '32136969', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('185', '1', '32124321', '32142235', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('186', '1', '32124321', '32142649', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('187', '1', '32124321', '32142653', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('188', '1', '32124321', '32143970', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('189', '1', '32124321', '32145534', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('190', '1', '32124321', '32150470', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('191', '1', '32124321', '32152130', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('192', '1', '32124321', '32152377', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('193', '1', '32124321', '32153290', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('194', '1', '32124321', '32153874', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('195', '1', '32124321', '32155174', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('196', '1', '32124321', '32160812', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('197', '1', '32124321', '32161632', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('198', '1', '32124321', '32161675', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('199', '1', '32124321', '32162062', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('200', '1', '32124341', '32124243', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('201', '1', '32124341', '32137037', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('202', '1', '32124341', '32145548', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('203', '1', '32124341', '32148074', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('204', '1', '32124341', '32148862', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('205', '1', '32124341', '32148868', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('206', '1', '32124341', '32153437', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('207', '1', '32124341', '32155726', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('208', '1', '32124341', '32157582', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('209', '1', '32124342', '32161038', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('210', '1', '32124342', '32161042', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('211', '1', '32124342', '32161048', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('212', '1', '32124350', '32124174', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('213', '1', '32124350', '32124190', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('214', '1', '32124350', '32124275', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('215', '1', '32124350', '32124903', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('216', '1', '32124350', '32147649', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('217', '1', '32124350', '32160205', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('218', '1', '32124975', '32124178', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('219', '1', '32124975', '32124222', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('220', '1', '32124975', '32124336', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('221', '1', '32124975', '32144190', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('222', '1', '32124975', '32162548', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('223', '1', '32137041', '32124198', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('224', '1', '32137041', '32124282', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('225', '1', '32137041', '32133083', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('226', '1', '32137041', '32145538', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('227', '1', '32137041', '32149218', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('228', '1', '32142628', '32151854', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('229', '1', '32142632', '32124181', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('230', '1', '32142632', '32124183', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('231', '1', '32142632', '32124184', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('232', '1', '32142632', '32124195', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('233', '1', '32142632', '32124209', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('234', '1', '32142632', '32124225', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('235', '1', '32142632', '32124226', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('236', '1', '32142632', '32124229', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('237', '1', '32142632', '32124245', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('238', '1', '32142632', '32124257', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('239', '1', '32142632', '32124291', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('240', '1', '32142632', '32124350', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('241', '1', '32142632', '32142651', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('242', '1', '32142632', '32147656', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('243', '1', '32142632', '32148701', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('244', '1', '32142632', '32149211', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('245', '1', '32142632', '32154240', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('246', '1', '32142632', '32154629', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('247', '1', '32142632', '32156835', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('248', '1', '32142649', '32157584', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('249', '1', '32142649', '32160582', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('250', '1', '32142651', '32124213', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('251', '1', '32142651', '32124214', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('252', '1', '32142651', '32124215', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('253', '1', '32142651', '32124329', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('254', '1', '32142651', '32124342', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('255', '1', '32142651', '32142999', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('256', '1', '32142651', '32144462', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('257', '1', '32142651', '32144526', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('258', '1', '32142651', '32148067', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('259', '1', '32142651', '32149175', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('260', '1', '32142651', '32149706', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('261', '1', '32142651', '32149975', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('262', '1', '32142651', '32151436', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('263', '1', '32142651', '32151835', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('264', '1', '32142651', '32152177', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('265', '1', '32142651', '32157008', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('266', '1', '32142651', '32160208', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('267', '1', '32142652', '32124185', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('268', '1', '32142652', '32124313', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('269', '1', '32142652', '32124344', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('270', '1', '32142652', '32153664', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('271', '1', '32142658', '32124303', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('272', '1', '32142658', '32146544', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('273', '1', '32142658', '32157048', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('274', '1', '32142658', '32160756', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('275', '1', '32142658', '32161047', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('276', '1', '32142661', '32124206', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('277', '1', '32142661', '32124292', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('278', '1', '32142661', '32145155', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('279', '1', '32142661', '32146510', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('280', '1', '32142661', '32155231', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('281', '1', '32142661', '32157288', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('282', '1', '32142667', '32124193', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('283', '1', '32142667', '32137185', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('284', '1', '32142667', '32148863', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('285', '1', '32142667', '32148924', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('286', '1', '32142667', '32152425', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('287', '1', '32142667', '32152691', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('288', '1', '32142667', '32159427', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('289', '1', '32142851', '32160003', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('290', '1', '32143434', '32124355', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('291', '1', '32143434', '32148332', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('292', '1', '32143434', '32153815', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('293', '1', '32143434', '32162547', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('294', '1', '32143434', '32162550', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('295', '1', '32143828', '32154651', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('296', '1', '32143828', '32160969', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('297', '1', '32144114', '32143435', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('298', '1', '32144995', '32157686', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('299', '1', '32144995', '32160002', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('300', '1', '32146467', '32148606', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('301', '1', '32146467', '32153319', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('302', '1', '32146961', '32154937', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('303', '1', '32146961', '32160764', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('304', '1', '32146961', '32162549', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('305', '1', '32147525', '32157650', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('306', '1', '32147656', '32124196', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('307', '1', '32147656', '32124238', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('308', '1', '32147656', '32124281', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('309', '1', '32147656', '32159479', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('310', '1', '32147708', '32151164', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('311', '1', '32147708', '32151603', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('312', '1', '32147708', '32153479', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('313', '1', '32147708', '32153871', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('314', '1', '32147708', '32157587', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('315', '1', '32147708', '32160391', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('316', '1', '32148067', '32124223', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('317', '1', '32148067', '32145420', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('318', '1', '32148067', '32151737', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('319', '1', '32148067', '32153840', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('320', '1', '32148067', '32157836', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('321', '1', '32148074', '32124363', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('322', '1', '32148074', '32145456', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('323', '1', '32148648', '32144069', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('324', '1', '32148701', '32157412', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('325', '1', '32148701', '32159732', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('326', '1', '32148709', '32159481', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('327', '1', '32148709', '32160093', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('328', '1', '32149211', '32124192', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('329', '1', '32149211', '32142658', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('330', '1', '32149211', '32142667', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('331', '1', '32149211', '32149910', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('332', '1', '32149706', '32144380', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('333', '1', '32149706', '32152430', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('334', '1', '32149973', '32143261', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('335', '1', '32149973', '32153337', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('336', '1', '32150470', '32162409', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('337', '1', '32151164', '32148925', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('338', '1', '32151164', '32159785', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('339', '1', '32151603', '32157402', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('340', '1', '32151603', '32161773', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('341', '1', '32153479', '32160333', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('342', '1', '32153479', '32161674', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('343', '1', '32153874', '32161868', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('344', '1', '32153874', '32161974', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('345', '1', '32154232', '32157586', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('346', '1', '32154629', '32137726', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('347', '1', '32154629', '32142985', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('348', '1', '32154629', '32144488', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('349', '1', '32154629', '32148278', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('350', '1', '32154629', '32149269', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('351', '1', '32154629', '32149869', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('352', '1', '32154629', '32151435', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('353', '1', '32154629', '32151615', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('354', '1', '32154629', '32159730', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('355', '1', '32154629', '32161044', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('356', '1', '32154629', '32161083', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('357', '1', '32154629', '32161099', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('358', '1', '32154629', '32161233', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('359', '1', '32154629', '32161243', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('360', '1', '32154629', '32161372', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('361', '1', '32154629', '32161402', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('362', '1', '32154629', '32162275', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('363', '1', '32154629', '32162282', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('364', '1', '32154629', '32162285', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('365', '1', '32154629', '32162288', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('366', '1', '32154629', '32162289', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('367', '1', '32154629', '32162406', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('368', '1', '32154629', '32162408', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('369', '1', '32155724', '32160755', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('370', '1', '32156835', '32124254', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('371', '1', '32156835', '32124263', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('372', '1', '32156835', '32124314', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('373', '1', '32156835', '32124335', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('374', '1', '32156835', '32150583', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('375', '1', '32156835', '32152527', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('376', '1', '32156835', '32153244', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('377', '1', '32156835', '32157393', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('378', '1', '32156835', '32160207', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('379', '1', '32156835', '32160218', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('380', '1', '32156835', '32160511', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('381', '1', '32160092', '32124234', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('382', '1', '32160092', '32124304', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('383', '1', '32160092', '32149973', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('384', '1', '32161047', '32157411', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('385', '1', '32162062', '32152181', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('386', '1', '32162062', '32162403', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('387', '1', '32162093', '32124250', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('388', '1', '32162093', '32151600', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('389', '1', '32162093', '32154582', '2016-05-30 19:02:43', 'admin');
 
 -- ----------------------------
 -- Table structure for niveles
@@ -2978,7 +2994,7 @@ CREATE TABLE `niveles` (
   UNIQUE KEY `areakey` (`titulo`),
   KEY `areid` (`codigo`),
   KEY `areti` (`titulo`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of niveles
@@ -2988,21 +3004,9 @@ INSERT INTO `niveles` VALUES ('2', 'Autoridades 2');
 INSERT INTO `niveles` VALUES ('3', 'Direcciones 1');
 INSERT INTO `niveles` VALUES ('4', 'Direcciones 2');
 INSERT INTO `niveles` VALUES ('5', 'Mandos medios y profesorado 1');
-INSERT INTO `niveles` VALUES ('6', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1');
-INSERT INTO `niveles` VALUES ('7', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1');
-INSERT INTO `niveles` VALUES ('8', 'Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y profesorado 1 Mandos medios y');
-INSERT INTO `niveles` VALUES ('9', 'Mandos medios y profesorado 2');
-INSERT INTO `niveles` VALUES ('10', 'Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y profesorado 2 Mandos medios y');
-INSERT INTO `niveles` VALUES ('11', 'Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profesorado 2Mandos medios y profeso');
-INSERT INTO `niveles` VALUES ('12', 'Operativos 1');
-INSERT INTO `niveles` VALUES ('13', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1');
-INSERT INTO `niveles` VALUES ('14', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1');
-INSERT INTO `niveles` VALUES ('15', 'Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1Operativos 1');
-INSERT INTO `niveles` VALUES ('16', 'Operativos 2');
-INSERT INTO `niveles` VALUES ('17', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2');
-INSERT INTO `niveles` VALUES ('18', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2');
-INSERT INTO `niveles` VALUES ('19', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2');
-INSERT INTO `niveles` VALUES ('20', 'Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Operativos 2Ope');
+INSERT INTO `niveles` VALUES ('6', 'Mandos medios y profesorado 2');
+INSERT INTO `niveles` VALUES ('7', 'Operativos 1');
+INSERT INTO `niveles` VALUES ('8', 'Operativos 2');
 
 -- ----------------------------
 -- Table structure for preguntas_puestos
@@ -3647,7 +3651,7 @@ CREATE TABLE `puestos` (
   UNIQUE KEY `pkey` (`titulo`),
   KEY `puesid` (`codigo`),
   KEY `puesti` (`titulo`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of puestos
@@ -3655,93 +3659,89 @@ CREATE TABLE `puestos` (
 INSERT INTO `puestos` VALUES ('3', 'Asesor de desarrollo humano');
 INSERT INTO `puestos` VALUES ('4', 'Asesor preuniversitario');
 INSERT INTO `puestos` VALUES ('5', 'Asistente académico');
-INSERT INTO `puestos` VALUES ('6', 'Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Académico                     Asistente Acadé');
-INSERT INTO `puestos` VALUES ('7', 'Asistente de dirección');
-INSERT INTO `puestos` VALUES ('8', 'Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de dirección                  Asistente de di');
-INSERT INTO `puestos` VALUES ('9', 'Asistente ejecutivo de rectoría');
-INSERT INTO `puestos` VALUES ('10', 'Auxiliar administrativo');
-INSERT INTO `puestos` VALUES ('11', 'Auxiliar Contable');
-INSERT INTO `puestos` VALUES ('12', 'Auxiliar de Biblioteca');
-INSERT INTO `puestos` VALUES ('13', 'Auxiliar de Compras');
-INSERT INTO `puestos` VALUES ('14', 'Auxiliar de laboratorio y/o taller');
-INSERT INTO `puestos` VALUES ('15', 'Auxiliar de mantenimiento');
-INSERT INTO `puestos` VALUES ('16', 'Auxiliar técnico');
-INSERT INTO `puestos` VALUES ('17', 'Cajero');
-INSERT INTO `puestos` VALUES ('18', 'Chofer mensajero');
-INSERT INTO `puestos` VALUES ('19', 'Contralor');
-INSERT INTO `puestos` VALUES ('20', 'Coordinador de atención a alumnos');
-INSERT INTO `puestos` VALUES ('21', 'Coordinador de becas a alumnos');
-INSERT INTO `puestos` VALUES ('22', 'Coordinador de Calidad Académica');
-INSERT INTO `puestos` VALUES ('23', 'Coordinador de campos clínicos');
-INSERT INTO `puestos` VALUES ('24', 'Coordinador de comunicación');
-INSERT INTO `puestos` VALUES ('25', 'Coordinador de difusión cultural');
-INSERT INTO `puestos` VALUES ('26', 'Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educativa y Apoyo Académico    Coordinador de Formación Educat');
-INSERT INTO `puestos` VALUES ('27', 'Coordinador de investigación');
-INSERT INTO `puestos` VALUES ('28', 'Coordinador de operación de licenciatura');
-INSERT INTO `puestos` VALUES ('29', 'Coordinador de posgrados');
-INSERT INTO `puestos` VALUES ('30', 'Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coordinador de posgrados  y extensión             Coord');
-INSERT INTO `puestos` VALUES ('31', 'Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión               Coordinador de posgrados y extensión');
-INSERT INTO `puestos` VALUES ('32', 'Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coordinador de posgrados y extensión              Coord');
-INSERT INTO `puestos` VALUES ('33', 'Coordinador de programa académico');
-INSERT INTO `puestos` VALUES ('34', 'Coordinador de programas de liderazgo');
-INSERT INTO `puestos` VALUES ('35', 'Coordinador de Programas Posgrado y Exte');
-INSERT INTO `puestos` VALUES ('36', 'Coordinador de proyectos');
-INSERT INTO `puestos` VALUES ('37', 'Coordinador de relaciones académicas');
-INSERT INTO `puestos` VALUES ('38', 'Coordinador de selec y academias deporti');
-INSERT INTO `puestos` VALUES ('39', 'Coordinador de Servicio y Acción Social');
-INSERT INTO `puestos` VALUES ('40', 'Coordinador de servicios de tecnología');
-INSERT INTO `puestos` VALUES ('41', 'Coordinador de tutorías y apoyo académic');
-INSERT INTO `puestos` VALUES ('42', 'Coordinador de vinculación y recaud fond');
-INSERT INTO `puestos` VALUES ('43', 'Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas       Coordinador del Centro de Lenguas');
-INSERT INTO `puestos` VALUES ('44', 'Coordinador del programa');
-INSERT INTO `puestos` VALUES ('45', 'Coordinador general de humanidades');
-INSERT INTO `puestos` VALUES ('46', 'Director atención preuniversitaria y mer');
-INSERT INTO `puestos` VALUES ('47', 'Director de administración escolar y nor');
-INSERT INTO `puestos` VALUES ('48', 'Director de centro de investigación');
-INSERT INTO `puestos` VALUES ('49', 'Director de desarrollo académico');
-INSERT INTO `puestos` VALUES ('50', 'Director de desarrollo institucional');
-INSERT INTO `puestos` VALUES ('51', 'Director de división académica');
-INSERT INTO `puestos` VALUES ('52', 'Director de programa académico');
-INSERT INTO `puestos` VALUES ('53', 'Director de programas de posgrado y exte');
-INSERT INTO `puestos` VALUES ('54', 'Director de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirector de Servicios Institucionales y PlaneaciónDirec');
-INSERT INTO `puestos` VALUES ('55', 'Diseñador');
-INSERT INTO `puestos` VALUES ('56', 'Entrenador de Selecciones');
-INSERT INTO `puestos` VALUES ('57', 'Especialista de atención a foráneos');
-INSERT INTO `puestos` VALUES ('58', 'Especialista de certificación y titulaci');
-INSERT INTO `puestos` VALUES ('59', 'Especialista de orientación vocacional');
-INSERT INTO `puestos` VALUES ('60', 'Especialista de presupuestos');
-INSERT INTO `puestos` VALUES ('61', 'Especialista de recursos humanos');
-INSERT INTO `puestos` VALUES ('62', 'Especialista de soporte a sistemas');
-INSERT INTO `puestos` VALUES ('63', 'Especialista en Desarrollo de Medios');
-INSERT INTO `puestos` VALUES ('64', 'Especialista en diseño instruccional');
-INSERT INTO `puestos` VALUES ('65', 'Especialista en página WEB');
-INSERT INTO `puestos` VALUES ('66', 'Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en página WEB              Especialista en');
-INSERT INTO `puestos` VALUES ('67', 'Gerente de recursos humanos');
-INSERT INTO `puestos` VALUES ('68', 'Jardinero');
-INSERT INTO `puestos` VALUES ('69', 'Jefe de admisiones');
-INSERT INTO `puestos` VALUES ('70', 'Jefe de biblioteca');
-INSERT INTO `puestos` VALUES ('71', 'Jefe de compras');
-INSERT INTO `puestos` VALUES ('72', 'Jefe de Contabilidad');
-INSERT INTO `puestos` VALUES ('73', 'Jefe de crédito y cobranza');
-INSERT INTO `puestos` VALUES ('74', 'Jefe de infraestructura tecnológica');
-INSERT INTO `puestos` VALUES ('75', 'Jefe de servicios computacionales');
-INSERT INTO `puestos` VALUES ('76', 'Jefe de servicios escolares externos');
-INSERT INTO `puestos` VALUES ('77', 'Jefe de servicios escolares intern y aud');
-INSERT INTO `puestos` VALUES ('78', 'Jefe de servicios generales');
-INSERT INTO `puestos` VALUES ('79', 'Operador de Conmutador');
-INSERT INTO `puestos` VALUES ('80', 'Profesor universitario');
+INSERT INTO `puestos` VALUES ('6', 'Asistente de dirección');
+INSERT INTO `puestos` VALUES ('7', 'Asistente ejecutivo de rectoría');
+INSERT INTO `puestos` VALUES ('8', 'Auxiliar administrativo');
+INSERT INTO `puestos` VALUES ('9', 'Auxiliar Contable');
+INSERT INTO `puestos` VALUES ('10', 'Auxiliar de Biblioteca');
+INSERT INTO `puestos` VALUES ('11', 'Auxiliar de Compras');
+INSERT INTO `puestos` VALUES ('12', 'Auxiliar de laboratorio y/o taller');
+INSERT INTO `puestos` VALUES ('13', 'Auxiliar de mantenimiento');
+INSERT INTO `puestos` VALUES ('14', 'Auxiliar técnico');
+INSERT INTO `puestos` VALUES ('15', 'Cajero');
+INSERT INTO `puestos` VALUES ('16', 'Chofer mensajero');
+INSERT INTO `puestos` VALUES ('17', 'Contralor');
+INSERT INTO `puestos` VALUES ('18', 'Coordinador de atención a alumnos');
+INSERT INTO `puestos` VALUES ('19', 'Coordinador de becas a alumnos');
+INSERT INTO `puestos` VALUES ('20', 'Coordinador de Calidad Académica');
+INSERT INTO `puestos` VALUES ('21', 'Coordinador de campos clínicos');
+INSERT INTO `puestos` VALUES ('22', 'Coordinador de comunicación');
+INSERT INTO `puestos` VALUES ('23', 'Coordinador de difusión cultural');
+INSERT INTO `puestos` VALUES ('24', 'Coordinador de Formación Educativa y Apoyo Académico');
+INSERT INTO `puestos` VALUES ('25', 'Coordinador de investigación');
+INSERT INTO `puestos` VALUES ('26', 'Coordinador de operación de licenciatura');
+INSERT INTO `puestos` VALUES ('27', 'Coordinador de posgrados');
+INSERT INTO `puestos` VALUES ('28', 'Coordinador de posgrados  y extensión');
+INSERT INTO `puestos` VALUES ('29', 'Coordinador de posgrados y extensión');
+INSERT INTO `puestos` VALUES ('30', 'Coordinador de programa académico');
+INSERT INTO `puestos` VALUES ('31', 'Coordinador de programas de liderazgo');
+INSERT INTO `puestos` VALUES ('32', 'Coordinador de Programas Posgrado y Exte');
+INSERT INTO `puestos` VALUES ('33', 'Coordinador de proyectos');
+INSERT INTO `puestos` VALUES ('34', 'Coordinador de relaciones académicas');
+INSERT INTO `puestos` VALUES ('35', 'Coordinador de selec y academias deporti');
+INSERT INTO `puestos` VALUES ('36', 'Coordinador de Servicio y Acción Social');
+INSERT INTO `puestos` VALUES ('37', 'Coordinador de servicios de tecnología');
+INSERT INTO `puestos` VALUES ('38', 'Coordinador de tutorías y apoyo académic');
+INSERT INTO `puestos` VALUES ('39', 'Coordinador de vinculación y recaud fond');
+INSERT INTO `puestos` VALUES ('40', 'Coordinador del Centro de Lenguas');
+INSERT INTO `puestos` VALUES ('41', 'Coordinador del programa');
+INSERT INTO `puestos` VALUES ('42', 'Coordinador general de humanidades');
+INSERT INTO `puestos` VALUES ('43', 'Director atención preuniversitaria y mer');
+INSERT INTO `puestos` VALUES ('44', 'Director de administración escolar y nor');
+INSERT INTO `puestos` VALUES ('45', 'Director de centro de investigación');
+INSERT INTO `puestos` VALUES ('46', 'Director de desarrollo académico');
+INSERT INTO `puestos` VALUES ('47', 'Director de desarrollo institucional');
+INSERT INTO `puestos` VALUES ('48', 'Director de división académica');
+INSERT INTO `puestos` VALUES ('49', 'Director de programa académico');
+INSERT INTO `puestos` VALUES ('50', 'Director de programas de posgrado y exte');
+INSERT INTO `puestos` VALUES ('51', 'Director de Servicios Institucionales y Planeación');
+INSERT INTO `puestos` VALUES ('52', 'Diseñador');
+INSERT INTO `puestos` VALUES ('53', 'Entrenador de Selecciones');
+INSERT INTO `puestos` VALUES ('54', 'Especialista de atención a foráneos');
+INSERT INTO `puestos` VALUES ('55', 'Especialista de certificación y titulaci');
+INSERT INTO `puestos` VALUES ('56', 'Especialista de orientación vocacional');
+INSERT INTO `puestos` VALUES ('57', 'Especialista de presupuestos');
+INSERT INTO `puestos` VALUES ('58', 'Especialista de recursos humanos');
+INSERT INTO `puestos` VALUES ('59', 'Especialista de soporte a sistemas');
+INSERT INTO `puestos` VALUES ('60', 'Especialista en Desarrollo de Medios');
+INSERT INTO `puestos` VALUES ('61', 'Especialista en diseño instruccional');
+INSERT INTO `puestos` VALUES ('62', 'Especialista en página WEB');
+INSERT INTO `puestos` VALUES ('63', 'Gerente de recursos humanos');
+INSERT INTO `puestos` VALUES ('64', 'Jardinero');
+INSERT INTO `puestos` VALUES ('65', 'Jefe de admisiones');
+INSERT INTO `puestos` VALUES ('66', 'Jefe de biblioteca');
+INSERT INTO `puestos` VALUES ('67', 'Jefe de compras');
+INSERT INTO `puestos` VALUES ('68', 'Jefe de Contabilidad');
+INSERT INTO `puestos` VALUES ('69', 'Jefe de crédito y cobranza');
+INSERT INTO `puestos` VALUES ('70', 'Jefe de infraestructura tecnológica');
+INSERT INTO `puestos` VALUES ('71', 'Jefe de servicios computacionales');
+INSERT INTO `puestos` VALUES ('72', 'Jefe de servicios escolares externos');
+INSERT INTO `puestos` VALUES ('73', 'Jefe de servicios escolares intern y aud');
+INSERT INTO `puestos` VALUES ('74', 'Jefe de servicios generales');
+INSERT INTO `puestos` VALUES ('75', 'Operador de Conmutador');
+INSERT INTO `puestos` VALUES ('76', 'Profesor universitario');
 INSERT INTO `puestos` VALUES ('1', 'Rector');
-INSERT INTO `puestos` VALUES ('81', 'Secretaria de depto.');
-INSERT INTO `puestos` VALUES ('82', 'Secretario  de depto.');
-INSERT INTO `puestos` VALUES ('83', 'Secretario (a) de la Dirección');
-INSERT INTO `puestos` VALUES ('84', 'Secretario(a) de departamento');
-INSERT INTO `puestos` VALUES ('85', 'Secretario(a) de rectoría');
-INSERT INTO `puestos` VALUES ('86', 'Supervisor Administrativo');
-INSERT INTO `puestos` VALUES ('87', 'Supervisor de servicios al público');
-INSERT INTO `puestos` VALUES ('88', 'Técnico de laboratorio y/o taller');
-INSERT INTO `puestos` VALUES ('89', 'Técnico de soporte');
+INSERT INTO `puestos` VALUES ('77', 'Secretaria de depto.');
+INSERT INTO `puestos` VALUES ('78', 'Secretario  de depto.');
+INSERT INTO `puestos` VALUES ('79', 'Secretario (a) de la Dirección');
+INSERT INTO `puestos` VALUES ('80', 'Secretario(a) de departamento');
+INSERT INTO `puestos` VALUES ('81', 'Secretario(a) de rectoría');
+INSERT INTO `puestos` VALUES ('82', 'Supervisor Administrativo');
+INSERT INTO `puestos` VALUES ('83', 'Supervisor de servicios al público');
+INSERT INTO `puestos` VALUES ('84', 'Técnico de laboratorio y/o taller');
+INSERT INTO `puestos` VALUES ('85', 'Técnico de soporte');
 INSERT INTO `puestos` VALUES ('2', 'Vicerector');
-INSERT INTO `puestos` VALUES ('90', 'Vicerrector académico');
+INSERT INTO `puestos` VALUES ('86', 'Vicerrector académico');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion
@@ -3875,7 +3875,7 @@ CREATE TABLE `respuestas_clave_competencias_niveles` (
   CONSTRAINT `rexclac_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rexclac_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rexclac_val` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_clave_competencias_niveles
@@ -3902,11 +3902,52 @@ CREATE TABLE `respuestas_clave_competencias_puestos` (
   CONSTRAINT `rccp2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp3` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_clave_competencias_puestos
 -- ----------------------------
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('368', '1', '3', '95', '82');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('365', '1', '3', '92', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('367', '1', '3', '94', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('369', '1', '3', '96', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('370', '1', '3', '97', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('371', '1', '3', '98', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('372', '1', '3', '99', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('373', '1', '3', '100', '84');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('364', '1', '3', '91', '86');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('366', '1', '3', '93', '86');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('375', '1', '3', '102', '93');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('376', '1', '3', '103', '93');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('378', '1', '3', '105', '93');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('374', '1', '3', '101', '95');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('377', '1', '3', '104', '95');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('379', '1', '3', '106', '95');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('380', '1', '3', '107', '95');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('381', '1', '3', '108', '95');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('382', '1', '3', '109', '97');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('383', '1', '3', '110', '97');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('384', '1', '3', '111', '99');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('391', '1', '3', '387', '169');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('388', '1', '3', '384', '232');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('390', '1', '3', '386', '232');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('392', '1', '3', '388', '232');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('393', '1', '3', '389', '232');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('386', '1', '3', '382', '295');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('387', '1', '3', '383', '295');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('389', '1', '3', '385', '295');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('394', '1', '3', '390', '295');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('385', '1', '3', '381', '358');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('294', '1', '80', '252', '297');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('296', '1', '80', '254', '297');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('298', '1', '80', '256', '297');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('300', '1', '80', '258', '297');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('302', '1', '80', '260', '297');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('293', '1', '80', '251', '360');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('295', '1', '80', '253', '360');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('297', '1', '80', '255', '360');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('299', '1', '80', '257', '360');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('301', '1', '80', '259', '360');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_historico_niveles
@@ -3927,7 +3968,7 @@ CREATE TABLE `respuestas_clave_historico_niveles` (
   CONSTRAINT `respch_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respch_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respch_usu` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_clave_historico_niveles
@@ -3952,11 +3993,14 @@ CREATE TABLE `respuestas_clave_historico_puestos` (
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_2` FOREIGN KEY (`puesto`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_3` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_clave_historico_puestos
 -- ----------------------------
+INSERT INTO `respuestas_clave_historico_puestos` VALUES ('11', '1', '80', 'admin', '2016-06-04 15:58:07');
+INSERT INTO `respuestas_clave_historico_puestos` VALUES ('13', '1', '3', 'admin', '2016-06-04 16:02:53');
+INSERT INTO `respuestas_clave_historico_puestos` VALUES ('14', '1', '3', 'admin', '2016-06-04 16:04:17');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_manual_abierto
@@ -3977,7 +4021,7 @@ CREATE TABLE `respuestas_clave_manual_abierto` (
   CONSTRAINT `recma_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `recma_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `recma_preg` FOREIGN KEY (`id_manual_input_pregunta`) REFERENCES `cuestionarios_manual_input_preguntas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_clave_manual_abierto
@@ -4004,7 +4048,7 @@ CREATE TABLE `respuestas_clave_manual_opciones` (
   CONSTRAINT `recmm_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `recmm_opc` FOREIGN KEY (`id_opcion_respuesta`) REFERENCES `cuestionarios_manual_input_preguntas_opciones_respuestas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `recmm_preg` FOREIGN KEY (`id_opciones_input_manual`) REFERENCES `cuestionarios_manual_input_preguntas_opciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_clave_manual_opciones
@@ -4028,7 +4072,7 @@ CREATE TABLE `respuestas_evaluacion` (
   KEY `resev` (`evaluador`) USING BTREE,
   CONSTRAINT `respev1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respev2` FOREIGN KEY (`evaluador`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion
@@ -4058,7 +4102,7 @@ CREATE TABLE `respuestas_evaluacion_competencias` (
   CONSTRAINT `rec3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_competencias
@@ -4084,7 +4128,7 @@ CREATE TABLE `respuestas_evaluacion_empleados` (
   CONSTRAINT `reejefe` FOREIGN KEY (`evaluador`) REFERENCES `jerarquias` (`jefe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reesubo` FOREIGN KEY (`empleado`) REFERENCES `jerarquias` (`subordinado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reesubore` FOREIGN KEY (`id_respuestas_evaluacion`) REFERENCES `respuestas_evaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_empleados
@@ -4112,7 +4156,7 @@ CREATE TABLE `respuestas_evaluacion_manual_abierto` (
   CONSTRAINT `rema2` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema3` FOREIGN KEY (`id_manual_input_pregunta`) REFERENCES `cuestionarios_manual_input_preguntas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_abierto
@@ -4142,7 +4186,7 @@ CREATE TABLE `respuestas_evaluacion_manual_opciones` (
   CONSTRAINT `remo3` FOREIGN KEY (`id_opcion_respuesta`) REFERENCES `cuestionarios_manual_input_preguntas_opciones_respuestas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo4` FOREIGN KEY (`id_opciones_input_manual`) REFERENCES `cuestionarios_manual_input_preguntas_opciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_opciones
@@ -4170,126 +4214,161 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` VALUES ('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrador de sistema', 'admin@bcore.com.mx', '2015-09-07 20:58:33', '0');
 
 -- ----------------------------
--- View structure for empleados_formato
--- ----------------------------
-DROP VIEW IF EXISTS `empleados_formato`;
-CREATE VIEW `empleados_formato` AS select `e`.`empleado` AS `empleado`,concat(ifnull(`e`.`nombre`,''),' ',ifnull(`e`.`apellido_paterno`,''),' ',ifnull(`e`.`apellido_materno`,'')) AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`d`.`titulo` AS `departamento_n`,`e`.`puesto` AS `puesto`,`p`.`titulo` AS `puesto_n`,`e`.`area` AS `area`,`a`.`titulo` AS `area_n`,`e`.`nivel` AS `nivel`,`niveles`.`titulo` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from ((((`empleados` `e` join `departamentos` `d` on((`e`.`departamento` = `d`.`codigo`))) join `puestos` `p` on((`e`.`puesto` = `p`.`codigo`))) join `areas` `a` on((`e`.`area` = `a`.`codigo`))) join `niveles` on((`e`.`nivel` = `niveles`.`codigo`))) ;
-
--- ----------------------------
--- View structure for subordinados
--- ----------------------------
-DROP VIEW IF EXISTS `subordinados`;
-CREATE VIEW `subordinados` AS select `j`.`evaluacion` AS `evaluacion`,`j`.`jefe` AS `jefe`,`e`.`empleado` AS `empleado`,`e`.`n` AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`e`.`departamento_n` AS `departamento_n`,`e`.`puesto` AS `puesto`,`e`.`puesto_n` AS `puesto_n`,`e`.`area` AS `area`,`e`.`area_n` AS `area_n`,`e`.`nivel` AS `nivel`,`e`.`nivel_n` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from (`jerarquias` `j` join `empleados_formato` `e` on((`j`.`subordinado` = `e`.`empleado`))) where (`j`.`jefe` is not null) ;
-
--- ----------------------------
--- View structure for jefes_iniciales
--- ----------------------------
-DROP VIEW IF EXISTS `jefes_iniciales`;
-CREATE VIEW `jefes_iniciales` AS select distinct `j`.`evaluacion` AS `evaluacion`,0 AS `jefe`,`e`.`empleado` AS `empleado`,`e`.`n` AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`e`.`departamento_n` AS `departamento_n`,`e`.`puesto` AS `puesto`,`e`.`puesto_n` AS `puesto_n`,`e`.`area` AS `area`,`e`.`area_n` AS `area_n`,`e`.`nivel` AS `nivel`,`e`.`nivel_n` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from (`jerarquias` `j` join `empleados_formato` `e` on((`j`.`subordinado` = `e`.`empleado`))) where (not(`j`.`subordinado` in (select `subordinados`.`empleado` from `subordinados`))) ;
-
--- ----------------------------
--- View structure for evaluaciones_jefes
--- ----------------------------
-DROP VIEW IF EXISTS `evaluaciones_jefes`;
-CREATE VIEW `evaluaciones_jefes` AS select `s`.`evaluacion` AS `evaluacion`,`s`.`jefe` AS `jefe`,`s`.`empleado` AS `empleado`,`s`.`n` AS `n`,`s`.`nombre` AS `nombre`,`s`.`apellido_paterno` AS `apellido_paterno`,`s`.`apellido_materno` AS `apellido_materno`,`s`.`departamento` AS `departamento`,`s`.`departamento_n` AS `departamento_n`,`s`.`puesto` AS `puesto`,`s`.`puesto_n` AS `puesto_n`,`s`.`area` AS `area`,`s`.`area_n` AS `area_n`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n`,`s`.`email` AS `email`,`s`.`fechaRegistro` AS `fechaRegistro`,`s`.`status` AS `status` from `subordinados` `s` where `s`.`empleado` in (select `subordinados`.`jefe` from `subordinados`) union select `j`.`evaluacion` AS `evaluacion`,NULL AS `jefe`,`j`.`empleado` AS `empleado`,`j`.`n` AS `n`,`j`.`nombre` AS `nombre`,`j`.`apellido_paterno` AS `apellido_paterno`,`j`.`apellido_materno` AS `apellido_materno`,`j`.`departamento` AS `departamento`,`j`.`departamento_n` AS `departamento_n`,`j`.`puesto` AS `puesto`,`j`.`puesto_n` AS `puesto_n`,`j`.`area` AS `area`,`j`.`area_n` AS `area_n`,`j`.`nivel` AS `nivel`,`j`.`nivel_n` AS `nivel_n`,`j`.`email` AS `email`,`j`.`fechaRegistro` AS `fechaRegistro`,`j`.`status` AS `status` from `jefes_iniciales` `j` ;
-
--- ----------------------------
--- View structure for evaluacion_niveles
--- ----------------------------
-DROP VIEW IF EXISTS `evaluacion_niveles`;
-CREATE VIEW `evaluacion_niveles` AS select distinct `j`.`evaluacion` AS `evaluacion`,`j`.`nivel` AS `nivel`,`j`.`nivel_n` AS `nivel_n` from `jefes_iniciales` `j` union select distinct `s`.`evaluacion` AS `evaluacion`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n` from `subordinados` `s` ;
-
-
--- ----------------------------
--- View structure for empleados_disponibles
--- ----------------------------
-DROP VIEW IF EXISTS `empleados_disponibles`;
-CREATE VIEW `empleados_disponibles` AS select `e`.`empleado` AS `empleado`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,concat(ifnull(`e`.`nombre`,''),' ',ifnull(`e`.`apellido_paterno`,''),' ',ifnull(`e`.`apellido_materno`,'')) AS `n`,`e`.`departamento` AS `departamento`,`e`.`nivel` AS `nivel`,`e`.`puesto` AS `puesto`,`e`.`area` AS `area`,`e`.`email` AS `email`,`e`.`status` AS `status`,`e`.`fechaRegistro` AS `fechaRegistro` from `empleados_formato` `e` where (`e`.`status` = 0) ;
-
--- ----------------------------
 -- View structure for cartas_envios_detalle
 -- ----------------------------
 DROP VIEW IF EXISTS `cartas_envios_detalle`;
-CREATE VIEW `cartas_envios_detalle` AS select `ce`.`id` AS `id`,`ce`.`evaluacion` AS `evaluacion`,`ce`.`tipo` AS `tipo`,`ce`.`usuarioRegistrante` AS `usuarioRegistrante`,`ce`.`fechaRegistro` AS `fechaRegistro`,`ce`.`empleadosTotales` AS `empleadosTotales`,`ce`.`avance` AS `avance`,`u`.`nombre` AS `usuario_n`,`u`.`email` AS `email` from (`cartas_envios` `ce` join `usuarios` `u` on((`ce`.`usuarioRegistrante` = `u`.`usuario`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `cartas_envios_detalle` AS select `ce`.`id` AS `id`,`ce`.`evaluacion` AS `evaluacion`,`ce`.`tipo` AS `tipo`,`ce`.`usuarioRegistrante` AS `usuarioRegistrante`,`ce`.`fechaRegistro` AS `fechaRegistro`,`ce`.`empleadosTotales` AS `empleadosTotales`,`ce`.`avance` AS `avance`,`u`.`nombre` AS `usuario_n`,`u`.`email` AS `email` from (`cartas_envios` `ce` join `usuarios` `u` on((`ce`.`usuarioRegistrante` = `u`.`usuario`))) ;
 
 -- ----------------------------
 -- View structure for cartas_envios_relacion
 -- ----------------------------
 DROP VIEW IF EXISTS `cartas_envios_relacion`;
-CREATE VIEW `cartas_envios_relacion` AS select `ce`.`evaluacion` AS `evaluacion`,`cee`.`envio` AS `envio`,`ce`.`tipo` AS `tipo`,`cee`.`empleado` AS `empleado`,`cee`.`email` AS `email`,`cee`.`carta` AS `carta`,`cee`.`fechaRegistro` AS `fechaRegistro` from (`cartas_envios` `ce` join `cartas_envios_empleados` `cee` on((`ce`.`id` = `cee`.`envio`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `cartas_envios_relacion` AS select `ce`.`evaluacion` AS `evaluacion`,`cee`.`envio` AS `envio`,`ce`.`tipo` AS `tipo`,`cee`.`empleado` AS `empleado`,`cee`.`email` AS `email`,`cee`.`carta` AS `carta`,`cee`.`fechaRegistro` AS `fechaRegistro` from (`cartas_envios` `ce` join `cartas_envios_empleados` `cee` on((`ce`.`id` = `cee`.`envio`))) ;
 
 -- ----------------------------
 -- View structure for competencias_respuestas
 -- ----------------------------
 DROP VIEW IF EXISTS `competencias_respuestas`;
-CREATE VIEW `competencias_respuestas` AS select `cv`.`evaluacion` AS `evaluacion`,`cp`.`competencia` AS `competencia`,`cv`.`valor` AS `valor`,`cv`.`etiqueta` AS `etiqueta`,`cv`.`titulo` AS `titulo`,`cv`.`descripcion` AS `descripcion`,`cp`.`id` AS `id_valor` from (`cuestionarios_competencias_secciones_valores_posibles` `cp` join `cuestionarios_valores_posibles` `cv` on((`cp`.`valor` = `cv`.`id`))) order by `cp`.`competencia`,`cv`.`valor` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `competencias_respuestas` AS select `cv`.`evaluacion` AS `evaluacion`,`cp`.`competencia` AS `competencia`,`cv`.`valor` AS `valor`,`cv`.`etiqueta` AS `etiqueta`,`cv`.`titulo` AS `titulo`,`cv`.`descripcion` AS `descripcion`,`cp`.`id` AS `id_valor` from (`cuestionarios_competencias_secciones_valores_posibles` `cp` join `cuestionarios_valores_posibles` `cv` on((`cp`.`valor` = `cv`.`id`))) order by `cp`.`competencia`,`cv`.`valor` ;
 
 -- ----------------------------
 -- View structure for competencias_respuestas_valores
 -- ----------------------------
 DROP VIEW IF EXISTS `competencias_respuestas_valores`;
-CREATE VIEW `competencias_respuestas_valores` AS select `cv`.`evaluacion` AS `evaluacion`,`cp`.`competencia` AS `competencia`,`cv`.`valor` AS `valor`,`cv`.`etiqueta` AS `etiqueta`,`cv`.`titulo` AS `titulo`,`cp`.`id` AS `id_valor` from (`cuestionarios_competencias_secciones_valores_posibles` `cp` join `cuestionarios_valores_posibles` `cv` on((`cp`.`valor` = `cv`.`id`))) order by `cp`.`competencia`,`cv`.`valor` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `competencias_respuestas_valores` AS select `cv`.`evaluacion` AS `evaluacion`,`cp`.`competencia` AS `competencia`,`cv`.`valor` AS `valor`,`cv`.`etiqueta` AS `etiqueta`,`cv`.`titulo` AS `titulo`,`cp`.`id` AS `id_valor` from (`cuestionarios_competencias_secciones_valores_posibles` `cp` join `cuestionarios_valores_posibles` `cv` on((`cp`.`valor` = `cv`.`id`))) order by `cp`.`competencia`,`cv`.`valor` ;
+
+-- ----------------------------
+-- View structure for empleados_disponibles
+-- ----------------------------
+DROP VIEW IF EXISTS `empleados_disponibles`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `empleados_disponibles` AS select `e`.`empleado` AS `empleado`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,concat(ifnull(`e`.`nombre`,''),' ',ifnull(`e`.`apellido_paterno`,''),' ',ifnull(`e`.`apellido_materno`,'')) AS `n`,`e`.`departamento` AS `departamento`,`e`.`nivel` AS `nivel`,`e`.`puesto` AS `puesto`,`e`.`area` AS `area`,`e`.`email` AS `email`,`e`.`status` AS `status`,`e`.`fechaRegistro` AS `fechaRegistro` from `empleados_formato` `e` where (`e`.`status` = 0) ;
+
+-- ----------------------------
+-- View structure for empleados_formato
+-- ----------------------------
+DROP VIEW IF EXISTS `empleados_formato`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `empleados_formato` AS select `e`.`empleado` AS `empleado`,concat(ifnull(`e`.`nombre`,''),' ',ifnull(`e`.`apellido_paterno`,''),' ',ifnull(`e`.`apellido_materno`,'')) AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`d`.`titulo` AS `departamento_n`,`e`.`puesto` AS `puesto`,`p`.`titulo` AS `puesto_n`,`e`.`area` AS `area`,`a`.`titulo` AS `area_n`,`e`.`nivel` AS `nivel`,`niveles`.`titulo` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from ((((`empleados` `e` join `departamentos` `d` on((`e`.`departamento` = `d`.`codigo`))) join `puestos` `p` on((`e`.`puesto` = `p`.`codigo`))) join `areas` `a` on((`e`.`area` = `a`.`codigo`))) join `niveles` on((`e`.`nivel` = `niveles`.`codigo`))) ;
 
 -- ----------------------------
 -- View structure for evaluaciones_catalogo
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluaciones_catalogo`;
-CREATE VIEW `evaluaciones_catalogo` AS select `evaluaciones`.`id` AS `id`,`evaluaciones`.`titulo` AS `titulo` from `evaluaciones` where (`evaluaciones`.`status` <> 3) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_catalogo` AS select `evaluaciones`.`id` AS `id`,`evaluaciones`.`titulo` AS `titulo` from `evaluaciones` where (`evaluaciones`.`status` <> 3) ;
 
 -- ----------------------------
 -- View structure for evaluaciones_info
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluaciones_info`;
-CREATE VIEW `evaluaciones_info` AS select `e`.`id` AS `id`,`e`.`titulo` AS `titulo`,`e`.`usuarioRegistrante` AS `usuarioRegistrante`,`e`.`fechaRegistro` AS `fechaRegistro`,(select count(1) from `evaluaciones_jefes` where (`evaluaciones_jefes`.`evaluacion` = `e`.`id`)) AS `jefesTotales`,(select count(1) from `jerarquias` where (`jerarquias`.`evaluacion` = `e`.`id`)) AS `empleadosTotales`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 0)) limit 1) AS `cartas_eval_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 0))) AS `cartas_eval_avance`,now() AS `reporte_eval_fecha`,10 AS `reporte_eval_avance`,10 AS `eval_avance`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 1)) limit 1) AS `cartas_auto_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 1))) AS `cartas_auto_avance`,now() AS `reporte_auto_fecha`,0 AS `reporte_auto_avance`,10 AS `auto_avance`,`e`.`texto_bienvenida_evaluacion` AS `texto_bienvenida_evaluacion`,`e`.`texto_bienvenida_autoevaluacion` AS `texto_bienvenida_autoevaluacion`,`e`.`status` AS `status`,`u1`.`nombre` AS `usuarioRegistranteNombre`,(case `e`.`status` when 0 then 'Cerrado' when 1 then 'Evaluación activa' when 2 then 'Autoevaluación activa' end) AS `statusValor` from (`evaluaciones` `e` join `usuarios` `u1` on((`e`.`usuarioRegistrante` = `u1`.`usuario`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_info` AS select `e`.`id` AS `id`,`e`.`titulo` AS `titulo`,`e`.`usuarioRegistrante` AS `usuarioRegistrante`,`e`.`fechaRegistro` AS `fechaRegistro`,(select count(1) from `evaluaciones_jefes` where (`evaluaciones_jefes`.`evaluacion` = `e`.`id`)) AS `jefesTotales`,(select count(1) from `jerarquias` where (`jerarquias`.`evaluacion` = `e`.`id`)) AS `empleadosTotales`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 0)) limit 1) AS `cartas_eval_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 0))) AS `cartas_eval_avance`,0 AS `reporte_eval_fecha`,0 AS `reporte_eval_contador`,(select count(1) from `respuestas_evaluacion` where (`respuestas_evaluacion`.`evaluacion` = `e`.`id`)) AS `eval_contador`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 1)) limit 1) AS `cartas_auto_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 1))) AS `cartas_auto_avance`,0 AS `reporte_auto_fecha`,0 AS `reporte_auto_contador`,(select count(1) from `respuestas_autoevaluacion` where (`respuestas_autoevaluacion`.`evaluacion` = `e`.`id`)) AS `auto_contador`,`e`.`texto_bienvenida_evaluacion` AS `texto_bienvenida_evaluacion`,`e`.`texto_bienvenida_autoevaluacion` AS `texto_bienvenida_autoevaluacion`,`e`.`status` AS `status`,`u1`.`nombre` AS `usuarioRegistranteNombre`,(case `e`.`status` when 0 then 'Cerrado' when 1 then 'Evaluación activa' when 2 then 'Autoevaluación activa' end) AS `statusValor` from (`evaluaciones` `e` join `usuarios` `u1` on((`e`.`usuarioRegistrante` = `u1`.`usuario`))) ;
+
+-- ----------------------------
+-- View structure for evaluaciones_info_reportable
+-- ----------------------------
+DROP VIEW IF EXISTS `evaluaciones_info_reportable`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_info_reportable` AS select `evaluaciones_info`.`id` AS `id`,`evaluaciones_info`.`titulo` AS `titulo`,`evaluaciones_info`.`fechaRegistro` AS `fechaRegistro`,`evaluaciones_info`.`jefesTotales` AS `jefesTotales`,`evaluaciones_info`.`empleadosTotales` AS `empleadosTotales`,ifnull(`evaluaciones_info`.`cartas_eval_fecha`,0) AS `cartas_eval_fecha`,ifnull(`evaluaciones_info`.`cartas_eval_avance`,0) AS `cartas_eval_avance`,`evaluaciones_info`.`eval_contador` AS `eval_contador`,(case when (((`evaluaciones_info`.`eval_contador` / `evaluaciones_info`.`empleadosTotales`) > 0) and ((`evaluaciones_info`.`eval_contador` / `evaluaciones_info`.`empleadosTotales`) < 1)) then 1 else round((`evaluaciones_info`.`eval_contador` / `evaluaciones_info`.`empleadosTotales`),2) end) AS `eval_avance`,`evaluaciones_info`.`reporte_eval_fecha` AS `reporte_eval_fecha`,`evaluaciones_info`.`reporte_eval_contador` AS `reporte_eval_contador`,ifnull(`evaluaciones_info`.`cartas_auto_fecha`,0) AS `cartas_auto_fecha`,ifnull(`evaluaciones_info`.`cartas_auto_avance`,0) AS `cartas_auto_avance`,`evaluaciones_info`.`auto_contador` AS `auto_contador`,round((`evaluaciones_info`.`eval_contador` / `evaluaciones_info`.`empleadosTotales`),2) AS `auto_avance`,`evaluaciones_info`.`reporte_auto_fecha` AS `reporte_auto_fecha`,`evaluaciones_info`.`reporte_auto_contador` AS `reporte_auto_contador`,`evaluaciones_info`.`texto_bienvenida_evaluacion` AS `texto_bienvenida_evaluacion`,`evaluaciones_info`.`texto_bienvenida_autoevaluacion` AS `texto_bienvenida_autoevaluacion`,`evaluaciones_info`.`usuarioRegistrante` AS `usuarioRegistrante`,`evaluaciones_info`.`usuarioRegistranteNombre` AS `usuarioRegistranteNombre`,`evaluaciones_info`.`status` AS `status`,`evaluaciones_info`.`statusValor` AS `statusValor` from `evaluaciones_info` ;
+
+-- ----------------------------
+-- View structure for evaluaciones_jefes
+-- ----------------------------
+DROP VIEW IF EXISTS `evaluaciones_jefes`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_jefes` AS select `s`.`evaluacion` AS `evaluacion`,`s`.`jefe` AS `jefe`,`s`.`empleado` AS `empleado`,`s`.`n` AS `n`,`s`.`nombre` AS `nombre`,`s`.`apellido_paterno` AS `apellido_paterno`,`s`.`apellido_materno` AS `apellido_materno`,`s`.`departamento` AS `departamento`,`s`.`departamento_n` AS `departamento_n`,`s`.`puesto` AS `puesto`,`s`.`puesto_n` AS `puesto_n`,`s`.`area` AS `area`,`s`.`area_n` AS `area_n`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n`,`s`.`email` AS `email`,`s`.`fechaRegistro` AS `fechaRegistro`,`s`.`status` AS `status` from `subordinados` `s` where `s`.`empleado` in (select `subordinados`.`jefe` from `subordinados`) union select `j`.`evaluacion` AS `evaluacion`,NULL AS `jefe`,`j`.`empleado` AS `empleado`,`j`.`n` AS `n`,`j`.`nombre` AS `nombre`,`j`.`apellido_paterno` AS `apellido_paterno`,`j`.`apellido_materno` AS `apellido_materno`,`j`.`departamento` AS `departamento`,`j`.`departamento_n` AS `departamento_n`,`j`.`puesto` AS `puesto`,`j`.`puesto_n` AS `puesto_n`,`j`.`area` AS `area`,`j`.`area_n` AS `area_n`,`j`.`nivel` AS `nivel`,`j`.`nivel_n` AS `nivel_n`,`j`.`email` AS `email`,`j`.`fechaRegistro` AS `fechaRegistro`,`j`.`status` AS `status` from `jefes_iniciales` `j` ;
 
 -- ----------------------------
 -- View structure for evaluaciones_niveles_listado
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluaciones_niveles_listado`;
-CREATE VIEW `evaluaciones_niveles_listado` AS select `en`.`evaluacion` AS `evaluacion`,`en`.`nivel` AS `nivel`,`en`.`nivel_n` AS `nivel_n`,if(isnull(`rch`.`usuarioRegistrante`),0,1) AS `clave_registrada`,`u`.`nombre` AS `usuario_n`,`rch`.`fechaRegistro` AS `fechaRegistro` from ((`evaluacion_niveles` `en` left join `respuestas_clave_historico_niveles` `rch` on(((`rch`.`evaluacion` = `en`.`evaluacion`) and (`rch`.`nivel` = `en`.`nivel`)))) left join `usuarios` `u` on((`u`.`usuario` = `rch`.`usuarioRegistrante`))) group by `en`.`evaluacion`,`en`.`nivel` order by `en`.`evaluacion`,`en`.`nivel`,`rch`.`fechaRegistro` desc ;
-
--- ----------------------------
--- View structure for evaluacion_puestos
--- ----------------------------
-DROP VIEW IF EXISTS `evaluacion_puestos`;
-CREATE VIEW `evaluacion_puestos` AS select distinct `j`.`evaluacion` AS `evaluacion`,`j`.`puesto` AS `nivel`,`j`.`puesto_n` AS `nivel_n` from `jefes_iniciales` `j` union select distinct `s`.`evaluacion` AS `evaluacion`,`s`.`puesto` AS `nivel`,`s`.`puesto_n` AS `nivel_n` from `subordinados` `s` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_niveles_listado` AS select `en`.`evaluacion` AS `evaluacion`,`en`.`nivel` AS `nivel`,`en`.`nivel_n` AS `nivel_n`,if(isnull(`rch`.`usuarioRegistrante`),0,1) AS `clave_registrada`,`u`.`nombre` AS `usuario_n`,`rch`.`fechaRegistro` AS `fechaRegistro` from ((`evaluacion_niveles` `en` left join `respuestas_clave_historico_niveles` `rch` on(((`rch`.`evaluacion` = `en`.`evaluacion`) and (`rch`.`nivel` = `en`.`nivel`)))) left join `usuarios` `u` on((`u`.`usuario` = `rch`.`usuarioRegistrante`))) group by `en`.`evaluacion`,`en`.`nivel` order by `en`.`evaluacion`,`en`.`nivel`,`rch`.`fechaRegistro` desc ;
 
 -- ----------------------------
 -- View structure for evaluaciones_puestos_listado
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluaciones_puestos_listado`;
-CREATE VIEW `evaluaciones_puestos_listado` AS select `en`.`evaluacion` AS `evaluacion`,`en`.`nivel` AS `nivel`,`en`.`nivel_n` AS `nivel_n`,if(isnull(`rch`.`usuarioRegistrante`),0,1) AS `clave_registrada`,`u`.`nombre` AS `usuario_n`,`rch`.`fechaRegistro` AS `fechaRegistro` from ((`evaluacion_puestos` `en` left join `respuestas_clave_historico_puestos` `rch` on(((`rch`.`evaluacion` = `en`.`evaluacion`) and (`rch`.`puesto` = `en`.`nivel`)))) left join `usuarios` `u` on((`u`.`usuario` = `rch`.`usuarioRegistrante`))) group by `en`.`evaluacion`,`en`.`nivel` order by `en`.`evaluacion`,`en`.`nivel`,`rch`.`fechaRegistro` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_puestos_listado` AS select `en`.`evaluacion` AS `evaluacion`,`en`.`nivel` AS `nivel`,`en`.`nivel_n` AS `nivel_n`,if(isnull(`rch`.`usuarioRegistrante`),0,1) AS `clave_registrada`,`u`.`nombre` AS `usuario_n`,`rch`.`fechaRegistro` AS `fechaRegistro` from ((`evaluacion_puestos` `en` left join `respuestas_clave_historico_puestos` `rch` on(((`rch`.`evaluacion` = `en`.`evaluacion`) and (`rch`.`puesto` = `en`.`nivel`)))) left join `usuarios` `u` on((`u`.`usuario` = `rch`.`usuarioRegistrante`))) group by `en`.`evaluacion`,`en`.`nivel` order by `en`.`evaluacion`,`en`.`nivel`,`rch`.`fechaRegistro` desc ;
 
 -- ----------------------------
 -- View structure for evaluacion_competencias
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluacion_competencias`;
-CREATE VIEW `evaluacion_competencias` AS select `cc`.`evaluacion` AS `evaluacion`,`cc`.`id` AS `id`,`cc`.`titulo` AS `titulo`,`cc`.`orden` AS `orden`,'competencia' AS `tipo`,`cc`.`principal` AS `principal`,`cc`.`vinculaPuestos` AS `vinculaPuestos` from `cuestionarios_competencias` `cc` union select `cmi`.`evaluacion` AS `evaluacion`,`cmi`.`id` AS `id`,`cmi`.`titulo` AS `titulo`,`cmi`.`orden` AS `orden`,'manual' AS `manual`,1 AS `1`,0 AS `0` from `cuestionarios_manual_input` `cmi` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_competencias` AS select `cc`.`evaluacion` AS `evaluacion`,`cc`.`id` AS `id`,`cc`.`titulo` AS `titulo`,`cc`.`orden` AS `orden`,'competencia' AS `tipo`,`cc`.`principal` AS `principal`,`cc`.`importante` AS `importante`,`cc`.`vinculaPuestos` AS `vinculaPuestos` from `cuestionarios_competencias` `cc` union select `cmi`.`evaluacion` AS `evaluacion`,`cmi`.`id` AS `id`,`cmi`.`titulo` AS `titulo`,`cmi`.`orden` AS `orden`,'manual' AS `manual`,1 AS `1`,0 AS `0`,0 AS `My_exp_0` from `cuestionarios_manual_input` `cmi` ;
 
 -- ----------------------------
 -- View structure for evaluacion_cuestionario_listado
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluacion_cuestionario_listado`;
-CREATE VIEW `evaluacion_cuestionario_listado` AS select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `nivelPuesto`,`eco`.`vinculaPuestos` AS `vinculaPuestos` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `0`,0 AS `My_exp_0` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_manual` = `eco`.`id`) and (`ecu`.`tipo` = 'manual') and (`eco`.`tipo` = 'manual') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,1 AS `1`,0 AS `0` from (`evaluaciones_cuestionario_puestos` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) order by `evaluacion`,`nivel`,`orden` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_cuestionario_listado` AS select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `nivelPuesto`,`eco`.`vinculaPuestos` AS `vinculaPuestos` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `0`,0 AS `My_exp_0` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_manual` = `eco`.`id`) and (`ecu`.`tipo` = 'manual') and (`eco`.`tipo` = 'manual') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,1 AS `1`,0 AS `0` from (`evaluaciones_cuestionario_puestos` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) order by `evaluacion`,`nivel`,`orden` ;
+
+-- ----------------------------
+-- View structure for evaluacion_niveles
+-- ----------------------------
+DROP VIEW IF EXISTS `evaluacion_niveles`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_niveles` AS select distinct `j`.`evaluacion` AS `evaluacion`,`j`.`nivel` AS `nivel`,`j`.`nivel_n` AS `nivel_n` from `jefes_iniciales` `j` union select distinct `s`.`evaluacion` AS `evaluacion`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n` from `subordinados` `s` ;
+
+-- ----------------------------
+-- View structure for evaluacion_puestos
+-- ----------------------------
+DROP VIEW IF EXISTS `evaluacion_puestos`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_puestos` AS select distinct `j`.`evaluacion` AS `evaluacion`,`j`.`puesto` AS `nivel`,`j`.`puesto_n` AS `nivel_n` from `jefes_iniciales` `j` union select distinct `s`.`evaluacion` AS `evaluacion`,`s`.`puesto` AS `nivel`,`s`.`puesto_n` AS `nivel_n` from `subordinados` `s` ;
+
+-- ----------------------------
+-- View structure for jefes_iniciales
+-- ----------------------------
+DROP VIEW IF EXISTS `jefes_iniciales`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `jefes_iniciales` AS select distinct `j`.`evaluacion` AS `evaluacion`,0 AS `jefe`,`e`.`empleado` AS `empleado`,`e`.`n` AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`e`.`departamento_n` AS `departamento_n`,`e`.`puesto` AS `puesto`,`e`.`puesto_n` AS `puesto_n`,`e`.`area` AS `area`,`e`.`area_n` AS `area_n`,`e`.`nivel` AS `nivel`,`e`.`nivel_n` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from (`jerarquias` `j` join `empleados_formato` `e` on((`j`.`subordinado` = `e`.`empleado`))) where (not(`j`.`subordinado` in (select `subordinados`.`empleado` from `subordinados`))) ;
 
 -- ----------------------------
 -- View structure for respuestas_evaluaciones_empleados_detalles
 -- ----------------------------
 DROP VIEW IF EXISTS `respuestas_evaluaciones_empleados_detalles`;
-CREATE VIEW `respuestas_evaluaciones_empleados_detalles` AS select `s`.`evaluacion` AS `evaluacion`,`s`.`jefe` AS `jefe`,`s`.`empleado` AS `empleado`,`s`.`n` AS `n`,`s`.`departamento_n` AS `departamento_n`,`s`.`puesto` AS `puesto`,`s`.`puesto_n` AS `puesto_n`,`s`.`area_n` AS `area_n`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n`,ifnull(`ree`.`id`,0) AS `respuesta`,`ree`.`fechaRegistro` AS `fechaRegistro` from (`subordinados` `s` left join `respuestas_evaluacion_empleados` `ree` on(((`s`.`evaluacion` = `ree`.`evaluacion`) and (`s`.`jefe` = `ree`.`evaluador`) and (`s`.`empleado` = `ree`.`empleado`)))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `respuestas_evaluaciones_empleados_detalles` AS select `s`.`evaluacion` AS `evaluacion`,`s`.`jefe` AS `jefe`,`s`.`empleado` AS `empleado`,`s`.`n` AS `n`,`s`.`departamento_n` AS `departamento_n`,`s`.`puesto` AS `puesto`,`s`.`puesto_n` AS `puesto_n`,`s`.`area_n` AS `area_n`,`s`.`nivel` AS `nivel`,`s`.`nivel_n` AS `nivel_n`,ifnull(`ree`.`id`,0) AS `respuesta`,`ree`.`fechaRegistro` AS `fechaRegistro` from (`subordinados` `s` left join `respuestas_evaluacion_empleados` `ree` on(((`s`.`evaluacion` = `ree`.`evaluacion`) and (`s`.`jefe` = `ree`.`evaluador`) and (`s`.`empleado` = `ree`.`empleado`)))) ;
 
 -- ----------------------------
 -- View structure for respuestas_evaluacion_detalles
 -- ----------------------------
 DROP VIEW IF EXISTS `respuestas_evaluacion_detalles`;
-CREATE VIEW `respuestas_evaluacion_detalles` AS select `ef`.`empleado` AS `empleado`,`ef`.`nombre` AS `nombre`,`ef`.`n` AS `n`,md5(`ef`.`n`) AS `clave`,`j`.`evaluacion` AS `evaluacion`,`re`.`evaluadosTotales` AS `evaluadosTotales`,`re`.`avance` AS `avance`,`re`.`fechaRegistro` AS `fechaRegistro` from ((`empleados_formato` `ef` join `jerarquias` `j` on((`j`.`subordinado` = `ef`.`empleado`))) left join `respuestas_evaluacion` `re` on(((`ef`.`empleado` = `re`.`evaluador`) and (`j`.`evaluacion` = `re`.`evaluacion`)))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `respuestas_evaluacion_detalles` AS select `ef`.`empleado` AS `empleado`,`ef`.`nombre` AS `nombre`,`ef`.`n` AS `n`,md5(`ef`.`n`) AS `clave`,`j`.`evaluacion` AS `evaluacion`,`re`.`evaluadosTotales` AS `evaluadosTotales`,`re`.`avance` AS `avance`,`re`.`fechaRegistro` AS `fechaRegistro` from ((`empleados_formato` `ef` join `jerarquias` `j` on((`j`.`subordinado` = `ef`.`empleado`))) left join `respuestas_evaluacion` `re` on(((`ef`.`empleado` = `re`.`evaluador`) and (`j`.`evaluacion` = `re`.`evaluacion`)))) ;
+
+-- ----------------------------
+-- View structure for subordinados
+-- ----------------------------
+DROP VIEW IF EXISTS `subordinados`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `subordinados` AS select `j`.`evaluacion` AS `evaluacion`,`j`.`jefe` AS `jefe`,`e`.`empleado` AS `empleado`,`e`.`n` AS `n`,`e`.`nombre` AS `nombre`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`departamento` AS `departamento`,`e`.`departamento_n` AS `departamento_n`,`e`.`puesto` AS `puesto`,`e`.`puesto_n` AS `puesto_n`,`e`.`area` AS `area`,`e`.`area_n` AS `area_n`,`e`.`nivel` AS `nivel`,`e`.`nivel_n` AS `nivel_n`,`e`.`email` AS `email`,`e`.`fechaRegistro` AS `fechaRegistro`,`e`.`status` AS `status` from (`jerarquias` `j` join `empleados_formato` `e` on((`j`.`subordinado` = `e`.`empleado`))) where (`j`.`jefe` is not null) ;
+
+-- ----------------------------
+-- Procedure structure for eliminarRespuestasCompetenciaNivel
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `eliminarRespuestasCompetenciaNivel`;
+DELIMITER ;;
+CREATE DEFINER=`mayab`@`%` PROCEDURE `eliminarRespuestasCompetenciaNivel`(IN `_evaluacion` int,IN `_nivel` int,IN `_competencia` int)
+BEGIN
+	#Elimina respuestas de clave de una competencia en NIVELES
+	SET @seccion = (SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia);
+	DELETE FROM respuestas_clave_competencias_niveles WHERE evaluacion = _evaluacion AND nivel = _nivel
+	AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = @seccion);
+END
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Procedure structure for eliminarRespuestasCompetenciaPuesto
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `eliminarRespuestasCompetenciaPuesto`;
+DELIMITER ;;
+CREATE DEFINER=`mayab`@`%` PROCEDURE `eliminarRespuestasCompetenciaPuesto`(IN `_evaluacion` int,IN `_nivel` int,IN `_competencia` int)
+BEGIN
+	#Elimina respuestas de clave de una competencia en puestos
+	SET @seccion = (SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia);
+	DELETE FROM respuestas_clave_competencias_puestos WHERE evaluacion = _evaluacion AND nivel = _nivel
+	AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = @seccion);
+END
+;;
+DELIMITER ;
 
 -- ----------------------------
 -- Procedure structure for remover_jefe
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `remover_jefe`;
 DELIMITER ;;
-CREATE PROCEDURE `remover_jefe`(IN `_evaluacion` int,IN `_empleado` int)
+CREATE DEFINER=`mayab`@`%` PROCEDURE `remover_jefe`(IN `_evaluacion` int,IN `_empleado` int)
 BEGIN
 	DELETE FROM jerarquias WHERE jefe = _empleado AND evaluacion = _evaluacion;
 
@@ -4302,7 +4381,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `reset_respuestas_clave`;
 DELIMITER ;;
-CREATE PROCEDURE `reset_respuestas_clave`(IN `_evaluacion` int,IN `_nivel` int, IN _tipo int)
+CREATE DEFINER=`mayab`@`%` PROCEDURE `reset_respuestas_clave`(IN `_evaluacion` int,IN `_nivel` int, IN _tipo int)
 BEGIN
 	IF _tipo = 0 THEN
 		DELETE FROM respuestas_clave_competencias_niveles WHERE evaluacion = _evaluacion AND nivel = _nivel;
@@ -4321,7 +4400,7 @@ DELIMITER ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `respuestas_evaluacion_totales`;
 DELIMITER ;;
-CREATE PROCEDURE `respuestas_evaluacion_totales`(IN `_evaluacion` int,IN `_evaluador` int)
+CREATE DEFINER=`mayab`@`%` PROCEDURE `respuestas_evaluacion_totales`(IN `_evaluacion` int,IN `_evaluador` int)
 BEGIN
 	UPDATE respuestas_evaluacion SET evaluadosTotales = (SELECT COUNT(id) FROM subordinados WHERE jefe = _evaluador AND evaluacion = _evaluacion);
 
@@ -4334,7 +4413,7 @@ DELIMITER ;
 -- ----------------------------
 DROP FUNCTION IF EXISTS `UC_Words`;
 DELIMITER ;;
-CREATE FUNCTION `UC_Words`(str VARCHAR(255)) RETURNS varchar(255) CHARSET utf8
+CREATE DEFINER=`mayab`@`%` FUNCTION `UC_Words`(str VARCHAR(255)) RETURNS varchar(255) CHARSET utf8
 BEGIN  
   DECLARE c CHAR(1);  
   DECLARE s VARCHAR(255);  
@@ -4400,7 +4479,7 @@ DROP TRIGGER IF EXISTS `eval_cue_res_clean`;
 DELIMITER ;;
 CREATE TRIGGER `eval_cue_res_clean` AFTER DELETE ON `evaluaciones_cuestionario_niveles` FOR EACH ROW BEGIN
 	IF OLD.tipo = 'competencia' THEN
-		DELETE FROM respuestas_clave_competencias_niveles WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;
+		CALL eliminarRespuestasCompetenciaPuesto(OLD.evaluacion, OLD.nivel, OLD.id_competencia);
 	ELSEIF OLD.tipo = 'manual' THEN
 		DELETE FROM respuestas_clave_manual_abierto WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;
 		DELETE FROM respuestas_clave_manual_opciones WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;
@@ -4412,7 +4491,7 @@ DELIMITER ;
 DROP TRIGGER IF EXISTS `eval_cue_resp_clean`;
 DELIMITER ;;
 CREATE TRIGGER `eval_cue_resp_clean` AFTER DELETE ON `evaluaciones_cuestionario_puestos` FOR EACH ROW BEGIN
-	DELETE FROM respuestas_clave_competencias_puestos WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;
+	CALL eliminarRespuestasCompetenciaPuesto(OLD.evaluacion, OLD.nivel, OLD.id_competencia);
 	DELETE FROM respuestas_clave_historico_puestos WHERE evaluacion = OLD.evaluacion AND puesto = OLD.nivel;
 END
 ;;
