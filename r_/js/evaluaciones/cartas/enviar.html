@@ -1,0 +1,56 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()"><span>&times;</span></button>
+  <h4 class="modal-title">Envío de cartas de invitación</h4>
+</div>
+<form>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3 class="marginTop0">Destinatarios: {{tab.intro.capitalizeFirstLetter()}}</h3>
+				<div ng-if="!data.enviando && !gui.envioExito">
+					<div class="alert alert-info" ng-if="gui.envioDisponible"><i class="fa fa-smile-o marginRight10"></i> Las cartas aún no han sido enviadas.<br>Presione <a href="#">aquí</a> para realizar el envío masivo.</div>
+					<div class="alert alert-danger" ng-if="gui.enviadoPreviamente"><i class="fa fa-warning marginRight10"></i> Las cartas han sido previamente enviadas. Si decide reenviarlas todos los destinatarios que ya hayan recibido su carta la verán en su buzón nuevamente.</div>
+					<div class="alert alert-info" ng-if="gui.enviadoParcialmente"><i class="fa fa-pause marginRight10"></i> Las cartas se enviaron parcialmente.<br>Presione <a ng-click="enviar()">aquí</a> para continuar con el envío masivo.</div>
+				</div>
+				<div class="alert alert-success" ng-if="!data.enviando && gui.envioExito"><i class="fa fa-check marginRight10"></i> El envío de las cartas ha sido completado exitosamente.</div>
+				<div class="alert alert-warning" ng-if="!gui.envioError && data.enviando"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> El envío de las cartas está en progreso...</div>
+				<div class="alert alert-danger" ng-if="gui.envioError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error. Intente de nuevo más tarde.</div>
+			</div>
+		</div>
+		
+		<span ng-if="gui.enviadoParcialmente || empleadoEnviando">
+			<div class="row">
+				<div class="col-sm-12">
+					<h4>Progreso del envío</h4>
+					<p ng-if="data.enviando">
+						Enviando a <b>{{empleadoEnviando.n}}</b>
+					</p>
+				</div>
+			</div>
+			
+			<div class="row" ng-if="data.enviando || data.avance > 0">
+				<div class="col-sm-12">
+					<div class="progress">
+						<div class="progress-bar progress-bar-primary" style="width: {{data.avance}}%" ng-class="{ 'progress-bar-striped active': data.enviando }">
+							{{data.avance}}%
+						</div>
+					</div>
+				</div>
+			</div>
+		</span>
+</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning pull-left" type="button" ng-click="cancel()"><i class="fa fa-fw fa-times marginRight10"></i> {{ !gui.envioExito ? 'Cancelar' : 'Cerrar' }}</button>
+		<button class="btn btn-primary" type="button" ng-click="enviar()" ng-disabled="data.enviando" ng-if="(gui.envioDisponible || gui.enviadoPreviamente) && !gui.envioExito"><i class="fa fa-fw fa-floppy-o marginRight10"></i> {{ !gui.enviadoPreviamente ? 'Enviar cartas' : 'Reenviar a todos' }}</button>
+		<div class="btn-group" ng-if="gui.enviadoParcialmente && !gui.envioExito">
+			<button type="button" class="btn btn-primary" ng-click="enviar()" ng-disabled="data.enviando"><i class="fa fa-fw fa-floppy-o marginRight10"></i> Continuar envíos</button>
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" ng-disabled="data.enviando">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a ng-click="enviar()"><i class="fa fa-fw fa-warning marginRight10 marginLeft-6"></i> Reenviar a todos</a></li>
+			</ul>
+		</div>
+	</div>
+</form>

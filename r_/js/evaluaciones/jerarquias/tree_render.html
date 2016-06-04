@@ -1,0 +1,26 @@
+<li class="list-group-item" ng-class="{ 'bg-gray': obj.new }">
+	<div class="pull-right">
+		<i class="fa fa-spinner fa-pulse" ng-if="obj.wait" title="Registrando..."></i>
+		<span ng-if="!obj.wait">
+			<span class="badge">{{obj.subordinados.length}}</span>
+			<div class="btn-group marginLeft10">
+				<button type="button" class="btn btn-default btn-xs" title="Agregar subordinado" ng-click="agregar(obj)"><i class="fa fa-fw fa-plus"></i> Agregar</button>
+				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<!--<li><a title="Editar empleado" ng-click="editar()"><i class="fa fa-fw fa-pencil"></i> Editar</a></li>-->
+					<li><a class="pointer" title="Eliminar empleado y sus subordinados" ng-click="eliminar()"><i class="fa fa-fw fa-remove"></i> Eliminar</a></li>
+				</ul>
+			</div>
+		</span>
+	</div>
+	<div class="pull-left">
+		<div>{{obj.n}}</div>
+		<small class="text-muted">{{obj.departamento_n}} - {{obj.puesto_n}}</small>
+	</div>
+	<div class="clearfix"></div>
+	<ul class="list-group marginTop10 marginBottom0" ng-if="obj.subordinados.length">
+		<tree-render ng-repeat="data in obj.subordinados" info="data" parent="obj" functions="functions"></tree-render>
+	</ul>
+</li>

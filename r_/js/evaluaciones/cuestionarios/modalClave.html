@@ -1,0 +1,24 @@
+<div>
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancelar()"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Cuestionario de clave de respuestas</h4>
+	</div>
+	<div class="modal-body paddingBottom0">
+		<template-formulario data="data"></template-formulario>
+		<div class="marginTop10">
+			<!--<div class="alert alert-warning marginBottom0" ng-if="gui.ocupado"><i class="fa fa-spinner fa-spin marginRight10"></i> Guardando cambios...</div>
+			<div class="alert alert-danger marginBottom0" ng-if="gui.error"><i class="fa fa-warning marginRight10"></i> Ha ocurrido un error. Reinicie su sesión e intente nuevamente.</div>-->
+			<div class="alert alert-success marginBottom0" ng-if="gui.exito"><i class="fa fa-check marginRight10"></i> La clave se ha registrado exitosamente.</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default pull-left" type="button" ng-click="cancelar()" ng-disabled="gui.ocupado"><i class="fa fa-times marginRight10"></i> Cancelar</button>
+		
+		<div class="pull-right" ng-if="!gui.cargando && !gui.cargandoRespuestas">
+			<button class="btn btn-warning" type="button" ng-click="anterior()" ng-if="!gui.primerCuestionario" ng-disabled="gui.ocupado"><i class="fa fa-chevron-left marginLeft10"></i> Anterior</button>
+			<button class="btn btn-primary" type="button" ng-click="siguiente()" ng-if="!gui.ultimoCuestionario">Siguiente <i class="fa fa-chevron-right marginLeft10"></i></button>
+			<button class="btn btn-success" type="button" ng-click="registrar()" ng-if="gui.ultimoCuestionario" ng-disabled="gui.ocupado"><i class="fa fa-floppy-o marginRight10"></i> Registrar</button>
+		</div>
+		
+	</div>
+</div>

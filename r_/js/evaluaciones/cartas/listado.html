@@ -1,0 +1,53 @@
+<div class="tab-content">
+	<div class="alert alert-warning marginBottom0" ng-if="gui.cargando"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> Cargando información...</div>
+	<div class="alert alert-danger marginBottom0" ng-if="gui.cargandoError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error. Intente nuevamente.</div>
+
+	<div ng-if="!gui.cargando && !gui.cargandoError">
+		<h3 class="marginTop0">Envío de cartas a {{tab.intro}}</h3>
+		<div class="row">
+			<div class="col-sm-12">
+				<div ng-if="!data.enviando">
+					<div class="info-box bg-green" ng-if="data.id > 0">
+						<span class="info-box-icon"><i class="fa" ng-class="{ 'fa-check': data.avance == 100, 'fa-pause': data.avance < 100 }"></i></span>
+						<div class="info-box-content">
+							<button class="btn btn-default btn-sm pull-right" ng-click="enviarCartas()"><i class="fa fa-fw fa-envelope"></i> {{ data.avance < 100 ? 'Continuar envíos' : 'Reenviar' }}</button>
+							<span class="info-box-text">Envíos realizados por <b>{{data.usuario_n}}</b></span>
+							<span class="info-box-number">{{data.avance}}%</span>
+							<div class="progress">
+								<div class="progress-bar" style="width: {{data.avance}}%"></div>
+							</div>
+							<span class="progress-description">
+								{{moment(data.fechaRegistro).format('D MMM, YYYY - HH:mm')}}
+							</span>
+						</div>
+					</div>
+					
+					<div class="info-box bg-yellow" ng-if="!data.id || data.id == 0">
+						<span class="info-box-icon"><i class="fa fa-envelope"></i></span>
+						<div class="info-box-content">
+							
+							<span class="info-box-text">Las cartas aún no han sido enviadas</span>
+							
+							<div class="marginTop20">
+							<button class="btn btn-primary btn-block" ng-click="enviarCartas()"><i class="fa fa-fw fa-at"></i> Realizar envíos</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="info-box bg-blue" ng-if="data.enviando">
+					<span class="info-box-icon"><i class="fa fa-cog fa-spin"></i></span>
+					<div class="info-box-content">
+						<span class="info-box-text marginTop10"><h3>En proceso de envío...</h3></span>
+					</div>
+				</div>
+				
+				<hr>
+				<h4>Lista de destinatarios</h4>
+				<ul class="fa-ul marginTop10 marginBottom0">
+					<tree-render ng-repeat="inicio in data.jerarquia" info="inicio" parent="inicio" data="data" tab="tab"></tree-render>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

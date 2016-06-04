@@ -1,0 +1,26 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title">Agregar empleado a jerarquía</h4>
+</div>
+<form>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-sm-12" ng-init="typeAheadSetEstablecimientos()">
+				<div class="form-group" ng-class="{ 'has-error': noResults }">
+					<input type="text" id="_empleado_form_" ng-model="typeSelected" placeholder="Clave o nombre de empleado" uib-typeahead="address for address in getEmpleados($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-editable="false" typeahead-on-select="selected($item, $event)" ng-keyup="$event.keyCode == 13 && validar()" class="form-control" autocomplete="off" ng-class="{ 'typeLoading': loadingLocations }">
+					<span class="help-block" ng-if="noResults">No se encontró al empleado. Veifique su información.</span>
+				</div>
+		
+				<div class="marginTop10">
+					<div class="alert alert-warning" ng-if="gui.ocupado"><i class="fa fa-spinner fa-spin marginRight10"></i> Agregando empleado...</div>
+					<div class="alert alert-danger" ng-if="gui.invalid"><i class="fa fa-warning"></i> Llene todos los campos obligatorios para continuar.</div>
+					<div class="alert alert-danger" ng-if="gui.error"><i class="fa fa-warning"></i> Ha ocurrido un error. {{error}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning pull-left" type="button" ng-click="cancel()"><i class="fa fa-times marginRight10"></i> Cancelar</button>
+		<button class="btn btn-success" type="button" ng-click="ok()" ng-disabled="noResults || loadingLocations"><i class="fa fa-floppy-o marginRight10"></i> Registrar</button>
+	</div>
+</form>

@@ -1,0 +1,14 @@
+<li class="marginBottom10" ng-class="{ 'bg-gray': obj.new }">
+	<i class="fa fa-li fa-square-o" title="Su carta no ha sido enviada" ng-if="!obj.carta.envio || obj.carta.envio == 0" ></i>
+	<i class="fa fa-li fa-check-square-o text-success" title="Carta enviada el {{moment(carta.fechaRegistro).format('D MMM, YYYY - HH:mm')}}" ng-if="obj.carta.envio > 0"></i>
+	<div class="ln1">
+		<div>
+			<a ng-href="{{_sitePath_}}cartas/contenido/{{data.evaluacion}}/{{tab.tipo}}/{{obj.empleado}}{{_suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará">{{obj.n}}</a>
+		</div>
+		<small class="text-muted">{{obj.departamento_n}} - {{obj.puesto_n}}</small>
+	</div>
+	
+	<ul class="fa-ul marginTop10 marginBottom0" ng-if="obj.subordinados.length">
+		<tree-render ng-repeat="data in obj.subordinados" info="data" data="data" tab="tab"></tree-render>
+	</ul>
+</li>

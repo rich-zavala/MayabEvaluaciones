@@ -1,0 +1,117 @@
+<div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="marginTop0"><i class="fa fa-fw fa-file-text-o"></i> {{data.titulo}}</h2>
+		
+			<div class="alert alert-warning marginTop20" ng-if="(gui.cargando || gui.cargandoRespuestas) && !gui.cargandoError"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> Cargando información...</div>
+			<div class="alert alert-danger marginTop20" ng-if="gui.cargandoError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error.</div>
+			
+			<div ng-if="!gui.cargando && !gui.cargandoRespuestas && !gui.cargandoError">
+				<form name="formGeneral" novalidate>
+					<div ng-repeat="(index, com) in cuestionario">
+						<div ng-if="com.vinculaPuestos == 0">
+							<!-- Para competencias con secciones -->
+							<div ng-if="com.tipo == 'competencia'">
+								<div ng-repeat="sec in com.secciones" ng-if="competenciaActual == com.id && seccionActual == sec.id" ng-form="f_{{com.id}}_{{sec.id}}" ng-init="setForm(formGeneral)">
+									
+									<table class="table table-bordered table-striped table-condensed marginTop20">
+										<thead>
+											<tr class="bg-orange-active color-palette">
+												<th colspan="6"><h3 class="text-center marginTop0 marginBottom0 negritas" ng-bind-html="com.titulo | to_trusted"></h3></th>
+											</tr>
+										</thead>
+										<tr class="bg-yellow color-palette">
+											<th class="text-center font16" width="{{ 100 / com.respuestas.length }}" ng-repeat="rp in com.respuestas">
+												{{rp.etiqueta}}
+											</th>
+										</tr>
+										<tr><td class="negritas text-center" ng-repeat="rp in com.respuestas" ng-bind-html="rp.titulo | to_trusted"></td></tr>
+										<tr><td ng-repeat="rp in com.respuestas" ng-bind-html="rp.descripcion | to_trusted"></td></tr>
+									</table>
+									
+									<h3 class="marginTop0 text-primary" ng-bind-html="sec.titulo | to_trusted"></h3>
+									<p ng-bind-html="sec.descripcion | to_trusted"></p>
+									<ul class="list-group">
+										<li class="list-group-item" hover-class="list-group-item-info" ng-repeat="pre in sec.conductas">
+											<h4 ng-bind-html="pre.descripcion | to_trusted" ng-class="{ 'text-danger': formGeneral['f_' + com.id + '_' + sec.id].$submitted && formGeneral['f_' + com.id + '_' + sec.id]['res_' + pre.id].$invalid }"></h4>
+											<div class="btn-group">
+												<label class="btn btn-default btn-valor" title="{{res.titulo}}" ng-repeat="res in com.respuestas" ng-class="{ 'active': datos.respuestas.competencias[pre.id].id_valor == res.id_valor }">
+													<input type="radio" name="res_{{pre.id}}" class="hidden" ng-model="datos.respuestas.competencias[pre.id].id_valor" value="{{res.id_valor}}" required> {{res.etiqueta}}
+												</label>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+							<!-- Para preguntas abiertas -->
+							<div ng-if="com.tipo == 'manual'">
+								<div class="marginTop20" ng-repeat="sec in com.secciones" ng-if="competenciaActual == com.id && seccionActual == sec.id" ng-form="f_{{com.id}}_{{sec.id}}" ng-init="setForm(formGeneral)">
+									<div ng-repeat="pre in sec.preguntas">
+										<h3 class="text-primary" ng-bind-html="pre.titulo | to_trusted" ng-class="{ 'marginTop0': $first }"></h3>
+										<div ng-if="pre.tipo == 'abierto'">
+											<div ng-repeat="i in getNumber(pre.inputsCantidad) track by $index">
+												<div class="input-group input-group-sm marginBottom10" ng-class="{ 'has-error': formGeneral['f_' + com.id + '_' + sec.id].$submitted && formGeneral['f_' + com.id + '_' + sec.id]['man_' + pre.id + '_' + $index].$invalid }">
+													<span class="input-group-addon bg-info" title="Escriba su respuesta">
+														<i class="fa fa-minus marginRight10"></i>
+														{{$index + 1}}
+													</span>
+													<input type="text" class="form-control" name="man_{{pre.id}}_{{$index}}" ng-model="datos.respuestas.manual.abierto[pre.id + '_' +$index].valor" required autocomplete="off">
+												</div>
+											</div>
+										</div>
+										
+										<div ng-if="pre.tipo == 'opciones'">
+											<div class="box box-solid box-default" ng-repeat="opc in pre.opciones">
+												<div class="box-body paddingBottom0 paddingTop0">
+													<h4 ng-bind-html="opc.descripcion | to_trusted" ng-class="{ 'text-danger': formGeneral['f_' + com.id + '_' + sec.id].$submitted && formGeneral['f_' + com.id + '_' + sec.id]['opc_res_' + opc.id].$invalid }"></h4>
+													<div class="row">
+														<div class="col-md-3 opcRow">
+																<div class="btn-group w100">
+																	<label class="btn btn-default btn-sm w50" ng-repeat="res in opc.respuestas" ng-class="{ 'active': datos.respuestas.manual.opciones[opc.id].id_opcion_respuesta == res.id }">
+																		<input type="radio" name="opc_res_{{opc.id}}" class="hidden" value="{{res.id}}" ng-model="datos.respuestas.manual.opciones[opc.id].id_opcion_respuesta" required>
+																		<span class="negritas" ng-bind-html="res.titulo | to_trusted"></span>
+																	</label>
+																</div>
+														</div>
+														<div class="col-md-9">
+															<div class="input-group input-group-sm marginBottom10" ng-class="{ 'has-error': formGeneral['f_' + com.id + '_' + sec.id].$submitted && formGeneral['f_' + com.id + '_' + sec.id]['opc_preg_' + opc.id].$invalid }">
+																<span class="input-group-addon" ng-bind-html="opc.manual_input | to_trusted"></span>
+																<input type="text" class="form-control" name="opc_preg_{{opc.id}}" ng-model="datos.respuestas.manual.opciones[opc.id].valor_manual" required autocomplete="off">
+															</div>
+														</div>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										
+										<hr ng-if="!$last">
+										<div class="marginBottom20" ng-if="$last"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Aviso para cuestionarios de nivel que vinculan a puestos -->
+						<div ng-if="com.vinculaPuestos == 1 && competenciaActual == com.id" ng-form="f_{{com.id}}_0" ng-init="setForm(formGeneral)">
+							<div class="alert alert-info">
+								<h3 class="marginTop0"><i class="fa fa-info-circle fa-2x pull-left marginRight20"></i> En esta posición del cuestionario se presentarán los formularios de puesto específico.</h3>
+							</div>
+						</div>
+					</div>
+					
+				</form>
+				<div class="alert alert-danger marginBottom10" ng-if="formGeneral['f_' + competenciaActual + '_' + seccionActual].$submitted && formGeneral['f_' + competenciaActual + '_' + seccionActual].$invalid">
+					<i class="fa fa-warning marginRight10"></i> Es necesario responder todas las preguntas del cuestionario.
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+	<div ng-if="gui.ocupado || gui.error">
+		<div class="alert alert-warning marginBottom10" ng-if="gui.ocupado"><i class="fa fa-spinner fa-spin marginRight10"></i> Registrando información...</div>
+		<div class="alert alert-danger marginBottom10" ng-if="gui.error"><i class="fa fa-warning marginRight10"></i> Ha ocurrido un error. Intente nuevamente más tarde.</div>
+	</div>
+</div>

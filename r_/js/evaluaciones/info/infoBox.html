@@ -1,0 +1,13 @@
+<div class="info-box" ng-class="{ 'bg-orange': info.porcentaje < 100 && info.porcentaje > 0, 'bg-green': info.porcentaje >= 100 }">
+	<span class="info-box-icon"><i class="fa fa-{{info.icono}}"></i></span>
+	<div class="info-box-content">
+		<span class="info-box-text">{{info.titulo}}</span>
+		<span class="info-box-number">{{info.porcentaje}} %</span>
+		<div class="progress">
+			<div class="progress-bar" style="width: {{info.porcentaje}}%"></div>
+		</div>
+		<span class="progress-description" ng-if="info.fecha != null">
+			{{info.fecha.length > 0 ? moment(info.fecha).format('D MMM, YYYY - HH:mm [hrs]') : ''}}
+		</span>
+	</div>
+</div>

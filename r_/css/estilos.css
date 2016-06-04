@@ -1,0 +1,204 @@
+@media(min-width:768px) {
+	#sideToogle {
+		display: block !important;
+		/*border-bottom: 1px solid #e7e7e7;*/
+		padding: 2px 0;
+		text-align: right;
+	}
+	
+	#sideToogle a {
+		display: inline-block;
+		padding: 2px 8px;
+	}
+	
+	.navbar-default.sidebar.sbHide{
+		margin-left: -158px;
+	}
+	.navbar-default.sidebar.sbHide ul{ display: none; }
+
+	#page-wrapper.sbHide{
+		margin-left: 28px;
+	}
+	
+	#wrapper {
+		min-width: 100%;
+	}
+}
+@media (min-width: 992px){
+	.opcRow{ /* Opción si/no */
+		margin-bottom: initial !important;
+    margin-top: initial !important;
+	}
+}
+
+.fontSmall{ font-size: 13px; }
+.font11{ font-size: 11px; }
+.font12{ font-size: 12px; }
+.font16{ font-size: 16px !important; }
+.padding0{ padding: 0px !important }
+.padding5{ padding: 5px !important }
+.paddingLeft10{ padding-left: 10px !important; }
+.paddingLeft15{ padding-left: 15px !important; }
+.paddingLeft20{ padding-left: 20px !important; }
+.paddingRight10{ padding-right: 10px !important; }
+.paddingRight20{ padding-right: 20px !important; }
+.paddingTop0{ padding-top: 0px }
+.paddingTop5{ padding-top: 5px }
+.paddingTop10{ padding-top: 10px }
+.paddingBottom5{ padding-bottom: 5px }
+.paddingBottom0{ padding-bottom: 0px }
+.margin0{ margin: 0px }
+.marginLeft-6{ margin-left: -6px !important }
+.marginLeft0{ margin-left: 0px !important }
+.marginLeft5{ margin-left: 5px !important }
+.marginLeft10{ margin-left: 10px !important }
+.marginLeft20{ margin-left: 20px }
+.marginRight5{ margin-right: 5px !important }
+.marginRight10{ margin-right: 10px !important }
+.marginRight20{ margin-right: 20px }
+.marginBottom0{ margin-bottom: 0px }
+.marginBottom5{ margin-bottom: 5px }
+.marginBottom10{ margin-bottom: 10px }
+.marginBottom20{ margin-bottom: 20px }
+.marginBottom-15{ margin-bottom: -15px }
+.marginTop5{ margin-top: 5px }
+.marginTop-5{ margin-top: -5px }
+.marginTop0{ margin-top: 0px }
+.marginTop3{ margin-top: 3px }
+.marginTop5{ margin-top: 5px }
+.marginTop10{ margin-top: 10px }
+.marginTop16{ margin-top: 16px }
+.marginTop20{ margin-top: 20px }
+.marginTop30{ margin-top: 30px }
+.w100{ width: 100%; }
+.w50{ width: 50%; }
+.wAuto{ width: auto; }
+.table-border-top thead tr th{ border-top: 2px solid #ddd !important; }
+.menuSecundario .panel-heading{ font-weight: bold; }
+.negritas{ font-weight: bold; }
+.normal{ font-weight: normal; }
+.ln1 { line-height: 1; }
+.form-control::-webkit-input-placeholder { color: #C3C3C3; }
+.form-control:-moz-placeholder { color: #C3C3C3; }
+.form-control::-moz-placeholder { color: #C3C3C3; }
+.form-control:-ms-input-placeholder { color: #C3C3C3; }
+.pointer { cursor: pointer }
+.nowrap{ white-space: nowrap; }
+.typeLoading{
+	background: url(../images/ajax-loader.gif) 98% 50%;
+  background-repeat: no-repeat;
+}
+a[ng-click]{ cursor: pointer; }
+
+/* Específicos del portal */
+.navMayab{ background-color: white; }
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	border-top-color: #00c0ef;
+  font-weight: normal;
+}
+.nav-pills > li > a {
+	min-width: 130px;
+  text-align: center;
+}
+.btn-valor{ min-width: 80px; }
+.btn-valor:hover, .btn-valor.active { font-weight: bold; }
+.bg-gray{ background-color: #ddd; }
+.encuesta.layout-boxed {
+  background: url('../images/fondoHeader2.png') repeat fixed;
+}
+.encuesta .main-header .navbar.solid { 
+  background: white;
+  border-bottom: 1px solid #D4D4D4;
+  padding: 0 15px;
+}
+.encuesta .main-header .navbar.solid .logo {
+	background: url(../images/logo_uam.png);
+	height: 50px;
+	margin: 8px 30px 8px 0;
+	width: 243px;
+}
+.encuesta span.navbar-brand {
+	color: #7E4404;
+	font-size: 2em;
+	padding: 24px;
+	font-weight: bold;
+}
+.encuesta .content-header > h2{
+	margin: 0;
+	font-size: 20px;
+}
+.encuesta .info-box-text { text-transform: initial; }
+.encuesta a.info-box-icon{ color: white; transition: all .3s }
+.encuesta a.info-box-icon:hover{ background-color: darkorange; }
+.encuesta .info-box-encuesta-link a{ color: black }
+.encuesta .info-box-encuesta-link a:hover{ color: white }
+.encuesta .box-title{ font-size: 20px; }
+.evaluandoTitulo {
+	padding: 10px 20px;
+	background: url(../images/fondoHeader1.png);
+}
+.evaluandoTitulo span{
+	color: white;
+	font-size: 1.3em;
+}
+.evaluandoTitulo .btn{ margin-top: -3px; }
+
+/*Panel de Inicio*/
+.widget-info .widget-user-header{ height: 98px; }
+.widget-info .box-footer{ padding-top: 0 }
+.widget-info .description-block { margin: 6px 0; }
+.widget-user-header select{
+	color: black;
+	width: 100%;
+	padding: 10px;
+	font-size: 1.3em;
+	padding: 4px;
+	border: none;
+	opacity: 0.8;
+	margin-top: 5px;
+}
+
+/* Sobreescribir listas de FA */
+.fa-ul {
+	padding-left: 22px;
+	margin-left: 0px;
+	list-style-type: none;
+}
+.fa-li {
+	float: left;
+	margin-right: 10px;
+	margin-top: -2px;
+}
+.progress-bar{ min-width: 22px; }
+
+/* Ajustes al AdminLTE */
+.skin-yellow .main-header .navbar { background-color: rgba(243, 156, 18, 0.6); }
+.btn {
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.login-box, .register-box { width: 460px; }
+.nav-tabs-custom>.nav-tabs>li.active>a { color: #3C8DBC; }
+.navbar-nav>.user-menu .user-image {
+	width: 40px;
+	height: 40px;
+	margin-top: -10px;
+	border: 2px solid #6F6F6F;
+	padding-top: 5px;
+	background: white;
+}
+.opcRow{ /* Opción si/no */
+	margin-bottom: 10px;
+}
+.form-control{ background: #F7F7F7; }
+.form-control:focus{ background-color: white; }
+.nivCompetenciasListado{
+	font-size: .8em;
+	font-family: monospace;
+	line-height: 1 !important;
+	display: inline-block;
+}
+li.list-group-item:hover {
+    background: rgb(229, 235, 239);
+    transition: all .5s;
+}

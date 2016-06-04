@@ -1,0 +1,23 @@
+<div>
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancelar()"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Eliminación de registro</h4>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="alert alert-info marginBottom0"><i class="fa fa-remove marginRight10"></i> Confirma la eliminación de este registro.</div>
+			</div>
+		</div>
+		<div class="marginTop10">
+			<div class="alert alert-warning marginBottom0" ng-if="gui.ocupado"><i class="fa fa-spinner fa-spin marginRight10"></i> Ejecutando eliminación...</div>
+			<div class="alert alert-danger marginBottom0" ng-if="gui.error"><i class="fa fa-warning marginRight10"></i> Ha ocurrido un error. Reinicie su sesión e intente nuevamente.</div>
+			<div class="alert alert-success marginBottom0" ng-if="gui.exito"><i class="fa fa-check marginRight10"></i> La eliminación se ha realizado exitosamente.</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" type="button" ng-click="registrar()" ng-if="!gui.exito"><i class="fa fa-bomb marginRight10"></i> Eliminar</button>
+		<button class="btn btn-warning pull-left" type="button" ng-click="cancelar()" ng-if="!gui.exito"><i class="fa fa-times marginRight10"></i> Cancelar</button>
+		<button class="btn btn-default" type="button" ng-click="cancelar()" ng-if="gui.exito"><i class="fa fa-times marginRight10"></i> Cerrar</button>
+	</div>
+</div>

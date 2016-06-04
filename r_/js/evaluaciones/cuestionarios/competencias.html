@@ -1,0 +1,68 @@
+<div class="tab-content">
+	<!--
+	18 Mayo 2016 > Ricardo Zavala
+	Todos los objetos relacionados con niveles o puestos hacen referencia a la palabra "nivel".
+	Esto es porque el requerimiento inicial sólamente comprendía niveles. Posteriormente se
+	agregó la opción de los puestos. Por eso no tiene sentido, pero así está la cosa.
+	Esta nota está dentro del <div> porque sino marca error el Angular.
+	-->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="alert alert-warning marginTop10 marginBottom10" ng-if="gui.cargandoNiveles || gui.cargandoCompetencias"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> Cargando información...</div>
+			<div class="alert alert-danger marginTop10 marginBottom10" ng-if="gui.cargandoNivelesError || gui.cargandoCompetenciasError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error.</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-12" ng-if="!gui.cargandoNiveles && !gui.cargandoCompetencias && !gui.cargandoNivelesError && !gui.cargandoCompetenciasError"><p class="text-info" ng-bind-html="intro | to_trusted"></p></div>
+		<div ng-if="!gui.cargandoNiveles && !gui.cargandoCompetencias && !gui.cargandoNivelesError && !gui.cargandoCompetenciasError">
+			<div ng-class="{ 'col-xs-12': !editandoCompetencias, 'col-xs-7': editandoCompetencias }" ng-if="niveles.length > 0">
+				<!--<h4>Nivel</h4>-->
+				<ul class="list-group">
+					<li type="button" class="list-group-item" ng-class="{ 'list-group-item-warning': (niv | json) == (nivel_elegido | json) }" ng-repeat="niv in niveles">
+						<div class="row">
+							<div class="col-xs-7">
+								<div>{{niv.nivel_n}}</div>
+								<div class="ln1 marginTop5 text-success" ng-if="niv.clave_registrada > 0">
+									<small title="La clave está registrada">
+										<i class="fa fa-check"></i>
+										<span class="negritas" ng-bind-html="niv.usuario_n | to_trusted"></span>.
+										{{moment(niv.fechaRegistro).format('D MMM, YYYY. HH:mm a')}}
+									</small>
+								</div>
+								<small class="nivCompetenciasListado text-muted ln1" ng-bind-html="titulosCompetencias(niv.competencias) | to_trusted"></small>
+							</div>
+							<div class="col-xs-5">
+								<div class="text-right">
+									<button class="btn btn-xs btn-primary" title="Contestar el cuestionario de este nivel" ng-click="contestarClave(niv)" ng-disabled="niv.competencias.length < 1"><i class="fa fa-lg fa-fw fa-file-text-o"></i> Clave</button>
+									<button class="btn btn-xs btn-default" title="Editar las {{niv.competencias.length}} competencias asignadas" ng-click="elegirNivel(niv)"><i class="fa fa-lg fa-fw fa-edit"></i> <span class="badge marginLeft5">{{niv.competencias.length}}</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-5" ng-if="editandoCompetencias">
+			<h4>
+				Competencias
+				<a ng-click="competenciasCerrar()"><i class="fa fa-remove pointer pull-right" title="Cerrar"></i></a>
+			</h4>
+			<div class="list-group">
+				<button type="button" class="list-group-item" ng-class="{ 'list-group-item-success': com.activo }" ng-repeat="com in competencias" ng-click="competenciaAgregar(com)">
+					<i class="fa fa-lg fa-fw marginRight5" ng-class="{ 'fa-check-square-o': com.activo, 'fa-square-o': !com.activo }"></i>
+					<span ng-bind-html="com.titulo | to_trusted"></span>
+				</button>
+			</div>
+			<div ng-if="(competencias | json) != (nivel_elegido_competencias | json)">
+				<button class="btn btn-block btn-sm btn-success" ng-if="!gui.nivelesGuardando" ng-click="competenciasGuardar()"><i class="fa fa-fw fa-floppy-o marginRigh10"></i> Guardar cambios en <i><b>{{nivel_elegido.nivel_n}}</b></i></button>
+				<button class="btn btn-block btn-sm btn-success active" ng-if="gui.nivelesGuardando"><i class="fa fa-fw fa-spinner fa-pulse marginRigh10"></i> Guardando cambios en <i></b>{{nivel_elegido.nivel_n}}</b></i></button>
+			</div>
+			
+			<div id="nivelesGuardadoExito" ng-if="gui.nivelesGuardadoExito">
+				<button class="btn btn-block btn-sm btn-success disabled"><i class="fa fa-fw fa-check marginRigh10"></i> Cambios guardados</button>
+			</div>
+		</div>
+	</div>
+</div>
