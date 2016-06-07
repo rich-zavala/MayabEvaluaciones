@@ -5,8 +5,8 @@ class Emailuam
 	var $config = array(
 		'protocol' => 'smtp',
 		'smtp_port' => 25,
-		'smtp_host' => 'UAM-EXCH02',
-		// 'smtp_host' => '192.168.10.104',
+		// 'smtp_host' => 'UAM-EXCH02',
+		'smtp_host' => '192.168.10.104',
 		'mailtype' => 'html', 
 		'charset' => 'UTF-8',
 		'wordwrap' => TRUE,
@@ -28,8 +28,8 @@ class Emailuam
 	
 	public function to($i)
 	{
-		// $this->to = $i;
-		$this->to = 'uam@uam.mx';
+		$this->to = $i;
+		// $this->to = 'uam@uam.mx';
 	}
 	
 	public function cc($i)

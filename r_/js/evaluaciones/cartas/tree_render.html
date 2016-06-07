@@ -3,7 +3,7 @@
 	<i class="fa fa-li fa-check-square-o text-success" title="Carta enviada el {{moment(carta.fechaRegistro).format('D MMM, YYYY - HH:mm')}}" ng-if="obj.carta.envio > 0"></i>
 	<div class="ln1">
 		<div>
-			<a ng-href="{{_sitePath_}}cartas/contenido/{{data.evaluacion}}/{{tab.tipo}}/{{obj.empleado}}{{_suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará">{{obj.n}}</a>
+			<a ng-href="{{_sitePath_}}cartas/contenido/{{_eval_}}/{{tab.tipo}}/{{obj.empleado}}{{_suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará">{{obj.n}}</a>
 		</div>
 		<small class="text-muted">{{obj.departamento_n}} - {{obj.puesto_n}}</small>
 	</div>

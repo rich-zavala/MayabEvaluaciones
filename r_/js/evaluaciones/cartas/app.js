@@ -17,7 +17,12 @@ app.controller('appController', ['$scope', '$rootScope', '$timeout', function($s
 	};
 	
 	//Activar la primera pestaña
-	$timeout(function(){ $scope.activarTab($scope.tabs[0]); }, 250);
+	$scope.activateFirst = function(tabIndex){
+		if(tabIndex == 0)
+			$timeout(function(){
+				$scope.activarTab($scope.tabs[0]);
+			}, 100);
+	}
 }]);
 
 //Controlador para el listado y envío de cartas
@@ -67,7 +72,7 @@ app.directive('cartasController', ['$compile', function($compile) {
 				}).finally(function(){
 					$scope.gui.cargando = false;
 				});
-			}
+			};
 			
 			$scope.enviarCartas = function (obj) {
 				var modalInstance = $uibModal.open({
@@ -82,6 +87,8 @@ app.directive('cartasController', ['$compile', function($compile) {
 					}
 				});
 			};
+			
+			
 		}]
   }	
 }]);
