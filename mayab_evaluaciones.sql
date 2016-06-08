@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-06-04 16:26:37
+Date: 2016-06-07 23:23:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,11 +55,13 @@ CREATE TABLE `cartas_envios` (
   KEY `car_usu` (`usuarioRegistrante`),
   CONSTRAINT `car_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `car_usu` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios
 -- ----------------------------
+INSERT INTO `cartas_envios` VALUES ('1', '1', '0', 'admin', '2016-06-07 00:09:07', '72', '0');
+INSERT INTO `cartas_envios` VALUES ('2', '1', '0', 'admin', '2016-06-07 00:09:30', '72', '15');
 
 -- ----------------------------
 -- Table structure for cartas_envios_empleados
@@ -78,11 +80,26 @@ CREATE TABLE `cartas_envios_empleados` (
   KEY `caenem_emp` (`empleado`),
   CONSTRAINT `caenem_emp` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `caenem_env` FOREIGN KEY (`envio`) REFERENCES `cartas_envios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios_empleados
 -- ----------------------------
+INSERT INTO `cartas_envios_empleados` VALUES ('2', '2', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-07 00:09:31');
+INSERT INTO `cartas_envios_empleados` VALUES ('3', '2', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-07 00:09:32');
+INSERT INTO `cartas_envios_empleados` VALUES ('4', '2', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-07 00:09:33');
+INSERT INTO `cartas_envios_empleados` VALUES ('5', '2', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-07 00:09:34');
+INSERT INTO `cartas_envios_empleados` VALUES ('6', '2', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-07 00:09:36');
+INSERT INTO `cartas_envios_empleados` VALUES ('7', '2', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:37');
+INSERT INTO `cartas_envios_empleados` VALUES ('8', '2', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-07 00:09:38');
+INSERT INTO `cartas_envios_empleados` VALUES ('9', '2', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:39');
+INSERT INTO `cartas_envios_empleados` VALUES ('10', '2', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-07 00:09:40');
+INSERT INTO `cartas_envios_empleados` VALUES ('11', '2', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-07 00:09:44');
+INSERT INTO `cartas_envios_empleados` VALUES ('12', '2', '32149973', 'gary.murillo@anahuac.mx', '<p>Apreciable Gary Rusell Murillo Esquivel:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:45');
+INSERT INTO `cartas_envios_empleados` VALUES ('13', '2', '32124234', 'jazmine.peraza@anahuac.mx', '<p>Apreciable María Jazmine Del Carmen Peraza Rosas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo ', '2016-06-07 00:09:47');
+INSERT INTO `cartas_envios_empleados` VALUES ('14', '2', '32124224', 'florangely.herrera@anahuac.mx', '<p>Apreciable Florángely Herrera Baas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-07 00:09:48');
+INSERT INTO `cartas_envios_empleados` VALUES ('15', '2', '32143828', 'maribel.ojeda@anahuac.mx', '<p>Apreciable Georgina Maribel Ojeda Viana:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:49');
+INSERT INTO `cartas_envios_empleados` VALUES ('16', '2', '32144995', 'sally.avilez@anahuac.mx', '<p>Apreciable Sally Yolanda Avilez Briceño:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:50');
 
 -- ----------------------------
 -- Table structure for cartas_templates
@@ -117,9 +134,8 @@ CREATE TABLE `ci_sessions` (
 -- ----------------------------
 -- Records of ci_sessions
 -- ----------------------------
-INSERT INTO `ci_sessions` VALUES ('7e201131d210042bebffee0a3ed4a509363b61dc', '127.0.0.1', '1464222220', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436343134323731303B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30352D32352030343A31383A3332223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
-INSERT INTO `ci_sessions` VALUES ('8e7abba370bbd7e1b10908d6d6c002c2f487dad3', '127.0.0.1', '1464233714', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436343233333731343B);
-INSERT INTO `ci_sessions` VALUES ('74a008dddb6fec8e314dd8b34b0ffd71a3654b79', '127.0.0.1', '1465075172', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353036343534303B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30342032303A32323A3232223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
+INSERT INTO `ci_sessions` VALUES ('d574eec3aa02b1fb95cfce969737b3a0609fea69', '127.0.0.1', '1465354999', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353237343834363B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30372030363A34373A3237223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
+INSERT INTO `ci_sessions` VALUES ('52c24c8a0cc002e7af7625ae63644b1984989c66', '127.0.0.1', '1465275475', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353237343837353B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30372030363A34383A3238223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 
 -- ----------------------------
 -- Table structure for cuestionarios_competencias
@@ -145,7 +161,7 @@ CREATE TABLE `cuestionarios_competencias` (
 -- ----------------------------
 INSERT INTO `cuestionarios_competencias` VALUES ('1', '1', 'Competencias institucionales', '0', '1', '0', '0');
 INSERT INTO `cuestionarios_competencias` VALUES ('2', '1', 'Competencias directivas', '0', '1', '0', '1');
-INSERT INTO `cuestionarios_competencias` VALUES ('3', '1', 'Rector', '1', '0', '0', '2');
+INSERT INTO `cuestionarios_competencias` VALUES ('3', '1', 'Rector', '0', '1', '0', '2');
 INSERT INTO `cuestionarios_competencias` VALUES ('4', '1', 'Mandos medios', '0', '1', '0', '3');
 INSERT INTO `cuestionarios_competencias` VALUES ('5', '1', 'Profesores', '0', '1', '0', '4');
 INSERT INTO `cuestionarios_competencias` VALUES ('6', '1', 'Operativos 1 (Personal administrativo)', '0', '1', '0', '5');
@@ -348,8 +364,8 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('12', '3', 
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('13', '3', 'Tiene la habilidad de preguntar con expresiones adecuadas y mostrando interés y empatía con el objetivo de recoger información.', '3');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('14', '3', 'Es específico y logra transmitir con claridad sus ideas de tal forma que permita a su equipo de trabajo comprender su papel dentro de la organización y de motivarse para realizar mejor su trabajo para beneficio propio y de la empresa en general.', '4');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('15', '3', 'Sabe trabajar en equipo y por lo tanto: Realiza acciones que permitan generar autonomía y responsabilidad en los miembros del equipo.', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('16', '4', 'Tiene la capacidad de establecer metas y objetivos congruentes con las capacidades del equipo de trabajo y al mismo tiempo desafiantes por encima de los estándares, mejorando y manteniendo altos niveles de rendimiento.', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('17', '4', 'Es capaz de realizar las funciones que tiene autorizadas sin supervisión.', '2');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('16', '4', 'Tiene la capacidad de establecer metas y objetivos congruentes con las capacidades del equipo de trabajo y al mismo tiempo desafiantes por encima de los estándares, mejorando y manteniendo altos niveles de rendimiento. (Pregunta sólo para puestos directivos)', '1');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('17', '4', 'Es capaz de realizar las funciones que tiene autorizadas sin supervisión. (Pregunta sólo para puestos directivos)', '2');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('18', '4', 'Capacidad de planear el logro de las metas y objetivos dirigiendo adecuadamente los recursos.', '3');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('19', '4', 'Genera sinergia contribuyendo con las diferentes áreas de la empresa con el fin de alcanzar los objetivos organizacionales.', '4');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('20', '4', 'Se compromete con los proyectos institucionales que no son necesariamente de su área, se suma y apoya genuinamente.', '5');
@@ -357,41 +373,36 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('21', '5', 
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('22', '5', 'Es innovador, busca nuevas y mejores maneras de lograr los objetivos por medio de la investigación y aprovechando los cambios tecnológicos en un ambiente competitivo.', '2');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('23', '5', 'Sus opiniones enseñan puntos de vista que no habían considerado para resolver las cosas.', '3');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('24', '5', 'Ha implementado en su área nuevos procesos y/o servicios innovadores con éxito.', '4');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('26', '6', 'Toma la iniciativa en la realización de su trabajo cotidiano.', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('27', '6', 'Demuestra capacidad de adaptación a los cambios del entorno.', '2');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('27', '6', 'Demuestra capacidad de adaptación a los cambios del entorno que se le presentan.', '2');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('28', '6', 'Se interesa por su desarrollo profesional y personal dentro de la institución. (Talleres, capacitación,etc.)', '3');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('29', '6', 'Se compromete con las metas de su área y realiza un plan de acción para lograrlas.', '4');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('30', '6', 'Mantiene una actitud positiva ante las dificultades que se le presentan.', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('31', '7', 'Se presenta a trabajar de acuerdo al código de vestimenta e imagen de la institución.(Evita pantalones de mezclilla, escotes, sandalias,bermudas,etc).', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('32', '7', 'Su discurso y actuar está de acuerdo con los valores y principios de la institución.', '2');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('33', '7', 'Muestra congruencia entre su discurso y su actuar.(Valores)', '3');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('34', '7', 'Fomenta un agradable ambiente en su área de trabajo y dentro de la institución.', '4');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('35', '7', 'Participa activamente en las diferentes actividades que organiza la institución.', '5');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('31', '7', 'Se presenta a trabajar de acuerdo al código de vestimenta e imagen de la Institución.(Evita pantalones de mezclilla, escotes, sandalias,bermudas,etc).', '1');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('32', '7', 'Su discurso y actuar está de acuerdo con los valores y principios de la Institución.', '2');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('34', '7', 'Fomenta un agradable ambiente en su área de trabajo y dentro de la Institución.', '4');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('35', '7', 'Participa activamente en las diferentes actividades que organiza la Institución.', '5');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('36', '8', 'Involucra a su equipo de trabajo para conseguir las metas de su área.', '1');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('37', '8', 'Reconoce y retroalimenta las fortalezas y áreas de oportunidad de los miembros de su equipo.', '2');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('38', '8', 'Motiva y convence a su equipo en situaciones que no son de su agrado o están fuera de su control.', '3');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('39', '8', 'Enseña y da oportunidades de diálogo ente su equipo.', '4');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('39', '8', 'Enseña y da oportunidades de diálogo entre su equipo.', '4');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('40', '8', 'Mantiene un ambiente laboral armonioso y motivante en su departamento.', '5');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('41', '9', 'Considera o toma en cuenta las diferentes opciones que se le presentan analizando los pros y contras para tomar una decisión.', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('42', '9', 'Analiza entre pros y contras de las diferentes opciones presentadas.', '2');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('43', '9', 'Elección de alternativas de solución  de manera objetiva procurando el beneficio de las personas involucradas y la empresa.', '3');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('44', '9', 'Agilidad para decidir y afrontar situaciones problemáticas que se presentan de manera inesperada que requieren rápida resolución.', '4');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('43', '9', 'En la elección de soluciones busca el beneficio de la Universidad respetando al mismo tiempo a las personas involucradas.', '3');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('44', '9', 'Trabaja en sus áreas de oportunidad para mejorarlas .Cuenta con un programa para ello.', '0');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('45', '9', 'Asume las consecuencias de sus decisiones y sabe reconocer sus errores.', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('46', '10', 'Muestra flexibilidad ante los cambios de circunstancias o etapas de vida de los miembros de su equipo.', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('47', '10', 'Permite que los cambios laborales y/o personales le afecten en su estado de ánimo.', '2');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('48', '10', 'Suele afrontar las situaciones problemáticas e inesperadas sin perder el control y la armonía de su equipo.', '3');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('49', '10', 'Logra recuperar el control de alguna situación sin descargarse en su equipo de trabajo.', '4');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('50', '10', 'Es adaptable o flexible a situaciones fuera de su control manteniendo una actitud positiva.', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('51', '11', 'Dirigir la operación de la Universidad para lograr los fines de su misión.', '1');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('52', '11', 'Dirigir los esfuerzos de planeación y presupuestación de la Universidad, para dar seguimiento al cumplimiento de planes y presupuestos en general.', '2');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('53', '11', 'Propiciar y alentar un ambiente propositivo que promueva el crecimiento y desarrollo de nuestra “identidad católica” dentro de la universidad.', '3');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('54', '11', 'Cumplir las disposiciones de sus superiores (DG, VP, DT, DOR) del Consejo de Administración y su Comité Ejecutivo.', '4');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('55', '11', 'Velar por el cumplimiento de los reglamentos, de los planes y programas de trabajo y, en general de las disposiciones y acuerdos que normen la estructura y funcionamiento de la Universidad vigilando en todo momento el cumplimiento de lineamientos globales establecidos por la División Universidades, el Grupo Integer la División Territorial o la Dirección General establecidos por la División Universidades, el Grupo Integer la División Territorial o la Dirección General', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('56', '11', 'Buscar la integración del personal a la Institución, y el logro de un alto nivel profesional y humano alineado a la misión.', '6');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('57', '11', 'Presentar ante sus superiores y ante el Consejo de Administración, vía el Comité Ejecutivo, el Plan General de Desarrollo de la universidad, y el programa y presupuesto anuales, para su aprobación.', '7');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('58', '11', 'Rendir un informes ante sus superiores y al Consejo de Administración y al Comité Ejecutivo abarcando todos los aspectos del gobierno de su universidad', '8');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('59', '11', 'Expedir y firmar documentación oficial: títulos profesionales, diplomas de especialidad y grados académicos que otorga la Institución, acuerdos con instituciones tanto gubernamentales como privadas y de educación.', '9');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('60', '11', 'Tener la representación de la Universidad, o delegar, cuando lo estime conveniente ya para casos concretos, su propia representación.', '10');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('46', '10', 'Muestra flexibilidad ante los cambios de circunstancias o cambios en los miembros de su equipo.', '1');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('47', '10', 'No permite que los cambios laborales y/o personales le afecten en su estado de ánimo, o por lo menos que no le afecten en su actuar.', '2');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('48', '10', 'Afronta las situaciones problemáticas e inesperadas sin perder el control y  sin afectaciones a su equipo de trabajo.', '3');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('51', '11', 'Dirige la operación de la Universidad para lograr los fines de su misión.', '1');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('52', '11', 'Dirige los esfuerzos de planeación y presupuestación de la Universidad, dando seguimiento al cumplimiento de planes y presupuestos en general.', '2');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('53', '11', 'Propicia y alienta un ambiente propositivo que promueve el crecimiento y desarrollo de nuestra “identidad católica” dentro de la Universidad.', '3');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('54', '11', 'Cumple con las disposiciones de sus superiores (DG, VP, DT, DOR) del Consejo de Administración y su Comité Ejecutivo.', '4');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('55', '11', 'Vela por el cumplimiento de los reglamentos, de los planes y programas de trabajo y, en general de las disposiciones y acuerdos que normen la estructura y funcionamiento de la Universidad vigilando en todo momento el cumplimiento de lineamientos globales establecidos por la División de Universidades.', '5');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('56', '11', 'Busca la integración del personal a la Institución, y el logro de un alto nivel profesional y humano alineado a la misión.', '6');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('57', '11', 'Presenta ante sus Superiores y ante el Consejo de Administración, vía el Comité Ejecutivo, el Plan General de Desarrollo de la Universidad, y el programa y presupuesto anuales, para su aprobación.', '7');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('58', '11', 'Rinde un informe ante sus Superiores y al Consejo de Administración y al Comité Ejecutivo abarcando todos los aspectos del gobierno de su Universidad', '8');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('59', '11', 'Expide y firma documentación oficial: títulos profesionales, diplomas de especialidad y grados académicos que otorga la Institución, acuerdos con instituciones tanto gubernamentales como privadas y de educación.', '9');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('60', '11', 'Tiene la representación de la Universidad, o delega, cuando lo estime conveniente ya para casos concretos, su propia representación.', '10');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('61', '12', 'Propicia y alenta un ambiente propositivo que promueve el crecimiento y desarrollo de nuestra “identidad católica” especialmente en las actividades relacionadas con la formación humana, tanto de los alumnos como de los colaboradores.', '1');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('62', '12', 'Conoce la realidad del departamento en sus procesos críticos: académico, comunicación, promoción, administrativo y de capital humano.', '2');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('63', '12', 'Establece relaciones con distintas dependencias y organismos de gobierno y del sector privado y social que favorezcan el desarrollo y la imagen de la Universidad.', '3');
@@ -448,41 +459,41 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('113', '17'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('114', '17', 'Atiende y resuelve con prontitud y actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.', '3');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('115', '17', 'Demuestra una preocupación genuina y permanente por la optimización del uso de los recursos humanos y materiales asignados a su programa académico.', '4');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('116', '17', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la Licenciatura y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.', '5');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('117', '17', 'Da un seguimiento cercano a cada uno de sus profesores y personal buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ', '6');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('117', '17', 'Da un seguimiento cercano a cada uno de sus profesores y personal buscando generar un buen ambiente, la colaboración en equipo, la integración con la Universidad y dando respuesta a sus intereses e inquietudes. \r\n', '6');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('118', '17', 'Colabora permanentemente con las labores de promoción de su escuela hacia los diversos públicos: egresados, empresas,instituciones privadas y gubernamentales entre otros.', '7');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('119', '17', 'Da un seguimiento puntual al Plan Operativo Anual y asegura su cumplimiento en el tiempo establecido y con la calidad requerida. ', '8');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('120', '17', 'Se preocupa por tener y retener a docentes de excelencia para licencitatura y posgrados con experiencia profesional y calidad académica.', '9');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('120', '17', 'Se preocupa por tener y retener a docentes de excelencia para licenciatura y posgrados con experiencia profesional y calidad académica.\r\n', '9');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('121', '17', 'Busca proponer, desarrollar, implementar y actualizar los programas de posgrados y educación continua.', '10');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('122', '18', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.', '11');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('123', '18', 'Establece y supervisa la realización de las prioridades de operación y quehacer académico de las áreas a su cargo.', '12');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('124', '18', 'Procura la máxima calidad académica y busca implementar los sistemas necesarios para conseguirla, de modo que dé respuesta a las inquietudes de estudiantes y profesores. ', '13');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('125', '18', 'Analizar y propone los programas académicos que debe de ofrecer la Universidad manteniédolos actualizados.', '14');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('126', '18', 'Procura la máxima calidad académica certificada de la universidad a partir de los procesos de acreditación que la institución ha decidido emprender y renovar tanto en licenciatura como en Posgrados', '15');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('125', '18', 'Analiza y propone los programas académicos que debe de ofrecer la Universidad manteniéndolos actualizados.', '14');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('126', '18', 'Procura la máxima calidad académica certificada de la Universidad a partir de los procesos de acreditación que la Institución ha decidido emprender y renovar tanto en licenciatura como en posgrados.', '15');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('127', '18', 'Ha establecido nuevas relaciones académicas y mantiene una relación cercana con otras instituciones nacionales e internacionales de prestigio.', '16');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('128', '18', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.', '17');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('129', '18', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '18');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('130', '18', 'Procura y fomenta una colaboración estrecha con las vicerrectorias de la Universidad', '19');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('130', '18', 'Procura y fomenta una colaboración estrecha con las Vicerrectorías de la Universidad.\r\n', '19');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('131', '18', 'Fomenta y busca la innovación en todas sus áreas, en especial en el proceso de enseñanza aprendizaje y en los métodos. Buscando una estrecha relación con el departamento de innovación de la Universidad. ', '20');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('132', '19', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.', '21');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('133', '19', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.', '22');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('134', '19', 'Da seguimiento y busca el cumplimiento ágil de los proyectos de la Universidad en el ámbito de su competencia.', '23');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('135', '19', 'Supervisa el correcto registro y en los tiempos establecidos las operaciones económicas de la Universidad.', '24');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('135', '19', 'Supervisa el correcto registro y en los tiempos establecidos la s operaciones económicas de la Universidad.\r\n', '24');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('136', '19', 'Propone al Comité Rectoral los procedimientos administrativos, modificaciones requeridas al presupuesto y cuotas escolares en beneficio de la Institución para presentar a la RUA con las gestiones correspondientes ante la junta de gobierno.', '25');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('137', '19', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '26');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('138', '19', 'Integra en tiempo y forma junto con el Comité Rectoral y Rector el presupuesto anual de la Universidad, se encarga de darle seguimiento y vela por el cumplimiento del mismo', '27');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('138', '19', 'Integra en tiempo y forma junto con el Comité Rectoral y Rector el presupuesto anual de la Universidad, se encarga de darle seguimiento y vela por el cumplimiento del mismo.', '27');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('139', '19', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.', '28');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('140', '19', 'Se asegura de proporcionar servicios de alta calidad a los estudiantes y clientes internos tanto en la atención, trato y vanguardia de los servicios que tienen relación a su área de competencia.', '29');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('141', '19', 'Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.', '30');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('142', '20', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.', '31');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('142', '20', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.\r\n', '31');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('143', '20', 'Propicia y coordina de manera permanente las actividades de las áreas de Difusión Cultural y Deportes.', '32');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('144', '20', 'Propicia y coordina de manera permanente las actividades de los Programas de Acción y Servicio Social que apoyan la formación integral de los estudiantes.', '33');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('145', '20', 'Vela por la adecuada implantación, operación y evaluación del modelo educativo Anáhuac de formación integral.', '34');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('146', '20', 'Propone y desarrolla constantemente programas relacionados con la promoción del liderazgo de acción positiva ante la comunidad universitaria.', '35');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('146', '20', 'Propone y desarrolla constantemente programas relacionados con la promoción del liderazgo de acción positiva ante la Comunidad Universitaria.\r\n', '35');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('147', '20', 'Fomenta actividades de acción social incrementando consistentemente la participación activa de alumnos, profesores y personal universitario.', '36');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('148', '20', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.', '37');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('149', '20', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '38');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('150', '20', 'Fomenta la identidad institucional, apostolados y acción social en los alumnos de posgrados.', '39');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('151', '20', 'Cuenta con un plan pastoral y se asegura de su avance y cumplimiento.', '40');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('150', '20', 'Fomenta la Identidad Institucional, Apostolados y Acción Social en los alumnos de posgrados.', '39');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('151', '20', 'Cuenta con un Plan Pastoral y se asegura de su avance y cumplimiento.', '40');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('152', '21', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.', '41');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('153', '21', 'Trabaja junto con la Vicerrectoría Académica, en el alcance y funciones de la división estableciendo planes y programas actualizados a corto,mediano y largo plazo.', '42');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('154', '21', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)', '43');
@@ -493,48 +504,48 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('158', '21'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('159', '21', 'Elabora el Plan y Presupuesto Anual de Operación de su División dando seguimiento a la realización del mismo en el tiempo y calidad requerida.', '48');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('160', '21', 'Da un seguimiento cercano a cada uno de sus profesores buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ', '49');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('161', '21', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la División y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.', '50');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('162', '22', 'Elabora y presenta al comité rectoral para su aprobación, el plan estratégico y los programas anuales acordados con las autoridades y directivos de las diferentes áreas de la universidad. ', '51');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('163', '22', 'Asesora al comité rectoral para desarrollar, actualizar y dar seguimiento a la aplicación del plan estratégico y su programa anual. ', '52');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('162', '22', 'Elabora y presenta al Comité Rectoral para su aprobación, el plan estratégico y los programas anuales acordados con las autoridades y directivos de las diferentes áreas de la Universidad. ', '51');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('163', '22', 'Asesora al Comité Rectoral para desarrollar, actualizar y dar seguimiento a la aplicación del plan estratégico y su programa anual. ', '52');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('164', '22', 'Da un seguimiento cercano a los programas anuales y brinda una retroalimentación clara y estratégica a los responsables. ', '53');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('165', '22', 'Brinda constantemente información estadística fidedígna que sirva para las determinaciones de desarrollo y crecimiento universitario', '54');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('166', '22', 'Orienta y coordina de forma permanente a el área de Administración Escolar logrando un servicio óptimo para los usuarios de la institución.', '55');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('167', '22', 'Orienta y coordina de forma permanente al área de Servicios Tecnológicos logrando un servicio óptimo para los usuarios de la institución.', '56');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('165', '22', 'Brinda constantemente información estadística fidedigna que sirva para las determinaciones de desarrollo y crecimiento universitario.', '54');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('166', '22', 'Orienta y coordina de forma permanente a el área de Administración Escolar logrando un servicio óptimo para los usuarios de la Institución.', '55');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('167', '22', 'Orienta y coordina de forma permanente al área de Servicios Tecnológicos logrando un servicio óptimo para los usuarios de la Institución.', '56');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('168', '22', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '57');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('169', '22', 'Analiza y propone las acciones y procesos que se basan en la medición, diagnóstico, evaluación, diseño y propuestas de intervención para el mejoramiento continuo de procesos y servicios. Ha propuesto mejoras que se han implementado con éxito en el último año.', '58');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('170', '22', 'Apoya y propone al comité rectoral el diseño, implantación y mecanismos de evaluación institucional. ', '59');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('171', '22', 'Coordina de manera eficaz los procesos de certificación y acreditación nacionales e internacionales logrando mantener la excelencia académica de la institución. Da un seguimiento a las recomendaciones u observaciones de los sistemas de acreditación.', '60');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('172', '23', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" dentro de la Institución y en especial dentro del personal de su área,egresados y bienhechores.', '61');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('173', '23', 'Desarrolla e implementa Estrategias de Financiamiento para el crecimiento de la institución basándose en apoyos filantrópicos individuales,grupales y empresariales.', '62');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('174', '23', 'Recauda Recursos Económicos y en Especie (independietes de la operación ordinaria de la Universidad) para el desarrollo de la Institución.', '63');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('173', '23', 'Desarrolla e implementa estrategias de financiamiento para el crecimiento de la Institución basándose en apoyos filantrópicos individuales,grupales y empresariales.', '62');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('174', '23', 'Recauda recursos económicos y en especie (independientes de la operación ordinaria de la Universidad) para el desarrollo de la Institución.', '63');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('175', '23', 'Supervisa la correcta aplicación de los recursos económicos y en especie recaudados de acuerdo a la asignación inicial. ', '64');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('176', '23', 'De manera continua realiza planes y proyectos que fomentan el apoyo y colaboración de los egresados en las actividades institucionales.', '65');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('177', '23', 'Evalúa constantemente la percepción de los públicos a quienes son dirigidos sus eventos y actividades (egresados, alumnos, empresas,etc), y realiza propuestas para su mejoramiento.', '66');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('178', '23', 'Establece relaciones permanentes con distintas dependencias de gobierno,del sector privado y social que favorecen el desarrollo e imagen de la Universidad.', '67');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('179', '23', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.', '68');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('180', '23', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '69');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('181', '23', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.', '70');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('181', '23', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.\r\n', '70');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('182', '24', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en la formación docente y tutorías.', '71');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('183', '24', 'De manera consistente y junto con sus coordinadores diseña,supervisa y evalúa la ejecución de procesos de excelencia académica e investigación y propone acciones para el mejoramiento continuo de los mismos.', '72');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('184', '24', 'Se asegura de tener un modelo eficaz de atención personal a los estudiantes, particularmente a través de los programas de tutoría, y busca su mejora contínua.', '73');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('184', '24', 'Se asegura de tener un modelo eficaz de atención personal a los estudiantes, particularmente a través de los programas de tutoría y busca su mejora continua.\r\n', '73');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('185', '24', 'Da seguimiento al cumplimiento efectivo de diversos indicadores de desempeño académico y realiza estudios que permitan conocer los requerimientos de acreditación institucional y de programas académicos ante diferentes instancias(ANUES, FIMPES, ETC).', '74');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('186', '24', 'Conduce el análisis e interpretación de la Práctica de Evaluación Docentes a nivel Institucional, propone acciones para el mejoramiento y se asegura del cumplimiento de las mismas.', '75');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('187', '24', 'Procura la máxima calidad académica certificada de la universidad según los planes de la misma, en especial busca mejorar en las evaluaciones del EGEL.', '76');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('188', '24', 'Apoya los procesos, proyectos e iniativas relacionadas con la Capacitación del Personal Docente.', '77');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('186', '24', 'Conduce el análisis e interpretación de la Práctica de Evaluación Docentes a nivel Institucional, propone acciones para el mejoramiento y se asegura del cumplimiento de las mismas.\r\n', '75');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('187', '24', 'Procura la máxima calidad académica certificada de la Universidad según los planes de la misma, en especial busca mejorar en las evaluaciones del EGEL.', '76');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('188', '24', 'Apoya los procesos, proyectos e iniciativas relacionadas con la capacitación del personal docente.', '77');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('189', '24', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc).', '78');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('190', '24', 'Funge permanentemente como auditor en las diferentes escuelas con la finalidad de el logro de las certificaciones de programas académicos.', '79');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('191', '24', 'Conduce eficientemente los procesos relacionados con la selección y el desarrollo de profesores de planta y de honorarios.', '80');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('192', '25', 'Integra eficientemente de páginas Web de los cursos del Proyecto @prende, de acuerdo a las indicaciones del especialista en Diseño Instruccional, requerimientos de los profesores, tipo de contenido y área de conocimiento.', '81');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('193', '25', 'Diseña de objetos de aprendizaje \"a la medida\", materiales de apoyo y recursos multimedia innovadores.', '82');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('192', '25', 'Integra eficientemente de las páginas Web de los cursos del Proyecto @prende, de acuerdo a las indicaciones del especialista en Diseño Instruccional, requerimientos de los profesores, tipo de contenido y área de conocimiento.', '81');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('193', '25', 'Diseño de objetos de aprendizaje \"a la medida\", materiales de apoyo y recursos multimedia innovadores.', '82');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('194', '25', 'Desarrolla y aplica con éxito estándares SCORM a los recursos multimedia, objetos e integración de contenidos en WebCT.', '83');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('195', '25', 'Digitaliza en forma y tiempo documentos, imágenes, audios, videos,etc, para la integración de los cursoso del Programa @prende.', '84');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('196', '25', 'Asesora satisfactoriamente a profesores y alumnos, en cuanto al uso de herramientas, software especializado o aplicaciones que se requieren para la impartición de las materias en WebCT y Blackboard.', '85');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('197', '25', 'Supervisa el funcionamiento de todos los recuros que contien cada materia integrada en WebCat, de acuerdo a las indicaciones del Especialista en Diseño Instruccional o del prrofesor.', '86');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('197', '25', 'Supervisa el funcionamiento de todos los recursos que contiene cada materia integrada en WebCat, de acuerdo a las indicaciones del Especialista en Diseño Instruccional o del prrofesor.\r\n', '86');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('198', '25', 'Estructura y actualiza adecuadamente los archivos y directorios de cursos abiertos en WebCT y Blackboard.', '87');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('199', '25', 'Actualiza y usa la galería de objetos de aprendizaje y recursos multimedia desarrollada para el Programa @prende.', '88');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('200', '25', 'Respalda de forma permanente los documentos originales de los maestros, así como los materiales desarrollados por los enlaces del Programa @prende en cada Universidad.', '89');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('200', '25', 'Respalda de forma permanente los documentos originales de los maestros, así como los materiales desarrollados por los enlaces del Programa @prende de cada Escuela o Facultad.\r\n', '89');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('201', '25', 'Cumple eficientemente con los objetivos del Programa @prende en la Red de Universidades Anáhuac.', '90');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('202', '26', 'Orienta apropiadamente a los candidatos a postulantes que solicitan ingreso a la Institución, para que elijan una profesión adecuada,tomando en cuenta sus habilidades, aptitudes, intereses y características de personalidad.', '91');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('203', '26', 'Aplica pruebas psicológicas a los candidatos a ingresar a la institución y elabora adecuadamente los perfiles vocacionales de cada uno de ellos.', '92');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('203', '26', 'Aplica pruebas psicológicas a los candidatos a ingresar a la Institución y elabora adecuadamente los perfiles vocacionales de cada uno de ellos.\r\n', '92');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('204', '26', 'Entrevista a cada uno de los candidatos y elabora en tiempo y forma los reportes psicológicos que se envían al área de admisiones.', '93');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('205', '26', 'Mantiene contacto con los directores de las escuelas y conoce el grado de adaptación de los alumnos de nuevo ingreso a la escuela y a la Institución.', '94');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('206', '26', 'Mantiene contacto con los alumnos en casos de bajo rendimiento, problemas de motivación u otros y los canaliza debidamente a instituciones externas que les puedan brindar ayuda.', '95');
@@ -542,16 +553,16 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('207', '26'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('208', '26', 'Realiza entrevistas y mantiene un adecuado contacto con padres de familia.', '97');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('209', '26', 'Determina con precisión la conveniencia o no de ingreso de cada aspirante a través de un reporte.', '98');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('210', '26', 'Controla, revisa y entrega en tiempo y forma los exámenes y reportes psicológicos a las áreas correspondientes.', '99');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('211', '27', 'Propone a la Dirección planes y políticas para estrechar las relaciones de la Universidad con sus egresados fomentando su apoyo y colaboración en actividades institucionales.', '100');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('212', '27', 'Establece vínculos permanentes con empresas de sectores públicos y privados,que permiten que nuestros egresados puedan integrarse al ambiente laboral en forma rápida y con oportunidades de acuerdo a su perfil y aspiraciones profesionales.', '101');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('213', '27', 'Propicia con éxito encuentros, ferias y seminarios que ponen en contacto a nustros alumnos de últimos semestres con las oportunidades laborales a fines a sus perfiles académicos.', '102');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('211', '27', 'Propone a la Dirección planes y políticas para estrechar las relaciones de la Universidad con sus egresados fomentando su apoyo y colaboración en actividades Institucionales.', '100');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('212', '27', 'Establece vínculos permanentes con empresas de sectores públicos y privados,que permiten que nuestros egresados puedan integrarse al ambiente laboral en forma rápida y con oportunidades de acuerdo a su perfil y aspiraciones profesionales. ', '101');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('213', '27', 'Propicia con éxito encuentros, ferias y seminarios que ponen en contacto a nuestros alumnos de últimos semestres con las oportunidades laborales a fines a sus perfiles académicos.', '102');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('214', '27', 'Administra, supervisa y evalúa con eficiencia las herraminetas (administrativas y electrónicas) que se presentan a los egresados como alternativas de búsqueda de oportunidades laborales (bolsa de trabajo).', '103');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('215', '27', 'Fomenta satisfactoriamente eventos: comidas, foros,encuentros, seminarios, etc., de integración y reencuentro de grupos de egresados. ', '104');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('216', '27', 'Mantiene constante relación con egresados que colaboran en empresas líderes logrando que participen con la Universidad en proyectos sociales,foros y conferencias siendo modelos a seguir en la vida profesional para nuestros alumnos.', '105');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('217', '27', 'Cuenta con un programa o proceso de retroalimentación efectivo (sugerencias/encuestas) por parte de los egresados, que permiten realinear los proyectos, planes y programas en base a las necesidades y expectativas reales de los mismos.', '106');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('218', '27', 'Establece negociaciones permanantes con proveedores y prestadores de servicios logrando acuerdos que apoyan la economía de nuestros egresados (descuentos, promociones,etc).', '107');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('219', '27', 'Administra y vigila constantemente que se encuentren actualizadas la base de datos con la información personal de los egresados.', '108');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('220', '27', 'Supervisa con eficiencia que todos los medios de contacto con los egresados (cartas, correo electrónico, publicaciones, revistas,etc) cumplan con los contenidos alineados a los valores y misión de la institución.', '109');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('220', '27', 'Supervisa con eficiencia que todos los medios de contacto con los egresados (cartas, correo electrónico, publicaciones, revistas,etc) cumplan con los contenidos alineados a los valores y Misión de la Institución.\r\n', '109');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('221', '28', 'Brinda atención personalizada a alumnos que le sean canalizados ya sea por áreas académicas vía tutores, por la coordinación de relaciones estudiantiles o por alguna otra instancia.', '110');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('222', '28', 'Evalúa las condiciones, características y actitudes de alumnos asignados a su atención valuando si requiere la atención de un especialista y/o le establece u programa de adaptación.', '111');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('223', '28', 'Alerta en tiempo y forma al Vicerrector de Formación Integral sobre alumnos que presentan problemas que ameriten citar a los padres o tutores.', '112');
@@ -566,7 +577,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('231', '29'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('232', '29', 'Propicia y alienta un ambiente propositivo que promueve el desarrollo de nuestra \"identidad católica\" entre alumnos, egresados y personal en general.', '121');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('233', '29', 'Vigila debidamente que las actividades se realicen de acuerdo a la normatividad vigente.', '122');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('234', '29', 'Recauda con éxito fondos y bienes para programas de ayuda para zonas de desastre.', '123');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('235', '29', 'Coordina eficientemente brigadas y proyectos especiales que surjan como resultado del apoyo de la comunidad u iversitaria ante grandes desastres (huracanes, inundaciones, incendios, etc.).', '124');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('235', '29', 'Coordina eficientemente brigadas y proyectos especiales que surjan como resultado del apoyo de la Comunidad Universitaria ante grandes desastres (huracanes, inundaciones, incendios, etc.).', '124');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('236', '29', 'Mantiene un registro actualizado de las fundaciones o instituciones de asistencia social en las que los alumnos puedan realizar su actividad.', '125');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('237', '29', 'Promueve,coordina y administra satisfactoriamente el proceso de Servicio Social de los alumnos.', '126');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('238', '29', 'Da tutorías, apoyo y orientación adecuada a los alumnos que se encuentran realizando su servicio social.', '127');
@@ -578,8 +589,8 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('243', '30'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('244', '30', 'Vigila consistentemente que se lleven a cabo las rutinas de calentamiento para la prevención de lesiones.', '133');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('245', '30', 'Colabora con el Coordinador en el diseño y elaboración de programas de entrenamiento para los equipos representativos.', '134');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('246', '30', 'Promueve con éxito partidos de competencia entre equipos de diferentes facultades, entre equipos de empleados de diferentes áreas y con equipos externos.', '135');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('247', '30', 'Vigila que se de buen uso de las instalaciones.', '136');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('248', '30', 'Vigila de manera permanenete que se cuente con apoyo médico y arbitraje adecuado en los partidos que se realicen.', '137');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('247', '30', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomando las medidas necesarias.\r\n', '136');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('248', '30', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomando las medidas necesarias.\r\n', '137');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('249', '30', 'Coordina satisfactoriamente actividades con entidades gubernamentales y privadas que promuevan el deporte juvenil.', '138');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('250', '30', 'Apoya con eficiencia en la coordinación de viajes cuando sea necesario.', '139');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('251', '31', 'Apoya satisfactoriamente al desarrollo de el Plan Estratégico y Presupuesto Anual del área a corto, mediano y pargo plazo y supervisa su aplicación.', '140');
@@ -587,7 +598,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('252', '31'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('253', '31', 'Elabora en tiempo y forma informes sobre la operación del área e informa a su superior de las actividades realizadas.', '142');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('254', '31', 'Recibe y direcciona adecuadamente la documentación interna dirigida al Vicerrector o Director.', '143');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('255', '31', 'Atiende con actitud de servicio a personas internas que requieran apoyo de su jefe inmediato.', '144');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('256', '31', 'Analiza con eficiencia diversos asuntos recibidos dando: solución directa, elabora una propuestas o delega los asuntos al área correspondiente.', '145');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('256', '31', 'Analiza con eficiencia diversos asuntos recibidos dando: solución directa, elabora una propuesta o delega los asuntos al área correspondiente.', '145');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('257', '31', 'Da seguimiento a los asuntos, y en su caso participa activamente cuando se requiere.', '146');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('258', '31', 'Atiende los asuntos que su jefe le delegue y lo representa dignamente en actividades especiales.', '147');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('259', '31', 'Maneja apropiadamente las comunicaciones del Vicerrector o Director, tanto interna como externamente.', '148');
@@ -605,7 +616,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('270', '32'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('271', '33', 'Asesora debidamente a los maestros en la estructuración y/o actualización de los programas correspondientes a las distintas asignaturas del ciclo clínico.', '160');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('272', '33', 'Asegura que los maestros entreguen el programa desglosado de las asignaturas del ciclo anterior.', '161');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('273', '33', 'Apoya con eficiencia en la búsqueda de los campos clínicos idóneos.', '162');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('274', '33', 'Supervisa el programa de avance académico de cada materia de cada sede hospitalaria y en el adecuado desarrollo de los cursos complementarios.', '163');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('274', '33', 'Supervisa el programa de avance académico de cada materia de cada sede hospitalaria y en el adecuado desarrollo de los cursos complementarios.\r\n', '163');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('275', '33', 'Realiza reuniones debidamente programadas con los titutales de las asignaturas,después de cada periodo de exámenes parciales.', '164');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('276', '33', 'Fija el sistema de evaluación por módulo en conjunto con los maestros del ciclo, aplica y evalúa los exámenes de cada módulo.', '165');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('277', '33', 'Da a conocer la forma, tipo y manera de evaluar de cada profesor de forma anticipada permitiendo que tanto alumnos como maestros puedan agendar con anticipación sus fechas de exámenes.', '166');
@@ -615,11 +626,11 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('280', '33'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('281', '34', 'Elabora el contenido de sus clases con información actualizada en base al programa académico establecido y autorizado por las autoridades académicas correspondientes.', '170');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('282', '34', 'Establece una interacción positiva con los alumnos facilitando el aprendizaje y la formación integral del estudiante.', '171');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('283', '34', 'Prepara y aplica en tiempo y forma los exámenes para la valoración del aprendizaje de su materia.', '172');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('284', '34', 'De manera permenente busca continuar con su formación profesional y docente.', '173');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('284', '34', 'De manera permanente busca continuar con su formación profesional y docente.\r\n', '173');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('285', '34', 'Participa activamente en cursos o seminarios que le sean asignados y/o programados por el área de formación docente.', '174');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('286', '34', 'Atiende y da seguimiento oportuno a las inquietudes de los alumnos.', '175');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('287', '34', 'Se asesora con la autoridad correspondiente para la pronta solución de problemas de sus alumnos.', '176');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('288', '34', 'Utiliza eficientemente la tecnología como apoyo dela práctica docente.', '177');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('288', '34', 'Utiliza eficientemente la tecnología como apoyo de la práctica docente.\r\n', '177');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('289', '34', 'Realiza con eficiencia el seguimiento académico y personal de sus alumnos tutoriados.', '178');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('290', '34', 'Entrega informes útiles de seguimiento al Director de su escuela.', '179');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('291', '35', 'Establece contacto permanente con los usuarios obteniendo retroalimentación acerca de los servicios que se proporcionan.', '180');
@@ -630,7 +641,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('295', '35'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('296', '35', 'Presenta con éxito planes y programas de trabajo y vigila su cumplimiento.', '185');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('297', '35', 'Apoya satisfactoriamente en la elaboración del programa anual de la biblioteca.', '186');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('298', '35', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.', '187');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('299', '35', 'En forma cconjunta con el jefe de área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.', '188');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('299', '35', 'En forma conjunta con el jefe de área, elabora el presupuesto anual de operación del área  y presenta reportes periódicos de avance.\r\n', '188');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('300', '35', 'Participa activamente en las visitas guiadas para usuarios de la biblioteca.', '189');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('301', '36', 'Garantiza la correcta operación del SIU de los sistemas (SW) institucionales asignados al área.', '190');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('302', '36', 'Proporciona a la Comunidad Universitaria la información necesaria localizada en el SIU y en otros sistemas (SW) institucionales asignados al área, para la operación de sus áreas de trabajo.', '191');
@@ -639,7 +650,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('304', '36'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('305', '36', 'Procura la entera satisfacción de todos los usuarios,promoviendo la comunicación y estando atento a sus necesidades.', '194');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('306', '36', 'Mantiene sus procedimientos con estándares elevados de seguridad para su correcta operación.', '195');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('307', '36', 'Cuenta con mecanismos de evaluación (encuestas, entrevistas,etc) que le permiten monitorear el grado de satisfacción de sus clientes.', '196');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('308', '36', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomenado las medidas necesarias.', '197');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('308', '36', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomando las medidas necesarias.\r\n', '197');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('309', '36', 'Apoya eficientemente a la División de Universidades y AGS (Área Global de Sistemas), en los procesos de implementación, dimensionamiento y migración.', '198');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('310', '36', 'Trabaja en forma conjunta con la División de Universidades y AGS, en la actualización de las versiones de Banner y de cualquier otro sistema (SW) institucional que opera en la Universidad.', '199');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('311', '37', 'Controla y supervisa adecuadamente los registros de gastos mensuales de cada área.', '200');
@@ -666,9 +677,9 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('331', '39'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('332', '39', 'Aplica o registra con precisión las operaciones económicas de la Universidad.', '221');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('333', '39', 'Efectúa los pagos fiscales y tributarios, cumpliendo en todo momento con las obligaciones fiscales.', '222');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('334', '39', 'Elabora y presenta con puntualidad la declaración anual y los estados financieros.', '223');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('335', '39', 'Da un adecuado seguimiento a las auditorías y dictámenes contables que ', '224');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('335', '39', 'Da un adecuado seguimiento a las auditorías y dictámenes contables que se requieren. \r\n', '224');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('336', '39', 'Cumple debidamente con el pago de obligaciones gubernamentales IMSS, ISPT, INFONAVIT.', '225');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('337', '39', 'Registra con precisión las operaciones diarias de bancos, manteniendo actualizados los saldos e informando diariamente al Contralor y Vicerrector de Administración y Finanazas.', '226');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('337', '39', 'Registra con precisión las operaciones diarias de bancos, manteniendo actualizados los saldos e informando diariamente al Contralor y Vicerrector de Administración y Finanzas.\r\n', '226');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('338', '39', 'Vigila que los pagos de nómina se efectúen correcta y oportunamente.', '227');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('339', '39', 'Efectúa eficientemente el registro contable de pólizas derivadas de las nóminas de empleados y profesores.', '228');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('340', '39', 'Verifica con exactitud los registros auxiliares,mayor y balance mensual de saldos.', '229');
@@ -686,10 +697,10 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('351', '41'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('352', '41', 'Coordina el servicio del conmutador y atiende las necesidades del personal de inmediato.', '241');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('353', '41', 'Supervisa y da el seguimiento apropiado al servicio de vigilancia y jardinería de la Institución.', '242');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('354', '41', 'Propone y realiza programas de mantenimiento preventivo y de seguridad para todas las áreas de la Institución.', '243');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('355', '41', 'Apoya con recurso y logística a los departamentos que así lo soliciten para la realización de eventos.', '244');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('356', '41', 'Coordina con eficiencia los servicios médico,de recolección y entrega de documentos (mensajería interna) entre las diferentes áreas de la Institución.', '245');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('355', '41', 'Apoya con recursos y logística a los departamentos que así lo soliciten para la realización de eventos.', '244');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('356', '41', 'Coordina con eficiencia los servicios médicos, de recolección y entrega de documentos (mensajería interna) entre las diferentes áreas de la Institución.', '245');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('357', '41', 'Coordina adecuadamente a los proveedores en las remodelaciones, adecuaciones, ampliaciones de instalaciones y mobiliario.', '246');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('358', '41', 'Efectúa diariamente sesiones con los responsables directos de las áreas bajo su cargo y selectivamente todos los días efectúa recorridos de supervisión y muestro de cumplimiento de servicios.', '247');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('358', '41', 'Efectúa diariamente sesiones con los responsables directos de las áreas bajo su cargo y selectivamente todos los días realiza recorridos de supervisión y muestreo de cumplimiento de servicios.\r\n', '247');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('359', '41', 'Elabora políticas y procedimientos de operación propias de su área y reportes sobre los resultados obtenidos.', '248');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('360', '41', 'Supervisa, evalúa y capacita debidamente al personal a su cargo.', '249');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('361', '42', 'Realiza apropiadamente las actividades que su jefe le asigne,apoyando al área en tareas o proyectos especiales.', '250');
@@ -699,7 +710,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('364', '42'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('365', '42', 'Da atención personal a los alumnos y los apoya para resolver problemas que puedan surgir en la selección de clases o en cualquier otra actividad que realice el área.', '254');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('366', '42', 'Da atención personalizada a profesores canalizando a las instancias correspondientes inquietudes o problemas planteados por los mismos.', '255');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('367', '42', 'Apoya con eficiencia en la búsqueda de candidatos y en la integración de expedientes de personas que se vayan a incorporar como profesores ya sea de planta u honorarios.', '256');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('368', '42', 'Vigila que tanto alumnos como profesores cumplan con los lineamientos y procedimientos establecidos, alertando a su superior sobre desviacioneso anomalías.', '257');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('368', '42', 'Vigila que tanto alumnos como profesores cumplan con los lineamientos y procedimientos establecidos, alertando a su superior sobre desviaciones o anomalías.', '257');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('369', '42', 'Propone y desarrolla propuestas de mejora que cumplan con los objetivos del área.', '258');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('370', '42', 'Busca su desarrollo y crecimiento personal capacitándose en tareas y funciones propias de su área.', '259');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('371', '43', 'Mantiene estrecha relación con la Secretaría de Educación Pública (SEP) para la autenticación y legalización de documentos.', '260');
@@ -713,28 +724,28 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('378', '43'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('379', '43', 'Emite en tiempo y forma la convocatoria controlando el registro de candidatos a obtener el título profesional.', '268');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('380', '43', 'Elabora y controla con eficiencia la información estadística que se genera en el área. ', '269');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('381', '44', 'Detecta áreas de oportunidad para la promoción universitaria y participa en la realización de planes de acción correspondientes.', '270');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('382', '44', 'Cumple con las metas de captación de matrícula de nuesvos ingresos de acuerdo a las establecidas por: colegios meta y carreras asignadas.', '271');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('382', '44', 'Cumple con las metas de captación de matrícula de nuevos ingresos de acuerdo a las establecidas por: colegios meta y carreras asignadas.', '271');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('383', '44', 'Orienta de manera personal a los preuniversitarios en sus necesidades de información para la elección de universidad y les da seguimiento logrando su inscripción a algún programa de licenciatura.', '272');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('384', '44', 'Difunde y gestiona los diversos esquemas de becas y apoyos económicos para asegurar que los alumnos de alto potencial académico y/o humano, se logren incorporar a la Universidad.', '273');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('385', '44', 'Promueve en el segmento meta de preuniversitarios, las ventajas competitivas que ofrece la Universidad y la Red Anáhuac a través de diversas estrategias y actividades.', '274');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('386', '44', 'Persuade a través de presentaciones en grupo o individual sobre los beneficios qu', '275');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('386', '44', 'Persuade a través de presentaciones en grupo o individual sobre los beneficios que tiene la Universidad.', '275');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('387', '44', 'Mantiene, cuida y eleva el prestigio de la imagen de las Universidades de la Red Anáhuac, a través de un código de valores, de discurso, de atención y de vestimenta.', '276');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('388', '44', 'Fomenta las relaciones institucionales con las preparatorias meta, mediante un programa de acercamiento y de servicio permanente, y a través de los alumnos egresados de las mismas.', '277');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('389', '44', 'Organiza actividades que faciliten el acercamiento de preuniversitarios a las diversas licenciaturas y que permitan que conozcan las instalaciones y servicios.', '278');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('390', '44', 'Orienta adecuadamente a estudiantes foráneos en todo lo relacionado con trámites de ingreso y programas que ofrecen las Universidades de la Red.', '279');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('391', '45', 'Entrevista a los solicitantes de beca y determina en base a políticas y mediante un estudio socieconómico adecuado, si la ayuda económica solicitada es necesaria y viable.', '280');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('392', '45', 'En coordinación con el Jefe de Admisiones,valora dedidamente a los aspirantes a becas turnando la información de los candidatos a las instancias correspondientes (Comité de Becas o su equivalente).', '281');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('392', '45', 'En coordinación con el Jefe de Admisiones,valora debidamente a los aspirantes a becas turnando la información de los candidatos a las instancias correspondientes (Comité de Becas o su equivalente).\r\n', '281');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('393', '45', 'Analiza la situación académica de cada candidato y propone a los candidatos idóneos en base a los lineamientos y políticas establecidas por las autoridades.', '282');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('394', '45', 'Brinda de manera servicial la información a los candidatos acerca de los requisitos para solicitud de beca y crédito educativo.', '283');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('395', '45', 'En conjunto con los asesores preuniversitarios,promueve con éxito las becas y apoyos entre los candidatos a ingresar a la Universidad.', '284');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('396', '45', 'Apoya y da seguimiento a los candidatos en el trámite y elaboración de documentos para el otorgamiento de becas y financiamientos.', '285');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('397', '45', 'Supervisa eficientemente que los becados cumplan con los compromisos que aceptaron.', '286');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('398', '45', 'Da el correcto y continuo seguimiento a los beneficiarios de crédito educativo o becas en lo que se refiere al cumplimiento de requisitos para el otorgamiento continuado del mismo.', '287');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('399', '45', 'Informa satisfactoriamente a las áreas de administración y finanzas sobre c´reditos educativos, turnando la información correspondiente', '288');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('399', '45', 'Informa satisfactoriamente a las áreas de administración y finanzas sobre créditos educativos, turnando la información correspondiente.\r\n', '288');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('400', '45', 'Genera en tiempo y forma información estadística del área.', '289');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('401', '46', 'Administra en forma óptima, el único punto de contacto para prospectos y alumnos de la Universidad, ofreciendo sus servicios de manera presencial, web y telefónicamente.', '290');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('402', '46', 'Maximiza los servicios y productos que se ofrecen con el menor gasto posible, logrando altos niveles de sinergias con las diferentes áraes de la Universidad.', '291');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('403', '46', 'Logra y mantiene sinergias con las áreas de admisión, becas, finanzas, proveedores y cualquier prestador de servicios que este relacionado con productos demandados por loa alumnos/prospectos.', '292');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('402', '46', 'Maximiza los servicios y productos que se ofrecen con el menor gasto posible, logrando altos niveles de sinergias con las diferentes áreas de la Universidad.', '291');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('403', '46', 'Logra y mantiene sinergias con las áreas de admisión, becas, finanzas, proveedores y cualquier prestador de servicios que esté relacionado con productos demandados por los alumnos/prospectos.', '292');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('404', '46', 'Posiciona con éxito a la coordinación de atención a alumnos como un área líder de calidad y servicios en la Comunidad Universitaria.', '293');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('405', '46', 'Genera mediaciones y estadísticas que permiten monitorear el nivel de satisfacción en el servicio proporcionado y reporta resultados en forma periódica a la dirección.', '294');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('406', '46', 'Firma acuerdos y documenta procesos operativos con las áreas relacionadas al servicio dentro de la Institución y le da seguimiento.', '295');
@@ -745,7 +756,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('410', '46'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('411', '47', 'Mantiene una estrecha comunicación con su jefe sobre todos los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.', '300');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('412', '47', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.', '301');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('413', '47', 'Apoya al Director del área en el desarrollo del Plan Estratégico a corto, mediano y largo plazo, de acuerdo con el Plan Estratégico de la Universidad, coordinando la elaboración de los planes y programas anuales de trabajo y dando el seguimiento adecuado.', '302');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('414', '47', 'Promueve y difunde la misión de \"identidad católica\" de la institución, actuando con rectitud y congruencia en todas las actividades asignadas a su cargo.', '303');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('414', '47', 'Promueve y difunde la misión de \"identidad católica\" de la Institución, actuando con rectitud y congruencia en todas las actividades asignadas a su cargo.\r\n', '303');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('415', '47', 'Conoce y apoya satisfactoriamente los proyectos, objetivos y misión del área en la que desempeña sus funciones.', '304');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('416', '47', 'Conoce a los clientes y proveedores de servicio del área en la que trabaja y ofrece una calidad de atención adecuada y oportuna.', '305');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('417', '47', 'Busca continuamente su desarrollo y crecimiento personal capacitándose en tareas y funciones propias del área.', '306');
@@ -763,37 +774,37 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('428', '48'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('429', '48', 'Apoya con diligencia en la organización de juntas y eventos del área.', '318');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('430', '48', 'Mantiene un adecuado control y orden del archivo.', '319');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('431', '49', 'Alerta a sus superiores sobre fallas o problemas que requieran los servicios del área de mantenimiento o jardinería.', '320');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('432', '49', 'Realiza mantenimiento preventivo y correctivo a las instalaciones de la institución.', '321');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('432', '49', 'Realiza mantenimiento preventivo y correctivo a las instalaciones de la Institución.\r\n', '321');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('433', '49', 'Atiende los requerimiento de reparación, corrigiendo el daño en el menor tiempo.', '322');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('434', '49', 'Solicita con anticipación los materiales que se requieran para los trabajos a realizar.', '323');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('435', '49', 'Ejecuta con eficiencia las actividades a realizar diariamente del área con el reporte correspondiente.', '324');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('435', '49', 'Ejecuta con eficiencia las actividades a realizar diarias del área con el reporte correspondiente.\r\n', '324');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('436', '49', 'Propone al jefe del área las mejoras que considere pertinentes para cumplir con las responsabilidades asignadas.', '325');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('437', '49', 'Conoce los objetivos del área y la misión de la institución.', '326');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('437', '49', 'Conoce los objetivos del área y la Misión de la Institución.\r\n', '326');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('438', '49', 'Realiza actividades de apoyo dentro del área ', '327');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('439', '49', 'Conoce y lleva acabo los sistemas de seguridad de la institución.', '328');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('439', '49', 'Conoce y lleva a cabo los sistemas de seguridad de la Institución.\r\n', '328');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('440', '49', 'Cuida del buen uso de los equipos y herramientas que se le asignen.', '329');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('441', '50', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" especialmente en las actividades relacionadas con la formación humana de los alumnos.', '330');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('442', '50', 'Ofrece un servicio de atención personalizada en lo espiritual y humano a toda la comunidad universitaria.', '331');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('442', '50', 'Ofrece un servicio de atención personalizada en lo espiritual y humano a toda la Comunidad Universitaria.\r\n', '331');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('443', '50', 'Realiza permanentemente actividades complementarias de formación humana y religiosa.', '332');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('444', '50', 'Preside de manera permanente y logra aumentar la asistencia de alumnos a las siguientes actividades: misas, confesiones, retiros, misiones, etc.', '333');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('445', '50', 'Promociona actividades propias del área por medio de posters, trípticos, visitas, etc.', '334');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('446', '50', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.', '335');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('447', '50', 'Coordina eficientemente la acción apostólica.', '336');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('448', '50', 'Encausa las inquietudes humanitarias y apostólicas de la comunidad universitaria.', '337');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('448', '50', 'Encauza las inquietudes humanitarias y apostólicas de la Comunidad Universitaria.\r\n', '337');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('449', '50', 'Organiza encuentros de reflexión y seminarios o cursos de formación.', '338');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('450', '50', 'Revisa al término de cada actividad de formación una evaluación de los resultados obtenidos para alinear aspectos que sean necesarios.', '339');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('451', '51', 'Alcanza las metas de crecimiento de la matrícula de la licenciatura que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrolla anualmente.', '340');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('451', '51', 'Alcanza las metas de crecimiento de la matrícula de la licenciatura que solicite la Institución de acuerdo al Plan de Mercadotecnia Estratégica que desarrolla anualmente.\r\n', '340');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('452', '51', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.', '341');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('453', '51', 'Tiene un conocimiento objetivo del mercado en que participa la institución, y logra traducirlo traducirlo en un plan integral de mercadotecnia y promoción.', '342');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('453', '51', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.\r\n', '342');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('454', '51', 'Planea, coordina y evalúa de manera constante los cursos de capacitación para profesores de preparatoria, asesores preuniversitarios, directores y coordinadores de promoción de escuelas y facultades.', '343');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('455', '51', 'Coordina los servicios de Orientación Vocacional de la Universidad para la decisión de admisión de alumnos y otorga un servicio al público con la finalidad de detectar prospectos con el perfil ideal.', '344');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('456', '51', 'Garantiza los medios y aplicación de criterios para elevar la calidad en el perfil de alumnos admitidos.', '345');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('457', '51', 'Organiza eventos de promoción y atención dirigidos a nuestros mercados meta, buscando una mejora continua en los mismos.', '346');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('457', '51', 'Organiza y coordina la logística de los eventos de promoción y atención dirigidos a nuestros mercados meta.\r\n', '346');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('458', '51', 'Atiende de manera personalizada y con altos estándares de servicio a preparatorias meta, candidatos y solicitantes para los programas de licenciatura.', '347');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('459', '51', 'Dirige los esfuerzos del departamento de becas para asegurar el mayor número de preuniversitarios con un alto perfil académico y humano.', '348');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('460', '51', 'Desarrolla y analiza reportes estadísticos de utilidad para diversas áreas y escuelas.', '349');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('461', '52', 'Proporciona información financiera, clara, veraz y oportuna a las autoridades.', '350');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('462', '52', 'Analiza y evalua desde el punto de vista financiero, tanto los proyectos ya existentes como los nuevos que se propongan y realiza informes y propuestas a las autoridades.', '351');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('462', '52', 'Analiza y evalúa desde el punto de vista financiero, tanto los proyectos ya existentes como los nuevos que se propongan y realiza informes y propuestas a las autoridades.', '351');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('463', '52', 'Controla e informa mensualmente sobre la afectación al presupuesto del mes y el acumulado. Realizando las propuestas de ajustes adecuadas para su cumplimiento.', '352');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('464', '52', 'Realiza estudios de aumento de cuotas y elabora su respectiva propuesta.', '353');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('465', '52', 'Atiende y da opciones de resolución a los alumnos y padres de familia con complicaciones en sus obligaciones de pago.', '354');
@@ -811,10 +822,10 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('476', '53'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('477', '53', 'Evalúa el logro de los objetivos de las materias mediante la revisión de calificaciones y contenido de los exámenes.', '366');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('478', '53', 'Mantiene relaciones de colaboración con escuelas afines de otras instituciones académicas de prestigio nacionales y extranjeras.', '367');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('479', '53', 'Define líneas de investigación y asigna profesores de tiempo completo que determinen el alcance, tiempo y resultados esperados de la investigación.', '368');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('480', '53', 'Promueve los programas de Posgrado y Educación Contínua entre egresados y organizaciones del área.', '369');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('481', '54', 'Alcanza las metas de crecimiento de la matrícula de posgrado que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrollada anualmente.', '370');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('480', '53', 'Promueve los programas de Posgrado y Educación Continua entre egresados y organizaciones del área.\r\n', '369');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('481', '54', 'Alcanza las metas de crecimiento de la matrícula de posgrado que solicite la Institución de acuerdo al Plan de Mercadotecnia Estratégica que desarrolla anualmente.\r\n', '370');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('482', '54', 'Desarrolla y ejecuta un adecuado Programa de Atención a Empresas e Instituciones con potencial a convertirse en clientes.', '371');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('483', '54', 'Mantiene una estrecha comunicación con el Vicerrector de Académico, Directores de Escuela, Coordinadores de Posgrados y su personal acargo.', '372');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('483', '54', 'Mantiene una estrecha comunicación con el Vicerrector de Académico, Directores de Escuela, Coordinadores de Posgrados y su personal a cargo.\r\n', '372');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('484', '54', 'Busca la máxima calidad dentro del aula (calidad de los profesores, metódo de enseñanza, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)', '373');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('485', '54', 'Realiza adecuadamente la promoción hacia los Egresados, Empresas, Instituciones privadas y gubernamentales, etc.', '374');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('486', '54', 'Vigila la correcta integración de los expedientes de los alumnos para apoyarlos en su proceso de titulación.', '375');
@@ -822,25 +833,25 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('487', '54'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('488', '54', 'Atiende y resuelve con actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.', '377');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('489', '54', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.', '378');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('490', '54', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.', '379');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('491', '55', 'Coordina constantemente las actividades que mantienen actualizada la infraestructura tecnológica de cómputo, informática, comunicaciones y telecomunicacciones de la universidad.', '380');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('491', '55', 'Coordina constantemente las actividades que mantienen actualizada la infraestructura tecnológica de cómputo, informática, comunicaciones y telecomunicaciones de la Universidad.\r\n', '380');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('492', '55', 'Proporciona el equipo tecnológico necesario para la operación eficiente de las salas de cómputo.', '381');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('493', '55', 'Supervisa la adecuada prestración de servicios de soporte técnico tanto a áreas académicas como administrativas.', '382');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('494', '55', 'Planea, administra y controla los recursos materiales que garantizan la máxima disponibilidad de servicios tecnológicos a la comunidad universitaria.', '383');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('494', '55', 'Planea, administra y controla los recursos materiales que garantizan la máxima disponibilidad de servicios tecnológicos a la Comunidad Universitaria.\r\n', '383');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('495', '55', 'Planea y administra los recursos humanos que garantizan un adecuado servicio a los alumnos.', '384');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('496', '55', 'Elabora eficientemente y da seguimiento al presupuesto anual de operación del área.', '385');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('497', '55', 'Implementa sistemas de información que agilicen los procesos acdémicos, administrativos y operativos de la Institución.', '386');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('498', '55', 'Asesora a las diferentes áreas acerca de las mejores soluciones tecnológicas para su desarrollo.', '387');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('499', '55', 'Supervisa la operación y mantenimiento eficiente de los servicios de telecomunicaciones y telefonía de la institución.', '388');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('499', '55', 'Supervisa la operación y mantenimiento eficiente de los servicios de telecomunicaciones y telefonía de la Institución.\r\n', '388');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('500', '55', 'Propone soluciones tecnológicas que optimicen los recursos universitarios y coadyuden al logro de un servicio eficiente.', '389');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('501', '56', 'Obtiene y controla eficientemente la información escolar de la universidad en relación a los planes de estudio y avance escolar del alumnado de licenciatura y posgrado.', '390');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('502', '56', 'Verifica adecuadamente la autenticidad de los documentos escolares que expide la institución.', '391');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('503', '56', 'Mantiene y coordina eficientemente las labores de servicios internos, externos y auditoria escolar.', '392');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('504', '56', 'Organiza, innova y mantiene actulizada la estructura, sistemas y procedimientos del trabajo del área: Servicios Internos, Externos y Auditoria Escolar.', '393');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('501', '56', 'Obtiene y controla eficientemente la información escolar de la Universidad en relación a los planes de estudio y avance escolar del alumnado de licenciatura y posgrado.', '390');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('502', '56', 'Verifica adecuadamente la autenticidad de los documentos escolares que expide la Institución.', '391');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('503', '56', 'Mantiene y coordina eficientemente las labores de Servicios Internos, Externos y Auditoría Escolar.', '392');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('504', '56', 'Organiza, innova y mantiene actualizada la estructura, sistemas y procedimientos del trabajo del área: Servicios Internos, Externos y Auditoría Escolar.', '393');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('505', '56', 'Vigila el cumplimiento de las políticas y lineamientos establecidos por la Universidad para la certificación, acreditaciones, programas de estudio,etc.', '394');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('506', '56', 'Dirige el adecuado intercambio de información sobre datos y registros de estudiantes en las escuelas y facultades.', '395');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('507', '56', 'Proporciona en tiempo y forma a las instituciones oficiales la información requerida sobre la operación escolar de la Universidad.', '396');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('508', '56', 'Mantiene una estrecha comunicación con el Director de Servicios Institucionales y Planeación sobre los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.', '397');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('509', '56', 'Presenta a su Director y al Rector las estadísticas escolares y las requeridas por organismos oficiales y extraoficiales de manera contínua y oportuna.', '398');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('509', '56', 'Presenta a su Director y al Rector las estadísticas escolares y las requeridas por organismos oficiales y extraoficiales de manera continua y oportuna.\r\n', '398');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('510', '56', 'Supervisa de manera eficiente el desempeño de las personas a su cargo.', '399');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('511', '57', 'Constantemente logra convenios de intercambio con instituciones de enseñanza superior tanto a nivel nacional como internacional.', '400');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('512', '57', 'Mantiene relaciones con instituciones privadas, sociales y públicas que promueven actividades académicas de intercambio a nivel licenciatura y posgrado.', '401');
@@ -850,13 +861,13 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('515', '57'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('516', '57', 'Evalúa los resultados obtenidos en los programas de intercambio e implementa programas de mejoramiento a los procedimientos existentes.', '405');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('517', '57', 'Se preocupa, promueve y se asegura de incrementar el número de estudiantes en intercambio académico internacional bidireccionalmente.', '406');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('518', '57', 'Atiende satisfactoriamente y con un sistema personalizado a los visitantes externos y alumnos de intercambio internacional para que cumplan sus objetivos.', '407');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('519', '57', 'Tiene el control y seguimiento adecuado de los alumnos que se encuentran de intercambio en otras universidades o en nuestra propia institución.', '408');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('519', '57', 'Tiene el control y seguimiento adecuado de los alumnos que se encuentran de intercambio en otras Universidades o en nuestra propia Institución.\r\n', '408');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('520', '57', 'Difunde y propicia un ambiente propositivo para que las instituciones con las que mantenemos intercambio nos perciban como una universidad de \"identidad católica\" que promueve los valores.', '409');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('521', '58', 'Elabora el plan estratégico que asegure la permanencia del programa y el logro de los objetivos establecidos.', '410');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('522', '58', 'Promueve el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con el programa de liderazgo que maneja.', '411');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('523', '58', 'Busca y logra el apoyo de líderes positivos y de personalidades distinguidas en pro del beneficio social para la participación en algún evento y/o colaboración en especie para los proyectos.', '412');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('524', '58', 'En conjunto con las áreas académicas selecciona e integra a los alumnos a programas de liderazgo.', '413');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('525', '58', 'Apoya a la VFI y a la comunidad universeitaria en genral, en proyectos especiales de ayuda derivados de desastres naturales.', '414');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('525', '58', 'Apoya a la VFI y a la Comunidad Universitaria en general, en proyectos especiales de ayuda derivados de desastres naturales.\r\n', '414');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('526', '58', 'Escucha y canaliza las iniciativas de los estudiantes a través de los comités establecidos.', '415');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('527', '58', 'Organiza satisfactoriamente al grupo que asistirá a la Megamisión.', '416');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('528', '58', 'Al término de cada actividad realiza una evaluación de los resultados obtenidos alineando aspectos que son necesarios.', '417');
@@ -882,7 +893,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('547', '60'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('548', '60', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.', '437');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('549', '60', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.', '438');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('550', '61', 'Organiza,coordina y supervisa permanentemente la adecuada aplicación de los procedimientos establecidos en la ejecución de la operación académica.', '439');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('551', '61', 'Cumple y hace cumplir las políticas y lineamientos definidos por superiores, así como el estatuto de la Universidad, su reglamento, planes y programas de trabajo y, en general, las dispocisiones y acuerdos que normen la estructura y funcionamiento de la universidad.', '440');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('551', '61', 'Cumple y hace cumplir las políticas y lineamientos definidos por superiores, así como el estatuto de la Universidad, su reglamento, planes y programas de trabajo y, en general, las dispocisiones y acuerdos que normen la estructura y funcionamiento de la Universidad.\r\n', '440');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('552', '61', 'Mantiene un registro actualizado de las actividades del personal académico que se llevan acabo en la Institución y coordina la aplicación de los exámenes departamentales.', '441');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('553', '61', 'Se asegura de que la oferta académica de asignaturas sea la adecuada para la demanda de cursos de los estudiantes y acorde al avance de su plan de estudios.', '442');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('554', '61', 'Analiza y propone soluciones a los alumnos que presentan problemas académicos.', '443');
@@ -892,7 +903,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('557', '61'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('558', '61', 'Apoya las labores de programación académica de todas las escuelas y verifica la correcta aplicación de los planes de estudio. Mantiene una abierta comunicación con las Escuelas.', '447');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('559', '61', 'Apoya con eficiencia a la planeación y coordinación de eventos especiales y actividades de la licenciatura: Reconocimientos de excelencia académica, graduaciones, etc.', '448');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('560', '62', 'Apoya al Rector en el desarrollo del Plan estratégico a corto, mediano y largo plazo.', '449');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('561', '62', 'Apoya al Rector en el seguimiento a objetivos y proyectos buscando su cumplimiento de todas las áreas y vicerrectorías que dependen del Rector.', '450');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('561', '62', 'Apoya al Rector en el seguimiento a objetivos y proyectos buscando el cumplimiento de todas las áreas y Vicerrectorías que dependen del Rector.', '450');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('562', '62', 'Apoya al Rector en el presupuesto anual de operación de Rectoría y supervisa el presupuesto de las áreas de los departamentos que dependen del Rector.', '451');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('563', '62', 'Atiende con actitud de servicio y continuamente a personas internas, alumnos, o padres de familia que requieren apoyo de la Rectoría.', '452');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('564', '62', 'Da seguimiento a los asuntos, y en su caso, participa activamente haciendo propuestas de solución al Rector o a los responsables de las áreas.', '453');
@@ -907,22 +918,22 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('572', '63'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('573', '63', 'Realiza y supervisa los trámites de revalidación, legalización y registro de títulos, así como la obtención de cédulas profesionales en forma y tiempo.', '462');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('574', '63', 'Por indicaciones del Director de administración escolar y normatividad, representa dignamente a la Universidad ante las instituciones gubernamentales certificadoras para la obtención de documentos de alumnos y egresados.', '463');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('575', '63', 'Ejecuta eficientemente el proceso de certificados legalizados a la SEP.', '464');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('576', '63', 'Efectúa el adecuado control y seguimiento de estudiantes extranjeros sobre la obtención y refrendo de su documentación migratoria que les permite estudiar en la Universidad.', '465');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('576', '63', 'Efectúa el adecuado control y seguimiento de estudiantes extranjeros sobre la obtención y refrendo de su documentación migratoria que les permite estudiar en la Universidad.\r\n', '465');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('577', '63', 'En coordinación con las escuelas y facultades, lleva acabo con eficiencia los procedimientos de baja por: voluntaria, falta de documentos, documentación falsa o por efectos disciplinarios de los alumnos.', '466');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('578', '63', 'Elabora, analiza y controla con eficiencia la información estadística que se genera en su área.', '467');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('579', '63', 'Atiende continuamente y con actitud de servicio los procesos de consulta sobre documentos de estudiantes que formulan diversas instancias nacionales e internacionales.', '468');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('580', '64', 'Investiga, Diseña y supervisa constantemente la calidad de los asuntos académicos relacionados con el proceso de enseñanza-aprendizaje.', '469');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('580', '64', 'Investiga, diseña y supervisa constantemente la calidad de los asuntos académicos relacionados con el proceso de enseñanza-aprendizaje.\r\n', '469');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('581', '64', 'Asegura la calidad de las funciones universitarias empleando sistemas de evaluación y monitoreo constantes, innovadores y confiables.', '470');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('582', '64', 'Diseña y administra satisfactoriamente los procesos de evaluación de alumnos, profesores y programas educativos.', '471');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('583', '64', 'Porpone con frecuencia políticas y procedimientos que mejoran la calidad de los servicios académicos.', '472');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('583', '64', 'Propone con frecuencia políticas y procedimientos que mejoran la calidad de los servicios académicos.\r\n', '472');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('584', '64', 'Evalúa y reporta semestralmente los resultados sobre la calidad del aprendizaje por parte de los alumnos y de los servicios de apoyo académico. Propone acciones de mejora con respecto a los resultados.', '473');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('585', '64', 'Se preocupa, promueve y se asegura la puntualidad y asistencia de los docentes a sus asignaturas.', '474');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('586', '64', 'Desarrolla, implementa, da seguimiento y reporta trimestralmente los resultados de los indicadores clave de desempeño institucional. Realiza propuestas de acción para mejorarlos.', '475');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('587', '64', 'Coordina y da seguimiento al desarrollo de programas de intervención educativa conducentes a la mejora de la calidad de la docencia y del aprendizaje de los estudiantes.', '476');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('588', '64', 'Evalúa y retroalimenta cada semestre el plan rector de investigación de la universidad y reporta resultados a la Dirección.', '477');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('589', '64', 'Evalúa y retroalimenta cada semestre el plan de tutorías y reporta resultados a la Dirección.', '478');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('590', '65', 'Dirige adecuadamente la elaboración, implantación y evaluación de programas de investigación de la institución de acuerdo a la misión, valores y características del entorno.', '479');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('591', '65', 'Orienta al profesorado de la institución para el logro de niveles de excelencia en el campo de la investigación.', '480');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('590', '65', 'Dirige adecuadamente la elaboración, implantación y evaluación de programas de investigación de la Institución de acuerdo a la misión, valores y características del entorno.\r\n', '479');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('591', '65', 'Orienta al profesorado de la Institución para el logro de niveles de excelencia en el campo de la investigación.\r\n', '480');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('592', '65', 'Establece y mantiene relaciones con organismos nacionales e internacionales de acreditación.', '481');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('593', '65', 'Participa constantemente en foros nacionales e internacionales en el campo de la educación superior representando dignamente a la Institución.', '482');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('594', '65', 'Promueve la publicación de los resultados de las investigaciones realizadas vigilando que cumplan con los lineamientos de edición e imagen Institucional.', '483');
@@ -936,7 +947,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('601', '66'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('602', '66', 'Recibe y procesa con eficiencia las solicitudes de admisión.', '491');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('603', '66', 'Aplica y analiza satisfactoriamente los resultados de las pruebas de aptitud académica,habilidades y psicológicas realizadas a los candidatos.', '492');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('604', '66', 'Integra en los tiempos establecidos la información de exámenes de habilidades y psicológicos en los formatos y sistemas correspondientes.', '493');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('605', '66', 'Evalúa la idoneidad del candidato, propone el ingreso e incorpora nuevo alumnado a la institución.', '494');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('605', '66', 'Evalúa la idoneidad del candidato, propone el ingreso e incorpora nuevo alumnado a la Institución.\r\n', '494');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('606', '66', 'Aconseja asertivamente la autorización o rechazo de aspirantes y turna los casos especiales a las instancias correspondientes.', '495');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('607', '66', 'Informa en tiempo y forma a los candidatos la resolución universitaria.', '496');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('608', '66', 'Elabora estadísticas útiles del proceso de admisión y facilita la información a las escuelas y facultades, en los tiempos requeridos.', '497');
@@ -947,7 +958,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('612', '67'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('613', '67', 'Actualiza continuamente los resultados de las diferentes instancias evaluadoras de los participantes del PCA.', '502');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('614', '67', 'Canaliza y da seguimiento a cada participante con el personal que le brindará la ayuda necesaria.', '503');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('615', '67', 'Analiza detalladamente cada caso y conforma el equipo de personal adecuado para sus necesidades.', '504');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('616', '67', 'Da seguimiento y hace propuestas a la evaluación del PCA.Da seguimiento y hace propuestas a la evaluación del PCA.', '505');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('616', '67', 'Da seguimiento y hace propuestas a la evaluación del PCA.Da seguimiento y hace propuestas a la evaluación del PCA.\r\n', '505');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('617', '67', 'Analiza los puntos detectados como áreas de oportunidad y fortalezas del programa, tomando las medidas pertinentes para mejores resultados.', '506');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('618', '67', 'Genera las intervenciones que garantizan la mejora continua del PCA.', '507');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('619', '67', 'Mantiene una estrecha y constante relación con sus alumnos tutoriales y equipo de trabajo.', '508');
@@ -965,30 +976,30 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('630', '69'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('631', '69', 'Planea, programa y supervisa constantemente la integración de un acervo bibliográfico, audiovisual y los medios tecnológicos adecuados para su uso.', '520');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('632', '69', 'Implementa nuevos servicios que permiten agilizar el acceso a la información para el alumnado y usuarios de la biblioteca.', '521');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('633', '69', 'Promueve continua y satisfactorimante la utilización óptima de los recursos bibliográficos y audiovisuales, especialmente en las labores relacionadas con la docencia y la investigación.', '522');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('634', '69', 'Organiza cada inicio de período escolar actividades para informar a la comunidad universitaria sobre los recursos y servicios de la biblioteca.', '523');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('634', '69', 'Organiza cada inicio de periodo escolar actividades para informar a la Comunidad Universitaria sobre los recursos y servicios de la biblioteca.\r\n', '523');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('635', '69', 'Coordina en tiempo y forma las actividades de adquisiciones, procesos técnicos y servicios al público.', '524');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('636', '69', 'Supervisa eficientemente el desempeño de las personas a su cargo buscando su capacitación y desarrollo constante.', '525');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('637', '69', 'Lleva el adecuado control del uso de los recursos financieros que se han asignado a la biblioteca.', '526');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('638', '69', 'En forma conjunta con el Director del área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.', '527');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('638', '69', 'En forma conjunta con el Director del área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.\r\n', '527');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('639', '69', 'Mantiene una estrecha comunicación con el Director sobre todos los aspectos a su cargo que influyen directa o indirectamente en el cumplimiento de la misión de la Universidad.', '528');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('640', '70', 'Promueve continua y dignamente a la Institución en los distintos sectores de la sociedad (egresados, industria, gobierno,etc) tanto nacional como internacional.', '529');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('641', '70', 'Recauda los fondos acordados en el presupuesto anual para el financiamiento del desarrollo de la Institución por mecanismos distintos a las colegiaturas.', '530');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('642', '70', 'Supervisa la correcta aplicación de los fondos destinados al desarrollo de la Institución de acuerdo a la asignación inicial.', '531');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('643', '70', 'Cuenta con una base de datos actualizada de los principales líderes y referencias nacionales e internacionales en los sectores de influencia.', '532');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('644', '70', 'Desarrolla acciones de promoción y presencia sistemática con la personalidades nacionales,en especial con los que son egresados o han mantenido contacto cercano con la institucion.', '533');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('644', '70', 'Desarrolla acciones de promoción y presencia sistemática con la personalidades nacionales,en especial con los que son egresados o han mantenido contacto cercano con la Institucion.\r\n', '533');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('645', '70', 'En conjunto con los responsables de las escuelas selecciona líderes que sean representativos de nuestros valores con el fin de poder incluirlos dentro de nuestro grupo de invitados y/o colaboradores.', '534');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('646', '70', 'Asegura la oportuna cobertura en los medios de comunicación masiva, de las visitas o eventos relevantes, que garantiza una presencia continua que identifica a la Institución como una sede de conocimeinto académico, científico y cultural.', '535');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('647', '70', 'Aprovecha contínumente las actividades tales como:inaguraciones, congresos, foros,etc., para invitar a líderes a nuestra Institución.', '536');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('648', '70', 'Representa a la Institución en los distintos sectores de la sociedad, y promueve su imagen, su oferta educativa y sus servicios.', '537');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('647', '70', 'Aprovecha contínuamente las actividades tales como:inaguraciones, congresos, foros,etc., para invitar a líderes a nuestra Institución.', '536');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('648', '70', 'Representa a la Institución en los distintos sectores de la sociedad , y promueve su imagen, su oferta educativa y sus servicios.', '537');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('649', '71', 'Impulsa y supervisa adecuadamente los procesos de búsqueda, selección y reclutamiento del personal académico y administrativo de la Universidad.', '538');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('650', '71', 'Implementa y desarrolla adecuadamente la inducción, capacitación y formación del personal de la UAM.', '539');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('651', '71', 'Vela por el cumplimiento del perfil de puesto correspondiente de cada uno de los puestos.', '540');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('652', '71', 'Se asegura constantemente de que el personal tenga una adecuada integración profesional y humana a la identidad y misión de la universidad.', '541');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('652', '71', 'Se asegura constantemente de que el personal tenga una adecuada integración profesional y humana a la identidad y misión de la Universidad.\r\n', '541');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('653', '71', 'Vela por el cumplimiento de la estructura orgánico-funcional y hace propuestas cuando se requiere.', '542');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('654', '71', 'Velar por el cumplimiento de la disciplina laboral de acuerdo a normas y criterios vigentes y hace propuestas cuando se requiere.', '543');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('654', '71', 'Vela por el cumplimiento de la disciplina laboral de acuerdo a normas y criterios vigentes y hace propuestas cuando se requiere.\r\n', '543');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('655', '71', 'Propone e implementa normas y políticas que rijen  las relaciones del personal de la Universidad.', '544');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('656', '71', 'Dirige y supervisa debidamente todas las actividades de apoyo al área de sueldos y salarios (elaboración de nóminas y pagos diversos). Realiza estudios comparativos de sueldos y compensaciones con otras universidades para proponer mejoras en las prestaciones del personal.', '545');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('657', '71', 'Coordina el proceso de evaluaciones de desempeño, clima laboral y 360°,  etc, analizando los resultados y propone acciones de la mejora continua de del ambiente y la cultura organizacional.', '546');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('656', '71', 'Dirige y supervisa debidamente todas las actividades de apoyo al área de sueldos y salarios (elaboración de nóminas y pagos diversos). Realiza estudios comparativos de sueldos y compensaciones con otras Universidades para proponer mejoras en las prestaciones del personal.', '545');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('657', '71', 'Coordina el proceso de evaluaciones de desempeño, clima laboral y 360°,  etc, analizando los resultados y propone acciones de la mejora continua de  del ambiente y la cultura organizacional.', '546');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('658', '71', 'Ejecuta todas las medidas necesarias para dar cumplimiento a las disposiciones oficiales y legales en materia laboral y de seguridad social y custodia la documentación correspondiente', '547');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('659', '72', 'Mantiene actualizada y en orden la base de datos de los alumnos a nivel licenciatura y posgrado, desde su ingreso hasta su egreso, resguardando los archivos de datos generales, inscripción e historia académica.', '548');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('660', '72', 'Controla y certifica que la información en la base de datos sea confiable y que se suministre de manera oportuna para facilitar los procesos, asi como mantiene el sistema mecanizado para el control de avance escolar de los alumnos.', '549');
@@ -1003,7 +1014,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('668', '72'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('669', '73', 'Mantiene contacto directo y constante con los diversos usuarios de la Institución, analiza sus dificultades y realiza propuestas para la mejora continua del servicio.', '558');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('670', '73', 'Coordina y participa de manera constante en la definición e implementación de los diversos procesos y procedimientos de atención y servicio.', '559');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('671', '73', 'Reporta en tiempo y forma los avances de los diversos proyectos del área.', '560');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('672', '73', 'Coordina de forma permanente la instalación de los equipos que adquiera la institución y capacita al personal que hará uso de los mismos (computadoras,impresoras,scanner,etc).', '561');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('672', '73', 'Coordina de forma permanente la instalación de los equipos que adquiera la Institución y capacita al personal que hará uso de los mismos (computadoras,impresoras,scanner,etc).\r\n', '561');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('673', '73', 'Mantiene contacto permanente con las empresas proveedoras de equipo y gestiona garantías y procesos de mantenimiento.', '562');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('674', '73', 'Mantiene en óptimas condiciones los sistemas de información.', '563');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('675', '73', 'Brinda con actitud de servicio y de manera permanente el soporte necesario a los usuarios.', '564');
@@ -1020,29 +1031,29 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('685', '74'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('686', '74', 'Monitorea y reporta el tráfico de la red contando con estadísticas que permitan conocer el performance de la misma y se asegura de la disponibilidad, accesibilidad, velocidad y usabilidad del servicio de internet.', '575');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('687', '74', 'Apoya constantemente y con actitud de servicio a todas las áreas que lo requieren, en el mantenimiento y actualización de sus bases de datos.', '576');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('688', '74', 'Coordina con eficiencia la configuración de los equipo inalámbricos de la Universidad.', '577');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('689', '75', 'Propone, coordina y supervisa con eficiencia eventos de integración que enriquezcan la vida estudiantil de la universidad.', '578');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('689', '75', 'Propone, coordina y supervisa con eficiencia eventos de integración que enriquezcan la vida estudiantil de la Universidad.\r\n', '578');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('690', '75', 'Establece adecuados canales de comunicación para escuchar a los estudiantes.', '579');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('691', '75', 'Monitorea los resultados de los proyectos de integración vigentes y propone a las autoridades modificaciones y/o nuevos planes.', '580');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('692', '75', 'Verifica de manera consistente que las autoridades y programas colaboren en la formación de los estudiantes.', '581');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('693', '75', 'Evalúa sistemáticamente los logros formativos de los programas ofrecidos.', '582');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('694', '75', 'Estructura programas culturales de formación así como organiza y ofrece eventos culturales de calidad para la Comunidad Universitaria.', '583');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('694', '75', 'Estructura programas culturales de formación, así como organiza y ofrece eventos culturales de calidad para la Comunidad Universitaria.\r\n', '583');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('695', '75', 'Establece y mantiene vínculos con organismos estatales, privados, embajadas y centros extranjeros de carácter cultural.', '584');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('696', '75', 'Promueve actividades encaminadas al fortalecimiento de relaciones estudiales intrauniversitaria.', '585');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('696', '75', 'Promueve actividades encaminadas al fortalecimiento de relaciones estudiantiles intrauniversitarias.\r\n', '585');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('697', '75', 'Promueve eventos culturales externos de interés para el enriquecimiento de la Comunidad Universitaria.', '586');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('698', '75', 'Coordina y apoya en los eventos de Bienvida así como en entrega de reconocimiento de alumnos.', '587');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('698', '75', 'Coordina y apoya en los eventos de Bienvenida, así como en la entrega de reconocimientos de alumnos.\r\n', '587');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('699', '76', 'Cumple los lineamientos institucionales y de la RED en materia de: comunicación(interna y externa), promoción, manejo de imagen y mercadotecnia.', '588');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('700', '76', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando cubrir ya sea el público interno y/ó externo.', '589');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('700', '76', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando cubrir ya sea el público interno y/o externo.\r\n', '589');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('701', '76', 'De forma permanente vigila que todo lo relacionado a comunicación, medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos.', '590');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('702', '76', 'Colabora activamente y mantiene relaciones con otras instituciones, organismos,agencias de publicidad,diseño y relaciones públicas.', '591');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('703', '76', 'Vigila que la imagen de la Red Anáhuac se emplee de forma adecuada en todos los medios (escritos y electrónicos) asesorando adecuadamente a las áreas que desarrollen comunicaciónes internas.', '592');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('704', '76', 'Apoya eficientemente a Divisiones,Escuelas y Facultades así como a áreas administrativas en la coordinación de campañas, eventos y programas especiales dirigidos a fomentar la imagen y las relaciones internas y externas de la institución.', '593');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('703', '76', 'Vigila que la imagen de la Red Anáhuac se emplee de forma adecuada en todos los medios (escritos y electrónicos) asesorando adecuadamente a las áreas que desarrollen comunicaciones internas.', '592');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('704', '76', 'Apoya eficientemente a Divisiones,Escuelas y Facultades así como a áreas administrativas en la coordinación de campañas, eventos y programas especiales dirigidos a fomentar la imagen y las relaciones internas y externas de la Institución.', '593');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('705', '76', 'Publica periódicamente la información oficial de la Institución empleando los medios institucionales (internos, generales y para egresados) y cubriendo el mercado meta.', '594');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('706', '76', 'Busca con frecuencia prestadores de servicios publicitarios e integra una cartera de proveedores confiables, que permiten utilizar productos y servicios de promoción y comunicación de calidad.', '595');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('707', '76', 'Supervisa que las herramientas electrónicas empleadas para la comunicación tanto interna como extrena se encuentren a la vanguardia en tecnología y diseño visual.', '596');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('707', '76', 'Supervisa que las herramientas electrónicas empleadas para la comunicación tanto interna como externa se encuentren a la vanguardia en tecnología y diseño visual.\r\n', '596');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('708', '76', 'Da seguimiento a las relaciones con la prensa y los medios de comunicación el cual apoya la entrega de productos y servicios solicitados con la calidad y en los tiempos establecidos.', '597');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('709', '77', 'Propicia una comunicación efectiva entre los sectores internos y externos de la Universidad para el logro de los objetivos institucionales.', '598');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('710', '77', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando el impacto requerido.', '599');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('711', '77', 'Vigila que todo lo competente a comunicación Medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos por la División de Universidades.', '600');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('711', '77', 'Vigila que todo lo competente a comunicación,  medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos por la División de Universidades.\r\n', '600');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('712', '77', 'Representa a la Universidad ante los medios de comunicación social en dependencia del Rector.', '601');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('713', '77', 'Se asegura de cuidar la imagen de la Universidad en el exterior (página web, eventos, medios masivos de comunicación, etc).', '602');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('714', '77', 'Mantiene una fuerte y productiva relación con todos los directivos de la Institución para apoyar proyectos de comunicación y mercadotecnia institucional.', '603');
@@ -1057,7 +1068,7 @@ INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('722', '78'
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('723', '78', 'Atiende continuamente y con actitud de servicio las necesidades de los estudiantes y docentes,proponiendo soluciones.', '612');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('724', '78', 'Apoya las tutorías y vigila de manera constante que se apliquen a alumnos que manifiestan alguna inquietud y a los que presentan bajo desempeño.', '613');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('725', '78', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para monitorear la calidad académica y alinear aspectos que sean necesarios.', '614');
-INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('726', '78', 'Cuida de manera consistente de la óptima utilización de los recursos tanto humanos como materiales asignados a sus programas.', '615');
+INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('726', '78', 'Cuida de manera consistente de la óptima utilización de los recursos tanto humanos como materiales asignados a sus programas.\r\n', '615');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('727', '78', 'Cumple y hace cumplir las políticas y lineamientos definidos por los superiores y en general las disposiciones y acuerdos que normen la estructura y funcionamiento de la Universidad.', '616');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('728', '78', 'Promueve de manera continua la integración efectiva del personal y de los alumnos.', '617');
 INSERT INTO `cuestionarios_competencias_secciones_conductas` VALUES ('729', '79', 'Formula e implementa el plan estratégico de emprendimiento e innovación,alineándolo al presupuesto de la Universidad, los programas de desarrollo del estado y/o de la región para que las actividades sean pertinentes a las necesidades del entorno y contribuir al posicionamiento del parque.', '1');
@@ -2500,71 +2511,146 @@ INSERT INTO `evaluaciones` VALUES ('1', '2016', 'admin', '2016-03-12 13:34:12', 
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluaciones_cuestionario_niveles`;
 CREATE TABLE `evaluaciones_cuestionario_niveles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `evaluacion` int(11) NOT NULL,
   `nivel` int(11) NOT NULL,
   `tipo` enum('competencia','manual') DEFAULT 'competencia',
   `id_competencia` int(11) DEFAULT NULL,
   `id_manual` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ec_id` (`id`),
-  UNIQUE KEY `ec_key` (`evaluacion`,`nivel`,`id_competencia`),
-  UNIQUE KEY `ec_key2` (`evaluacion`,`nivel`,`id_manual`),
-  KEY `ec_eval` (`evaluacion`),
-  KEY `ec_nivel` (`nivel`),
-  KEY `ec_comp` (`id_competencia`),
-  KEY `ec_manu` (`id_manual`),
-  CONSTRAINT `ec_comp` FOREIGN KEY (`id_competencia`) REFERENCES `cuestionarios_competencias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ec_eval` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ec_man` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ec_niv` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `ec_id` (`id`) USING BTREE,
+  UNIQUE KEY `ec_key` (`evaluacion`,`nivel`,`id_competencia`) USING BTREE,
+  UNIQUE KEY `ec_key2` (`evaluacion`,`nivel`,`id_manual`) USING BTREE,
+  KEY `ec_eval` (`evaluacion`) USING BTREE,
+  KEY `ec_nivel` (`nivel`) USING BTREE,
+  KEY `ec_comp` (`id_competencia`) USING BTREE,
+  KEY `ec_manu` (`id_manual`) USING BTREE,
+  CONSTRAINT `evaluaciones_cuestionario_niveles_ibfk_1` FOREIGN KEY (`id_competencia`) REFERENCES `cuestionarios_competencias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_niveles_ibfk_2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_niveles_ibfk_3` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_niveles_ibfk_4` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of evaluaciones_cuestionario_niveles
 -- ----------------------------
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('6', '1', '8', 'manual', null, '1');
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('7', '1', '8', 'competencia', '9', null);
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('8', '1', '1', 'competencia', '9', null);
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('9', '1', '1', 'manual', null, '1');
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('10', '1', '2', 'competencia', '9', null);
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('11', '1', '2', 'manual', null, '1');
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('12', '1', '3', 'competencia', '9', null);
-INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('13', '1', '3', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('0', '1', '1', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('4', '1', '1', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('7', '1', '2', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('8', '1', '2', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('11', '1', '3', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('12', '1', '3', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('15', '1', '4', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('16', '1', '4', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('19', '1', '5', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('20', '1', '5', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('22', '1', '6', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('23', '1', '6', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('26', '1', '7', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('30', '1', '8', 'manual', null, '1');
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('37', '1', '7', 'competencia', '9', null);
+INSERT INTO `evaluaciones_cuestionario_niveles` VALUES ('41', '1', '8', 'competencia', '9', null);
 
 -- ----------------------------
 -- Table structure for evaluaciones_cuestionario_puestos
 -- ----------------------------
 DROP TABLE IF EXISTS `evaluaciones_cuestionario_puestos`;
 CREATE TABLE `evaluaciones_cuestionario_puestos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `evaluacion` int(11) NOT NULL,
   `nivel` int(11) NOT NULL,
   `tipo` enum('competencia','manual') DEFAULT 'competencia',
   `id_competencia` int(11) DEFAULT NULL,
   `id_manual` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `ec_id` (`id`),
+  UNIQUE KEY `ec_id` (`id`) USING BTREE,
   UNIQUE KEY `ec_un` (`evaluacion`,`nivel`,`id_competencia`) USING BTREE,
-  KEY `ec_comp` (`id_competencia`),
-  KEY `ec_manu` (`id_manual`),
-  KEY `ecp4` (`nivel`),
+  KEY `ec_comp` (`id_competencia`) USING BTREE,
+  KEY `ec_manu` (`id_manual`) USING BTREE,
+  KEY `ecp4` (`nivel`) USING BTREE,
   KEY `ec_eval` (`evaluacion`,`nivel`,`id_manual`) USING BTREE,
-  CONSTRAINT `ecp1` FOREIGN KEY (`id_competencia`) REFERENCES `cuestionarios_competencias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ecp2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ecp3` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ecp4` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  CONSTRAINT `evaluaciones_cuestionario_puestos_ibfk_1` FOREIGN KEY (`id_competencia`) REFERENCES `cuestionarios_competencias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_puestos_ibfk_2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_puestos_ibfk_3` FOREIGN KEY (`id_manual`) REFERENCES `cuestionarios_manual_input` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `evaluaciones_cuestionario_puestos_ibfk_4` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of evaluaciones_cuestionario_puestos
 -- ----------------------------
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('1', '1', '80', 'competencia', '13', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('11', '1', '4', 'competencia', '5', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('12', '1', '4', 'competencia', '7', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('13', '1', '3', 'competencia', '7', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('17', '1', '3', 'competencia', '11', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('19', '1', '3', 'competencia', '8', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('0', '1', '8', 'competencia', '17', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('1', '1', '3', 'competencia', '10', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('2', '1', '4', 'competencia', '11', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('3', '1', '5', 'competencia', '12', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('4', '1', '6', 'competencia', '13', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('5', '1', '7', 'competencia', '14', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('6', '1', '8', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('7', '1', '9', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('8', '1', '10', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('9', '1', '11', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('10', '1', '12', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('11', '1', '13', 'competencia', '67', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('12', '1', '14', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('13', '1', '15', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('14', '1', '16', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('15', '1', '17', 'competencia', '15', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('16', '1', '18', 'competencia', '17', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('17', '1', '19', 'competencia', '19', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('18', '1', '20', 'competencia', '20', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('19', '1', '21', 'competencia', '21', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('20', '1', '22', 'competencia', '18', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('21', '1', '23', 'competencia', '22', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('22', '1', '25', 'competencia', '23', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('23', '1', '26', 'competencia', '25', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('24', '1', '30', 'competencia', '26', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('25', '1', '31', 'competencia', '28', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('26', '1', '34', 'competencia', '29', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('27', '1', '35', 'competencia', '30', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('28', '1', '36', 'competencia', '16', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('29', '1', '37', 'competencia', '31', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('30', '1', '38', 'competencia', '32', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('31', '1', '39', 'competencia', '33', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('32', '1', '40', 'competencia', '34', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('33', '1', '42', 'competencia', '35', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('34', '1', '43', 'competencia', '39', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('35', '1', '44', 'competencia', '38', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('36', '1', '45', 'competencia', '72', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('37', '1', '46', 'competencia', '40', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('38', '1', '47', 'competencia', '41', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('39', '1', '48', 'competencia', '42', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('40', '1', '49', 'competencia', '43', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('41', '1', '50', 'competencia', '44', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('42', '1', '51', 'competencia', '45', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('43', '1', '53', 'competencia', '46', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('44', '1', '55', 'competencia', '47', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('45', '1', '56', 'competencia', '48', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('46', '1', '57', 'competencia', '49', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('47', '1', '58', 'competencia', '50', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('48', '1', '59', 'competencia', '51', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('49', '1', '60', 'competencia', '52', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('50', '1', '63', 'competencia', '53', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('51', '1', '64', 'competencia', '67', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('52', '1', '65', 'competencia', '54', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('53', '1', '66', 'competencia', '55', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('54', '1', '67', 'competencia', '56', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('55', '1', '68', 'competencia', '57', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('56', '1', '69', 'competencia', '58', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('57', '1', '70', 'competencia', '59', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('58', '1', '71', 'competencia', '60', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('59', '1', '72', 'competencia', '61', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('60', '1', '73', 'competencia', '62', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('61', '1', '74', 'competencia', '63', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('62', '1', '75', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('63', '1', '76', 'competencia', '64', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('64', '1', '77', 'competencia', '66', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('65', '1', '79', 'competencia', '66', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('66', '1', '80', 'competencia', '66', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('67', '1', '81', 'competencia', '66', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('68', '1', '82', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('69', '1', '83', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('70', '1', '84', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('71', '1', '85', 'competencia', '65', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('72', '1', '86', 'competencia', '69', null);
 
 -- ----------------------------
 -- Table structure for jerarquias
@@ -2575,6 +2661,8 @@ CREATE TABLE `jerarquias` (
   `evaluacion` int(11) DEFAULT NULL,
   `jefe` int(11) DEFAULT NULL,
   `subordinado` int(11) DEFAULT NULL,
+  `nivel` int(11) DEFAULT NULL COMMENT 'Nivel del subordinado durante esta evaluación',
+  `puesto` int(11) DEFAULT NULL COMMENT 'Puesto de este subordinado para esta evaluación.',
   `fechaRegistro` datetime DEFAULT NULL,
   `usuarioRegistrante` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -2585,403 +2673,407 @@ CREATE TABLE `jerarquias` (
   KEY `je_aplicacion` (`evaluacion`),
   KEY `je_subordinado` (`subordinado`),
   KEY `je_usuario` (`usuarioRegistrante`),
+  KEY `jerarquias_ibfk_5` (`nivel`),
+  KEY `jerarquias_ibfk_6` (`puesto`),
   CONSTRAINT `jerarquias_ibfk_1` FOREIGN KEY (`jefe`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `jerarquias_ibfk_2` FOREIGN KEY (`subordinado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `jerarquias_ibfk_3` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `jerarquias_ibfk_4` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `jerarquias_ibfk_4` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `jerarquias_ibfk_5` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `jerarquias_ibfk_6` FOREIGN KEY (`puesto`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=utf8 COMMENT='Índice de relaciones entre jefes y subordinados por aplicación.';
 
 -- ----------------------------
 -- Records of jerarquias
 -- ----------------------------
-INSERT INTO `jerarquias` VALUES ('1', '1', null, '1', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('2', '1', null, '2', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('4', '1', '1', '32123111', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('5', '1', '1', '32124186', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('6', '1', '1', '32124216', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('7', '1', '1', '32124224', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('8', '1', '1', '32124235', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('9', '1', '1', '32124267', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('10', '1', '1', '32124321', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('11', '1', '1', '32142632', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('12', '1', '1', '32142652', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('13', '1', '1', '32142871', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('14', '1', '1', '32143434', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('15', '1', '1', '32147708', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('16', '1', '1', '32153844', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('17', '1', '1', '32159882', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('18', '1', '1', '32160873', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('19', '1', '2', '32122411', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('20', '1', '2', '32124189', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('21', '1', '2', '32124202', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('22', '1', '2', '32124256', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('23', '1', '2', '32124289', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('24', '1', '2', '32124341', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('25', '1', '2', '32148648', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('26', '1', '2', '32149265', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('27', '1', '32123111', '32146961', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('28', '1', '32123111', '32148709', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('29', '1', '32123111', '32159619', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('30', '1', '32123111', '32159786', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('31', '1', '32123111', '32162014', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('32', '1', '32124181', '32124278', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('33', '1', '32124181', '32124348', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('34', '1', '32124181', '32155690', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('35', '1', '32124181', '32155724', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('36', '1', '32124181', '32160580', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('37', '1', '32124181', '32161867', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('38', '1', '32124183', '32124172', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('39', '1', '32124183', '32124333', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('40', '1', '32124183', '32124349', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('41', '1', '32124183', '32147655', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('42', '1', '32124183', '32149970', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('43', '1', '32124183', '32157290', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('44', '1', '32124186', '32124248', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('45', '1', '32124186', '32142628', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('46', '1', '32124186', '32146467', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('47', '1', '32124186', '32154094', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('48', '1', '32124186', '32155512', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('49', '1', '32124186', '32157581', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('50', '1', '32124186', '32160223', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('51', '1', '32124186', '32160583', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('52', '1', '32124188', '32142851', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('53', '1', '32124189', '32124197', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('54', '1', '32124189', '32124199', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('55', '1', '32124189', '32124233', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('56', '1', '32124189', '32124276', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('57', '1', '32124189', '32124330', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('58', '1', '32124189', '32124351', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('59', '1', '32124189', '32124359', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('60', '1', '32124189', '32137035', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('61', '1', '32124189', '32151397', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('62', '1', '32124189', '32151598', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('63', '1', '32124189', '32153323', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('64', '1', '32124189', '32154516', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('65', '1', '32124189', '32154574', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('66', '1', '32124189', '32155229', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('67', '1', '32124189', '32157400', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('68', '1', '32124189', '32157585', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('69', '1', '32124189', '32157697', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('70', '1', '32124189', '32162414', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('71', '1', '32124192', '32124210', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('72', '1', '32124192', '32124279', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('73', '1', '32124192', '32124346', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('74', '1', '32124192', '32124898', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('75', '1', '32124192', '32142634', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('76', '1', '32124192', '32160871', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('77', '1', '32124195', '32137040', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('78', '1', '32124195', '32144113', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('79', '1', '32124195', '32148865', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('80', '1', '32124195', '32149870', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('81', '1', '32124195', '32153980', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('82', '1', '32124195', '32162559', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('83', '1', '32124202', '32124170', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('84', '1', '32124202', '32124218', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('85', '1', '32124202', '32124253', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('86', '1', '32124202', '32124274', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('87', '1', '32124202', '32124302', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('88', '1', '32124202', '32124328', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('89', '1', '32124202', '32124366', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('90', '1', '32124202', '32149072', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('91', '1', '32124202', '32154463', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('92', '1', '32124202', '32154649', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('93', '1', '32124202', '32157789', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('94', '1', '32124202', '32159728', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('95', '1', '32124202', '32161636', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('96', '1', '32124209', '32124227', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('97', '1', '32124209', '32124249', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('98', '1', '32124209', '32124255', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('99', '1', '32124209', '32124320', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('100', '1', '32124209', '32147070', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('101', '1', '32124209', '32154166', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('102', '1', '32124209', '32157498', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('103', '1', '32124209', '32160437', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('104', '1', '32124209', '32161770', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('105', '1', '32124224', '32143828', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('106', '1', '32124224', '32144995', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('107', '1', '32124224', '32153970', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('108', '1', '32124224', '32159906', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('109', '1', '32124224', '32160334', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('110', '1', '32124224', '32160340', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('111', '1', '32124224', '32160909', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('112', '1', '32124224', '32162270', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('113', '1', '32124225', '32124272', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('114', '1', '32124225', '32137036', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('115', '1', '32124225', '32144555', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('116', '1', '32124225', '32152638', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('117', '1', '32124225', '32154101', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('118', '1', '32124225', '32157009', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('119', '1', '32124225', '32160407', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('120', '1', '32124226', '32124187', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('121', '1', '32124226', '32142661', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('122', '1', '32124226', '32144114', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('123', '1', '32124226', '32147525', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('124', '1', '32124226', '32150757', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('125', '1', '32124226', '32154314', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('126', '1', '32124226', '32160335', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('127', '1', '32124226', '32161296', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('128', '1', '32124229', '32147527', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('129', '1', '32124229', '32159883', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('130', '1', '32124234', '32124370', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('131', '1', '32124234', '32149174', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('132', '1', '32124234', '32153663', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('133', '1', '32124234', '32154936', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('134', '1', '32124234', '32160581', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('135', '1', '32124234', '32160877', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('136', '1', '32124236', '32151597', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('137', '1', '32124236', '32151614', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('138', '1', '32124236', '32157535', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('139', '1', '32124238', '32124317', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('140', '1', '32124238', '32124331', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('141', '1', '32124238', '32146674', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('142', '1', '32124238', '32154228', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('143', '1', '32124238', '32159413', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('144', '1', '32124238', '32160469', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('145', '1', '32124243', '32148210', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('146', '1', '32124243', '32149819', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('147', '1', '32124243', '32150966', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('148', '1', '32124243', '32151595', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('149', '1', '32124243', '32161633', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('150', '1', '32124245', '32123705', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('151', '1', '32124245', '32124236', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('152', '1', '32124245', '32124269', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('153', '1', '32124245', '32137041', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('154', '1', '32124245', '32140720', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('155', '1', '32124245', '32142875', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('156', '1', '32124245', '32149485', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('157', '1', '32124245', '32162093', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('158', '1', '32124257', '32124284', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('159', '1', '32124257', '32124343', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('160', '1', '32124257', '32133367', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('161', '1', '32124257', '32146480', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('162', '1', '32124257', '32149977', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('163', '1', '32124257', '32151505', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('164', '1', '32124257', '32154693', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('165', '1', '32124257', '32161036', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('166', '1', '32124267', '32124315', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('167', '1', '32124267', '32124365', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('168', '1', '32124267', '32142874', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('169', '1', '32124267', '32160092', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('170', '1', '32124278', '32147524', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('171', '1', '32124289', '32124176', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('172', '1', '32124289', '32143366', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('173', '1', '32124289', '32152778', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('174', '1', '32124289', '32160908', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('175', '1', '32124304', '32143258', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('176', '1', '32124304', '32160394', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('177', '1', '32124304', '32162491', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('178', '1', '32124315', '32124188', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('179', '1', '32124315', '32124975', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('180', '1', '32124315', '32154232', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('181', '1', '32124321', '32124194', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('182', '1', '32124321', '32133467', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('183', '1', '32124321', '32136613', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('184', '1', '32124321', '32136969', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('185', '1', '32124321', '32142235', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('186', '1', '32124321', '32142649', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('187', '1', '32124321', '32142653', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('188', '1', '32124321', '32143970', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('189', '1', '32124321', '32145534', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('190', '1', '32124321', '32150470', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('191', '1', '32124321', '32152130', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('192', '1', '32124321', '32152377', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('193', '1', '32124321', '32153290', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('194', '1', '32124321', '32153874', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('195', '1', '32124321', '32155174', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('196', '1', '32124321', '32160812', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('197', '1', '32124321', '32161632', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('198', '1', '32124321', '32161675', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('199', '1', '32124321', '32162062', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('200', '1', '32124341', '32124243', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('201', '1', '32124341', '32137037', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('202', '1', '32124341', '32145548', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('203', '1', '32124341', '32148074', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('204', '1', '32124341', '32148862', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('205', '1', '32124341', '32148868', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('206', '1', '32124341', '32153437', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('207', '1', '32124341', '32155726', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('208', '1', '32124341', '32157582', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('209', '1', '32124342', '32161038', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('210', '1', '32124342', '32161042', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('211', '1', '32124342', '32161048', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('212', '1', '32124350', '32124174', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('213', '1', '32124350', '32124190', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('214', '1', '32124350', '32124275', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('215', '1', '32124350', '32124903', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('216', '1', '32124350', '32147649', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('217', '1', '32124350', '32160205', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('218', '1', '32124975', '32124178', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('219', '1', '32124975', '32124222', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('220', '1', '32124975', '32124336', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('221', '1', '32124975', '32144190', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('222', '1', '32124975', '32162548', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('223', '1', '32137041', '32124198', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('224', '1', '32137041', '32124282', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('225', '1', '32137041', '32133083', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('226', '1', '32137041', '32145538', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('227', '1', '32137041', '32149218', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('228', '1', '32142628', '32151854', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('229', '1', '32142632', '32124181', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('230', '1', '32142632', '32124183', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('231', '1', '32142632', '32124184', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('232', '1', '32142632', '32124195', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('233', '1', '32142632', '32124209', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('234', '1', '32142632', '32124225', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('235', '1', '32142632', '32124226', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('236', '1', '32142632', '32124229', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('237', '1', '32142632', '32124245', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('238', '1', '32142632', '32124257', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('239', '1', '32142632', '32124291', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('240', '1', '32142632', '32124350', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('241', '1', '32142632', '32142651', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('242', '1', '32142632', '32147656', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('243', '1', '32142632', '32148701', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('244', '1', '32142632', '32149211', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('245', '1', '32142632', '32154240', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('246', '1', '32142632', '32154629', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('247', '1', '32142632', '32156835', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('248', '1', '32142649', '32157584', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('249', '1', '32142649', '32160582', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('250', '1', '32142651', '32124213', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('251', '1', '32142651', '32124214', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('252', '1', '32142651', '32124215', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('253', '1', '32142651', '32124329', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('254', '1', '32142651', '32124342', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('255', '1', '32142651', '32142999', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('256', '1', '32142651', '32144462', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('257', '1', '32142651', '32144526', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('258', '1', '32142651', '32148067', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('259', '1', '32142651', '32149175', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('260', '1', '32142651', '32149706', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('261', '1', '32142651', '32149975', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('262', '1', '32142651', '32151436', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('263', '1', '32142651', '32151835', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('264', '1', '32142651', '32152177', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('265', '1', '32142651', '32157008', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('266', '1', '32142651', '32160208', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('267', '1', '32142652', '32124185', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('268', '1', '32142652', '32124313', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('269', '1', '32142652', '32124344', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('270', '1', '32142652', '32153664', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('271', '1', '32142658', '32124303', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('272', '1', '32142658', '32146544', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('273', '1', '32142658', '32157048', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('274', '1', '32142658', '32160756', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('275', '1', '32142658', '32161047', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('276', '1', '32142661', '32124206', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('277', '1', '32142661', '32124292', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('278', '1', '32142661', '32145155', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('279', '1', '32142661', '32146510', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('280', '1', '32142661', '32155231', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('281', '1', '32142661', '32157288', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('282', '1', '32142667', '32124193', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('283', '1', '32142667', '32137185', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('284', '1', '32142667', '32148863', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('285', '1', '32142667', '32148924', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('286', '1', '32142667', '32152425', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('287', '1', '32142667', '32152691', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('288', '1', '32142667', '32159427', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('289', '1', '32142851', '32160003', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('290', '1', '32143434', '32124355', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('291', '1', '32143434', '32148332', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('292', '1', '32143434', '32153815', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('293', '1', '32143434', '32162547', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('294', '1', '32143434', '32162550', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('295', '1', '32143828', '32154651', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('296', '1', '32143828', '32160969', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('297', '1', '32144114', '32143435', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('298', '1', '32144995', '32157686', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('299', '1', '32144995', '32160002', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('300', '1', '32146467', '32148606', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('301', '1', '32146467', '32153319', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('302', '1', '32146961', '32154937', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('303', '1', '32146961', '32160764', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('304', '1', '32146961', '32162549', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('305', '1', '32147525', '32157650', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('306', '1', '32147656', '32124196', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('307', '1', '32147656', '32124238', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('308', '1', '32147656', '32124281', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('309', '1', '32147656', '32159479', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('310', '1', '32147708', '32151164', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('311', '1', '32147708', '32151603', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('312', '1', '32147708', '32153479', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('313', '1', '32147708', '32153871', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('314', '1', '32147708', '32157587', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('315', '1', '32147708', '32160391', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('316', '1', '32148067', '32124223', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('317', '1', '32148067', '32145420', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('318', '1', '32148067', '32151737', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('319', '1', '32148067', '32153840', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('320', '1', '32148067', '32157836', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('321', '1', '32148074', '32124363', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('322', '1', '32148074', '32145456', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('323', '1', '32148648', '32144069', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('324', '1', '32148701', '32157412', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('325', '1', '32148701', '32159732', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('326', '1', '32148709', '32159481', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('327', '1', '32148709', '32160093', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('328', '1', '32149211', '32124192', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('329', '1', '32149211', '32142658', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('330', '1', '32149211', '32142667', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('331', '1', '32149211', '32149910', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('332', '1', '32149706', '32144380', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('333', '1', '32149706', '32152430', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('334', '1', '32149973', '32143261', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('335', '1', '32149973', '32153337', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('336', '1', '32150470', '32162409', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('337', '1', '32151164', '32148925', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('338', '1', '32151164', '32159785', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('339', '1', '32151603', '32157402', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('340', '1', '32151603', '32161773', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('341', '1', '32153479', '32160333', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('342', '1', '32153479', '32161674', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('343', '1', '32153874', '32161868', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('344', '1', '32153874', '32161974', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('345', '1', '32154232', '32157586', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('346', '1', '32154629', '32137726', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('347', '1', '32154629', '32142985', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('348', '1', '32154629', '32144488', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('349', '1', '32154629', '32148278', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('350', '1', '32154629', '32149269', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('351', '1', '32154629', '32149869', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('352', '1', '32154629', '32151435', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('353', '1', '32154629', '32151615', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('354', '1', '32154629', '32159730', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('355', '1', '32154629', '32161044', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('356', '1', '32154629', '32161083', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('357', '1', '32154629', '32161099', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('358', '1', '32154629', '32161233', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('359', '1', '32154629', '32161243', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('360', '1', '32154629', '32161372', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('361', '1', '32154629', '32161402', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('362', '1', '32154629', '32162275', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('363', '1', '32154629', '32162282', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('364', '1', '32154629', '32162285', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('365', '1', '32154629', '32162288', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('366', '1', '32154629', '32162289', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('367', '1', '32154629', '32162406', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('368', '1', '32154629', '32162408', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('369', '1', '32155724', '32160755', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('370', '1', '32156835', '32124254', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('371', '1', '32156835', '32124263', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('372', '1', '32156835', '32124314', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('373', '1', '32156835', '32124335', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('374', '1', '32156835', '32150583', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('375', '1', '32156835', '32152527', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('376', '1', '32156835', '32153244', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('377', '1', '32156835', '32157393', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('378', '1', '32156835', '32160207', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('379', '1', '32156835', '32160218', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('380', '1', '32156835', '32160511', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('381', '1', '32160092', '32124234', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('382', '1', '32160092', '32124304', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('383', '1', '32160092', '32149973', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('384', '1', '32161047', '32157411', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('385', '1', '32162062', '32152181', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('386', '1', '32162062', '32162403', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('387', '1', '32162093', '32124250', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('388', '1', '32162093', '32151600', '2016-05-30 19:02:43', 'admin');
-INSERT INTO `jerarquias` VALUES ('389', '1', '32162093', '32154582', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('1', '1', null, '1', '1', '1', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('2', '1', null, '2', '1', '2', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('4', '1', '1', '32123111', '4', '47', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('5', '1', '1', '32124186', '5', '63', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('6', '1', '1', '32124216', '5', '7', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('7', '1', '1', '32124224', '5', '22', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('8', '1', '1', '32124235', '5', '7', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('9', '1', '1', '32124267', '3', '51', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('10', '1', '1', '32124321', '5', '35', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('11', '1', '1', '32142632', '2', '86', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('12', '1', '1', '32142652', '6', '18', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('13', '1', '1', '32142871', '7', '81', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('14', '1', '1', '32143434', '4', '45', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('15', '1', '1', '32147708', '4', '43', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('16', '1', '1', '32153844', '8', '16', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('17', '1', '1', '32159882', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('18', '1', '1', '32160873', '7', '81', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('19', '1', '2', '32122411', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('20', '1', '2', '32124189', '6', '74', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('21', '1', '2', '32124202', '6', '74', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('22', '1', '2', '32124256', '7', '79', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('23', '1', '2', '32124289', '6', '67', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('24', '1', '2', '32124341', '4', '17', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('25', '1', '2', '32148648', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('26', '1', '2', '32149265', '7', '82', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('27', '1', '32123111', '32146961', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('28', '1', '32123111', '32148709', '6', '41', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('29', '1', '32123111', '32159619', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('30', '1', '32123111', '32159786', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('31', '1', '32123111', '32162014', '5', '39', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('32', '1', '32124181', '32124278', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('33', '1', '32124181', '32124348', '7', '79', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('34', '1', '32124181', '32155690', '5', '32', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('35', '1', '32124181', '32155724', '5', '32', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('36', '1', '32124181', '32160580', '5', '32', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('37', '1', '32124181', '32161867', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('38', '1', '32124183', '32124172', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('39', '1', '32124183', '32124333', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('40', '1', '32124183', '32124349', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('41', '1', '32124183', '32147655', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('42', '1', '32124183', '32149970', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('43', '1', '32124183', '32157290', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('44', '1', '32124186', '32124248', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('45', '1', '32124186', '32142628', '6', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('46', '1', '32124186', '32146467', '6', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('47', '1', '32124186', '32154094', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('48', '1', '32124186', '32155512', '6', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('49', '1', '32124186', '32157581', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('50', '1', '32124186', '32160223', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('51', '1', '32124186', '32160583', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('52', '1', '32124188', '32142851', '6', '55', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('53', '1', '32124189', '32124197', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('54', '1', '32124189', '32124199', '8', '16', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('55', '1', '32124189', '32124233', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('56', '1', '32124189', '32124276', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('57', '1', '32124189', '32124330', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('58', '1', '32124189', '32124351', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('59', '1', '32124189', '32124359', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('60', '1', '32124189', '32137035', '7', '82', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('61', '1', '32124189', '32151397', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('62', '1', '32124189', '32151598', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('63', '1', '32124189', '32153323', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('64', '1', '32124189', '32154516', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('65', '1', '32124189', '32154574', '8', '64', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('66', '1', '32124189', '32155229', '8', '75', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('67', '1', '32124189', '32157400', '8', '75', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('68', '1', '32124189', '32157585', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('69', '1', '32124189', '32157697', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('70', '1', '32124189', '32162414', '7', '82', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('71', '1', '32124192', '32124210', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('72', '1', '32124192', '32124279', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('73', '1', '32124192', '32124346', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('74', '1', '32124192', '32124898', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('75', '1', '32124192', '32142634', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('76', '1', '32124192', '32160871', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('77', '1', '32124195', '32137040', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('78', '1', '32124195', '32144113', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('79', '1', '32124195', '32148865', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('80', '1', '32124195', '32149870', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('81', '1', '32124195', '32153980', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('82', '1', '32124195', '32162559', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('83', '1', '32124202', '32124170', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('84', '1', '32124202', '32124218', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('85', '1', '32124202', '32124253', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('86', '1', '32124202', '32124274', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('87', '1', '32124202', '32124302', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('88', '1', '32124202', '32124328', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('89', '1', '32124202', '32124366', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('90', '1', '32124202', '32149072', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('91', '1', '32124202', '32154463', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('92', '1', '32124202', '32154649', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('93', '1', '32124202', '32157789', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('94', '1', '32124202', '32159728', '8', '13', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('95', '1', '32124202', '32161636', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('96', '1', '32124209', '32124227', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('97', '1', '32124209', '32124249', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('98', '1', '32124209', '32124255', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('99', '1', '32124209', '32124320', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('100', '1', '32124209', '32147070', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('101', '1', '32124209', '32154166', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('102', '1', '32124209', '32157498', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('103', '1', '32124209', '32160437', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('104', '1', '32124209', '32161770', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('105', '1', '32124224', '32143828', '6', '22', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('106', '1', '32124224', '32144995', '6', '22', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('107', '1', '32124224', '32153970', '7', '62', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('108', '1', '32124224', '32159906', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('109', '1', '32124224', '32160334', '7', '52', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('110', '1', '32124224', '32160340', '7', '62', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('111', '1', '32124224', '32160909', '7', '52', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('112', '1', '32124224', '32162270', '7', '62', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('113', '1', '32124225', '32124272', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('114', '1', '32124225', '32137036', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('115', '1', '32124225', '32144555', '5', '27', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('116', '1', '32124225', '32152638', '5', '27', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('117', '1', '32124225', '32154101', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('118', '1', '32124225', '32157009', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('119', '1', '32124225', '32160407', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('120', '1', '32124226', '32124187', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('121', '1', '32124226', '32142661', '5', '30', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('122', '1', '32124226', '32144114', '5', '30', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('123', '1', '32124226', '32147525', '5', '30', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('124', '1', '32124226', '32150757', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('125', '1', '32124226', '32154314', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('126', '1', '32124226', '32160335', '5', '29', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('127', '1', '32124226', '32161296', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('128', '1', '32124229', '32147527', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('129', '1', '32124229', '32159883', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('130', '1', '32124234', '32124370', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('131', '1', '32124234', '32149174', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('132', '1', '32124234', '32153663', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('133', '1', '32124234', '32154936', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('134', '1', '32124234', '32160581', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('135', '1', '32124234', '32160877', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('136', '1', '32124236', '32151597', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('137', '1', '32124236', '32151614', '8', '14', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('138', '1', '32124236', '32157535', '7', '61', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('139', '1', '32124238', '32124317', '8', '10', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('140', '1', '32124238', '32124331', '6', '83', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('141', '1', '32124238', '32146674', '8', '10', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('142', '1', '32124238', '32154228', '8', '10', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('143', '1', '32124238', '32159413', '8', '10', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('144', '1', '32124238', '32160469', '8', '10', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('145', '1', '32124243', '32148210', '7', '9', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('146', '1', '32124243', '32149819', '7', '9', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('147', '1', '32124243', '32150966', '7', '9', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('148', '1', '32124243', '32151595', '7', '9', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('149', '1', '32124243', '32161633', '7', '9', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('150', '1', '32124245', '32123705', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('151', '1', '32124245', '32124236', '6', '60', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('152', '1', '32124245', '32124269', '6', '60', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('153', '1', '32124245', '32137041', '5', '40', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('154', '1', '32124245', '32140720', '5', '38', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('155', '1', '32124245', '32142875', '5', '20', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('156', '1', '32124245', '32149485', '5', '24', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('157', '1', '32124245', '32162093', '5', '38', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('158', '1', '32124257', '32124284', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('159', '1', '32124257', '32124343', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('160', '1', '32124257', '32133367', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('161', '1', '32124257', '32146480', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('162', '1', '32124257', '32149977', '6', '27', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('163', '1', '32124257', '32151505', '6', '21', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('164', '1', '32124257', '32154693', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('165', '1', '32124257', '32161036', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('166', '1', '32124267', '32124315', '4', '44', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('167', '1', '32124267', '32124365', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('168', '1', '32124267', '32142874', '5', '33', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('169', '1', '32124267', '32160092', '4', '37', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('170', '1', '32124278', '32147524', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('171', '1', '32124289', '32124176', '8', '77', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('172', '1', '32124289', '32143366', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('173', '1', '32124289', '32152778', '7', '11', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('174', '1', '32124289', '32160908', '8', '16', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('175', '1', '32124304', '32143258', '7', '85', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('176', '1', '32124304', '32160394', '7', '85', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('177', '1', '32124304', '32162491', '7', '85', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('178', '1', '32124315', '32124188', '5', '72', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('179', '1', '32124315', '32124975', '5', '73', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('180', '1', '32124315', '32154232', '6', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('181', '1', '32124321', '32124194', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('182', '1', '32124321', '32133467', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('183', '1', '32124321', '32136613', '7', '54', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('184', '1', '32124321', '32136969', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('185', '1', '32124321', '32142235', '6', '3', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('186', '1', '32124321', '32142649', '5', '23', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('187', '1', '32124321', '32142653', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('188', '1', '32124321', '32143970', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('189', '1', '32124321', '32145534', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('190', '1', '32124321', '32150470', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('191', '1', '32124321', '32152130', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('192', '1', '32124321', '32152377', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('193', '1', '32124321', '32153290', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('194', '1', '32124321', '32153874', '6', '36', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('195', '1', '32124321', '32155174', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('196', '1', '32124321', '32160812', '7', '54', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('197', '1', '32124321', '32161632', '6', '53', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('198', '1', '32124321', '32161675', '5', '31', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('199', '1', '32124321', '32162062', '5', '31', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('200', '1', '32124341', '32124243', '6', '68', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('201', '1', '32124341', '32137037', '8', '15', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('202', '1', '32124341', '32145548', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('203', '1', '32124341', '32148074', '6', '69', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('204', '1', '32124341', '32148862', '6', '57', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('205', '1', '32124341', '32148868', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('206', '1', '32124341', '32153437', '8', '15', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('207', '1', '32124341', '32155726', '6', '68', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('208', '1', '32124341', '32157582', '7', '82', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('209', '1', '32124342', '32161038', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('210', '1', '32124342', '32161042', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('211', '1', '32124342', '32161048', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('212', '1', '32124350', '32124174', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('213', '1', '32124350', '32124190', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('214', '1', '32124350', '32124275', '5', '27', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('215', '1', '32124350', '32124903', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('216', '1', '32124350', '32147649', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('217', '1', '32124350', '32160205', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('218', '1', '32124975', '32124178', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('219', '1', '32124975', '32124222', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('220', '1', '32124975', '32124336', '6', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('221', '1', '32124975', '32144190', '6', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('222', '1', '32124975', '32162548', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('223', '1', '32137041', '32124198', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('224', '1', '32137041', '32124282', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('225', '1', '32137041', '32133083', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('226', '1', '32137041', '32145538', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('227', '1', '32137041', '32149218', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('228', '1', '32142628', '32151854', '7', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('229', '1', '32142632', '32124181', '4', '50', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('230', '1', '32142632', '32124183', '4', '42', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('231', '1', '32142632', '32124184', '7', '79', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('232', '1', '32142632', '32124195', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('233', '1', '32142632', '32124209', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('234', '1', '32142632', '32124225', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('235', '1', '32142632', '32124226', '4', '48', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('236', '1', '32142632', '32124229', '5', '34', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('237', '1', '32142632', '32124245', '4', '46', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('238', '1', '32142632', '32124257', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('239', '1', '32142632', '32124291', '7', '79', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('240', '1', '32142632', '32124350', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('241', '1', '32142632', '32142651', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('242', '1', '32142632', '32147656', '5', '26', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('243', '1', '32142632', '32148701', '5', '25', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('244', '1', '32142632', '32149211', '3', '48', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('245', '1', '32142632', '32154240', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('246', '1', '32142632', '32154629', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('247', '1', '32142632', '32156835', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('248', '1', '32142649', '32157584', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('249', '1', '32142649', '32160582', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('250', '1', '32142651', '32124213', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('251', '1', '32142651', '32124214', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('252', '1', '32142651', '32124215', '6', '21', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('253', '1', '32142651', '32124329', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('254', '1', '32142651', '32124342', '6', '21', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('255', '1', '32142651', '32142999', '8', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('256', '1', '32142651', '32144462', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('257', '1', '32142651', '32144526', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('258', '1', '32142651', '32148067', '5', '30', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('259', '1', '32142651', '32149175', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('260', '1', '32142651', '32149706', '5', '30', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('261', '1', '32142651', '32149975', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('262', '1', '32142651', '32151436', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('263', '1', '32142651', '32151835', '8', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('264', '1', '32142651', '32152177', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('265', '1', '32142651', '32157008', '8', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('266', '1', '32142651', '32160208', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('267', '1', '32142652', '32124185', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('268', '1', '32142652', '32124313', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('269', '1', '32142652', '32124344', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('270', '1', '32142652', '32153664', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('271', '1', '32142658', '32124303', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('272', '1', '32142658', '32146544', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('273', '1', '32142658', '32157048', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('274', '1', '32142658', '32160756', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('275', '1', '32142658', '32161047', '5', '28', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('276', '1', '32142661', '32124206', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('277', '1', '32142661', '32124292', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('278', '1', '32142661', '32145155', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('279', '1', '32142661', '32146510', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('280', '1', '32142661', '32155231', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('281', '1', '32142661', '32157288', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('282', '1', '32142667', '32124193', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('283', '1', '32142667', '32137185', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('284', '1', '32142667', '32148863', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('285', '1', '32142667', '32148924', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('286', '1', '32142667', '32152425', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('287', '1', '32142667', '32152691', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('288', '1', '32142667', '32159427', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('289', '1', '32142851', '32160003', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('290', '1', '32143434', '32124355', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('291', '1', '32143434', '32148332', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('292', '1', '32143434', '32153815', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('293', '1', '32143434', '32162547', '6', '6', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('294', '1', '32143434', '32162550', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('295', '1', '32143828', '32154651', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('296', '1', '32143828', '32160969', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('297', '1', '32144114', '32143435', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('298', '1', '32144995', '32157686', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('299', '1', '32144995', '32160002', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('300', '1', '32146467', '32148606', '7', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('301', '1', '32146467', '32153319', '7', '58', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('302', '1', '32146961', '32154937', '7', '78', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('303', '1', '32146961', '32160764', '7', '78', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('304', '1', '32146961', '32162549', '7', '78', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('305', '1', '32147525', '32157650', '5', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('306', '1', '32147656', '32124196', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('307', '1', '32147656', '32124238', '5', '66', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('308', '1', '32147656', '32124281', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('309', '1', '32147656', '32159479', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('310', '1', '32147708', '32151164', '5', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('311', '1', '32147708', '32151603', '5', '65', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('312', '1', '32147708', '32153479', '5', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('313', '1', '32147708', '32153871', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('314', '1', '32147708', '32157587', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('315', '1', '32147708', '32160391', '6', '19', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('316', '1', '32148067', '32124223', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('317', '1', '32148067', '32145420', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('318', '1', '32148067', '32151737', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('319', '1', '32148067', '32153840', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('320', '1', '32148067', '32157836', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('321', '1', '32148074', '32124363', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('322', '1', '32148074', '32145456', '7', '82', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('323', '1', '32148648', '32144069', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('324', '1', '32148701', '32157412', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('325', '1', '32148701', '32159732', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('326', '1', '32148709', '32159481', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('327', '1', '32148709', '32160093', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('328', '1', '32149211', '32124192', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('329', '1', '32149211', '32142658', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('330', '1', '32149211', '32142667', '5', '49', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('331', '1', '32149211', '32149910', '7', '79', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('332', '1', '32149706', '32144380', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('333', '1', '32149706', '32152430', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('334', '1', '32149973', '32143261', '7', '85', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('335', '1', '32149973', '32153337', '7', '85', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('336', '1', '32150470', '32162409', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('337', '1', '32151164', '32148925', '6', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('338', '1', '32151164', '32159785', '6', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('339', '1', '32151603', '32157402', '6', '56', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('340', '1', '32151603', '32161773', '6', '56', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('341', '1', '32153479', '32160333', '6', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('342', '1', '32153479', '32161674', '6', '4', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('343', '1', '32153874', '32161868', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('344', '1', '32153874', '32161974', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('345', '1', '32154232', '32157586', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('346', '1', '32154629', '32137726', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('347', '1', '32154629', '32142985', '5', '29', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('348', '1', '32154629', '32144488', '6', '29', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('349', '1', '32154629', '32148278', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('350', '1', '32154629', '32149269', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('351', '1', '32154629', '32149869', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('352', '1', '32154629', '32151435', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('353', '1', '32154629', '32151615', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('354', '1', '32154629', '32159730', '6', '29', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('355', '1', '32154629', '32161044', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('356', '1', '32154629', '32161083', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('357', '1', '32154629', '32161099', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('358', '1', '32154629', '32161233', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('359', '1', '32154629', '32161243', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('360', '1', '32154629', '32161372', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('361', '1', '32154629', '32161402', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('362', '1', '32154629', '32162275', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('363', '1', '32154629', '32162282', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('364', '1', '32154629', '32162285', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('365', '1', '32154629', '32162288', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('366', '1', '32154629', '32162289', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('367', '1', '32154629', '32162406', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('368', '1', '32154629', '32162408', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('369', '1', '32155724', '32160755', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('370', '1', '32156835', '32124254', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('371', '1', '32156835', '32124263', '8', '80', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('372', '1', '32156835', '32124314', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('373', '1', '32156835', '32124335', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('374', '1', '32156835', '32150583', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('375', '1', '32156835', '32152527', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('376', '1', '32156835', '32153244', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('377', '1', '32156835', '32157393', '7', '84', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('378', '1', '32156835', '32160207', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('379', '1', '32156835', '32160218', '8', '12', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('380', '1', '32156835', '32160511', '6', '76', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('381', '1', '32160092', '32124234', '5', '71', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('382', '1', '32160092', '32124304', '6', '59', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('383', '1', '32160092', '32149973', '5', '70', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('384', '1', '32161047', '32157411', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('385', '1', '32162062', '32152181', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('386', '1', '32162062', '32162403', '7', '8', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('387', '1', '32162093', '32124250', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('388', '1', '32162093', '32151600', '6', '5', '2016-05-30 19:02:43', 'admin');
+INSERT INTO `jerarquias` VALUES ('389', '1', '32162093', '32154582', '6', '5', '2016-05-30 19:02:43', 'admin');
 
 -- ----------------------------
 -- Table structure for niveles
@@ -3007,638 +3099,6 @@ INSERT INTO `niveles` VALUES ('5', 'Mandos medios y profesorado 1');
 INSERT INTO `niveles` VALUES ('6', 'Mandos medios y profesorado 2');
 INSERT INTO `niveles` VALUES ('7', 'Operativos 1');
 INSERT INTO `niveles` VALUES ('8', 'Operativos 2');
-
--- ----------------------------
--- Table structure for preguntas_puestos
--- ----------------------------
-DROP TABLE IF EXISTS `preguntas_puestos`;
-CREATE TABLE `preguntas_puestos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `competencia` varchar(255) DEFAULT NULL,
-  `pregunta` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=957 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of preguntas_puestos
--- ----------------------------
-INSERT INTO `preguntas_puestos` VALUES ('340', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Promueve constantemente la misión institucional y los valores universitarios en su trabajo de supervisión de las labores académicas y administrativas del personal a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('341', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Mantiene una supervisión constante de la calidad de las cátedras impartidas y revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para alinear aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('342', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Atiende y resuelve con prontitud y actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
-INSERT INTO `preguntas_puestos` VALUES ('343', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Demuestra una preocupación genuina y permanente por la optimización del uso de los recursos humanos y materiales asignados a su programa académico.');
-INSERT INTO `preguntas_puestos` VALUES ('344', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la Licenciatura y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.');
-INSERT INTO `preguntas_puestos` VALUES ('345', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento cercano a cada uno de sus profesores y personal buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ');
-INSERT INTO `preguntas_puestos` VALUES ('346', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Colabora permanentemente con las labores de promoción de su escuela hacia los diversos públicos: egresados, empresas,instituciones privadas y gubernamentales entre otros.');
-INSERT INTO `preguntas_puestos` VALUES ('347', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento puntual al Plan Operativo Anual y asegura su cumplimiento en el tiempo establecido y con la calidad requerida. ');
-INSERT INTO `preguntas_puestos` VALUES ('348', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Se preocupa por tener y retener a docentes de excelencia para licencitatura y posgrados con experiencia profesional y calidad académica.');
-INSERT INTO `preguntas_puestos` VALUES ('349', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Busca proponer, desarrollar, implementar y actualizar los programas de posgrados y educación continua.');
-INSERT INTO `preguntas_puestos` VALUES ('350', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
-INSERT INTO `preguntas_puestos` VALUES ('351', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Establece y supervisa la realización de las prioridades de operación y quehacer académico de las áreas a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('352', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura la máxima calidad académica y busca implementar los sistemas necesarios para conseguirla, de modo que dé respuesta a las inquietudes de estudiantes y profesores. ');
-INSERT INTO `preguntas_puestos` VALUES ('353', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Analizar y propone los programas académicos que debe de ofrecer la Universidad manteniédolos actualizados.');
-INSERT INTO `preguntas_puestos` VALUES ('354', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura la máxima calidad académica certificada de la universidad a partir de los procesos de acreditación que la institución ha decidido emprender y renovar tanto en licenciatura como en Posgrados');
-INSERT INTO `preguntas_puestos` VALUES ('355', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Ha establecido nuevas relaciones académicas y mantiene una relación cercana con otras instituciones nacionales e internacionales de prestigio.');
-INSERT INTO `preguntas_puestos` VALUES ('356', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('357', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('358', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura y fomenta una colaboración estrecha con las vicerrectorias de la Universidad');
-INSERT INTO `preguntas_puestos` VALUES ('359', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Fomenta y busca la innovación en todas sus áreas, en especial en el proceso de enseñanza aprendizaje y en los métodos. Buscando una estrecha relación con el departamento de innovación de la Universidad. ');
-INSERT INTO `preguntas_puestos` VALUES ('360', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
-INSERT INTO `preguntas_puestos` VALUES ('361', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('362', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Da seguimiento y busca el cumplimiento ágil de los proyectos de la Universidad en el ámbito de su competencia.');
-INSERT INTO `preguntas_puestos` VALUES ('363', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Supervisa el correcto registro y en los tiempos establecidos las operaciones económicas de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('364', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Propone al Comité Rectoral los procedimientos administrativos, modificaciones requeridas al presupuesto y cuotas escolares en beneficio de la Institución para presentar a la RUA con las gestiones correspondientes ante la junta de gobierno.');
-INSERT INTO `preguntas_puestos` VALUES ('365', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('366', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Integra en tiempo y forma junto con el Comité Rectoral y Rector el presupuesto anual de la Universidad, se encarga de darle seguimiento y vela por el cumplimiento del mismo');
-INSERT INTO `preguntas_puestos` VALUES ('367', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('368', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Se asegura de proporcionar servicios de alta calidad a los estudiantes y clientes internos tanto en la atención, trato y vanguardia de los servicios que tienen relación a su área de competencia.');
-INSERT INTO `preguntas_puestos` VALUES ('369', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('370', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
-INSERT INTO `preguntas_puestos` VALUES ('371', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propicia y coordina de manera permanente las actividades de las áreas de Difusión Cultural y Deportes.');
-INSERT INTO `preguntas_puestos` VALUES ('372', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propicia y coordina de manera permanente las actividades de los Programas de Acción y Servicio Social que apoyan la formación integral de los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('373', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Vela por la adecuada implantación, operación y evaluación del modelo educativo Anáhuac de formación integral.');
-INSERT INTO `preguntas_puestos` VALUES ('374', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propone y desarrolla constantemente programas relacionados con la promoción del liderazgo de acción positiva ante la comunidad universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('375', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Fomenta actividades de acción social incrementando consistentemente la participación activa de alumnos, profesores y personal universitario.');
-INSERT INTO `preguntas_puestos` VALUES ('376', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('377', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('378', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Fomenta la identidad institucional, apostolados y acción social en los alumnos de posgrados.');
-INSERT INTO `preguntas_puestos` VALUES ('379', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Cuenta con un plan pastoral y se asegura de su avance y cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('380', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('381', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Trabaja junto con la Vicerrectoría Académica, en el alcance y funciones de la división estableciendo planes y programas actualizados a corto,mediano y largo plazo.');
-INSERT INTO `preguntas_puestos` VALUES ('382', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)');
-INSERT INTO `preguntas_puestos` VALUES ('383', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Busca la máxima calidad académica reconocida tanto en Licenciatura como en Posgrados.');
-INSERT INTO `preguntas_puestos` VALUES ('384', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Constantemente desarrolla, implementa y actualiza los programas de posgrados y educación continua.');
-INSERT INTO `preguntas_puestos` VALUES ('385', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Mantiene una supervisión constante de la calidad de las cátedras impartidas en la Divisón y revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para alinear aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('386', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Establece y mantiene relaciones de colaboración con: Instituciones académicas de prestigio,nacionales o extranjeras, con el medio profesional correspondiente y con los egresados de la facultad.');
-INSERT INTO `preguntas_puestos` VALUES ('387', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Elabora el Plan y Presupuesto Anual de Operación de su División dando seguimiento a la realización del mismo en el tiempo y calidad requerida.');
-INSERT INTO `preguntas_puestos` VALUES ('388', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Da un seguimiento cercano a cada uno de sus profesores buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ');
-INSERT INTO `preguntas_puestos` VALUES ('389', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la División y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.');
-INSERT INTO `preguntas_puestos` VALUES ('390', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Elabora y presenta al comité rectoral para su aprobación, el plan estratégico y los programas anuales acordados con las autoridades y directivos de las diferentes áreas de la universidad. ');
-INSERT INTO `preguntas_puestos` VALUES ('391', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Asesora al comité rectoral para desarrollar, actualizar y dar seguimiento a la aplicación del plan estratégico y su programa anual. ');
-INSERT INTO `preguntas_puestos` VALUES ('392', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Da un seguimiento cercano a los programas anuales y brinda una retroalimentación clara y estratégica a los responsables. ');
-INSERT INTO `preguntas_puestos` VALUES ('393', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Brinda constantemente información estadística fidedígna que sirva para las determinaciones de desarrollo y crecimiento universitario');
-INSERT INTO `preguntas_puestos` VALUES ('394', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Orienta y coordina de forma permanente a el área de Administración Escolar logrando un servicio óptimo para los usuarios de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('395', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Orienta y coordina de forma permanente al área de Servicios Tecnológicos logrando un servicio óptimo para los usuarios de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('396', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('397', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Analiza y propone las acciones y procesos que se basan en la medición, diagnóstico, evaluación, diseño y propuestas de intervención para el mejoramiento continuo de procesos y servicios. Ha propuesto mejoras que se han implementado con éxito en el último año.');
-INSERT INTO `preguntas_puestos` VALUES ('398', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Apoya y propone al comité rectoral el diseño, implantación y mecanismos de evaluación institucional. ');
-INSERT INTO `preguntas_puestos` VALUES ('399', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Coordina de manera eficaz los procesos de certificación y acreditación nacionales e internacionales logrando mantener la excelencia académica de la institución. Da un seguimiento a las recomendaciones u observaciones de los sistemas de acreditación.');
-INSERT INTO `preguntas_puestos` VALUES ('400', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" dentro de la Institución y en especial dentro del personal de su área,egresados y bienhechores.');
-INSERT INTO `preguntas_puestos` VALUES ('401', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Desarrolla e implementa Estrategias de Financiamiento para el crecimiento de la institución basándose en apoyos filantrópicos individuales,grupales y empresariales.');
-INSERT INTO `preguntas_puestos` VALUES ('402', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Recauda Recursos Económicos y en Especie (independietes de la operación ordinaria de la Universidad) para el desarrollo de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('403', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Supervisa la correcta aplicación de los recursos económicos y en especie recaudados de acuerdo a la asignación inicial. ');
-INSERT INTO `preguntas_puestos` VALUES ('404', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'De manera continua realiza planes y proyectos que fomentan el apoyo y colaboración de los egresados en las actividades institucionales.');
-INSERT INTO `preguntas_puestos` VALUES ('405', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Evalúa constantemente la percepción de los públicos a quienes son dirigidos sus eventos y actividades (egresados, alumnos, empresas,etc), y realiza propuestas para su mejoramiento.');
-INSERT INTO `preguntas_puestos` VALUES ('406', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Establece relaciones permanentes con distintas dependencias de gobierno,del sector privado y social que favorecen el desarrollo e imagen de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('407', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('408', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('409', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('410', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en la formación docente y tutorías.');
-INSERT INTO `preguntas_puestos` VALUES ('411', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'De manera consistente y junto con sus coordinadores diseña,supervisa y evalúa la ejecución de procesos de excelencia académica e investigación y propone acciones para el mejoramiento continuo de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('412', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Se asegura de tener un modelo eficaz de atención personal a los estudiantes, particularmente a través de los programas de tutoría, y busca su mejora contínua.');
-INSERT INTO `preguntas_puestos` VALUES ('413', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Da seguimiento al cumplimiento efectivo de diversos indicadores de desempeño académico y realiza estudios que permitan conocer los requerimientos de acreditación institucional y de programas académicos ante diferentes instancias(ANUES, FIMPES, ETC).');
-INSERT INTO `preguntas_puestos` VALUES ('414', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Conduce el análisis e interpretación de la Práctica de Evaluación Docentes a nivel Institucional, propone acciones para el mejoramiento y se asegura del cumplimiento de las mismas.');
-INSERT INTO `preguntas_puestos` VALUES ('415', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Procura la máxima calidad académica certificada de la universidad según los planes de la misma, en especial busca mejorar en las evaluaciones del EGEL.');
-INSERT INTO `preguntas_puestos` VALUES ('416', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Apoya los procesos, proyectos e iniativas relacionadas con la Capacitación del Personal Docente.');
-INSERT INTO `preguntas_puestos` VALUES ('417', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc).');
-INSERT INTO `preguntas_puestos` VALUES ('418', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Funge permanentemente como auditor en las diferentes escuelas con la finalidad de el logro de las certificaciones de programas académicos.');
-INSERT INTO `preguntas_puestos` VALUES ('419', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Conduce eficientemente los procesos relacionados con la selección y el desarrollo de profesores de planta y de honorarios.');
-INSERT INTO `preguntas_puestos` VALUES ('420', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Integra eficientemente de páginas Web de los cursos del Proyecto @prende, de acuerdo a las indicaciones del especialista en Diseño Instruccional, requerimientos de los profesores, tipo de contenido y área de conocimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('421', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Diseña de objetos de aprendizaje \"a la medida\", materiales de apoyo y recursos multimedia innovadores.');
-INSERT INTO `preguntas_puestos` VALUES ('422', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla y aplica con éxito estándares SCORM a los recursos multimedia, objetos e integración de contenidos en WebCT.');
-INSERT INTO `preguntas_puestos` VALUES ('423', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Digitaliza en forma y tiempo documentos, imágenes, audios, videos,etc, para la integración de los cursoso del Programa @prende.');
-INSERT INTO `preguntas_puestos` VALUES ('424', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Asesora satisfactoriamente a profesores y alumnos, en cuanto al uso de herramientas, software especializado o aplicaciones que se requieren para la impartición de las materias en WebCT y Blackboard.');
-INSERT INTO `preguntas_puestos` VALUES ('425', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa el funcionamiento de todos los recuros que contien cada materia integrada en WebCat, de acuerdo a las indicaciones del Especialista en Diseño Instruccional o del prrofesor.');
-INSERT INTO `preguntas_puestos` VALUES ('426', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Estructura y actualiza adecuadamente los archivos y directorios de cursos abiertos en WebCT y Blackboard.');
-INSERT INTO `preguntas_puestos` VALUES ('427', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Actualiza y usa la galería de objetos de aprendizaje y recursos multimedia desarrollada para el Programa @prende.');
-INSERT INTO `preguntas_puestos` VALUES ('428', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Respalda de forma permanente los documentos originales de los maestros, así como los materiales desarrollados por los enlaces del Programa @prende en cada Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('429', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Cumple eficientemente con los objetivos del Programa @prende en la Red de Universidades Anáhuac.');
-INSERT INTO `preguntas_puestos` VALUES ('430', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Orienta apropiadamente a los candidatos a postulantes que solicitan ingreso a la Institución, para que elijan una profesión adecuada,tomando en cuenta sus habilidades, aptitudes, intereses y características de personalidad.');
-INSERT INTO `preguntas_puestos` VALUES ('431', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Aplica pruebas psicológicas a los candidatos a ingresar a la institución y elabora adecuadamente los perfiles vocacionales de cada uno de ellos.');
-INSERT INTO `preguntas_puestos` VALUES ('432', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Entrevista a cada uno de los candidatos y elabora en tiempo y forma los reportes psicológicos que se envían al área de admisiones.');
-INSERT INTO `preguntas_puestos` VALUES ('433', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene contacto con los directores de las escuelas y conoce el grado de adaptación de los alumnos de nuevo ingreso a la escuela y a la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('434', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene contacto con los alumnos en casos de bajo rendimiento, problemas de motivación u otros y los canaliza debidamente a instituciones externas que les puedan brindar ayuda.');
-INSERT INTO `preguntas_puestos` VALUES ('435', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Reorienta satisfactoriamente a los alumnos que solicitan cambio de carrera.');
-INSERT INTO `preguntas_puestos` VALUES ('436', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Realiza entrevistas y mantiene un adecuado contacto con padres de familia.');
-INSERT INTO `preguntas_puestos` VALUES ('437', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Determina con precisión la conveniencia o no de ingreso de cada aspirante a través de un reporte.');
-INSERT INTO `preguntas_puestos` VALUES ('438', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Controla, revisa y entrega en tiempo y forma los exámenes y reportes psicológicos a las áreas correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('439', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Propone a la Dirección planes y políticas para estrechar las relaciones de la Universidad con sus egresados fomentando su apoyo y colaboración en actividades institucionales.');
-INSERT INTO `preguntas_puestos` VALUES ('440', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Establece vínculos permanentes con empresas de sectores públicos y privados,que permiten que nuestros egresados puedan integrarse al ambiente laboral en forma rápida y con oportunidades de acuerdo a su perfil y aspiraciones profesionales.');
-INSERT INTO `preguntas_puestos` VALUES ('441', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Propicia con éxito encuentros, ferias y seminarios que ponen en contacto a nustros alumnos de últimos semestres con las oportunidades laborales a fines a sus perfiles académicos.');
-INSERT INTO `preguntas_puestos` VALUES ('442', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Administra, supervisa y evalúa con eficiencia las herraminetas (administrativas y electrónicas) que se presentan a los egresados como alternativas de búsqueda de oportunidades laborales (bolsa de trabajo).');
-INSERT INTO `preguntas_puestos` VALUES ('443', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Fomenta satisfactoriamente eventos: comidas, foros,encuentros, seminarios, etc., de integración y reencuentro de grupos de egresados. ');
-INSERT INTO `preguntas_puestos` VALUES ('444', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene constante relación con egresados que colaboran en empresas líderes logrando que participen con la Universidad en proyectos sociales,foros y conferencias siendo modelos a seguir en la vida profesional para nuestros alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('445', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Cuenta con un programa o proceso de retroalimentación efectivo (sugerencias/encuestas) por parte de los egresados, que permiten realinear los proyectos, planes y programas en base a las necesidades y expectativas reales de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('446', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Establece negociaciones permanantes con proveedores y prestadores de servicios logrando acuerdos que apoyan la economía de nuestros egresados (descuentos, promociones,etc).');
-INSERT INTO `preguntas_puestos` VALUES ('447', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Administra y vigila constantemente que se encuentren actualizadas la base de datos con la información personal de los egresados.');
-INSERT INTO `preguntas_puestos` VALUES ('448', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa con eficiencia que todos los medios de contacto con los egresados (cartas, correo electrónico, publicaciones, revistas,etc) cumplan con los contenidos alineados a los valores y misión de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('449', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Brinda atención personalizada a alumnos que le sean canalizados ya sea por áreas académicas vía tutores, por la coordinación de relaciones estudiantiles o por alguna otra instancia.');
-INSERT INTO `preguntas_puestos` VALUES ('450', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Evalúa las condiciones, características y actitudes de alumnos asignados a su atención valuando si requiere la atención de un especialista y/o le establece u programa de adaptación.');
-INSERT INTO `preguntas_puestos` VALUES ('451', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Alerta en tiempo y forma al Vicerrector de Formación Integral sobre alumnos que presentan problemas que ameriten citar a los padres o tutores.');
-INSERT INTO `preguntas_puestos` VALUES ('452', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Apoya apropiadamente a los profesores de tutorías en cuanto a la forma que deben manejar o canalizar casos que ameriten atención personalizada.');
-INSERT INTO `preguntas_puestos` VALUES ('453', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'En coordinación con relaciones estudiantiles organiza con eficiencia cursos, y conferencias de formación hacia los alumnos manejando temas como: alcoholismo, drogadicción, depresión, anorexia, bulimia, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('454', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Trabaja en conjunto con el Director de Pastoral Universitaria apoyándole en el diagnóstico.');
-INSERT INTO `preguntas_puestos` VALUES ('455', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a todo alumno o persona de la Institución que se acerque a solicitar sus servicios.');
-INSERT INTO `preguntas_puestos` VALUES ('456', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Conoce y está familiarizado con los centros y grupos de apoyo con los que cuenta la Ciudad en la que se ubica la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('457', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en actividades estudiantiles (Megamisión, actividades culturales,etc) que le permiten interactuar con los alumnos detectando problemas reales o potenciales ya sea a nivel individual o grupal.');
-INSERT INTO `preguntas_puestos` VALUES ('458', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Mantiene estricta confidencialidad de la información que le confíen tanto los alumnos, el personal y padres de familia.');
-INSERT INTO `preguntas_puestos` VALUES ('459', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve y coordina eficientemente el programa de acción social universitario, asegurando su función formativa alineada a nuestra misión.');
-INSERT INTO `preguntas_puestos` VALUES ('460', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Propicia y alienta un ambiente propositivo que promueve el desarrollo de nuestra \"identidad católica\" entre alumnos, egresados y personal en general.');
-INSERT INTO `preguntas_puestos` VALUES ('461', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Vigila debidamente que las actividades se realicen de acuerdo a la normatividad vigente.');
-INSERT INTO `preguntas_puestos` VALUES ('462', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Recauda con éxito fondos y bienes para programas de ayuda para zonas de desastre.');
-INSERT INTO `preguntas_puestos` VALUES ('463', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Coordina eficientemente brigadas y proyectos especiales que surjan como resultado del apoyo de la comunidad u iversitaria ante grandes desastres (huracanes, inundaciones, incendios, etc.).');
-INSERT INTO `preguntas_puestos` VALUES ('464', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene un registro actualizado de las fundaciones o instituciones de asistencia social en las que los alumnos puedan realizar su actividad.');
-INSERT INTO `preguntas_puestos` VALUES ('465', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve,coordina y administra satisfactoriamente el proceso de Servicio Social de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('466', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Da tutorías, apoyo y orientación adecuada a los alumnos que se encuentran realizando su servicio social.');
-INSERT INTO `preguntas_puestos` VALUES ('467', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve con éxito a nuestros estudiantes ante las instituciones altruistas o de beneficiencia creando espacios que permiten que nuestros alumnos realicen su servicio social.');
-INSERT INTO `preguntas_puestos` VALUES ('468', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Define apropiadamente las políticas y lineamientos que deben cumplir las empresas, instituciones o fundaciones que buscan cubrir sus necesidades de recursoso humanos, con apoyo de los alumnos de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('469', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Entrena con exigencia y disciplina a los equipos que le sean asignados.');
-INSERT INTO `preguntas_puestos` VALUES ('470', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Selecciona adecuadamente a los integrantes para los equipos según categorías y habilidades de los candidatos.');
-INSERT INTO `preguntas_puestos` VALUES ('471', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Establece programas y rutinas de entrenamiento personal y grupal que mejoran el desempeño deportivo.');
-INSERT INTO `preguntas_puestos` VALUES ('472', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila consistentemente que se lleven a cabo las rutinas de calentamiento para la prevención de lesiones.');
-INSERT INTO `preguntas_puestos` VALUES ('473', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Colabora con el Coordinador en el diseño y elaboración de programas de entrenamiento para los equipos representativos.');
-INSERT INTO `preguntas_puestos` VALUES ('474', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Promueve con éxito partidos de competencia entre equipos de diferentes facultades, entre equipos de empleados de diferentes áreas y con equipos externos.');
-INSERT INTO `preguntas_puestos` VALUES ('475', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila que se de buen uso de las instalaciones.');
-INSERT INTO `preguntas_puestos` VALUES ('476', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila de manera permanenete que se cuente con apoyo médico y arbitraje adecuado en los partidos que se realicen.');
-INSERT INTO `preguntas_puestos` VALUES ('477', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Coordina satisfactoriamente actividades con entidades gubernamentales y privadas que promuevan el deporte juvenil.');
-INSERT INTO `preguntas_puestos` VALUES ('478', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la coordinación de viajes cuando sea necesario.');
-INSERT INTO `preguntas_puestos` VALUES ('479', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente al desarrollo de el Plan Estratégico y Presupuesto Anual del área a corto, mediano y pargo plazo y supervisa su aplicación.');
-INSERT INTO `preguntas_puestos` VALUES ('480', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia al Vicerrector o Director en el seguimiento a los objetivos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('481', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Elabora en tiempo y forma informes sobre la operación del área e informa a su superior de las actividades realizadas.');
-INSERT INTO `preguntas_puestos` VALUES ('482', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Recibe y direcciona adecuadamente la documentación interna dirigida al Vicerrector o Director.');
-INSERT INTO `preguntas_puestos` VALUES ('483', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a personas internas que requieran apoyo de su jefe inmediato.');
-INSERT INTO `preguntas_puestos` VALUES ('484', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Analiza con eficiencia diversos asuntos recibidos dando: solución directa, elabora una propuestas o delega los asuntos al área correspondiente.');
-INSERT INTO `preguntas_puestos` VALUES ('485', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Da seguimiento a los asuntos, y en su caso participa activamente cuando se requiere.');
-INSERT INTO `preguntas_puestos` VALUES ('486', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Atiende los asuntos que su jefe le delegue y lo representa dignamente en actividades especiales.');
-INSERT INTO `preguntas_puestos` VALUES ('487', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Maneja apropiadamente las comunicaciones del Vicerrector o Director, tanto interna como externamente.');
-INSERT INTO `preguntas_puestos` VALUES ('488', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya al Vicerrector o Director en la implementación, seguimiento y control de las iniciativas de la Red Anáhuac.');
-INSERT INTO `preguntas_puestos` VALUES ('489', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio al personal de la Institución en todo lo referente a recursos humanos.');
-INSERT INTO `preguntas_puestos` VALUES ('490', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'En forma conjunta con el área de finanzas,apoya con eficacia en los procesos de liquidación y finiquito del personal.');
-INSERT INTO `preguntas_puestos` VALUES ('491', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente en el proceso de reclutamiento y selección al personal.');
-INSERT INTO `preguntas_puestos` VALUES ('492', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Recibe, revisa y registra en tiempo y forma las incidencias de la nómina,impuestos, IMSS, entre otras.');
-INSERT INTO `preguntas_puestos` VALUES ('493', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Da el seguimiento adecuado a la entrega de documentación del personal respecto a títulos y certificados de estudios o cursos de capacitación.');
-INSERT INTO `preguntas_puestos` VALUES ('494', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente en eventos de integración (día de la madre, día del maestro, cumpleaños, posada, etc).');
-INSERT INTO `preguntas_puestos` VALUES ('495', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya en la elaboración de estadísticas y reportes útiles que dan seguimiento a los objetivos y proyectos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('496', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya debidamente a la Gerencia en los procesos de evaluación del personal.');
-INSERT INTO `preguntas_puestos` VALUES ('497', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoyo en los procesos de certificación y acreditación ante entidades públicas y privadas (FIMPES entre otras).');
-INSERT INTO `preguntas_puestos` VALUES ('498', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Conocimiento y apoyo constante a los objetivos del área y la misión institucional.');
-INSERT INTO `preguntas_puestos` VALUES ('499', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Asesora debidamente a los maestros en la estructuración y/o actualización de los programas correspondientes a las distintas asignaturas del ciclo clínico.');
-INSERT INTO `preguntas_puestos` VALUES ('500', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Asegura que los maestros entreguen el programa desglosado de las asignaturas del ciclo anterior.');
-INSERT INTO `preguntas_puestos` VALUES ('501', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la búsqueda de los campos clínicos idóneos.');
-INSERT INTO `preguntas_puestos` VALUES ('502', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa el programa de avance académico de cada materia de cada sede hospitalaria y en el adecuado desarrollo de los cursos complementarios.');
-INSERT INTO `preguntas_puestos` VALUES ('503', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Realiza reuniones debidamente programadas con los titutales de las asignaturas,después de cada periodo de exámenes parciales.');
-INSERT INTO `preguntas_puestos` VALUES ('504', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Fija el sistema de evaluación por módulo en conjunto con los maestros del ciclo, aplica y evalúa los exámenes de cada módulo.');
-INSERT INTO `preguntas_puestos` VALUES ('505', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Da a conocer la forma, tipo y manera de evaluar de cada profesor de forma anticipada permitiendo que tanto alumnos como maestros puedan agendar con anticipación sus fechas de exámenes.');
-INSERT INTO `preguntas_puestos` VALUES ('506', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Completa satisfactoriamente la evaluación del personal docente y comunica los resultados de dicha evaluación con el fin de mejorar la calidad de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('507', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Motiva con éxito la realización y participación de los alumnos en eventos especiales como: Misiones Médicas, Jornadas de Salud, Seminario de Bioética, entre otras.');
-INSERT INTO `preguntas_puestos` VALUES ('508', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Solicita en tiempo y forma a los maestros de ciclo clínicos el banco de reactivos necesarios para estructurar la evaluación final.');
-INSERT INTO `preguntas_puestos` VALUES ('509', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Elabora el contenido de sus clases con información actualizada en base al programa académico establecido y autorizado por las autoridades académicas correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('510', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Establece una interacción positiva con los alumnos facilitando el aprendizaje y la formación integral del estudiante.');
-INSERT INTO `preguntas_puestos` VALUES ('511', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Prepara y aplica en tiempo y forma los exámenes para la valoración del aprendizaje de su materia.');
-INSERT INTO `preguntas_puestos` VALUES ('512', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'De manera permenente busca continuar con su formación profesional y docente.');
-INSERT INTO `preguntas_puestos` VALUES ('513', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en cursos o seminarios que le sean asignados y/o programados por el área de formación docente.');
-INSERT INTO `preguntas_puestos` VALUES ('514', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Atiende y da seguimiento oportuno a las inquietudes de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('515', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Se asesora con la autoridad correspondiente para la pronta solución de problemas de sus alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('516', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Utiliza eficientemente la tecnología como apoyo dela práctica docente.');
-INSERT INTO `preguntas_puestos` VALUES ('517', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Realiza con eficiencia el seguimiento académico y personal de sus alumnos tutoriados.');
-INSERT INTO `preguntas_puestos` VALUES ('518', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Entrega informes útiles de seguimiento al Director de su escuela.');
-INSERT INTO `preguntas_puestos` VALUES ('519', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Establece contacto permanente con los usuarios obteniendo retroalimentación acerca de los servicios que se proporcionan.');
-INSERT INTO `preguntas_puestos` VALUES ('520', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Supervisa eficientemente el funcionamiento y desarrollo de los módulos de circulación y Opac Web del sistema de administración de biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('521', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Coordina y supervisa debidamente las actividades referentes a la organizacipon, control, prestación, difusión de servicios y recursos de la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('522', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Establece de manera continua contactos con Instituciones logrando convenios de cooperación bibliotecaria.');
-INSERT INTO `preguntas_puestos` VALUES ('523', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Coordina reuniones periódicas con el personal del área y mantiene una constante comunicación con los miembros de la misma.');
-INSERT INTO `preguntas_puestos` VALUES ('524', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Presenta con éxito planes y programas de trabajo y vigila su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('525', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente en la elaboración del programa anual de la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('526', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('527', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'En forma cconjunta con el jefe de área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.');
-INSERT INTO `preguntas_puestos` VALUES ('528', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en las visitas guiadas para usuarios de la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('529', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Garantiza la correcta operación del SIU de los sistemas (SW) institucionales asignados al área.');
-INSERT INTO `preguntas_puestos` VALUES ('530', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Proporciona a la Comunidad Universitaria la información necesaria localizada en el SIU y en otros sistemas (SW) institucionales asignados al área, para la operación de sus áreas de trabajo.');
-INSERT INTO `preguntas_puestos` VALUES ('531', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Canaliza y da seguimeinto hasta su solución a los problemas relacionados con la División de Universidades, así como da respuesta de ello a la Comunidad Universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('532', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Genera en tiempo y forma la información requerida por los usuarios a través de reportes.');
-INSERT INTO `preguntas_puestos` VALUES ('533', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Procura la entera satisfacción de todos los usuarios,promoviendo la comunicación y estando atento a sus necesidades.');
-INSERT INTO `preguntas_puestos` VALUES ('534', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Mantiene sus procedimientos con estándares elevados de seguridad para su correcta operación.');
-INSERT INTO `preguntas_puestos` VALUES ('535', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Cuenta con mecanismos de evaluación (encuestas, entrevistas,etc) que le permiten monitorear el grado de satisfacción de sus clientes.');
-INSERT INTO `preguntas_puestos` VALUES ('536', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomenado las medidas necesarias.');
-INSERT INTO `preguntas_puestos` VALUES ('537', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente a la División de Universidades y AGS (Área Global de Sistemas), en los procesos de implementación, dimensionamiento y migración.');
-INSERT INTO `preguntas_puestos` VALUES ('538', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Trabaja en forma conjunta con la División de Universidades y AGS, en la actualización de las versiones de Banner y de cualquier otro sistema (SW) institucional que opera en la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('539', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Controla y supervisa adecuadamente los registros de gastos mensuales de cada área.');
-INSERT INTO `preguntas_puestos` VALUES ('540', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Revisa eficaz y continuamente los gastos reales vs. presupuestados.');
-INSERT INTO `preguntas_puestos` VALUES ('541', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene actualizado el sistema de asignación y seguimiento del ejercicio presupuestal.');
-INSERT INTO `preguntas_puestos` VALUES ('542', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Elabora en tiempo y forma los reportes mensuales de gastos.');
-INSERT INTO `preguntas_puestos` VALUES ('543', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Realiza adecuadamente las evaluaciones financieras.');
-INSERT INTO `preguntas_puestos` VALUES ('544', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Revisa de manera consistente las solicitudes de gastos para asegurar la suficiencia de fondos.');
-INSERT INTO `preguntas_puestos` VALUES ('545', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene actualizado el presupuesto de sueldos y salarios de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('546', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Monitorea continuamente los ingresos y egresos de cada una de las áreas.');
-INSERT INTO `preguntas_puestos` VALUES ('547', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Genera de manera constante información estadística útil y proyecciones.');
-INSERT INTO `preguntas_puestos` VALUES ('548', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Apoya con actitud de servicio a las áreas en la elaboración y seguimiento de sus presupuestos.');
-INSERT INTO `preguntas_puestos` VALUES ('549', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Contacta y selecciona proveedores gestionando los trámites de compras que se autoricen e investiga la costeablilidad y valor de los artículos que se adquieren.');
-INSERT INTO `preguntas_puestos` VALUES ('550', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Integra y maneja con eficiencia el consecutivo de compras.');
-INSERT INTO `preguntas_puestos` VALUES ('551', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Administra debidamente la cartera de proveedores.');
-INSERT INTO `preguntas_puestos` VALUES ('552', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Controla adecuadamente las órdenes de entrega a almacén por concepto de compras autorizadas.');
-INSERT INTO `preguntas_puestos` VALUES ('553', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Recaba en tiempo y forma las facturas o comprobantes fiscales correspondientes a las compras realizadas. ');
-INSERT INTO `preguntas_puestos` VALUES ('554', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'En conjunto con las autoridades correspondientes, implementa las políticas y procedimientos de compras, así como su difusión y cumplimiento de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('555', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Da el seguimiento adecuado a convenios y contratos realizados.');
-INSERT INTO `preguntas_puestos` VALUES ('556', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Gestiona y da el debido seguimiento a garantías de productos o servicios adquiridos por el área.');
-INSERT INTO `preguntas_puestos` VALUES ('557', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Elabora reportes e información estadística útil para el área.');
-INSERT INTO `preguntas_puestos` VALUES ('558', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla y capacita adecuadamente al personal de su área.');
-INSERT INTO `preguntas_puestos` VALUES ('559', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Supervisa y realiza con eficiencia los registros de operaciones económicas, contables y financieras de la Institución de acuerdo a los lineamientos y políticas establecidas.');
-INSERT INTO `preguntas_puestos` VALUES ('560', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Aplica o registra con precisión las operaciones económicas de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('561', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Efectúa los pagos fiscales y tributarios, cumpliendo en todo momento con las obligaciones fiscales.');
-INSERT INTO `preguntas_puestos` VALUES ('562', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Elabora y presenta con puntualidad la declaración anual y los estados financieros.');
-INSERT INTO `preguntas_puestos` VALUES ('563', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Da un adecuado seguimiento a las auditorías y dictámenes contables que ');
-INSERT INTO `preguntas_puestos` VALUES ('564', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Cumple debidamente con el pago de obligaciones gubernamentales IMSS, ISPT, INFONAVIT.');
-INSERT INTO `preguntas_puestos` VALUES ('565', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Registra con precisión las operaciones diarias de bancos, manteniendo actualizados los saldos e informando diariamente al Contralor y Vicerrector de Administración y Finanazas.');
-INSERT INTO `preguntas_puestos` VALUES ('566', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Vigila que los pagos de nómina se efectúen correcta y oportunamente.');
-INSERT INTO `preguntas_puestos` VALUES ('567', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Efectúa eficientemente el registro contable de pólizas derivadas de las nóminas de empleados y profesores.');
-INSERT INTO `preguntas_puestos` VALUES ('568', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Verifica con exactitud los registros auxiliares,mayor y balance mensual de saldos.');
-INSERT INTO `preguntas_puestos` VALUES ('569', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Genera y mantiene actualizada la lista de sujetos de crédito y sus montos correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('570', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Verifica el cumplimiento de los vencimientos de todos los acuerdos de crédito.');
-INSERT INTO `preguntas_puestos` VALUES ('571', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'En base a los lineamientos y políticas establecidas, facilita el apoyo financiero a los alumnos que lo requieran,dando seguimiento oportuno al pago de financiamiento y becas.');
-INSERT INTO `preguntas_puestos` VALUES ('572', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Analiza pertinentemente los créditos educativos que se van a otorgar y los presenta ante las autoridades.');
-INSERT INTO `preguntas_puestos` VALUES ('573', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a alumnos y padres de familia sobre temas de becas y financiamientos.');
-INSERT INTO `preguntas_puestos` VALUES ('574', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Fomenta con éxito un ambiente de cumplimiento en los temas de crédito.');
-INSERT INTO `preguntas_puestos` VALUES ('575', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Elabora y concilia con precisión los movimientos contables que afecten el área.');
-INSERT INTO `preguntas_puestos` VALUES ('576', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Controla eficientemente la cobranza y emite reportes de alumnos morosos.');
-INSERT INTO `preguntas_puestos` VALUES ('577', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Elabora y propone a sus superiores, planes de pago de alumnos con dificultades.');
-INSERT INTO `preguntas_puestos` VALUES ('578', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Da seguimiento correcto y oportuno a los pagos de financiamiento y becas.');
-INSERT INTO `preguntas_puestos` VALUES ('579', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina adecuadamente al servicio de mantenimiento y limpieza de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('580', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina el servicio del conmutador y atiende las necesidades del personal de inmediato.');
-INSERT INTO `preguntas_puestos` VALUES ('581', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Supervisa y da el seguimiento apropiado al servicio de vigilancia y jardinería de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('582', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Propone y realiza programas de mantenimiento preventivo y de seguridad para todas las áreas de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('583', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Apoya con recurso y logística a los departamentos que así lo soliciten para la realización de eventos.');
-INSERT INTO `preguntas_puestos` VALUES ('584', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina con eficiencia los servicios médico,de recolección y entrega de documentos (mensajería interna) entre las diferentes áreas de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('585', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina adecuadamente a los proveedores en las remodelaciones, adecuaciones, ampliaciones de instalaciones y mobiliario.');
-INSERT INTO `preguntas_puestos` VALUES ('586', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Efectúa diariamente sesiones con los responsables directos de las áreas bajo su cargo y selectivamente todos los días efectúa recorridos de supervisión y muestro de cumplimiento de servicios.');
-INSERT INTO `preguntas_puestos` VALUES ('587', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Elabora políticas y procedimientos de operación propias de su área y reportes sobre los resultados obtenidos.');
-INSERT INTO `preguntas_puestos` VALUES ('588', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Supervisa, evalúa y capacita debidamente al personal a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('589', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Realiza apropiadamente las actividades que su jefe le asigne,apoyando al área en tareas o proyectos especiales.');
-INSERT INTO `preguntas_puestos` VALUES ('590', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente en la programación y aplicación de exámenes de los diferentes cursos.');
-INSERT INTO `preguntas_puestos` VALUES ('591', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya en los procesos de evaluación y auditoría del área, para comprobar y asegurar el buen funcionamiento de la misma. ');
-INSERT INTO `preguntas_puestos` VALUES ('592', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya de manera servicial en la comunicación a profesores y alumnos sobre horarios, programación académica,etc.');
-INSERT INTO `preguntas_puestos` VALUES ('593', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Da atención personal a los alumnos y los apoya para resolver problemas que puedan surgir en la selección de clases o en cualquier otra actividad que realice el área.');
-INSERT INTO `preguntas_puestos` VALUES ('594', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Da atención personalizada a profesores canalizando a las instancias correspondientes inquietudes o problemas planteados por los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('595', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la búsqueda de candidatos y en la integración de expedientes de personas que se vayan a incorporar como profesores ya sea de planta u honorarios.');
-INSERT INTO `preguntas_puestos` VALUES ('596', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Vigila que tanto alumnos como profesores cumplan con los lineamientos y procedimientos establecidos, alertando a su superior sobre desviacioneso anomalías.');
-INSERT INTO `preguntas_puestos` VALUES ('597', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Propone y desarrolla propuestas de mejora que cumplan con los objetivos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('598', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Busca su desarrollo y crecimiento personal capacitándose en tareas y funciones propias de su área.');
-INSERT INTO `preguntas_puestos` VALUES ('599', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Mantiene estrecha relación con la Secretaría de Educación Pública (SEP) para la autenticación y legalización de documentos.');
-INSERT INTO `preguntas_puestos` VALUES ('600', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Gestiona debidamente ante la SEO las revisiones de estudios.');
-INSERT INTO `preguntas_puestos` VALUES ('601', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Está al tanto de nuevas disposiciones oficiales e informa oportunamente de las mismas.');
-INSERT INTO `preguntas_puestos` VALUES ('602', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Recibe con amabilidad los documentos necesarios de parte de los estudiantes para realizar los trámites.');
-INSERT INTO `preguntas_puestos` VALUES ('603', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Conoce y difunde eficientemente información relevante de los procesos de titulación tanto a los académicos como a los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('604', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Asesora a los estudiantes en la realización de sus trámites de titulación.');
-INSERT INTO `preguntas_puestos` VALUES ('605', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Redacta y programa las actas de los exámenes profesionales de manera adecuada.');
-INSERT INTO `preguntas_puestos` VALUES ('606', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Efectúa con precisión el proceso de revisión de estudios sobre los antecedentes escolares y la trayectoria académica de los estudiantes, para iniciar su proceso de titulación.');
-INSERT INTO `preguntas_puestos` VALUES ('607', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Emite en tiempo y forma la convocatoria controlando el registro de candidatos a obtener el título profesional.');
-INSERT INTO `preguntas_puestos` VALUES ('608', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Elabora y controla con eficiencia la información estadística que se genera en el área. ');
-INSERT INTO `preguntas_puestos` VALUES ('609', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Detecta áreas de oportunidad para la promoción universitaria y participa en la realización de planes de acción correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('610', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Cumple con las metas de captación de matrícula de nuesvos ingresos de acuerdo a las establecidas por: colegios meta y carreras asignadas.');
-INSERT INTO `preguntas_puestos` VALUES ('611', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Orienta de manera personal a los preuniversitarios en sus necesidades de información para la elección de universidad y les da seguimiento logrando su inscripción a algún programa de licenciatura.');
-INSERT INTO `preguntas_puestos` VALUES ('612', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Difunde y gestiona los diversos esquemas de becas y apoyos económicos para asegurar que los alumnos de alto potencial académico y/o humano, se logren incorporar a la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('613', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Promueve en el segmento meta de preuniversitarios, las ventajas competitivas que ofrece la Universidad y la Red Anáhuac a través de diversas estrategias y actividades.');
-INSERT INTO `preguntas_puestos` VALUES ('614', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Persuade a través de presentaciones en grupo o individual sobre los beneficios qu');
-INSERT INTO `preguntas_puestos` VALUES ('615', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Mantiene, cuida y eleva el prestigio de la imagen de las Universidades de la Red Anáhuac, a través de un código de valores, de discurso, de atención y de vestimenta.');
-INSERT INTO `preguntas_puestos` VALUES ('616', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Fomenta las relaciones institucionales con las preparatorias meta, mediante un programa de acercamiento y de servicio permanente, y a través de los alumnos egresados de las mismas.');
-INSERT INTO `preguntas_puestos` VALUES ('617', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Organiza actividades que faciliten el acercamiento de preuniversitarios a las diversas licenciaturas y que permitan que conozcan las instalaciones y servicios.');
-INSERT INTO `preguntas_puestos` VALUES ('618', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Orienta adecuadamente a estudiantes foráneos en todo lo relacionado con trámites de ingreso y programas que ofrecen las Universidades de la Red.');
-INSERT INTO `preguntas_puestos` VALUES ('619', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Entrevista a los solicitantes de beca y determina en base a políticas y mediante un estudio socieconómico adecuado, si la ayuda económica solicitada es necesaria y viable.');
-INSERT INTO `preguntas_puestos` VALUES ('620', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'En coordinación con el Jefe de Admisiones,valora dedidamente a los aspirantes a becas turnando la información de los candidatos a las instancias correspondientes (Comité de Becas o su equivalente).');
-INSERT INTO `preguntas_puestos` VALUES ('621', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Analiza la situación académica de cada candidato y propone a los candidatos idóneos en base a los lineamientos y políticas establecidas por las autoridades.');
-INSERT INTO `preguntas_puestos` VALUES ('622', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Brinda de manera servicial la información a los candidatos acerca de los requisitos para solicitud de beca y crédito educativo.');
-INSERT INTO `preguntas_puestos` VALUES ('623', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'En conjunto con los asesores preuniversitarios,promueve con éxito las becas y apoyos entre los candidatos a ingresar a la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('624', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Apoya y da seguimiento a los candidatos en el trámite y elaboración de documentos para el otorgamiento de becas y financiamientos.');
-INSERT INTO `preguntas_puestos` VALUES ('625', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa eficientemente que los becados cumplan con los compromisos que aceptaron.');
-INSERT INTO `preguntas_puestos` VALUES ('626', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Da el correcto y continuo seguimiento a los beneficiarios de crédito educativo o becas en lo que se refiere al cumplimiento de requisitos para el otorgamiento continuado del mismo.');
-INSERT INTO `preguntas_puestos` VALUES ('627', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Informa satisfactoriamente a las áreas de administración y finanzas sobre c´reditos educativos, turnando la información correspondiente');
-INSERT INTO `preguntas_puestos` VALUES ('628', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Genera en tiempo y forma información estadística del área.');
-INSERT INTO `preguntas_puestos` VALUES ('629', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Administra en forma óptima, el único punto de contacto para prospectos y alumnos de la Universidad, ofreciendo sus servicios de manera presencial, web y telefónicamente.');
-INSERT INTO `preguntas_puestos` VALUES ('630', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Maximiza los servicios y productos que se ofrecen con el menor gasto posible, logrando altos niveles de sinergias con las diferentes áraes de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('631', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Logra y mantiene sinergias con las áreas de admisión, becas, finanzas, proveedores y cualquier prestador de servicios que este relacionado con productos demandados por loa alumnos/prospectos.');
-INSERT INTO `preguntas_puestos` VALUES ('632', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Posiciona con éxito a la coordinación de atención a alumnos como un área líder de calidad y servicios en la Comunidad Universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('633', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Genera mediaciones y estadísticas que permiten monitorear el nivel de satisfacción en el servicio proporcionado y reporta resultados en forma periódica a la dirección.');
-INSERT INTO `preguntas_puestos` VALUES ('634', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Firma acuerdos y documenta procesos operativos con las áreas relacionadas al servicio dentro de la Institución y le da seguimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('635', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla procesos estandarizados que optimizan los recursos del área sin demeritar los niveles de servicio ofrecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('636', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Da segumiento a problemas críticos o situaciones especiales apoyando al personal de su área en la resolución de conflictos.');
-INSERT INTO `preguntas_puestos` VALUES ('637', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Monitorea continuamente los resultados obtenidos buscando la mejora continua y la búsqueda de mejores prácticas del mercado, en lo que a atención a clientes se refiere.');
-INSERT INTO `preguntas_puestos` VALUES ('638', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa y propicia el desarrollo y capacitación del personal del área para que cumpla satisfactoriamente con su función.');
-INSERT INTO `preguntas_puestos` VALUES ('639', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Mantiene una estrecha comunicación con su jefe sobre todos los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('640', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('641', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Apoya al Director del área en el desarrollo del Plan Estratégico a corto, mediano y largo plazo, de acuerdo con el Plan Estratégico de la Universidad, coordinando la elaboración de los planes y programas anuales de trabajo y dando el seguimiento adecuado.');
-INSERT INTO `preguntas_puestos` VALUES ('642', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Promueve y difunde la misión de \"identidad católica\" de la institución, actuando con rectitud y congruencia en todas las actividades asignadas a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('643', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Conoce y apoya satisfactoriamente los proyectos, objetivos y misión del área en la que desempeña sus funciones.');
-INSERT INTO `preguntas_puestos` VALUES ('644', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Conoce a los clientes y proveedores de servicio del área en la que trabaja y ofrece una calidad de atención adecuada y oportuna.');
-INSERT INTO `preguntas_puestos` VALUES ('645', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Busca continuamente su desarrollo y crecimiento personal capacitándose en tareas y funciones propias del área.');
-INSERT INTO `preguntas_puestos` VALUES ('646', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Apoya satisfactoriamente en proyectos especiales, así como en tareas de grupo que puedan no estar relacionadas directamente con sus funciones cotidianas.');
-INSERT INTO `preguntas_puestos` VALUES ('647', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Alerta al jefe inmediato superior sobre problemas o dificultades detectadas en el área.');
-INSERT INTO `preguntas_puestos` VALUES ('648', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Propone y desarrolla propuestas de mejora que cumplan con los objetivos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('649', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Realiza con eficiencia tareas de captura, redacción de documentos, archivo y organización de eventos; control de agenda, control de viajes y en general apoya al área en todo lo referente a cuestiones administrativas.');
-INSERT INTO `preguntas_puestos` VALUES ('650', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Atiende con actitud de servicios a usuarios, personal del área, proveedores y prestadores de servicio.');
-INSERT INTO `preguntas_puestos` VALUES ('651', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Apoya en tiempo y forma al control de gastos, elaboración de reportes de viaje y reservaciones.');
-INSERT INTO `preguntas_puestos` VALUES ('652', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Lleva a cabo una adecuada recepción y registro de documentos recibidos y enviados por el área.');
-INSERT INTO `preguntas_puestos` VALUES ('653', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Realiza la recepción, registro y direccionamiento de llamadas con eficiencia y actitud de servicio.');
-INSERT INTO `preguntas_puestos` VALUES ('654', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Solicita y administra en el tiempo y forma requerido: papelería, artículos de oficina, caja chica, suministros para operación de equipos de computación etc.');
-INSERT INTO `preguntas_puestos` VALUES ('655', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Ejecuta debidamente los trámites de pago a proveedores.');
-INSERT INTO `preguntas_puestos` VALUES ('656', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Tiene un adecuado conocimiento de los objetivos del área y apoya la misión de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('657', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Apoya con diligencia en la organización de juntas y eventos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('658', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Mantiene un adecuado control y orden del archivo.');
-INSERT INTO `preguntas_puestos` VALUES ('659', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Alerta a sus superiores sobre fallas o problemas que requieran los servicios del área de mantenimiento o jardinería.');
-INSERT INTO `preguntas_puestos` VALUES ('660', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Realiza mantenimiento preventivo y correctivo a las instalaciones de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('661', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Atiende los requerimiento de reparación, corrigiendo el daño en el menor tiempo.');
-INSERT INTO `preguntas_puestos` VALUES ('662', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Solicita con anticipación los materiales que se requieran para los trabajos a realizar.');
-INSERT INTO `preguntas_puestos` VALUES ('663', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Ejecuta con eficiencia las actividades a realizar diariamente del área con el reporte correspondiente.');
-INSERT INTO `preguntas_puestos` VALUES ('664', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Propone al jefe del área las mejoras que considere pertinentes para cumplir con las responsabilidades asignadas.');
-INSERT INTO `preguntas_puestos` VALUES ('665', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Conoce los objetivos del área y la misión de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('666', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Realiza actividades de apoyo dentro del área ');
-INSERT INTO `preguntas_puestos` VALUES ('667', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Conoce y lleva acabo los sistemas de seguridad de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('668', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Cuida del buen uso de los equipos y herramientas que se le asignen.');
-INSERT INTO `preguntas_puestos` VALUES ('669', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" especialmente en las actividades relacionadas con la formación humana de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('670', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Ofrece un servicio de atención personalizada en lo espiritual y humano a toda la comunidad universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('671', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Realiza permanentemente actividades complementarias de formación humana y religiosa.');
-INSERT INTO `preguntas_puestos` VALUES ('672', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Preside de manera permanente y logra aumentar la asistencia de alumnos a las siguientes actividades: misas, confesiones, retiros, misiones, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('673', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Promociona actividades propias del área por medio de posters, trípticos, visitas, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('674', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('675', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Coordina eficientemente la acción apostólica.');
-INSERT INTO `preguntas_puestos` VALUES ('676', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Encausa las inquietudes humanitarias y apostólicas de la comunidad universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('677', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Organiza encuentros de reflexión y seminarios o cursos de formación.');
-INSERT INTO `preguntas_puestos` VALUES ('678', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Revisa al término de cada actividad de formación una evaluación de los resultados obtenidos para alinear aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('679', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Alcanza las metas de crecimiento de la matrícula de la licenciatura que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrolla anualmente.');
-INSERT INTO `preguntas_puestos` VALUES ('680', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('681', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Tiene un conocimiento objetivo del mercado en que participa la institución, y logra traducirlo traducirlo en un plan integral de mercadotecnia y promoción.');
-INSERT INTO `preguntas_puestos` VALUES ('682', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Planea, coordina y evalúa de manera constante los cursos de capacitación para profesores de preparatoria, asesores preuniversitarios, directores y coordinadores de promoción de escuelas y facultades.');
-INSERT INTO `preguntas_puestos` VALUES ('683', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Coordina los servicios de Orientación Vocacional de la Universidad para la decisión de admisión de alumnos y otorga un servicio al público con la finalidad de detectar prospectos con el perfil ideal.');
-INSERT INTO `preguntas_puestos` VALUES ('684', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Garantiza los medios y aplicación de criterios para elevar la calidad en el perfil de alumnos admitidos.');
-INSERT INTO `preguntas_puestos` VALUES ('685', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Organiza eventos de promoción y atención dirigidos a nuestros mercados meta, buscando una mejora continua en los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('686', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Atiende de manera personalizada y con altos estándares de servicio a preparatorias meta, candidatos y solicitantes para los programas de licenciatura.');
-INSERT INTO `preguntas_puestos` VALUES ('687', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Dirige los esfuerzos del departamento de becas para asegurar el mayor número de preuniversitarios con un alto perfil académico y humano.');
-INSERT INTO `preguntas_puestos` VALUES ('688', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Desarrolla y analiza reportes estadísticos de utilidad para diversas áreas y escuelas.');
-INSERT INTO `preguntas_puestos` VALUES ('689', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Proporciona información financiera, clara, veraz y oportuna a las autoridades.');
-INSERT INTO `preguntas_puestos` VALUES ('690', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Analiza y evalua desde el punto de vista financiero, tanto los proyectos ya existentes como los nuevos que se propongan y realiza informes y propuestas a las autoridades.');
-INSERT INTO `preguntas_puestos` VALUES ('691', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Controla e informa mensualmente sobre la afectación al presupuesto del mes y el acumulado. Realizando las propuestas de ajustes adecuadas para su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('692', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Realiza estudios de aumento de cuotas y elabora su respectiva propuesta.');
-INSERT INTO `preguntas_puestos` VALUES ('693', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Atiende y da opciones de resolución a los alumnos y padres de familia con complicaciones en sus obligaciones de pago.');
-INSERT INTO `preguntas_puestos` VALUES ('694', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Elabora en el tiempo establecido el presupuesto de ingresos.Elabora en el tiempo establecido el presupuesto de ingresos.');
-INSERT INTO `preguntas_puestos` VALUES ('695', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Elabora semestralmente informe detallado sobre:\na) Gastos efectuados durante el semestre, así como de las partidas ya presupuestadas y pendientes de aplicar\nb) Cobranza.\nc) Pagos pendientes (comprometidos).\nd) Análisis comparativo de presupuesto aprobado contra presupuesto consumido.');
-INSERT INTO `preguntas_puestos` VALUES ('696', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Vicerrector de Administración y Finanzas sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('697', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Atiende y da opciones de resolución a los alumnos y padres de familia con complicaciones en sus obligaciones de pago.');
-INSERT INTO `preguntas_puestos` VALUES ('698', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Revisa y controla todas las declaraciones gubernamentales (IMSS, ISPT, INFONAVIT, etc), cuentas y conciliaciones bancarias,cartera de cobranza y pólizas de cheques (semanal).');
-INSERT INTO `preguntas_puestos` VALUES ('699', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y en especial dentro del personal de su área y alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('700', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Integra de manera eficaz la formación humanística como elemento central de la educación universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('701', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Coordina con la División de Universidades y directores de escuela el desarrollo de planes y programas para el logro de los fines institucionales en el área de formación humana.');
-INSERT INTO `preguntas_puestos` VALUES ('702', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Desarrolla continuamente los programas y materiales de las materias del área de humanidades.');
-INSERT INTO `preguntas_puestos` VALUES ('703', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Administra y coordina con eficiencia a los profesores del área:reclutamiento,asignación de grupos,evaluación, capacitación y desarrollo.');
-INSERT INTO `preguntas_puestos` VALUES ('704', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Supervisa de manera continua la oferta académica de las materias y la calidad de las cátedras impartidas de su área.');
-INSERT INTO `preguntas_puestos` VALUES ('705', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Evalúa el logro de los objetivos de las materias mediante la revisión de calificaciones y contenido de los exámenes.');
-INSERT INTO `preguntas_puestos` VALUES ('706', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Mantiene relaciones de colaboración con escuelas afines de otras instituciones académicas de prestigio nacionales y extranjeras.');
-INSERT INTO `preguntas_puestos` VALUES ('707', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Define líneas de investigación y asigna profesores de tiempo completo que determinen el alcance, tiempo y resultados esperados de la investigación.');
-INSERT INTO `preguntas_puestos` VALUES ('708', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Promueve los programas de Posgrado y Educación Contínua entre egresados y organizaciones del área.');
-INSERT INTO `preguntas_puestos` VALUES ('709', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Alcanza las metas de crecimiento de la matrícula de posgrado que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrollada anualmente.');
-INSERT INTO `preguntas_puestos` VALUES ('710', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Desarrolla y ejecuta un adecuado Programa de Atención a Empresas e Instituciones con potencial a convertirse en clientes.');
-INSERT INTO `preguntas_puestos` VALUES ('711', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Vicerrector de Académico, Directores de Escuela, Coordinadores de Posgrados y su personal acargo.');
-INSERT INTO `preguntas_puestos` VALUES ('712', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Busca la máxima calidad dentro del aula (calidad de los profesores, metódo de enseñanza, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)');
-INSERT INTO `preguntas_puestos` VALUES ('713', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Realiza adecuadamente la promoción hacia los Egresados, Empresas, Instituciones privadas y gubernamentales, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('714', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Vigila la correcta integración de los expedientes de los alumnos para apoyarlos en su proceso de titulación.');
-INSERT INTO `preguntas_puestos` VALUES ('715', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Supervisa continuamente la calidad académica de los cursos ofrecidos en su programa.');
-INSERT INTO `preguntas_puestos` VALUES ('716', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Atiende y resuelve con actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
-INSERT INTO `preguntas_puestos` VALUES ('717', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('718', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('719', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Coordina constantemente las actividades que mantienen actualizada la infraestructura tecnológica de cómputo, informática, comunicaciones y telecomunicacciones de la universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('720', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Proporciona el equipo tecnológico necesario para la operación eficiente de las salas de cómputo.');
-INSERT INTO `preguntas_puestos` VALUES ('721', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Supervisa la adecuada prestración de servicios de soporte técnico tanto a áreas académicas como administrativas.');
-INSERT INTO `preguntas_puestos` VALUES ('722', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Planea, administra y controla los recursos materiales que garantizan la máxima disponibilidad de servicios tecnológicos a la comunidad universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('723', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Planea y administra los recursos humanos que garantizan un adecuado servicio a los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('724', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Elabora eficientemente y da seguimiento al presupuesto anual de operación del área.');
-INSERT INTO `preguntas_puestos` VALUES ('725', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Implementa sistemas de información que agilicen los procesos acdémicos, administrativos y operativos de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('726', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Asesora a las diferentes áreas acerca de las mejores soluciones tecnológicas para su desarrollo.');
-INSERT INTO `preguntas_puestos` VALUES ('727', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Supervisa la operación y mantenimiento eficiente de los servicios de telecomunicaciones y telefonía de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('728', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Propone soluciones tecnológicas que optimicen los recursos universitarios y coadyuden al logro de un servicio eficiente.');
-INSERT INTO `preguntas_puestos` VALUES ('729', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Obtiene y controla eficientemente la información escolar de la universidad en relación a los planes de estudio y avance escolar del alumnado de licenciatura y posgrado.');
-INSERT INTO `preguntas_puestos` VALUES ('730', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Verifica adecuadamente la autenticidad de los documentos escolares que expide la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('731', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Mantiene y coordina eficientemente las labores de servicios internos, externos y auditoria escolar.');
-INSERT INTO `preguntas_puestos` VALUES ('732', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Organiza, innova y mantiene actulizada la estructura, sistemas y procedimientos del trabajo del área: Servicios Internos, Externos y Auditoria Escolar.');
-INSERT INTO `preguntas_puestos` VALUES ('733', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Vigila el cumplimiento de las políticas y lineamientos establecidos por la Universidad para la certificación, acreditaciones, programas de estudio,etc.');
-INSERT INTO `preguntas_puestos` VALUES ('734', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Dirige el adecuado intercambio de información sobre datos y registros de estudiantes en las escuelas y facultades.');
-INSERT INTO `preguntas_puestos` VALUES ('735', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Proporciona en tiempo y forma a las instituciones oficiales la información requerida sobre la operación escolar de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('736', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Mantiene una estrecha comunicación con el Director de Servicios Institucionales y Planeación sobre los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('737', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Presenta a su Director y al Rector las estadísticas escolares y las requeridas por organismos oficiales y extraoficiales de manera contínua y oportuna.');
-INSERT INTO `preguntas_puestos` VALUES ('738', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Supervisa de manera eficiente el desempeño de las personas a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('739', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Constantemente logra convenios de intercambio con instituciones de enseñanza superior tanto a nivel nacional como internacional.');
-INSERT INTO `preguntas_puestos` VALUES ('740', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Mantiene relaciones con instituciones privadas, sociales y públicas que promueven actividades académicas de intercambio a nivel licenciatura y posgrado.');
-INSERT INTO `preguntas_puestos` VALUES ('741', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Participa en eventos culturales especialmente los convocados por embajadas y organizaciones internacionales logrando ampliar nuestras opciones de intercambio académico.');
-INSERT INTO `preguntas_puestos` VALUES ('742', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Coordina eficientemente los procesos de equivalencias de estudios de los alumnos de intercambio con las diferentes escuelas y servicios escolares.');
-INSERT INTO `preguntas_puestos` VALUES ('743', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Consolida los programas de intercambio académico existentes manteniendo la calidad y el prestigio logrado.');
-INSERT INTO `preguntas_puestos` VALUES ('744', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Evalúa los resultados obtenidos en los programas de intercambio e implementa programas de mejoramiento a los procedimientos existentes.');
-INSERT INTO `preguntas_puestos` VALUES ('745', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Se preocupa, promueve y se asegura de incrementar el número de estudiantes en intercambio académico internacional bidireccionalmente.');
-INSERT INTO `preguntas_puestos` VALUES ('746', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Atiende satisfactoriamente y con un sistema personalizado a los visitantes externos y alumnos de intercambio internacional para que cumplan sus objetivos.');
-INSERT INTO `preguntas_puestos` VALUES ('747', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Tiene el control y seguimiento adecuado de los alumnos que se encuentran de intercambio en otras universidades o en nuestra propia institución.');
-INSERT INTO `preguntas_puestos` VALUES ('748', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Difunde y propicia un ambiente propositivo para que las instituciones con las que mantenemos intercambio nos perciban como una universidad de \"identidad católica\" que promueve los valores.');
-INSERT INTO `preguntas_puestos` VALUES ('749', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Elabora el plan estratégico que asegure la permanencia del programa y el logro de los objetivos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('750', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Promueve el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con el programa de liderazgo que maneja.');
-INSERT INTO `preguntas_puestos` VALUES ('751', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Busca y logra el apoyo de líderes positivos y de personalidades distinguidas en pro del beneficio social para la participación en algún evento y/o colaboración en especie para los proyectos.');
-INSERT INTO `preguntas_puestos` VALUES ('752', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'En conjunto con las áreas académicas selecciona e integra a los alumnos a programas de liderazgo.');
-INSERT INTO `preguntas_puestos` VALUES ('753', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Apoya a la VFI y a la comunidad universeitaria en genral, en proyectos especiales de ayuda derivados de desastres naturales.');
-INSERT INTO `preguntas_puestos` VALUES ('754', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Escucha y canaliza las iniciativas de los estudiantes a través de los comités establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('755', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Organiza satisfactoriamente al grupo que asistirá a la Megamisión.');
-INSERT INTO `preguntas_puestos` VALUES ('756', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Al término de cada actividad realiza una evaluación de los resultados obtenidos alineando aspectos que son necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('757', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Coordina favorablemente las tutorías a los alumnos de vértice.');
-INSERT INTO `preguntas_puestos` VALUES ('758', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Elabora y controla el Plan de Desarrollo Estratégico del departamento.');
-INSERT INTO `preguntas_puestos` VALUES ('759', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'De manera permanente planea y promueve encuentros deportivos internos que logran la asistencia planeada y fomentan la integración de grupos.');
-INSERT INTO `preguntas_puestos` VALUES ('760', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'De manera permanente planea y promueve encuentros deportivos externos que logran la asistencia planeada y fomentan la integración de grupos.');
-INSERT INTO `preguntas_puestos` VALUES ('761', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Mantiene adecuadas relaciones con otras instituciones educativas y consejos deportivos.');
-INSERT INTO `preguntas_puestos` VALUES ('762', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Coordina y evalúa semestralmente al personal del área buscando su desarrollo y capacitación.');
-INSERT INTO `preguntas_puestos` VALUES ('763', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Supervisa y evalúa los resultados de las campañas informativas de los eventos deportivos en búsqueda de la mejora continua.');
-INSERT INTO `preguntas_puestos` VALUES ('764', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Vigila que las instalaciones y equipo para las actividades deportivas se conserven en estado óptimo de funcionamiento y uso.');
-INSERT INTO `preguntas_puestos` VALUES ('765', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Colabora de manera activa y frecuentemente con el programa de becarios, con los alumnos asignados al área de deportes.');
-INSERT INTO `preguntas_puestos` VALUES ('766', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Diseña e implementa programas y actividades que promuevan la participación deportiva de alumnos, profesores y colaboradores.');
-INSERT INTO `preguntas_puestos` VALUES ('767', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Coordina adecuadamente a los alumnos que realizan su servicio social dentro del área.');
-INSERT INTO `preguntas_puestos` VALUES ('768', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa y coordina satisfactoriamente el área académica y administrativa de los programas a su cargo.');
-INSERT INTO `preguntas_puestos` VALUES ('769', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Diseña y renueva el plan de estudios de los programas de posgrado y extensión de acuerdo a las necesidades del área.');
-INSERT INTO `preguntas_puestos` VALUES ('770', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa eficazmente la contratación docente de acuerdo al nivel requerido y los tiempos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('771', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Realiza adecuadamente la promoción hacia los Egresados, Empresas, Instituciones privadas y gubernamentales, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('772', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Realiza en tiempo y forma la programación académica del área.');
-INSERT INTO `preguntas_puestos` VALUES ('773', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila la correcta integración de los expedientes de los alumnos para apoyarlos en su proceso de titulación.');
-INSERT INTO `preguntas_puestos` VALUES ('774', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa continuamente la calidad académica de los cursos ofrecidos en su programa.');
-INSERT INTO `preguntas_puestos` VALUES ('775', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
-INSERT INTO `preguntas_puestos` VALUES ('776', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('777', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('778', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Organiza,coordina y supervisa permanentemente la adecuada aplicación de los procedimientos establecidos en la ejecución de la operación académica.');
-INSERT INTO `preguntas_puestos` VALUES ('779', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Cumple y hace cumplir las políticas y lineamientos definidos por superiores, así como el estatuto de la Universidad, su reglamento, planes y programas de trabajo y, en general, las dispocisiones y acuerdos que normen la estructura y funcionamiento de la universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('780', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Mantiene un registro actualizado de las actividades del personal académico que se llevan acabo en la Institución y coordina la aplicación de los exámenes departamentales.');
-INSERT INTO `preguntas_puestos` VALUES ('781', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Se asegura de que la oferta académica de asignaturas sea la adecuada para la demanda de cursos de los estudiantes y acorde al avance de su plan de estudios.');
-INSERT INTO `preguntas_puestos` VALUES ('782', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Analiza y propone soluciones a los alumnos que presentan problemas académicos.');
-INSERT INTO `preguntas_puestos` VALUES ('783', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya las labores de programación anual de cada dirección de escuela y verifica la correcta aplicación de los planes de estudio.');
-INSERT INTO `preguntas_puestos` VALUES ('784', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Coordina la Operación Académica, negocia requerimientos con otros sectores de la institución, elabora alteraciones del sistema en orden al mejoramiento de la eficiencia de la labor académica.');
-INSERT INTO `preguntas_puestos` VALUES ('785', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Optimiza la utilización de los espacios físicos y realiza reportes para su análisis.');
-INSERT INTO `preguntas_puestos` VALUES ('786', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya las labores de programación académica de todas las escuelas y verifica la correcta aplicación de los planes de estudio. Mantiene una abierta comunicación con las Escuelas.');
-INSERT INTO `preguntas_puestos` VALUES ('787', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya con eficiencia a la planeación y coordinación de eventos especiales y actividades de la licenciatura: Reconocimientos de excelencia académica, graduaciones, etc.');
-INSERT INTO `preguntas_puestos` VALUES ('788', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el desarrollo del Plan estratégico a corto, mediano y largo plazo.');
-INSERT INTO `preguntas_puestos` VALUES ('789', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el seguimiento a objetivos y proyectos buscando su cumplimiento de todas las áreas y vicerrectorías que dependen del Rector.');
-INSERT INTO `preguntas_puestos` VALUES ('790', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el presupuesto anual de operación de Rectoría y supervisa el presupuesto de las áreas de los departamentos que dependen del Rector.');
-INSERT INTO `preguntas_puestos` VALUES ('791', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio y continuamente a personas internas, alumnos, o padres de familia que requieren apoyo de la Rectoría.');
-INSERT INTO `preguntas_puestos` VALUES ('792', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento a los asuntos, y en su caso, participa activamente haciendo propuestas de solución al Rector o a los responsables de las áreas.');
-INSERT INTO `preguntas_puestos` VALUES ('793', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Participa en proyectos que el Rector encomiende, es proactivo y propositivo.');
-INSERT INTO `preguntas_puestos` VALUES ('794', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya con eficiencia al Rector en la organización de reuniones que involucren tanto autoridades de la Universidad como personalidades de instituciones hermanas, empresas o entidades gubernamentales.');
-INSERT INTO `preguntas_puestos` VALUES ('795', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'En general, facilita al Rector la operación de la dirección de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('796', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en la implementación, seguimiento y control de las iniciativas de la Red Anáhuac.');
-INSERT INTO `preguntas_puestos` VALUES ('797', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha comunicación con el Rector sobre todos los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('798', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Realiza con eficiencia los trámites ordinarios que mantienen el reconocimiento de estudios ante las instituciones oficiales.');
-INSERT INTO `preguntas_puestos` VALUES ('799', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Prepara en los tiempos establecidos la información requerida sobre la operación escolar de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('800', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Da fe sin valor oficial, de los documentos que no requieren legalización, en los tiempos y casos requeridos.');
-INSERT INTO `preguntas_puestos` VALUES ('801', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Realiza y supervisa los trámites de revalidación, legalización y registro de títulos, así como la obtención de cédulas profesionales en forma y tiempo.');
-INSERT INTO `preguntas_puestos` VALUES ('802', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Por indicaciones del Director de administración escolar y normatividad, representa dignamente a la Universidad ante las instituciones gubernamentales certificadoras para la obtención de documentos de alumnos y egresados.');
-INSERT INTO `preguntas_puestos` VALUES ('803', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Ejecuta eficientemente el proceso de certificados legalizados a la SEP.');
-INSERT INTO `preguntas_puestos` VALUES ('804', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Efectúa el adecuado control y seguimiento de estudiantes extranjeros sobre la obtención y refrendo de su documentación migratoria que les permite estudiar en la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('805', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'En coordinación con las escuelas y facultades, lleva acabo con eficiencia los procedimientos de baja por: voluntaria, falta de documentos, documentación falsa o por efectos disciplinarios de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('806', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Elabora, analiza y controla con eficiencia la información estadística que se genera en su área.');
-INSERT INTO `preguntas_puestos` VALUES ('807', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Atiende continuamente y con actitud de servicio los procesos de consulta sobre documentos de estudiantes que formulan diversas instancias nacionales e internacionales.');
-INSERT INTO `preguntas_puestos` VALUES ('808', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Investiga, Diseña y supervisa constantemente la calidad de los asuntos académicos relacionados con el proceso de enseñanza-aprendizaje.');
-INSERT INTO `preguntas_puestos` VALUES ('809', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Asegura la calidad de las funciones universitarias empleando sistemas de evaluación y monitoreo constantes, innovadores y confiables.');
-INSERT INTO `preguntas_puestos` VALUES ('810', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Diseña y administra satisfactoriamente los procesos de evaluación de alumnos, profesores y programas educativos.');
-INSERT INTO `preguntas_puestos` VALUES ('811', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Porpone con frecuencia políticas y procedimientos que mejoran la calidad de los servicios académicos.');
-INSERT INTO `preguntas_puestos` VALUES ('812', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y reporta semestralmente los resultados sobre la calidad del aprendizaje por parte de los alumnos y de los servicios de apoyo académico. Propone acciones de mejora con respecto a los resultados.');
-INSERT INTO `preguntas_puestos` VALUES ('813', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Se preocupa, promueve y se asegura la puntualidad y asistencia de los docentes a sus asignaturas.');
-INSERT INTO `preguntas_puestos` VALUES ('814', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Desarrolla, implementa, da seguimiento y reporta trimestralmente los resultados de los indicadores clave de desempeño institucional. Realiza propuestas de acción para mejorarlos.');
-INSERT INTO `preguntas_puestos` VALUES ('815', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Coordina y da seguimiento al desarrollo de programas de intervención educativa conducentes a la mejora de la calidad de la docencia y del aprendizaje de los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('816', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y retroalimenta cada semestre el plan rector de investigación de la universidad y reporta resultados a la Dirección.');
-INSERT INTO `preguntas_puestos` VALUES ('817', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y retroalimenta cada semestre el plan de tutorías y reporta resultados a la Dirección.');
-INSERT INTO `preguntas_puestos` VALUES ('818', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Dirige adecuadamente la elaboración, implantación y evaluación de programas de investigación de la institución de acuerdo a la misión, valores y características del entorno.');
-INSERT INTO `preguntas_puestos` VALUES ('819', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Orienta al profesorado de la institución para el logro de niveles de excelencia en el campo de la investigación.');
-INSERT INTO `preguntas_puestos` VALUES ('820', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene relaciones con organismos nacionales e internacionales de acreditación.');
-INSERT INTO `preguntas_puestos` VALUES ('821', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Participa constantemente en foros nacionales e internacionales en el campo de la educación superior representando dignamente a la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('822', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Promueve la publicación de los resultados de las investigaciones realizadas vigilando que cumplan con los lineamientos de edición e imagen Institucional.');
-INSERT INTO `preguntas_puestos` VALUES ('823', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Desarrolla diversas estrategias y actividades que impulsan la investigación y enriquecen la curricula que logran avances en el conocimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('824', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Mantiene un registro confiable y actualizado de los proyectos de investigación y da seguimiento a los avances obtenidos.');
-INSERT INTO `preguntas_puestos` VALUES ('825', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Proporciona a las autoridades información objetiva y relevante sobre los resultados de la investigación y presenta indicadores de desempeño que permiten valorar los avances obtenidos.');
-INSERT INTO `preguntas_puestos` VALUES ('826', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Estimula la participación activa de profesores y estudiantes en congresos, conferencias de carácter científico y tecnológico y asociaciones educativas y de apoyo a la investigación (CONACYT, FIMPES, ANUIES, NSF, entre otras).');
-INSERT INTO `preguntas_puestos` VALUES ('827', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene vínculos con medios editoriales logrando la publicación de trabajos de investigación.');
-INSERT INTO `preguntas_puestos` VALUES ('828', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio a los candidatos de ingreso a la Institución a nivel licenciatura.');
-INSERT INTO `preguntas_puestos` VALUES ('829', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Está en contacto continuo con los asesores preuniversitarios dando seguimiento a candidatos o prospectos.');
-INSERT INTO `preguntas_puestos` VALUES ('830', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Recibe y procesa con eficiencia las solicitudes de admisión.');
-INSERT INTO `preguntas_puestos` VALUES ('831', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Aplica y analiza satisfactoriamente los resultados de las pruebas de aptitud académica,habilidades y psicológicas realizadas a los candidatos.');
-INSERT INTO `preguntas_puestos` VALUES ('832', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Integra en los tiempos establecidos la información de exámenes de habilidades y psicológicos en los formatos y sistemas correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('833', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Evalúa la idoneidad del candidato, propone el ingreso e incorpora nuevo alumnado a la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('834', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Aconseja asertivamente la autorización o rechazo de aspirantes y turna los casos especiales a las instancias correspondientes.');
-INSERT INTO `preguntas_puestos` VALUES ('835', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Informa en tiempo y forma a los candidatos la resolución universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('836', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Elabora estadísticas útiles del proceso de admisión y facilita la información a las escuelas y facultades, en los tiempos requeridos.');
-INSERT INTO `preguntas_puestos` VALUES ('837', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Genera reportes de información para la Dirección de atención preuniversitaria y mercadotecnia, en la forma y tiempos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('838', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Integra eficientemente los expedientes de los participantes del Programa de Complementación Académica (PCA).');
-INSERT INTO `preguntas_puestos` VALUES ('839', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Recaba permanentemente información académica, personal y de desempeño con las diferentes fuentes de información.');
-INSERT INTO `preguntas_puestos` VALUES ('840', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento adecuado al desempeño de los participantes del PCA.');
-INSERT INTO `preguntas_puestos` VALUES ('841', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Actualiza continuamente los resultados de las diferentes instancias evaluadoras de los participantes del PCA.');
-INSERT INTO `preguntas_puestos` VALUES ('842', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Canaliza y da seguimiento a cada participante con el personal que le brindará la ayuda necesaria.');
-INSERT INTO `preguntas_puestos` VALUES ('843', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Analiza detalladamente cada caso y conforma el equipo de personal adecuado para sus necesidades.');
-INSERT INTO `preguntas_puestos` VALUES ('844', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento y hace propuestas a la evaluación del PCA.Da seguimiento y hace propuestas a la evaluación del PCA.');
-INSERT INTO `preguntas_puestos` VALUES ('845', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Analiza los puntos detectados como áreas de oportunidad y fortalezas del programa, tomando las medidas pertinentes para mejores resultados.');
-INSERT INTO `preguntas_puestos` VALUES ('846', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Genera las intervenciones que garantizan la mejora continua del PCA.');
-INSERT INTO `preguntas_puestos` VALUES ('847', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha y constante relación con sus alumnos tutoriales y equipo de trabajo.');
-INSERT INTO `preguntas_puestos` VALUES ('848', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Realiza en tiempo y forma la programación académica de cursos de idiomas y de bloque electivo.');
-INSERT INTO `preguntas_puestos` VALUES ('849', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Desarrolla con éxito las estrategias necesarias para lograr el crecimiento del área desde un punto de vista económico y comercial.');
-INSERT INTO `preguntas_puestos` VALUES ('850', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Prepara y promociona cursos de idiomas para los estudiantes cubriendo y manteniendo el número de alumnos requeridos por grupo.');
-INSERT INTO `preguntas_puestos` VALUES ('851', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Establece y da seguimiento continuo a las políticas que determinan si un alumno se considera aprobado en cierto idioma.');
-INSERT INTO `preguntas_puestos` VALUES ('852', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Crea y mantiene un archivo actualizado de todos los alumnos, así como de su situación escolar con respecto a los requisitos de idiomas.');
-INSERT INTO `preguntas_puestos` VALUES ('853', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Publica y hace del conocimiento del alumno el resultado de sus exámenes, dándoles una adecuada retroalimentación.');
-INSERT INTO `preguntas_puestos` VALUES ('854', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Investiga,desarrolla e implementa la capacitación y actualización necesaria para el personal docente.');
-INSERT INTO `preguntas_puestos` VALUES ('855', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Actualiza continuamente los programas a través de investigación y convenios con otras instituciones.');
-INSERT INTO `preguntas_puestos` VALUES ('856', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Supervisa e implementa el desarrollo de material didáctico y técnicas de enseñanza innovadoras para los cursos.');
-INSERT INTO `preguntas_puestos` VALUES ('857', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Previene la demanda de cursos de idiomas y asegura ofrecer los cursos demandados.');
-INSERT INTO `preguntas_puestos` VALUES ('858', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Promueve la utilización de tecnología de punta en la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('859', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Planea, programa y supervisa constantemente la integración de un acervo bibliográfico, audiovisual y los medios tecnológicos adecuados para su uso.');
-INSERT INTO `preguntas_puestos` VALUES ('860', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Implementa nuevos servicios que permiten agilizar el acceso a la información para el alumnado y usuarios de la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('861', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Promueve continua y satisfactorimante la utilización óptima de los recursos bibliográficos y audiovisuales, especialmente en las labores relacionadas con la docencia y la investigación.');
-INSERT INTO `preguntas_puestos` VALUES ('862', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Organiza cada inicio de período escolar actividades para informar a la comunidad universitaria sobre los recursos y servicios de la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('863', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Coordina en tiempo y forma las actividades de adquisiciones, procesos técnicos y servicios al público.');
-INSERT INTO `preguntas_puestos` VALUES ('864', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Supervisa eficientemente el desempeño de las personas a su cargo buscando su capacitación y desarrollo constante.');
-INSERT INTO `preguntas_puestos` VALUES ('865', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Lleva el adecuado control del uso de los recursos financieros que se han asignado a la biblioteca.');
-INSERT INTO `preguntas_puestos` VALUES ('866', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'En forma conjunta con el Director del área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.');
-INSERT INTO `preguntas_puestos` VALUES ('867', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha comunicación con el Director sobre todos los aspectos a su cargo que influyen directa o indirectamente en el cumplimiento de la misión de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('868', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Promueve continua y dignamente a la Institución en los distintos sectores de la sociedad (egresados, industria, gobierno,etc) tanto nacional como internacional.');
-INSERT INTO `preguntas_puestos` VALUES ('869', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Recauda los fondos acordados en el presupuesto anual para el financiamiento del desarrollo de la Institución por mecanismos distintos a las colegiaturas.');
-INSERT INTO `preguntas_puestos` VALUES ('870', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Supervisa la correcta aplicación de los fondos destinados al desarrollo de la Institución de acuerdo a la asignación inicial.');
-INSERT INTO `preguntas_puestos` VALUES ('871', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Cuenta con una base de datos actualizada de los principales líderes y referencias nacionales e internacionales en los sectores de influencia.');
-INSERT INTO `preguntas_puestos` VALUES ('872', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Desarrolla acciones de promoción y presencia sistemática con la personalidades nacionales,en especial con los que son egresados o han mantenido contacto cercano con la institucion.');
-INSERT INTO `preguntas_puestos` VALUES ('873', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'En conjunto con los responsables de las escuelas selecciona líderes que sean representativos de nuestros valores con el fin de poder incluirlos dentro de nuestro grupo de invitados y/o colaboradores.');
-INSERT INTO `preguntas_puestos` VALUES ('874', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Asegura la oportuna cobertura en los medios de comunicación masiva, de las visitas o eventos relevantes, que garantiza una presencia continua que identifica a la Institución como una sede de conocimeinto académico, científico y cultural.');
-INSERT INTO `preguntas_puestos` VALUES ('875', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Aprovecha contínumente las actividades tales como:inaguraciones, congresos, foros,etc., para invitar a líderes a nuestra Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('876', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Representa a la Institución en los distintos sectores de la sociedad, y promueve su imagen, su oferta educativa y sus servicios.');
-INSERT INTO `preguntas_puestos` VALUES ('877', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Impulsa y supervisa adecuadamente los procesos de búsqueda, selección y reclutamiento del personal académico y administrativo de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('878', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Implementa y desarrolla adecuadamente la inducción, capacitación y formación del personal de la UAM.');
-INSERT INTO `preguntas_puestos` VALUES ('879', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Vela por el cumplimiento del perfil de puesto correspondiente de cada uno de los puestos.');
-INSERT INTO `preguntas_puestos` VALUES ('880', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Se asegura constantemente de que el personal tenga una adecuada integración profesional y humana a la identidad y misión de la universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('881', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Vela por el cumplimiento de la estructura orgánico-funcional y hace propuestas cuando se requiere.');
-INSERT INTO `preguntas_puestos` VALUES ('882', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Velar por el cumplimiento de la disciplina laboral de acuerdo a normas y criterios vigentes y hace propuestas cuando se requiere.');
-INSERT INTO `preguntas_puestos` VALUES ('883', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Propone e implementa normas y políticas que rijen  las relaciones del personal de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('884', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Dirige y supervisa debidamente todas las actividades de apoyo al área de sueldos y salarios (elaboración de nóminas y pagos diversos). Realiza estudios comparativos de sueldos y compensaciones con otras universidades para proponer mejoras en las prestaciones del personal.');
-INSERT INTO `preguntas_puestos` VALUES ('885', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Coordina el proceso de evaluaciones de desempeño, clima laboral y 360°,  etc, analizando los resultados y propone acciones de la mejora continua de del ambiente y la cultura organizacional.');
-INSERT INTO `preguntas_puestos` VALUES ('886', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Ejecuta todas las medidas necesarias para dar cumplimiento a las disposiciones oficiales y legales en materia laboral y de seguridad social y custodia la documentación correspondiente');
-INSERT INTO `preguntas_puestos` VALUES ('887', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Mantiene actualizada y en orden la base de datos de los alumnos a nivel licenciatura y posgrado, desde su ingreso hasta su egreso, resguardando los archivos de datos generales, inscripción e historia académica.');
-INSERT INTO `preguntas_puestos` VALUES ('888', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Controla y certifica que la información en la base de datos sea confiable y que se suministre de manera oportuna para facilitar los procesos, asi como mantiene el sistema mecanizado para el control de avance escolar de los alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('889', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Coordina con eficacia con las diferentes áreas de la Universidad la implementación de los sistemas integrales (SIU) en base a los lineamientos, políticas y tiempos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('890', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Conoce la legislación universitaria y establece mecanismos que aseguran su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('891', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Reporta a la Dirección de administración escolar y normatividad sobre cualquier irregularidad en el proceso escolar y de casos de estudiantes que requieran un tratamiento especial y realiza propuestas para su resolución.');
-INSERT INTO `preguntas_puestos` VALUES ('892', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Controla eficazmente el seguimiento de la entrega de documentos de alumnos de nuevo ingreso.');
-INSERT INTO `preguntas_puestos` VALUES ('893', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Coordina oportunamente la ejecución de las tareas de certificación de los estudios de alumnos de nivel licenciatura y posgrados.');
-INSERT INTO `preguntas_puestos` VALUES ('894', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Planea y dirige los procesos de inscripción y reinscripción de alumnos en cuanto a su fase de selección de cursos, de los periodos académicos.');
-INSERT INTO `preguntas_puestos` VALUES ('895', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Ejecuta en tiempo y forma el procedimiento institucional de Reingreso y Bajas voluntarias y administrativas de los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('896', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Elabora y controla con eficiencia la información estadística que se genera en su área.');
-INSERT INTO `preguntas_puestos` VALUES ('897', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene contacto directo y constante con los diversos usuarios de la Institución, analiza sus dificultades y realiza propuestas para la mejora continua del servicio.');
-INSERT INTO `preguntas_puestos` VALUES ('898', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Coordina y participa de manera constante en la definición e implementación de los diversos procesos y procedimientos de atención y servicio.');
-INSERT INTO `preguntas_puestos` VALUES ('899', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Reporta en tiempo y forma los avances de los diversos proyectos del área.');
-INSERT INTO `preguntas_puestos` VALUES ('900', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Coordina de forma permanente la instalación de los equipos que adquiera la institución y capacita al personal que hará uso de los mismos (computadoras,impresoras,scanner,etc).');
-INSERT INTO `preguntas_puestos` VALUES ('901', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene contacto permanente con las empresas proveedoras de equipo y gestiona garantías y procesos de mantenimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('902', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene en óptimas condiciones los sistemas de información.');
-INSERT INTO `preguntas_puestos` VALUES ('903', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Brinda con actitud de servicio y de manera permanente el soporte necesario a los usuarios.');
-INSERT INTO `preguntas_puestos` VALUES ('904', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Implementa sistemas de información que agilizan los procedimientos académicos, administrativos y operativos de la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('905', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'En coordinación con el área de infraestructura tecnológica crea y administra a los grupos y usuarios, establece los permisos, protege la información interna como externa, internet,etc, en el tiempo y calidad requerida.');
-INSERT INTO `preguntas_puestos` VALUES ('906', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'En coordinación con el área de infraestructura tecnológica verifica semanalmente el antivirus, así como la actualización de los mismos.');
-INSERT INTO `preguntas_puestos` VALUES ('907', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Supervisa constantemente que todos los servicios de cómputo ofrecidos a través de servidores centrales hacia el personal administrativo, académico y alumnos sean de excelente calidad y con tecnología de punta.');
-INSERT INTO `preguntas_puestos` VALUES ('908', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Procura y fomenta una excelente comunicación entre su equipo de trabajo y una mejora constante en la prestación de servicios que ofrece su jefatura.');
-INSERT INTO `preguntas_puestos` VALUES ('909', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Procura la entera satisfacción de todos los usuarios, promoviendo la comunicación constante y estando atento a sus necesidades.');
-INSERT INTO `preguntas_puestos` VALUES ('910', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Protege permanentemente de ataques externos e internos a la red.');
-INSERT INTO `preguntas_puestos` VALUES ('911', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Investiga y propone constamente sobre nuevas tecnologías y avances en el área de redes proponiendo mejoras.');
-INSERT INTO `preguntas_puestos` VALUES ('912', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Instala nuevos servidores y efectúa pruebas y reparación de los mismos en caso de ser necesario con un enfoque de servicio al cliente indicado por la Institución.');
-INSERT INTO `preguntas_puestos` VALUES ('913', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Lleva un adecuado y constante control y administración de los servicios de la página web de la Universidad,servicio de correo,control de impresión,etc.');
-INSERT INTO `preguntas_puestos` VALUES ('914', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Monitorea y reporta el tráfico de la red contando con estadísticas que permitan conocer el performance de la misma y se asegura de la disponibilidad, accesibilidad, velocidad y usabilidad del servicio de internet.');
-INSERT INTO `preguntas_puestos` VALUES ('915', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Apoya constantemente y con actitud de servicio a todas las áreas que lo requieren, en el mantenimiento y actualización de sus bases de datos.');
-INSERT INTO `preguntas_puestos` VALUES ('916', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Coordina con eficiencia la configuración de los equipo inalámbricos de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('917', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Propone, coordina y supervisa con eficiencia eventos de integración que enriquezcan la vida estudiantil de la universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('918', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Establece adecuados canales de comunicación para escuchar a los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('919', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Monitorea los resultados de los proyectos de integración vigentes y propone a las autoridades modificaciones y/o nuevos planes.');
-INSERT INTO `preguntas_puestos` VALUES ('920', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Verifica de manera consistente que las autoridades y programas colaboren en la formación de los estudiantes.');
-INSERT INTO `preguntas_puestos` VALUES ('921', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Evalúa sistemáticamente los logros formativos de los programas ofrecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('922', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Estructura programas culturales de formación así como organiza y ofrece eventos culturales de calidad para la Comunidad Universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('923', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene vínculos con organismos estatales, privados, embajadas y centros extranjeros de carácter cultural.');
-INSERT INTO `preguntas_puestos` VALUES ('924', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Promueve actividades encaminadas al fortalecimiento de relaciones estudiales intrauniversitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('925', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Promueve eventos culturales externos de interés para el enriquecimiento de la Comunidad Universitaria.');
-INSERT INTO `preguntas_puestos` VALUES ('926', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Coordina y apoya en los eventos de Bienvida así como en entrega de reconocimiento de alumnos.');
-INSERT INTO `preguntas_puestos` VALUES ('927', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Cumple los lineamientos institucionales y de la RED en materia de: comunicación(interna y externa), promoción, manejo de imagen y mercadotecnia.');
-INSERT INTO `preguntas_puestos` VALUES ('928', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando cubrir ya sea el público interno y/ó externo.');
-INSERT INTO `preguntas_puestos` VALUES ('929', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'De forma permanente vigila que todo lo relacionado a comunicación, medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('930', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Colabora activamente y mantiene relaciones con otras instituciones, organismos,agencias de publicidad,diseño y relaciones públicas.');
-INSERT INTO `preguntas_puestos` VALUES ('931', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila que la imagen de la Red Anáhuac se emplee de forma adecuada en todos los medios (escritos y electrónicos) asesorando adecuadamente a las áreas que desarrollen comunicaciónes internas.');
-INSERT INTO `preguntas_puestos` VALUES ('932', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Apoya eficientemente a Divisiones,Escuelas y Facultades así como a áreas administrativas en la coordinación de campañas, eventos y programas especiales dirigidos a fomentar la imagen y las relaciones internas y externas de la institución.');
-INSERT INTO `preguntas_puestos` VALUES ('933', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Publica periódicamente la información oficial de la Institución empleando los medios institucionales (internos, generales y para egresados) y cubriendo el mercado meta.');
-INSERT INTO `preguntas_puestos` VALUES ('934', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Busca con frecuencia prestadores de servicios publicitarios e integra una cartera de proveedores confiables, que permiten utilizar productos y servicios de promoción y comunicación de calidad.');
-INSERT INTO `preguntas_puestos` VALUES ('935', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa que las herramientas electrónicas empleadas para la comunicación tanto interna como extrena se encuentren a la vanguardia en tecnología y diseño visual.');
-INSERT INTO `preguntas_puestos` VALUES ('936', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento a las relaciones con la prensa y los medios de comunicación el cual apoya la entrega de productos y servicios solicitados con la calidad y en los tiempos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('937', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Propicia una comunicación efectiva entre los sectores internos y externos de la Universidad para el logro de los objetivos institucionales.');
-INSERT INTO `preguntas_puestos` VALUES ('938', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando el impacto requerido.');
-INSERT INTO `preguntas_puestos` VALUES ('939', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila que todo lo competente a comunicación Medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos por la División de Universidades.');
-INSERT INTO `preguntas_puestos` VALUES ('940', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Representa a la Universidad ante los medios de comunicación social en dependencia del Rector.');
-INSERT INTO `preguntas_puestos` VALUES ('941', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Se asegura de cuidar la imagen de la Universidad en el exterior (página web, eventos, medios masivos de comunicación, etc).');
-INSERT INTO `preguntas_puestos` VALUES ('942', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Mantiene una fuerte y productiva relación con todos los directivos de la Institución para apoyar proyectos de comunicación y mercadotecnia institucional.');
-INSERT INTO `preguntas_puestos` VALUES ('943', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Colabora con firmas externas, relaciones públicas, diseños y comunicación para ejecutar estrategias y acciones.');
-INSERT INTO `preguntas_puestos` VALUES ('944', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Asesora y coordina las estrategias específicas de los coordinadores del área buscando un adecuado desempeño.');
-INSERT INTO `preguntas_puestos` VALUES ('945', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Busca continuamente tener presencia en medios que sumen a la buena imagen de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('946', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
-INSERT INTO `preguntas_puestos` VALUES ('947', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Realiza eficientemente todas las funciones de coordinación académica y administrativa del programa(s) a su cargo,promoviendo la misión y valores universitarios.');
-INSERT INTO `preguntas_puestos` VALUES ('948', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Se coordina adecuadamente con el Director del área en la selección y contratación del personal académico de acuerdo al perfil y en los tiempos establecidos.');
-INSERT INTO `preguntas_puestos` VALUES ('949', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Apoya constantemente las labores de promoción hacia los diversos públicos: preparatorias,egresados, empresas instituciones privadas y gubernamentales entre otros.');
-INSERT INTO `preguntas_puestos` VALUES ('950', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Supervisa continuamente la calidad de las cátedras impartidas alineando los planes y programas a lo establecido en la División o escuela.');
-INSERT INTO `preguntas_puestos` VALUES ('951', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Atiende continuamente y con actitud de servicio las necesidades de los estudiantes y docentes,proponiendo soluciones.');
-INSERT INTO `preguntas_puestos` VALUES ('952', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Apoya las tutorías y vigila de manera constante que se apliquen a alumnos que manifiestan alguna inquietud y a los que presentan bajo desempeño.');
-INSERT INTO `preguntas_puestos` VALUES ('953', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para monitorear la calidad académica y alinear aspectos que sean necesarios.');
-INSERT INTO `preguntas_puestos` VALUES ('954', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Cuida de manera consistente de la óptima utilización de los recursos tanto humanos como materiales asignados a sus programas.');
-INSERT INTO `preguntas_puestos` VALUES ('955', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Cumple y hace cumplir las políticas y lineamientos definidos por los superiores y en general las disposiciones y acuerdos que normen la estructura y funcionamiento de la Universidad.');
-INSERT INTO `preguntas_puestos` VALUES ('956', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Promueve de manera continua la integración efectiva del personal y de los alumnos.');
 
 -- ----------------------------
 -- Table structure for puestos
@@ -3751,20 +3211,18 @@ CREATE TABLE `respuestas_autoevaluacion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `evaluacion` int(11) DEFAULT '0' COMMENT '0: Jefe, 1: Autoevaluación',
   `empleado` int(11) DEFAULT '0' COMMENT '0: Evaluaciones, 1: Autoevaluaciones',
-  `nivel` int(11) DEFAULT NULL,
   `fechaRegistro` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `resev_key` (`evaluacion`,`empleado`) USING BTREE,
   KEY `respuestas_autoevaluacion_ibfk_2` (`empleado`),
-  KEY `respuestas_autoevaluacion_ibfk_3` (`nivel`),
   CONSTRAINT `respuestas_autoevaluacion_ibfk_1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `respuestas_autoevaluacion_ibfk_2` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `respuestas_autoevaluacion_ibfk_3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `respuestas_autoevaluacion_ibfk_2` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion
 -- ----------------------------
+INSERT INTO `respuestas_autoevaluacion` VALUES ('8', '1', '32153664', '2016-06-07 22:03:14');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion_competencias
@@ -3790,11 +3248,31 @@ CREATE TABLE `respuestas_autoevaluacion_competencias` (
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_autoevaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion_competencias
 -- ----------------------------
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('74', '1', '7', '414', '160', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('61', '1', '7', '401', '175', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('73', '1', '7', '413', '223', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('75', '1', '7', '415', '223', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('77', '1', '7', '417', '223', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('79', '1', '7', '419', '223', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('62', '1', '7', '402', '238', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('63', '1', '7', '403', '238', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('65', '1', '7', '405', '238', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('67', '1', '7', '407', '238', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('69', '1', '7', '409', '238', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('72', '1', '7', '412', '286', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('76', '1', '7', '416', '286', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('78', '1', '7', '418', '286', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('64', '1', '7', '404', '301', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('66', '1', '7', '406', '301', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('68', '1', '7', '408', '301', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('70', '1', '7', '410', '301', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('71', '1', '7', '411', '349', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('80', '1', '7', '420', '349', '8');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion_manual_abierto
@@ -3818,11 +3296,17 @@ CREATE TABLE `respuestas_autoevaluacion_manual_abierto` (
   CONSTRAINT `rama2` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rama3` FOREIGN KEY (`id_manual_input_pregunta`) REFERENCES `cuestionarios_manual_input_preguntas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rama4` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_autoevaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion_manual_abierto
 -- ----------------------------
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('19', '1', '7', '1', '8', '0', '1');
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('20', '1', '7', '1', '8', '1', '2');
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('21', '1', '7', '2', '8', '0', '3');
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('22', '1', '7', '2', '8', '1', '4');
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('23', '1', '7', '4', '8', '0', '7');
+INSERT INTO `respuestas_autoevaluacion_manual_abierto` VALUES ('24', '1', '7', '4', '8', '1', '98');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion_manual_opciones
@@ -3848,11 +3332,13 @@ CREATE TABLE `respuestas_autoevaluacion_manual_opciones` (
   CONSTRAINT `ramo3` FOREIGN KEY (`id_opcion_respuesta`) REFERENCES `cuestionarios_manual_input_preguntas_opciones_respuestas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ramo4` FOREIGN KEY (`id_opciones_input_manual`) REFERENCES `cuestionarios_manual_input_preguntas_opciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ramo5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_autoevaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion_manual_opciones
 -- ----------------------------
+INSERT INTO `respuestas_autoevaluacion_manual_opciones` VALUES ('7', '1', '7', '2', '1', '8', '5');
+INSERT INTO `respuestas_autoevaluacion_manual_opciones` VALUES ('8', '1', '7', '3', '2', '8', '6');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_competencias_niveles
@@ -3902,52 +3388,11 @@ CREATE TABLE `respuestas_clave_competencias_puestos` (
   CONSTRAINT `rccp2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp3` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=395 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_clave_competencias_puestos
 -- ----------------------------
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('368', '1', '3', '95', '82');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('365', '1', '3', '92', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('367', '1', '3', '94', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('369', '1', '3', '96', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('370', '1', '3', '97', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('371', '1', '3', '98', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('372', '1', '3', '99', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('373', '1', '3', '100', '84');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('364', '1', '3', '91', '86');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('366', '1', '3', '93', '86');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('375', '1', '3', '102', '93');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('376', '1', '3', '103', '93');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('378', '1', '3', '105', '93');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('374', '1', '3', '101', '95');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('377', '1', '3', '104', '95');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('379', '1', '3', '106', '95');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('380', '1', '3', '107', '95');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('381', '1', '3', '108', '95');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('382', '1', '3', '109', '97');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('383', '1', '3', '110', '97');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('384', '1', '3', '111', '99');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('391', '1', '3', '387', '169');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('388', '1', '3', '384', '232');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('390', '1', '3', '386', '232');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('392', '1', '3', '388', '232');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('393', '1', '3', '389', '232');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('386', '1', '3', '382', '295');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('387', '1', '3', '383', '295');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('389', '1', '3', '385', '295');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('394', '1', '3', '390', '295');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('385', '1', '3', '381', '358');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('294', '1', '80', '252', '297');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('296', '1', '80', '254', '297');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('298', '1', '80', '256', '297');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('300', '1', '80', '258', '297');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('302', '1', '80', '260', '297');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('293', '1', '80', '251', '360');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('295', '1', '80', '253', '360');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('297', '1', '80', '255', '360');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('299', '1', '80', '257', '360');
-INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('301', '1', '80', '259', '360');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_historico_niveles
@@ -4072,11 +3517,12 @@ CREATE TABLE `respuestas_evaluacion` (
   KEY `resev` (`evaluador`) USING BTREE,
   CONSTRAINT `respev1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respev2` FOREIGN KEY (`evaluador`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion
 -- ----------------------------
+INSERT INTO `respuestas_evaluacion` VALUES ('1', '1', '32153664', '0', '0', '2016-06-07 20:53:15');
 
 -- ----------------------------
 -- Table structure for respuestas_evaluacion_competencias
@@ -4102,7 +3548,7 @@ CREATE TABLE `respuestas_evaluacion_competencias` (
   CONSTRAINT `rec3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_competencias
@@ -4156,7 +3602,7 @@ CREATE TABLE `respuestas_evaluacion_manual_abierto` (
   CONSTRAINT `rema2` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema3` FOREIGN KEY (`id_manual_input_pregunta`) REFERENCES `cuestionarios_manual_input_preguntas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_abierto
@@ -4186,7 +3632,7 @@ CREATE TABLE `respuestas_evaluacion_manual_opciones` (
   CONSTRAINT `remo3` FOREIGN KEY (`id_opcion_respuesta`) REFERENCES `cuestionarios_manual_input_preguntas_opciones_respuestas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo4` FOREIGN KEY (`id_opciones_input_manual`) REFERENCES `cuestionarios_manual_input_preguntas_opciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_opciones
@@ -4212,6 +3658,638 @@ CREATE TABLE `usuarios` (
 -- Records of usuarios
 -- ----------------------------
 INSERT INTO `usuarios` VALUES ('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrador de sistema', 'admin@bcore.com.mx', '2015-09-07 20:58:33', '0');
+
+-- ----------------------------
+-- Table structure for ___preguntas_puestos
+-- ----------------------------
+DROP TABLE IF EXISTS `___preguntas_puestos`;
+CREATE TABLE `___preguntas_puestos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `competencia` varchar(255) DEFAULT NULL,
+  `pregunta` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=957 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of ___preguntas_puestos
+-- ----------------------------
+INSERT INTO `___preguntas_puestos` VALUES ('340', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Promueve constantemente la misión institucional y los valores universitarios en su trabajo de supervisión de las labores académicas y administrativas del personal a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('341', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Mantiene una supervisión constante de la calidad de las cátedras impartidas y revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para alinear aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('342', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Atiende y resuelve con prontitud y actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
+INSERT INTO `___preguntas_puestos` VALUES ('343', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Demuestra una preocupación genuina y permanente por la optimización del uso de los recursos humanos y materiales asignados a su programa académico.');
+INSERT INTO `___preguntas_puestos` VALUES ('344', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la Licenciatura y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.');
+INSERT INTO `___preguntas_puestos` VALUES ('345', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento cercano a cada uno de sus profesores y personal buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ');
+INSERT INTO `___preguntas_puestos` VALUES ('346', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Colabora permanentemente con las labores de promoción de su escuela hacia los diversos públicos: egresados, empresas,instituciones privadas y gubernamentales entre otros.');
+INSERT INTO `___preguntas_puestos` VALUES ('347', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento puntual al Plan Operativo Anual y asegura su cumplimiento en el tiempo establecido y con la calidad requerida. ');
+INSERT INTO `___preguntas_puestos` VALUES ('348', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Se preocupa por tener y retener a docentes de excelencia para licencitatura y posgrados con experiencia profesional y calidad académica.');
+INSERT INTO `___preguntas_puestos` VALUES ('349', 'DIRECTOR DE PROGRAMA ACADÉMICO( NIVEL MANDOS MEDIOS 1)', 'Busca proponer, desarrollar, implementar y actualizar los programas de posgrados y educación continua.');
+INSERT INTO `___preguntas_puestos` VALUES ('350', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
+INSERT INTO `___preguntas_puestos` VALUES ('351', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Establece y supervisa la realización de las prioridades de operación y quehacer académico de las áreas a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('352', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura la máxima calidad académica y busca implementar los sistemas necesarios para conseguirla, de modo que dé respuesta a las inquietudes de estudiantes y profesores. ');
+INSERT INTO `___preguntas_puestos` VALUES ('353', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Analizar y propone los programas académicos que debe de ofrecer la Universidad manteniédolos actualizados.');
+INSERT INTO `___preguntas_puestos` VALUES ('354', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura la máxima calidad académica certificada de la universidad a partir de los procesos de acreditación que la institución ha decidido emprender y renovar tanto en licenciatura como en Posgrados');
+INSERT INTO `___preguntas_puestos` VALUES ('355', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Ha establecido nuevas relaciones académicas y mantiene una relación cercana con otras instituciones nacionales e internacionales de prestigio.');
+INSERT INTO `___preguntas_puestos` VALUES ('356', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('357', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('358', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Procura y fomenta una colaboración estrecha con las vicerrectorias de la Universidad');
+INSERT INTO `___preguntas_puestos` VALUES ('359', 'VICERRECTOR ACADÉMICO (NIVEL AUTORIDADES 2) ', 'Fomenta y busca la innovación en todas sus áreas, en especial en el proceso de enseñanza aprendizaje y en los métodos. Buscando una estrecha relación con el departamento de innovación de la Universidad. ');
+INSERT INTO `___preguntas_puestos` VALUES ('360', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
+INSERT INTO `___preguntas_puestos` VALUES ('361', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('362', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Da seguimiento y busca el cumplimiento ágil de los proyectos de la Universidad en el ámbito de su competencia.');
+INSERT INTO `___preguntas_puestos` VALUES ('363', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Supervisa el correcto registro y en los tiempos establecidos las operaciones económicas de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('364', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Propone al Comité Rectoral los procedimientos administrativos, modificaciones requeridas al presupuesto y cuotas escolares en beneficio de la Institución para presentar a la RUA con las gestiones correspondientes ante la junta de gobierno.');
+INSERT INTO `___preguntas_puestos` VALUES ('365', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('366', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Integra en tiempo y forma junto con el Comité Rectoral y Rector el presupuesto anual de la Universidad, se encarga de darle seguimiento y vela por el cumplimiento del mismo');
+INSERT INTO `___preguntas_puestos` VALUES ('367', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('368', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Se asegura de proporcionar servicios de alta calidad a los estudiantes y clientes internos tanto en la atención, trato y vanguardia de los servicios que tienen relación a su área de competencia.');
+INSERT INTO `___preguntas_puestos` VALUES ('369', 'VICERRECTOR DE ADMINISTRACIÓN Y FINANZAS (NIVEL AUTORIDADES 2)', 'Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.Diseña y ejecuta las medidas financieras que aseguren la óptima utilización de los recursos financieros y administrativos de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('370', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y entre el personal que depende de él.');
+INSERT INTO `___preguntas_puestos` VALUES ('371', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propicia y coordina de manera permanente las actividades de las áreas de Difusión Cultural y Deportes.');
+INSERT INTO `___preguntas_puestos` VALUES ('372', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propicia y coordina de manera permanente las actividades de los Programas de Acción y Servicio Social que apoyan la formación integral de los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('373', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Vela por la adecuada implantación, operación y evaluación del modelo educativo Anáhuac de formación integral.');
+INSERT INTO `___preguntas_puestos` VALUES ('374', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Propone y desarrolla constantemente programas relacionados con la promoción del liderazgo de acción positiva ante la comunidad universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('375', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Fomenta actividades de acción social incrementando consistentemente la participación activa de alumnos, profesores y personal universitario.');
+INSERT INTO `___preguntas_puestos` VALUES ('376', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('377', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('378', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Fomenta la identidad institucional, apostolados y acción social en los alumnos de posgrados.');
+INSERT INTO `___preguntas_puestos` VALUES ('379', 'VICERRECTOR DE FORMACIÓN INTEGRAL (NIVEL AUTORIDADES 2)', 'Cuenta con un plan pastoral y se asegura de su avance y cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('380', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('381', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Trabaja junto con la Vicerrectoría Académica, en el alcance y funciones de la división estableciendo planes y programas actualizados a corto,mediano y largo plazo.');
+INSERT INTO `___preguntas_puestos` VALUES ('382', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)');
+INSERT INTO `___preguntas_puestos` VALUES ('383', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Busca la máxima calidad académica reconocida tanto en Licenciatura como en Posgrados.');
+INSERT INTO `___preguntas_puestos` VALUES ('384', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Constantemente desarrolla, implementa y actualiza los programas de posgrados y educación continua.');
+INSERT INTO `___preguntas_puestos` VALUES ('385', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Mantiene una supervisión constante de la calidad de las cátedras impartidas en la Divisón y revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para alinear aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('386', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Establece y mantiene relaciones de colaboración con: Instituciones académicas de prestigio,nacionales o extranjeras, con el medio profesional correspondiente y con los egresados de la facultad.');
+INSERT INTO `___preguntas_puestos` VALUES ('387', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Elabora el Plan y Presupuesto Anual de Operación de su División dando seguimiento a la realización del mismo en el tiempo y calidad requerida.');
+INSERT INTO `___preguntas_puestos` VALUES ('388', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Da un seguimiento cercano a cada uno de sus profesores buscando generar un buen ambiente, la colaboración en equipo, la integración con la universidad y dando respuesta a sus intereses e inquietudes. ');
+INSERT INTO `___preguntas_puestos` VALUES ('389', 'DIRECTOR DE DIVISIÓN (NIVEL DIRECCCIONES 1)', 'Valida constantemente mediante el sector empresarial y social el perfil del egresado formado en la División y establece programas que mejoren la percepción y respondan a las necesidades de la sociedad.');
+INSERT INTO `___preguntas_puestos` VALUES ('390', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Elabora y presenta al comité rectoral para su aprobación, el plan estratégico y los programas anuales acordados con las autoridades y directivos de las diferentes áreas de la universidad. ');
+INSERT INTO `___preguntas_puestos` VALUES ('391', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Asesora al comité rectoral para desarrollar, actualizar y dar seguimiento a la aplicación del plan estratégico y su programa anual. ');
+INSERT INTO `___preguntas_puestos` VALUES ('392', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Da un seguimiento cercano a los programas anuales y brinda una retroalimentación clara y estratégica a los responsables. ');
+INSERT INTO `___preguntas_puestos` VALUES ('393', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Brinda constantemente información estadística fidedígna que sirva para las determinaciones de desarrollo y crecimiento universitario');
+INSERT INTO `___preguntas_puestos` VALUES ('394', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Orienta y coordina de forma permanente a el área de Administración Escolar logrando un servicio óptimo para los usuarios de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('395', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Orienta y coordina de forma permanente al área de Servicios Tecnológicos logrando un servicio óptimo para los usuarios de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('396', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('397', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Analiza y propone las acciones y procesos que se basan en la medición, diagnóstico, evaluación, diseño y propuestas de intervención para el mejoramiento continuo de procesos y servicios. Ha propuesto mejoras que se han implementado con éxito en el último año.');
+INSERT INTO `___preguntas_puestos` VALUES ('398', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Apoya y propone al comité rectoral el diseño, implantación y mecanismos de evaluación institucional. ');
+INSERT INTO `___preguntas_puestos` VALUES ('399', 'DIRECTOR DE SERVICIOS INSTITUCIONALES Y PLANEACIÓN (NIVEL DIRECCIONES 1)', 'Coordina de manera eficaz los procesos de certificación y acreditación nacionales e internacionales logrando mantener la excelencia académica de la institución. Da un seguimiento a las recomendaciones u observaciones de los sistemas de acreditación.');
+INSERT INTO `___preguntas_puestos` VALUES ('400', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" dentro de la Institución y en especial dentro del personal de su área,egresados y bienhechores.');
+INSERT INTO `___preguntas_puestos` VALUES ('401', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Desarrolla e implementa Estrategias de Financiamiento para el crecimiento de la institución basándose en apoyos filantrópicos individuales,grupales y empresariales.');
+INSERT INTO `___preguntas_puestos` VALUES ('402', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Recauda Recursos Económicos y en Especie (independietes de la operación ordinaria de la Universidad) para el desarrollo de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('403', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Supervisa la correcta aplicación de los recursos económicos y en especie recaudados de acuerdo a la asignación inicial. ');
+INSERT INTO `___preguntas_puestos` VALUES ('404', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'De manera continua realiza planes y proyectos que fomentan el apoyo y colaboración de los egresados en las actividades institucionales.');
+INSERT INTO `___preguntas_puestos` VALUES ('405', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Evalúa constantemente la percepción de los públicos a quienes son dirigidos sus eventos y actividades (egresados, alumnos, empresas,etc), y realiza propuestas para su mejoramiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('406', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Establece relaciones permanentes con distintas dependencias de gobierno,del sector privado y social que favorecen el desarrollo e imagen de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('407', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('408', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('409', 'DIRECTOR DE DESARROLLO INSTITUCIONAL ( NIVEL DIRECCIONES 2)', 'Comprende y comunica los objetivos a cumplir y motiva a los miembros del equipo al cumplimiento de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('410', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en la formación docente y tutorías.');
+INSERT INTO `___preguntas_puestos` VALUES ('411', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'De manera consistente y junto con sus coordinadores diseña,supervisa y evalúa la ejecución de procesos de excelencia académica e investigación y propone acciones para el mejoramiento continuo de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('412', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Se asegura de tener un modelo eficaz de atención personal a los estudiantes, particularmente a través de los programas de tutoría, y busca su mejora contínua.');
+INSERT INTO `___preguntas_puestos` VALUES ('413', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Da seguimiento al cumplimiento efectivo de diversos indicadores de desempeño académico y realiza estudios que permitan conocer los requerimientos de acreditación institucional y de programas académicos ante diferentes instancias(ANUES, FIMPES, ETC).');
+INSERT INTO `___preguntas_puestos` VALUES ('414', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Conduce el análisis e interpretación de la Práctica de Evaluación Docentes a nivel Institucional, propone acciones para el mejoramiento y se asegura del cumplimiento de las mismas.');
+INSERT INTO `___preguntas_puestos` VALUES ('415', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Procura la máxima calidad académica certificada de la universidad según los planes de la misma, en especial busca mejorar en las evaluaciones del EGEL.');
+INSERT INTO `___preguntas_puestos` VALUES ('416', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Apoya los procesos, proyectos e iniativas relacionadas con la Capacitación del Personal Docente.');
+INSERT INTO `___preguntas_puestos` VALUES ('417', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Busca la máxima calidad dentro del aula (puntualidad y asistencia de profesores, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc).');
+INSERT INTO `___preguntas_puestos` VALUES ('418', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Funge permanentemente como auditor en las diferentes escuelas con la finalidad de el logro de las certificaciones de programas académicos.');
+INSERT INTO `___preguntas_puestos` VALUES ('419', 'DIRECTOR DE DESARROLLO ACADÉMICO (NIVEL DIRECCCIONES 2) ', 'Conduce eficientemente los procesos relacionados con la selección y el desarrollo de profesores de planta y de honorarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('420', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Integra eficientemente de páginas Web de los cursos del Proyecto @prende, de acuerdo a las indicaciones del especialista en Diseño Instruccional, requerimientos de los profesores, tipo de contenido y área de conocimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('421', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Diseña de objetos de aprendizaje \"a la medida\", materiales de apoyo y recursos multimedia innovadores.');
+INSERT INTO `___preguntas_puestos` VALUES ('422', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla y aplica con éxito estándares SCORM a los recursos multimedia, objetos e integración de contenidos en WebCT.');
+INSERT INTO `___preguntas_puestos` VALUES ('423', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Digitaliza en forma y tiempo documentos, imágenes, audios, videos,etc, para la integración de los cursoso del Programa @prende.');
+INSERT INTO `___preguntas_puestos` VALUES ('424', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Asesora satisfactoriamente a profesores y alumnos, en cuanto al uso de herramientas, software especializado o aplicaciones que se requieren para la impartición de las materias en WebCT y Blackboard.');
+INSERT INTO `___preguntas_puestos` VALUES ('425', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa el funcionamiento de todos los recuros que contien cada materia integrada en WebCat, de acuerdo a las indicaciones del Especialista en Diseño Instruccional o del prrofesor.');
+INSERT INTO `___preguntas_puestos` VALUES ('426', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Estructura y actualiza adecuadamente los archivos y directorios de cursos abiertos en WebCT y Blackboard.');
+INSERT INTO `___preguntas_puestos` VALUES ('427', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Actualiza y usa la galería de objetos de aprendizaje y recursos multimedia desarrollada para el Programa @prende.');
+INSERT INTO `___preguntas_puestos` VALUES ('428', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Respalda de forma permanente los documentos originales de los maestros, así como los materiales desarrollados por los enlaces del Programa @prende en cada Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('429', 'ESPECIALISTA EN DESARROLLO DE MEDIOS (NIVEL MANDOS MEDIOS 2)', 'Cumple eficientemente con los objetivos del Programa @prende en la Red de Universidades Anáhuac.');
+INSERT INTO `___preguntas_puestos` VALUES ('430', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Orienta apropiadamente a los candidatos a postulantes que solicitan ingreso a la Institución, para que elijan una profesión adecuada,tomando en cuenta sus habilidades, aptitudes, intereses y características de personalidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('431', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Aplica pruebas psicológicas a los candidatos a ingresar a la institución y elabora adecuadamente los perfiles vocacionales de cada uno de ellos.');
+INSERT INTO `___preguntas_puestos` VALUES ('432', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Entrevista a cada uno de los candidatos y elabora en tiempo y forma los reportes psicológicos que se envían al área de admisiones.');
+INSERT INTO `___preguntas_puestos` VALUES ('433', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene contacto con los directores de las escuelas y conoce el grado de adaptación de los alumnos de nuevo ingreso a la escuela y a la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('434', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene contacto con los alumnos en casos de bajo rendimiento, problemas de motivación u otros y los canaliza debidamente a instituciones externas que les puedan brindar ayuda.');
+INSERT INTO `___preguntas_puestos` VALUES ('435', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Reorienta satisfactoriamente a los alumnos que solicitan cambio de carrera.');
+INSERT INTO `___preguntas_puestos` VALUES ('436', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Realiza entrevistas y mantiene un adecuado contacto con padres de familia.');
+INSERT INTO `___preguntas_puestos` VALUES ('437', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Determina con precisión la conveniencia o no de ingreso de cada aspirante a través de un reporte.');
+INSERT INTO `___preguntas_puestos` VALUES ('438', 'ESPECIALISTA DE ORIENTACIÓN VOCACIONAL (NIVEL MANDOS MEDIOS 2)', 'Controla, revisa y entrega en tiempo y forma los exámenes y reportes psicológicos a las áreas correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('439', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Propone a la Dirección planes y políticas para estrechar las relaciones de la Universidad con sus egresados fomentando su apoyo y colaboración en actividades institucionales.');
+INSERT INTO `___preguntas_puestos` VALUES ('440', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Establece vínculos permanentes con empresas de sectores públicos y privados,que permiten que nuestros egresados puedan integrarse al ambiente laboral en forma rápida y con oportunidades de acuerdo a su perfil y aspiraciones profesionales.');
+INSERT INTO `___preguntas_puestos` VALUES ('441', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Propicia con éxito encuentros, ferias y seminarios que ponen en contacto a nustros alumnos de últimos semestres con las oportunidades laborales a fines a sus perfiles académicos.');
+INSERT INTO `___preguntas_puestos` VALUES ('442', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Administra, supervisa y evalúa con eficiencia las herraminetas (administrativas y electrónicas) que se presentan a los egresados como alternativas de búsqueda de oportunidades laborales (bolsa de trabajo).');
+INSERT INTO `___preguntas_puestos` VALUES ('443', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Fomenta satisfactoriamente eventos: comidas, foros,encuentros, seminarios, etc., de integración y reencuentro de grupos de egresados. ');
+INSERT INTO `___preguntas_puestos` VALUES ('444', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene constante relación con egresados que colaboran en empresas líderes logrando que participen con la Universidad en proyectos sociales,foros y conferencias siendo modelos a seguir en la vida profesional para nuestros alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('445', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Cuenta con un programa o proceso de retroalimentación efectivo (sugerencias/encuestas) por parte de los egresados, que permiten realinear los proyectos, planes y programas en base a las necesidades y expectativas reales de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('446', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Establece negociaciones permanantes con proveedores y prestadores de servicios logrando acuerdos que apoyan la economía de nuestros egresados (descuentos, promociones,etc).');
+INSERT INTO `___preguntas_puestos` VALUES ('447', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Administra y vigila constantemente que se encuentren actualizadas la base de datos con la información personal de los egresados.');
+INSERT INTO `___preguntas_puestos` VALUES ('448', 'COORDINADOR DE PROGRAMA DE EGRESADOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa con eficiencia que todos los medios de contacto con los egresados (cartas, correo electrónico, publicaciones, revistas,etc) cumplan con los contenidos alineados a los valores y misión de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('449', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Brinda atención personalizada a alumnos que le sean canalizados ya sea por áreas académicas vía tutores, por la coordinación de relaciones estudiantiles o por alguna otra instancia.');
+INSERT INTO `___preguntas_puestos` VALUES ('450', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Evalúa las condiciones, características y actitudes de alumnos asignados a su atención valuando si requiere la atención de un especialista y/o le establece u programa de adaptación.');
+INSERT INTO `___preguntas_puestos` VALUES ('451', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Alerta en tiempo y forma al Vicerrector de Formación Integral sobre alumnos que presentan problemas que ameriten citar a los padres o tutores.');
+INSERT INTO `___preguntas_puestos` VALUES ('452', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Apoya apropiadamente a los profesores de tutorías en cuanto a la forma que deben manejar o canalizar casos que ameriten atención personalizada.');
+INSERT INTO `___preguntas_puestos` VALUES ('453', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'En coordinación con relaciones estudiantiles organiza con eficiencia cursos, y conferencias de formación hacia los alumnos manejando temas como: alcoholismo, drogadicción, depresión, anorexia, bulimia, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('454', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Trabaja en conjunto con el Director de Pastoral Universitaria apoyándole en el diagnóstico.');
+INSERT INTO `___preguntas_puestos` VALUES ('455', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a todo alumno o persona de la Institución que se acerque a solicitar sus servicios.');
+INSERT INTO `___preguntas_puestos` VALUES ('456', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Conoce y está familiarizado con los centros y grupos de apoyo con los que cuenta la Ciudad en la que se ubica la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('457', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en actividades estudiantiles (Megamisión, actividades culturales,etc) que le permiten interactuar con los alumnos detectando problemas reales o potenciales ya sea a nivel individual o grupal.');
+INSERT INTO `___preguntas_puestos` VALUES ('458', 'ASESOR DE DESARROLLO HUMANO (NIVEL MANDOS MEDIOS 2)', 'Mantiene estricta confidencialidad de la información que le confíen tanto los alumnos, el personal y padres de familia.');
+INSERT INTO `___preguntas_puestos` VALUES ('459', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve y coordina eficientemente el programa de acción social universitario, asegurando su función formativa alineada a nuestra misión.');
+INSERT INTO `___preguntas_puestos` VALUES ('460', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Propicia y alienta un ambiente propositivo que promueve el desarrollo de nuestra \"identidad católica\" entre alumnos, egresados y personal en general.');
+INSERT INTO `___preguntas_puestos` VALUES ('461', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Vigila debidamente que las actividades se realicen de acuerdo a la normatividad vigente.');
+INSERT INTO `___preguntas_puestos` VALUES ('462', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Recauda con éxito fondos y bienes para programas de ayuda para zonas de desastre.');
+INSERT INTO `___preguntas_puestos` VALUES ('463', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Coordina eficientemente brigadas y proyectos especiales que surjan como resultado del apoyo de la comunidad u iversitaria ante grandes desastres (huracanes, inundaciones, incendios, etc.).');
+INSERT INTO `___preguntas_puestos` VALUES ('464', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Mantiene un registro actualizado de las fundaciones o instituciones de asistencia social en las que los alumnos puedan realizar su actividad.');
+INSERT INTO `___preguntas_puestos` VALUES ('465', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve,coordina y administra satisfactoriamente el proceso de Servicio Social de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('466', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Da tutorías, apoyo y orientación adecuada a los alumnos que se encuentran realizando su servicio social.');
+INSERT INTO `___preguntas_puestos` VALUES ('467', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Promueve con éxito a nuestros estudiantes ante las instituciones altruistas o de beneficiencia creando espacios que permiten que nuestros alumnos realicen su servicio social.');
+INSERT INTO `___preguntas_puestos` VALUES ('468', 'COODINADOR DE SERVICIO Y ACCIÓN SOCIAL (NIVEL MANDOS MEDIOS 2)', 'Define apropiadamente las políticas y lineamientos que deben cumplir las empresas, instituciones o fundaciones que buscan cubrir sus necesidades de recursoso humanos, con apoyo de los alumnos de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('469', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Entrena con exigencia y disciplina a los equipos que le sean asignados.');
+INSERT INTO `___preguntas_puestos` VALUES ('470', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Selecciona adecuadamente a los integrantes para los equipos según categorías y habilidades de los candidatos.');
+INSERT INTO `___preguntas_puestos` VALUES ('471', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Establece programas y rutinas de entrenamiento personal y grupal que mejoran el desempeño deportivo.');
+INSERT INTO `___preguntas_puestos` VALUES ('472', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila consistentemente que se lleven a cabo las rutinas de calentamiento para la prevención de lesiones.');
+INSERT INTO `___preguntas_puestos` VALUES ('473', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Colabora con el Coordinador en el diseño y elaboración de programas de entrenamiento para los equipos representativos.');
+INSERT INTO `___preguntas_puestos` VALUES ('474', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Promueve con éxito partidos de competencia entre equipos de diferentes facultades, entre equipos de empleados de diferentes áreas y con equipos externos.');
+INSERT INTO `___preguntas_puestos` VALUES ('475', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila que se de buen uso de las instalaciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('476', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Vigila de manera permanenete que se cuente con apoyo médico y arbitraje adecuado en los partidos que se realicen.');
+INSERT INTO `___preguntas_puestos` VALUES ('477', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Coordina satisfactoriamente actividades con entidades gubernamentales y privadas que promuevan el deporte juvenil.');
+INSERT INTO `___preguntas_puestos` VALUES ('478', 'ENTRENADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la coordinación de viajes cuando sea necesario.');
+INSERT INTO `___preguntas_puestos` VALUES ('479', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente al desarrollo de el Plan Estratégico y Presupuesto Anual del área a corto, mediano y pargo plazo y supervisa su aplicación.');
+INSERT INTO `___preguntas_puestos` VALUES ('480', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia al Vicerrector o Director en el seguimiento a los objetivos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('481', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Elabora en tiempo y forma informes sobre la operación del área e informa a su superior de las actividades realizadas.');
+INSERT INTO `___preguntas_puestos` VALUES ('482', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Recibe y direcciona adecuadamente la documentación interna dirigida al Vicerrector o Director.');
+INSERT INTO `___preguntas_puestos` VALUES ('483', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a personas internas que requieran apoyo de su jefe inmediato.');
+INSERT INTO `___preguntas_puestos` VALUES ('484', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Analiza con eficiencia diversos asuntos recibidos dando: solución directa, elabora una propuestas o delega los asuntos al área correspondiente.');
+INSERT INTO `___preguntas_puestos` VALUES ('485', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Da seguimiento a los asuntos, y en su caso participa activamente cuando se requiere.');
+INSERT INTO `___preguntas_puestos` VALUES ('486', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Atiende los asuntos que su jefe le delegue y lo representa dignamente en actividades especiales.');
+INSERT INTO `___preguntas_puestos` VALUES ('487', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Maneja apropiadamente las comunicaciones del Vicerrector o Director, tanto interna como externamente.');
+INSERT INTO `___preguntas_puestos` VALUES ('488', 'ASISTENTE DE DIRECCIÓN (NIVEL MANDOS MEDIOS 2)', 'Apoya al Vicerrector o Director en la implementación, seguimiento y control de las iniciativas de la Red Anáhuac.');
+INSERT INTO `___preguntas_puestos` VALUES ('489', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio al personal de la Institución en todo lo referente a recursos humanos.');
+INSERT INTO `___preguntas_puestos` VALUES ('490', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'En forma conjunta con el área de finanzas,apoya con eficacia en los procesos de liquidación y finiquito del personal.');
+INSERT INTO `___preguntas_puestos` VALUES ('491', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente en el proceso de reclutamiento y selección al personal.');
+INSERT INTO `___preguntas_puestos` VALUES ('492', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Recibe, revisa y registra en tiempo y forma las incidencias de la nómina,impuestos, IMSS, entre otras.');
+INSERT INTO `___preguntas_puestos` VALUES ('493', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Da el seguimiento adecuado a la entrega de documentación del personal respecto a títulos y certificados de estudios o cursos de capacitación.');
+INSERT INTO `___preguntas_puestos` VALUES ('494', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente en eventos de integración (día de la madre, día del maestro, cumpleaños, posada, etc).');
+INSERT INTO `___preguntas_puestos` VALUES ('495', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya en la elaboración de estadísticas y reportes útiles que dan seguimiento a los objetivos y proyectos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('496', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoya debidamente a la Gerencia en los procesos de evaluación del personal.');
+INSERT INTO `___preguntas_puestos` VALUES ('497', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Apoyo en los procesos de certificación y acreditación ante entidades públicas y privadas (FIMPES entre otras).');
+INSERT INTO `___preguntas_puestos` VALUES ('498', 'ESPECIALISTA DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 2)', 'Conocimiento y apoyo constante a los objetivos del área y la misión institucional.');
+INSERT INTO `___preguntas_puestos` VALUES ('499', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Asesora debidamente a los maestros en la estructuración y/o actualización de los programas correspondientes a las distintas asignaturas del ciclo clínico.');
+INSERT INTO `___preguntas_puestos` VALUES ('500', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Asegura que los maestros entreguen el programa desglosado de las asignaturas del ciclo anterior.');
+INSERT INTO `___preguntas_puestos` VALUES ('501', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la búsqueda de los campos clínicos idóneos.');
+INSERT INTO `___preguntas_puestos` VALUES ('502', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa el programa de avance académico de cada materia de cada sede hospitalaria y en el adecuado desarrollo de los cursos complementarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('503', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Realiza reuniones debidamente programadas con los titutales de las asignaturas,después de cada periodo de exámenes parciales.');
+INSERT INTO `___preguntas_puestos` VALUES ('504', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Fija el sistema de evaluación por módulo en conjunto con los maestros del ciclo, aplica y evalúa los exámenes de cada módulo.');
+INSERT INTO `___preguntas_puestos` VALUES ('505', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Da a conocer la forma, tipo y manera de evaluar de cada profesor de forma anticipada permitiendo que tanto alumnos como maestros puedan agendar con anticipación sus fechas de exámenes.');
+INSERT INTO `___preguntas_puestos` VALUES ('506', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Completa satisfactoriamente la evaluación del personal docente y comunica los resultados de dicha evaluación con el fin de mejorar la calidad de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('507', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Motiva con éxito la realización y participación de los alumnos en eventos especiales como: Misiones Médicas, Jornadas de Salud, Seminario de Bioética, entre otras.');
+INSERT INTO `___preguntas_puestos` VALUES ('508', 'COORDINADOR DE CAMPOS CLÍNICOS (NIVEL MANDOS MEDIOS 2)', 'Solicita en tiempo y forma a los maestros de ciclo clínicos el banco de reactivos necesarios para estructurar la evaluación final.');
+INSERT INTO `___preguntas_puestos` VALUES ('509', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Elabora el contenido de sus clases con información actualizada en base al programa académico establecido y autorizado por las autoridades académicas correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('510', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Establece una interacción positiva con los alumnos facilitando el aprendizaje y la formación integral del estudiante.');
+INSERT INTO `___preguntas_puestos` VALUES ('511', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Prepara y aplica en tiempo y forma los exámenes para la valoración del aprendizaje de su materia.');
+INSERT INTO `___preguntas_puestos` VALUES ('512', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'De manera permenente busca continuar con su formación profesional y docente.');
+INSERT INTO `___preguntas_puestos` VALUES ('513', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en cursos o seminarios que le sean asignados y/o programados por el área de formación docente.');
+INSERT INTO `___preguntas_puestos` VALUES ('514', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Atiende y da seguimiento oportuno a las inquietudes de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('515', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Se asesora con la autoridad correspondiente para la pronta solución de problemas de sus alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('516', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Utiliza eficientemente la tecnología como apoyo dela práctica docente.');
+INSERT INTO `___preguntas_puestos` VALUES ('517', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Realiza con eficiencia el seguimiento académico y personal de sus alumnos tutoriados.');
+INSERT INTO `___preguntas_puestos` VALUES ('518', 'PROFESOR UNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Entrega informes útiles de seguimiento al Director de su escuela.');
+INSERT INTO `___preguntas_puestos` VALUES ('519', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Establece contacto permanente con los usuarios obteniendo retroalimentación acerca de los servicios que se proporcionan.');
+INSERT INTO `___preguntas_puestos` VALUES ('520', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Supervisa eficientemente el funcionamiento y desarrollo de los módulos de circulación y Opac Web del sistema de administración de biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('521', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Coordina y supervisa debidamente las actividades referentes a la organizacipon, control, prestación, difusión de servicios y recursos de la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('522', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Establece de manera continua contactos con Instituciones logrando convenios de cooperación bibliotecaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('523', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Coordina reuniones periódicas con el personal del área y mantiene una constante comunicación con los miembros de la misma.');
+INSERT INTO `___preguntas_puestos` VALUES ('524', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Presenta con éxito planes y programas de trabajo y vigila su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('525', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Apoya satisfactoriamente en la elaboración del programa anual de la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('526', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('527', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'En forma cconjunta con el jefe de área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.');
+INSERT INTO `___preguntas_puestos` VALUES ('528', 'SUPERVISOR DE SERVICIOS AL PÚBLICO (NIVEL MANDOS MEDIOS 2)', 'Participa activamente en las visitas guiadas para usuarios de la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('529', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Garantiza la correcta operación del SIU de los sistemas (SW) institucionales asignados al área.');
+INSERT INTO `___preguntas_puestos` VALUES ('530', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Proporciona a la Comunidad Universitaria la información necesaria localizada en el SIU y en otros sistemas (SW) institucionales asignados al área, para la operación de sus áreas de trabajo.');
+INSERT INTO `___preguntas_puestos` VALUES ('531', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Canaliza y da seguimeinto hasta su solución a los problemas relacionados con la División de Universidades, así como da respuesta de ello a la Comunidad Universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('532', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Genera en tiempo y forma la información requerida por los usuarios a través de reportes.');
+INSERT INTO `___preguntas_puestos` VALUES ('533', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Procura la entera satisfacción de todos los usuarios,promoviendo la comunicación y estando atento a sus necesidades.');
+INSERT INTO `___preguntas_puestos` VALUES ('534', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Mantiene sus procedimientos con estándares elevados de seguridad para su correcta operación.');
+INSERT INTO `___preguntas_puestos` VALUES ('535', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Cuenta con mecanismos de evaluación (encuestas, entrevistas,etc) que le permiten monitorear el grado de satisfacción de sus clientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('536', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Reporta oportunamente los resultados del área y el nivel de satisfacción de sus clientes tomenado las medidas necesarias.');
+INSERT INTO `___preguntas_puestos` VALUES ('537', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente a la División de Universidades y AGS (Área Global de Sistemas), en los procesos de implementación, dimensionamiento y migración.');
+INSERT INTO `___preguntas_puestos` VALUES ('538', 'ESPECIALISTA DE SOPORTE A SISTEMAS (NIVEL MANDOS MEDIOS 2)', 'Trabaja en forma conjunta con la División de Universidades y AGS, en la actualización de las versiones de Banner y de cualquier otro sistema (SW) institucional que opera en la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('539', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Controla y supervisa adecuadamente los registros de gastos mensuales de cada área.');
+INSERT INTO `___preguntas_puestos` VALUES ('540', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Revisa eficaz y continuamente los gastos reales vs. presupuestados.');
+INSERT INTO `___preguntas_puestos` VALUES ('541', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene actualizado el sistema de asignación y seguimiento del ejercicio presupuestal.');
+INSERT INTO `___preguntas_puestos` VALUES ('542', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Elabora en tiempo y forma los reportes mensuales de gastos.');
+INSERT INTO `___preguntas_puestos` VALUES ('543', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Realiza adecuadamente las evaluaciones financieras.');
+INSERT INTO `___preguntas_puestos` VALUES ('544', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Revisa de manera consistente las solicitudes de gastos para asegurar la suficiencia de fondos.');
+INSERT INTO `___preguntas_puestos` VALUES ('545', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Mantiene actualizado el presupuesto de sueldos y salarios de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('546', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Monitorea continuamente los ingresos y egresos de cada una de las áreas.');
+INSERT INTO `___preguntas_puestos` VALUES ('547', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Genera de manera constante información estadística útil y proyecciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('548', 'ESPECIALISTA DE PRESUPUESTOS (NIVEL MANDOS MEDIOS 2)', 'Apoya con actitud de servicio a las áreas en la elaboración y seguimiento de sus presupuestos.');
+INSERT INTO `___preguntas_puestos` VALUES ('549', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Contacta y selecciona proveedores gestionando los trámites de compras que se autoricen e investiga la costeablilidad y valor de los artículos que se adquieren.');
+INSERT INTO `___preguntas_puestos` VALUES ('550', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Integra y maneja con eficiencia el consecutivo de compras.');
+INSERT INTO `___preguntas_puestos` VALUES ('551', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Administra debidamente la cartera de proveedores.');
+INSERT INTO `___preguntas_puestos` VALUES ('552', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Controla adecuadamente las órdenes de entrega a almacén por concepto de compras autorizadas.');
+INSERT INTO `___preguntas_puestos` VALUES ('553', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Recaba en tiempo y forma las facturas o comprobantes fiscales correspondientes a las compras realizadas. ');
+INSERT INTO `___preguntas_puestos` VALUES ('554', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'En conjunto con las autoridades correspondientes, implementa las políticas y procedimientos de compras, así como su difusión y cumplimiento de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('555', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Da el seguimiento adecuado a convenios y contratos realizados.');
+INSERT INTO `___preguntas_puestos` VALUES ('556', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Gestiona y da el debido seguimiento a garantías de productos o servicios adquiridos por el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('557', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Elabora reportes e información estadística útil para el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('558', 'JEFE DE COMPRAS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla y capacita adecuadamente al personal de su área.');
+INSERT INTO `___preguntas_puestos` VALUES ('559', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Supervisa y realiza con eficiencia los registros de operaciones económicas, contables y financieras de la Institución de acuerdo a los lineamientos y políticas establecidas.');
+INSERT INTO `___preguntas_puestos` VALUES ('560', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Aplica o registra con precisión las operaciones económicas de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('561', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Efectúa los pagos fiscales y tributarios, cumpliendo en todo momento con las obligaciones fiscales.');
+INSERT INTO `___preguntas_puestos` VALUES ('562', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Elabora y presenta con puntualidad la declaración anual y los estados financieros.');
+INSERT INTO `___preguntas_puestos` VALUES ('563', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Da un adecuado seguimiento a las auditorías y dictámenes contables que ');
+INSERT INTO `___preguntas_puestos` VALUES ('564', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Cumple debidamente con el pago de obligaciones gubernamentales IMSS, ISPT, INFONAVIT.');
+INSERT INTO `___preguntas_puestos` VALUES ('565', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Registra con precisión las operaciones diarias de bancos, manteniendo actualizados los saldos e informando diariamente al Contralor y Vicerrector de Administración y Finanazas.');
+INSERT INTO `___preguntas_puestos` VALUES ('566', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Vigila que los pagos de nómina se efectúen correcta y oportunamente.');
+INSERT INTO `___preguntas_puestos` VALUES ('567', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Efectúa eficientemente el registro contable de pólizas derivadas de las nóminas de empleados y profesores.');
+INSERT INTO `___preguntas_puestos` VALUES ('568', 'JEFE DE CONTABILIDAD (NIVEL MANDOS MEDIOS 2)', 'Verifica con exactitud los registros auxiliares,mayor y balance mensual de saldos.');
+INSERT INTO `___preguntas_puestos` VALUES ('569', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Genera y mantiene actualizada la lista de sujetos de crédito y sus montos correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('570', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Verifica el cumplimiento de los vencimientos de todos los acuerdos de crédito.');
+INSERT INTO `___preguntas_puestos` VALUES ('571', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'En base a los lineamientos y políticas establecidas, facilita el apoyo financiero a los alumnos que lo requieran,dando seguimiento oportuno al pago de financiamiento y becas.');
+INSERT INTO `___preguntas_puestos` VALUES ('572', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Analiza pertinentemente los créditos educativos que se van a otorgar y los presenta ante las autoridades.');
+INSERT INTO `___preguntas_puestos` VALUES ('573', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Atiende con actitud de servicio a alumnos y padres de familia sobre temas de becas y financiamientos.');
+INSERT INTO `___preguntas_puestos` VALUES ('574', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Fomenta con éxito un ambiente de cumplimiento en los temas de crédito.');
+INSERT INTO `___preguntas_puestos` VALUES ('575', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Elabora y concilia con precisión los movimientos contables que afecten el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('576', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Controla eficientemente la cobranza y emite reportes de alumnos morosos.');
+INSERT INTO `___preguntas_puestos` VALUES ('577', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Elabora y propone a sus superiores, planes de pago de alumnos con dificultades.');
+INSERT INTO `___preguntas_puestos` VALUES ('578', 'JEFE DE CRÉDITO Y COBRANZA (NIVEL MANDOS MEDIOS 2)', 'Da seguimiento correcto y oportuno a los pagos de financiamiento y becas.');
+INSERT INTO `___preguntas_puestos` VALUES ('579', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina adecuadamente al servicio de mantenimiento y limpieza de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('580', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina el servicio del conmutador y atiende las necesidades del personal de inmediato.');
+INSERT INTO `___preguntas_puestos` VALUES ('581', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Supervisa y da el seguimiento apropiado al servicio de vigilancia y jardinería de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('582', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Propone y realiza programas de mantenimiento preventivo y de seguridad para todas las áreas de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('583', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Apoya con recurso y logística a los departamentos que así lo soliciten para la realización de eventos.');
+INSERT INTO `___preguntas_puestos` VALUES ('584', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina con eficiencia los servicios médico,de recolección y entrega de documentos (mensajería interna) entre las diferentes áreas de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('585', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Coordina adecuadamente a los proveedores en las remodelaciones, adecuaciones, ampliaciones de instalaciones y mobiliario.');
+INSERT INTO `___preguntas_puestos` VALUES ('586', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Efectúa diariamente sesiones con los responsables directos de las áreas bajo su cargo y selectivamente todos los días efectúa recorridos de supervisión y muestro de cumplimiento de servicios.');
+INSERT INTO `___preguntas_puestos` VALUES ('587', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Elabora políticas y procedimientos de operación propias de su área y reportes sobre los resultados obtenidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('588', 'JEFE DE SERVICIOS GENERALES (NIVEL MANDOS MEDIOS 2)', 'Supervisa, evalúa y capacita debidamente al personal a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('589', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Realiza apropiadamente las actividades que su jefe le asigne,apoyando al área en tareas o proyectos especiales.');
+INSERT INTO `___preguntas_puestos` VALUES ('590', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya eficientemente en la programación y aplicación de exámenes de los diferentes cursos.');
+INSERT INTO `___preguntas_puestos` VALUES ('591', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya en los procesos de evaluación y auditoría del área, para comprobar y asegurar el buen funcionamiento de la misma. ');
+INSERT INTO `___preguntas_puestos` VALUES ('592', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya de manera servicial en la comunicación a profesores y alumnos sobre horarios, programación académica,etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('593', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Da atención personal a los alumnos y los apoya para resolver problemas que puedan surgir en la selección de clases o en cualquier otra actividad que realice el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('594', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Da atención personalizada a profesores canalizando a las instancias correspondientes inquietudes o problemas planteados por los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('595', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Apoya con eficiencia en la búsqueda de candidatos y en la integración de expedientes de personas que se vayan a incorporar como profesores ya sea de planta u honorarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('596', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Vigila que tanto alumnos como profesores cumplan con los lineamientos y procedimientos establecidos, alertando a su superior sobre desviacioneso anomalías.');
+INSERT INTO `___preguntas_puestos` VALUES ('597', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Propone y desarrolla propuestas de mejora que cumplan con los objetivos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('598', 'ASISTENTE ACADÉMICO (NIVEL MANDOS MEDIOS 2)', 'Busca su desarrollo y crecimiento personal capacitándose en tareas y funciones propias de su área.');
+INSERT INTO `___preguntas_puestos` VALUES ('599', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Mantiene estrecha relación con la Secretaría de Educación Pública (SEP) para la autenticación y legalización de documentos.');
+INSERT INTO `___preguntas_puestos` VALUES ('600', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Gestiona debidamente ante la SEO las revisiones de estudios.');
+INSERT INTO `___preguntas_puestos` VALUES ('601', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Está al tanto de nuevas disposiciones oficiales e informa oportunamente de las mismas.');
+INSERT INTO `___preguntas_puestos` VALUES ('602', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Recibe con amabilidad los documentos necesarios de parte de los estudiantes para realizar los trámites.');
+INSERT INTO `___preguntas_puestos` VALUES ('603', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Conoce y difunde eficientemente información relevante de los procesos de titulación tanto a los académicos como a los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('604', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Asesora a los estudiantes en la realización de sus trámites de titulación.');
+INSERT INTO `___preguntas_puestos` VALUES ('605', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Redacta y programa las actas de los exámenes profesionales de manera adecuada.');
+INSERT INTO `___preguntas_puestos` VALUES ('606', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Efectúa con precisión el proceso de revisión de estudios sobre los antecedentes escolares y la trayectoria académica de los estudiantes, para iniciar su proceso de titulación.');
+INSERT INTO `___preguntas_puestos` VALUES ('607', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Emite en tiempo y forma la convocatoria controlando el registro de candidatos a obtener el título profesional.');
+INSERT INTO `___preguntas_puestos` VALUES ('608', 'ESPECIALISTA DE CERTIFICACIÓN Y TITULACIÓN (NIVEL MANDOS MEDIOS 2)', 'Elabora y controla con eficiencia la información estadística que se genera en el área. ');
+INSERT INTO `___preguntas_puestos` VALUES ('609', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Detecta áreas de oportunidad para la promoción universitaria y participa en la realización de planes de acción correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('610', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Cumple con las metas de captación de matrícula de nuesvos ingresos de acuerdo a las establecidas por: colegios meta y carreras asignadas.');
+INSERT INTO `___preguntas_puestos` VALUES ('611', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Orienta de manera personal a los preuniversitarios en sus necesidades de información para la elección de universidad y les da seguimiento logrando su inscripción a algún programa de licenciatura.');
+INSERT INTO `___preguntas_puestos` VALUES ('612', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Difunde y gestiona los diversos esquemas de becas y apoyos económicos para asegurar que los alumnos de alto potencial académico y/o humano, se logren incorporar a la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('613', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Promueve en el segmento meta de preuniversitarios, las ventajas competitivas que ofrece la Universidad y la Red Anáhuac a través de diversas estrategias y actividades.');
+INSERT INTO `___preguntas_puestos` VALUES ('614', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Persuade a través de presentaciones en grupo o individual sobre los beneficios qu');
+INSERT INTO `___preguntas_puestos` VALUES ('615', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Mantiene, cuida y eleva el prestigio de la imagen de las Universidades de la Red Anáhuac, a través de un código de valores, de discurso, de atención y de vestimenta.');
+INSERT INTO `___preguntas_puestos` VALUES ('616', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Fomenta las relaciones institucionales con las preparatorias meta, mediante un programa de acercamiento y de servicio permanente, y a través de los alumnos egresados de las mismas.');
+INSERT INTO `___preguntas_puestos` VALUES ('617', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Organiza actividades que faciliten el acercamiento de preuniversitarios a las diversas licenciaturas y que permitan que conozcan las instalaciones y servicios.');
+INSERT INTO `___preguntas_puestos` VALUES ('618', 'ASESOR PREUNIVERSITARIO (NIVEL MANDOS MEDIOS 2)', 'Orienta adecuadamente a estudiantes foráneos en todo lo relacionado con trámites de ingreso y programas que ofrecen las Universidades de la Red.');
+INSERT INTO `___preguntas_puestos` VALUES ('619', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Entrevista a los solicitantes de beca y determina en base a políticas y mediante un estudio socieconómico adecuado, si la ayuda económica solicitada es necesaria y viable.');
+INSERT INTO `___preguntas_puestos` VALUES ('620', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'En coordinación con el Jefe de Admisiones,valora dedidamente a los aspirantes a becas turnando la información de los candidatos a las instancias correspondientes (Comité de Becas o su equivalente).');
+INSERT INTO `___preguntas_puestos` VALUES ('621', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Analiza la situación académica de cada candidato y propone a los candidatos idóneos en base a los lineamientos y políticas establecidas por las autoridades.');
+INSERT INTO `___preguntas_puestos` VALUES ('622', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Brinda de manera servicial la información a los candidatos acerca de los requisitos para solicitud de beca y crédito educativo.');
+INSERT INTO `___preguntas_puestos` VALUES ('623', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'En conjunto con los asesores preuniversitarios,promueve con éxito las becas y apoyos entre los candidatos a ingresar a la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('624', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Apoya y da seguimiento a los candidatos en el trámite y elaboración de documentos para el otorgamiento de becas y financiamientos.');
+INSERT INTO `___preguntas_puestos` VALUES ('625', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa eficientemente que los becados cumplan con los compromisos que aceptaron.');
+INSERT INTO `___preguntas_puestos` VALUES ('626', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Da el correcto y continuo seguimiento a los beneficiarios de crédito educativo o becas en lo que se refiere al cumplimiento de requisitos para el otorgamiento continuado del mismo.');
+INSERT INTO `___preguntas_puestos` VALUES ('627', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Informa satisfactoriamente a las áreas de administración y finanzas sobre c´reditos educativos, turnando la información correspondiente');
+INSERT INTO `___preguntas_puestos` VALUES ('628', 'COORDINADOR DE BECAS ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Genera en tiempo y forma información estadística del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('629', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Administra en forma óptima, el único punto de contacto para prospectos y alumnos de la Universidad, ofreciendo sus servicios de manera presencial, web y telefónicamente.');
+INSERT INTO `___preguntas_puestos` VALUES ('630', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Maximiza los servicios y productos que se ofrecen con el menor gasto posible, logrando altos niveles de sinergias con las diferentes áraes de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('631', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Logra y mantiene sinergias con las áreas de admisión, becas, finanzas, proveedores y cualquier prestador de servicios que este relacionado con productos demandados por loa alumnos/prospectos.');
+INSERT INTO `___preguntas_puestos` VALUES ('632', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Posiciona con éxito a la coordinación de atención a alumnos como un área líder de calidad y servicios en la Comunidad Universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('633', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Genera mediaciones y estadísticas que permiten monitorear el nivel de satisfacción en el servicio proporcionado y reporta resultados en forma periódica a la dirección.');
+INSERT INTO `___preguntas_puestos` VALUES ('634', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Firma acuerdos y documenta procesos operativos con las áreas relacionadas al servicio dentro de la Institución y le da seguimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('635', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Desarrolla procesos estandarizados que optimizan los recursos del área sin demeritar los niveles de servicio ofrecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('636', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Da segumiento a problemas críticos o situaciones especiales apoyando al personal de su área en la resolución de conflictos.');
+INSERT INTO `___preguntas_puestos` VALUES ('637', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Monitorea continuamente los resultados obtenidos buscando la mejora continua y la búsqueda de mejores prácticas del mercado, en lo que a atención a clientes se refiere.');
+INSERT INTO `___preguntas_puestos` VALUES ('638', 'COORDINACIÓN DE ATENCIÓN A ALUMNOS (NIVEL MANDOS MEDIOS 2)', 'Supervisa y propicia el desarrollo y capacitación del personal del área para que cumpla satisfactoriamente con su función.');
+INSERT INTO `___preguntas_puestos` VALUES ('639', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Mantiene una estrecha comunicación con su jefe sobre todos los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('640', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Organiza y mantiene actualizados los sistemas y procedimientos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('641', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Apoya al Director del área en el desarrollo del Plan Estratégico a corto, mediano y largo plazo, de acuerdo con el Plan Estratégico de la Universidad, coordinando la elaboración de los planes y programas anuales de trabajo y dando el seguimiento adecuado.');
+INSERT INTO `___preguntas_puestos` VALUES ('642', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Promueve y difunde la misión de \"identidad católica\" de la institución, actuando con rectitud y congruencia en todas las actividades asignadas a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('643', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Conoce y apoya satisfactoriamente los proyectos, objetivos y misión del área en la que desempeña sus funciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('644', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Conoce a los clientes y proveedores de servicio del área en la que trabaja y ofrece una calidad de atención adecuada y oportuna.');
+INSERT INTO `___preguntas_puestos` VALUES ('645', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Busca continuamente su desarrollo y crecimiento personal capacitándose en tareas y funciones propias del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('646', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Apoya satisfactoriamente en proyectos especiales, así como en tareas de grupo que puedan no estar relacionadas directamente con sus funciones cotidianas.');
+INSERT INTO `___preguntas_puestos` VALUES ('647', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Alerta al jefe inmediato superior sobre problemas o dificultades detectadas en el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('648', 'SE APLICARÁ PARA PERSONAL ADMINISTRATIVO (NIVEL OPERATIVO 1-2)', 'Propone y desarrolla propuestas de mejora que cumplan con los objetivos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('649', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Realiza con eficiencia tareas de captura, redacción de documentos, archivo y organización de eventos; control de agenda, control de viajes y en general apoya al área en todo lo referente a cuestiones administrativas.');
+INSERT INTO `___preguntas_puestos` VALUES ('650', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Atiende con actitud de servicios a usuarios, personal del área, proveedores y prestadores de servicio.');
+INSERT INTO `___preguntas_puestos` VALUES ('651', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Apoya en tiempo y forma al control de gastos, elaboración de reportes de viaje y reservaciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('652', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Lleva a cabo una adecuada recepción y registro de documentos recibidos y enviados por el área.');
+INSERT INTO `___preguntas_puestos` VALUES ('653', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Realiza la recepción, registro y direccionamiento de llamadas con eficiencia y actitud de servicio.');
+INSERT INTO `___preguntas_puestos` VALUES ('654', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Solicita y administra en el tiempo y forma requerido: papelería, artículos de oficina, caja chica, suministros para operación de equipos de computación etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('655', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Ejecuta debidamente los trámites de pago a proveedores.');
+INSERT INTO `___preguntas_puestos` VALUES ('656', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Tiene un adecuado conocimiento de los objetivos del área y apoya la misión de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('657', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Apoya con diligencia en la organización de juntas y eventos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('658', 'SECRETARIAS Y ASISTENTES (NIVEL OPERATIVO 2)', 'Mantiene un adecuado control y orden del archivo.');
+INSERT INTO `___preguntas_puestos` VALUES ('659', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Alerta a sus superiores sobre fallas o problemas que requieran los servicios del área de mantenimiento o jardinería.');
+INSERT INTO `___preguntas_puestos` VALUES ('660', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Realiza mantenimiento preventivo y correctivo a las instalaciones de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('661', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Atiende los requerimiento de reparación, corrigiendo el daño en el menor tiempo.');
+INSERT INTO `___preguntas_puestos` VALUES ('662', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Solicita con anticipación los materiales que se requieran para los trabajos a realizar.');
+INSERT INTO `___preguntas_puestos` VALUES ('663', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Ejecuta con eficiencia las actividades a realizar diariamente del área con el reporte correspondiente.');
+INSERT INTO `___preguntas_puestos` VALUES ('664', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Propone al jefe del área las mejoras que considere pertinentes para cumplir con las responsabilidades asignadas.');
+INSERT INTO `___preguntas_puestos` VALUES ('665', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Conoce los objetivos del área y la misión de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('666', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Realiza actividades de apoyo dentro del área ');
+INSERT INTO `___preguntas_puestos` VALUES ('667', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Conoce y lleva acabo los sistemas de seguridad de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('668', 'SERVICIOS GENERALES (NIVEL OPERATIVO 2)', 'Cuida del buen uso de los equipos y herramientas que se le asignen.');
+INSERT INTO `___preguntas_puestos` VALUES ('669', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" especialmente en las actividades relacionadas con la formación humana de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('670', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Ofrece un servicio de atención personalizada en lo espiritual y humano a toda la comunidad universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('671', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Realiza permanentemente actividades complementarias de formación humana y religiosa.');
+INSERT INTO `___preguntas_puestos` VALUES ('672', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Preside de manera permanente y logra aumentar la asistencia de alumnos a las siguientes actividades: misas, confesiones, retiros, misiones, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('673', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Promociona actividades propias del área por medio de posters, trípticos, visitas, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('674', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Rector sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('675', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Coordina eficientemente la acción apostólica.');
+INSERT INTO `___preguntas_puestos` VALUES ('676', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Encausa las inquietudes humanitarias y apostólicas de la comunidad universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('677', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Organiza encuentros de reflexión y seminarios o cursos de formación.');
+INSERT INTO `___preguntas_puestos` VALUES ('678', 'DEL DIRECTOR DE PASTORAL UNIVERSITARIA (NIVEL DIRECCIONES 2)', 'Revisa al término de cada actividad de formación una evaluación de los resultados obtenidos para alinear aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('679', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Alcanza las metas de crecimiento de la matrícula de la licenciatura que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrolla anualmente.');
+INSERT INTO `___preguntas_puestos` VALUES ('680', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('681', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Tiene un conocimiento objetivo del mercado en que participa la institución, y logra traducirlo traducirlo en un plan integral de mercadotecnia y promoción.');
+INSERT INTO `___preguntas_puestos` VALUES ('682', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Planea, coordina y evalúa de manera constante los cursos de capacitación para profesores de preparatoria, asesores preuniversitarios, directores y coordinadores de promoción de escuelas y facultades.');
+INSERT INTO `___preguntas_puestos` VALUES ('683', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Coordina los servicios de Orientación Vocacional de la Universidad para la decisión de admisión de alumnos y otorga un servicio al público con la finalidad de detectar prospectos con el perfil ideal.');
+INSERT INTO `___preguntas_puestos` VALUES ('684', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Garantiza los medios y aplicación de criterios para elevar la calidad en el perfil de alumnos admitidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('685', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Organiza eventos de promoción y atención dirigidos a nuestros mercados meta, buscando una mejora continua en los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('686', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Atiende de manera personalizada y con altos estándares de servicio a preparatorias meta, candidatos y solicitantes para los programas de licenciatura.');
+INSERT INTO `___preguntas_puestos` VALUES ('687', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Dirige los esfuerzos del departamento de becas para asegurar el mayor número de preuniversitarios con un alto perfil académico y humano.');
+INSERT INTO `___preguntas_puestos` VALUES ('688', 'DIRECTOR DE ATENCIÓN PREUNIVERSITARIA Y MERCADOTECNIA (DIRECCCIONES 2)', 'Desarrolla y analiza reportes estadísticos de utilidad para diversas áreas y escuelas.');
+INSERT INTO `___preguntas_puestos` VALUES ('689', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Proporciona información financiera, clara, veraz y oportuna a las autoridades.');
+INSERT INTO `___preguntas_puestos` VALUES ('690', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Analiza y evalua desde el punto de vista financiero, tanto los proyectos ya existentes como los nuevos que se propongan y realiza informes y propuestas a las autoridades.');
+INSERT INTO `___preguntas_puestos` VALUES ('691', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Controla e informa mensualmente sobre la afectación al presupuesto del mes y el acumulado. Realizando las propuestas de ajustes adecuadas para su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('692', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Realiza estudios de aumento de cuotas y elabora su respectiva propuesta.');
+INSERT INTO `___preguntas_puestos` VALUES ('693', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Atiende y da opciones de resolución a los alumnos y padres de familia con complicaciones en sus obligaciones de pago.');
+INSERT INTO `___preguntas_puestos` VALUES ('694', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Elabora en el tiempo establecido el presupuesto de ingresos.Elabora en el tiempo establecido el presupuesto de ingresos.');
+INSERT INTO `___preguntas_puestos` VALUES ('695', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Elabora semestralmente informe detallado sobre:\na) Gastos efectuados durante el semestre, así como de las partidas ya presupuestadas y pendientes de aplicar\nb) Cobranza.\nc) Pagos pendientes (comprometidos).\nd) Análisis comparativo de presupuesto aprobado contra presupuesto consumido.');
+INSERT INTO `___preguntas_puestos` VALUES ('696', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Vicerrector de Administración y Finanzas sobre los aspectos del cargo que influyen en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('697', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Atiende y da opciones de resolución a los alumnos y padres de familia con complicaciones en sus obligaciones de pago.');
+INSERT INTO `___preguntas_puestos` VALUES ('698', 'CONTRALOR (NIVEL DIRECCIONES 2)', 'Revisa y controla todas las declaraciones gubernamentales (IMSS, ISPT, INFONAVIT, etc), cuentas y conciliaciones bancarias,cartera de cobranza y pólizas de cheques (semanal).');
+INSERT INTO `___preguntas_puestos` VALUES ('699', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra misión e \"identidad católica\" dentro de la Institución y en especial dentro del personal de su área y alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('700', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Integra de manera eficaz la formación humanística como elemento central de la educación universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('701', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Coordina con la División de Universidades y directores de escuela el desarrollo de planes y programas para el logro de los fines institucionales en el área de formación humana.');
+INSERT INTO `___preguntas_puestos` VALUES ('702', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Desarrolla continuamente los programas y materiales de las materias del área de humanidades.');
+INSERT INTO `___preguntas_puestos` VALUES ('703', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Administra y coordina con eficiencia a los profesores del área:reclutamiento,asignación de grupos,evaluación, capacitación y desarrollo.');
+INSERT INTO `___preguntas_puestos` VALUES ('704', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Supervisa de manera continua la oferta académica de las materias y la calidad de las cátedras impartidas de su área.');
+INSERT INTO `___preguntas_puestos` VALUES ('705', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Evalúa el logro de los objetivos de las materias mediante la revisión de calificaciones y contenido de los exámenes.');
+INSERT INTO `___preguntas_puestos` VALUES ('706', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Mantiene relaciones de colaboración con escuelas afines de otras instituciones académicas de prestigio nacionales y extranjeras.');
+INSERT INTO `___preguntas_puestos` VALUES ('707', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Define líneas de investigación y asigna profesores de tiempo completo que determinen el alcance, tiempo y resultados esperados de la investigación.');
+INSERT INTO `___preguntas_puestos` VALUES ('708', 'COORDINADOR GENERAL DE HUMANIDADES (DIRECCIONES 2)', 'Promueve los programas de Posgrado y Educación Contínua entre egresados y organizaciones del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('709', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Alcanza las metas de crecimiento de la matrícula de posgrado que solicite la Institución de acuerdo al Plan de Mercadotécnia Estratégica que desarrollada anualmente.');
+INSERT INTO `___preguntas_puestos` VALUES ('710', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Desarrolla y ejecuta un adecuado Programa de Atención a Empresas e Instituciones con potencial a convertirse en clientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('711', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Mantiene una estrecha comunicación con el Vicerrector de Académico, Directores de Escuela, Coordinadores de Posgrados y su personal acargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('712', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Busca la máxima calidad dentro del aula (calidad de los profesores, metódo de enseñanza, cumplimiento del programa, participación de los alumnos, innovación en las cátedras, etc)');
+INSERT INTO `___preguntas_puestos` VALUES ('713', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Realiza adecuadamente la promoción hacia los Egresados, Empresas, Instituciones privadas y gubernamentales, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('714', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Vigila la correcta integración de los expedientes de los alumnos para apoyarlos en su proceso de titulación.');
+INSERT INTO `___preguntas_puestos` VALUES ('715', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Supervisa continuamente la calidad académica de los cursos ofrecidos en su programa.');
+INSERT INTO `___preguntas_puestos` VALUES ('716', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Atiende y resuelve con actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
+INSERT INTO `___preguntas_puestos` VALUES ('717', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('718', 'DIRECTOR DE PROGRAMAS DE POSGRADO Y EXTENSIÓN (NIVEL DIRECCIONES 2)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('719', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Coordina constantemente las actividades que mantienen actualizada la infraestructura tecnológica de cómputo, informática, comunicaciones y telecomunicacciones de la universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('720', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Proporciona el equipo tecnológico necesario para la operación eficiente de las salas de cómputo.');
+INSERT INTO `___preguntas_puestos` VALUES ('721', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Supervisa la adecuada prestración de servicios de soporte técnico tanto a áreas académicas como administrativas.');
+INSERT INTO `___preguntas_puestos` VALUES ('722', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Planea, administra y controla los recursos materiales que garantizan la máxima disponibilidad de servicios tecnológicos a la comunidad universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('723', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Planea y administra los recursos humanos que garantizan un adecuado servicio a los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('724', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Elabora eficientemente y da seguimiento al presupuesto anual de operación del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('725', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Implementa sistemas de información que agilicen los procesos acdémicos, administrativos y operativos de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('726', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Asesora a las diferentes áreas acerca de las mejores soluciones tecnológicas para su desarrollo.');
+INSERT INTO `___preguntas_puestos` VALUES ('727', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Supervisa la operación y mantenimiento eficiente de los servicios de telecomunicaciones y telefonía de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('728', 'COORDINADOR DE SERVICIOS DE TECNOLOGÍA', 'Propone soluciones tecnológicas que optimicen los recursos universitarios y coadyuden al logro de un servicio eficiente.');
+INSERT INTO `___preguntas_puestos` VALUES ('729', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Obtiene y controla eficientemente la información escolar de la universidad en relación a los planes de estudio y avance escolar del alumnado de licenciatura y posgrado.');
+INSERT INTO `___preguntas_puestos` VALUES ('730', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Verifica adecuadamente la autenticidad de los documentos escolares que expide la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('731', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Mantiene y coordina eficientemente las labores de servicios internos, externos y auditoria escolar.');
+INSERT INTO `___preguntas_puestos` VALUES ('732', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Organiza, innova y mantiene actulizada la estructura, sistemas y procedimientos del trabajo del área: Servicios Internos, Externos y Auditoria Escolar.');
+INSERT INTO `___preguntas_puestos` VALUES ('733', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Vigila el cumplimiento de las políticas y lineamientos establecidos por la Universidad para la certificación, acreditaciones, programas de estudio,etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('734', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Dirige el adecuado intercambio de información sobre datos y registros de estudiantes en las escuelas y facultades.');
+INSERT INTO `___preguntas_puestos` VALUES ('735', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Proporciona en tiempo y forma a las instituciones oficiales la información requerida sobre la operación escolar de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('736', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Mantiene una estrecha comunicación con el Director de Servicios Institucionales y Planeación sobre los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('737', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Presenta a su Director y al Rector las estadísticas escolares y las requeridas por organismos oficiales y extraoficiales de manera contínua y oportuna.');
+INSERT INTO `___preguntas_puestos` VALUES ('738', 'DIRECTOR DE ADMINISTRACIÓN ESCOLAR Y NORMATIVIDAD     (NIVEL DIRECCIONES2)', 'Supervisa de manera eficiente el desempeño de las personas a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('739', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Constantemente logra convenios de intercambio con instituciones de enseñanza superior tanto a nivel nacional como internacional.');
+INSERT INTO `___preguntas_puestos` VALUES ('740', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Mantiene relaciones con instituciones privadas, sociales y públicas que promueven actividades académicas de intercambio a nivel licenciatura y posgrado.');
+INSERT INTO `___preguntas_puestos` VALUES ('741', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Participa en eventos culturales especialmente los convocados por embajadas y organizaciones internacionales logrando ampliar nuestras opciones de intercambio académico.');
+INSERT INTO `___preguntas_puestos` VALUES ('742', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Coordina eficientemente los procesos de equivalencias de estudios de los alumnos de intercambio con las diferentes escuelas y servicios escolares.');
+INSERT INTO `___preguntas_puestos` VALUES ('743', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Consolida los programas de intercambio académico existentes manteniendo la calidad y el prestigio logrado.');
+INSERT INTO `___preguntas_puestos` VALUES ('744', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Evalúa los resultados obtenidos en los programas de intercambio e implementa programas de mejoramiento a los procedimientos existentes.');
+INSERT INTO `___preguntas_puestos` VALUES ('745', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Se preocupa, promueve y se asegura de incrementar el número de estudiantes en intercambio académico internacional bidireccionalmente.');
+INSERT INTO `___preguntas_puestos` VALUES ('746', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Atiende satisfactoriamente y con un sistema personalizado a los visitantes externos y alumnos de intercambio internacional para que cumplan sus objetivos.');
+INSERT INTO `___preguntas_puestos` VALUES ('747', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Tiene el control y seguimiento adecuado de los alumnos que se encuentran de intercambio en otras universidades o en nuestra propia institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('748', 'COORDINADOR DE RELACIONES ACADÉMICAS (NIVEL MANDOS MEDIOS 1)', 'Difunde y propicia un ambiente propositivo para que las instituciones con las que mantenemos intercambio nos perciban como una universidad de \"identidad católica\" que promueve los valores.');
+INSERT INTO `___preguntas_puestos` VALUES ('749', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Elabora el plan estratégico que asegure la permanencia del programa y el logro de los objetivos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('750', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Promueve el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con el programa de liderazgo que maneja.');
+INSERT INTO `___preguntas_puestos` VALUES ('751', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Busca y logra el apoyo de líderes positivos y de personalidades distinguidas en pro del beneficio social para la participación en algún evento y/o colaboración en especie para los proyectos.');
+INSERT INTO `___preguntas_puestos` VALUES ('752', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'En conjunto con las áreas académicas selecciona e integra a los alumnos a programas de liderazgo.');
+INSERT INTO `___preguntas_puestos` VALUES ('753', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Apoya a la VFI y a la comunidad universeitaria en genral, en proyectos especiales de ayuda derivados de desastres naturales.');
+INSERT INTO `___preguntas_puestos` VALUES ('754', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Escucha y canaliza las iniciativas de los estudiantes a través de los comités establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('755', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Organiza satisfactoriamente al grupo que asistirá a la Megamisión.');
+INSERT INTO `___preguntas_puestos` VALUES ('756', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Al término de cada actividad realiza una evaluación de los resultados obtenidos alineando aspectos que son necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('757', 'COORDINADOR DE PROGRAMAS DE LIDERAZGO (NIVEL MANDOS MEDIOS 1) : Vértice, Red Misión', 'Coordina favorablemente las tutorías a los alumnos de vértice.');
+INSERT INTO `___preguntas_puestos` VALUES ('758', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Elabora y controla el Plan de Desarrollo Estratégico del departamento.');
+INSERT INTO `___preguntas_puestos` VALUES ('759', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'De manera permanente planea y promueve encuentros deportivos internos que logran la asistencia planeada y fomentan la integración de grupos.');
+INSERT INTO `___preguntas_puestos` VALUES ('760', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'De manera permanente planea y promueve encuentros deportivos externos que logran la asistencia planeada y fomentan la integración de grupos.');
+INSERT INTO `___preguntas_puestos` VALUES ('761', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Mantiene adecuadas relaciones con otras instituciones educativas y consejos deportivos.');
+INSERT INTO `___preguntas_puestos` VALUES ('762', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Coordina y evalúa semestralmente al personal del área buscando su desarrollo y capacitación.');
+INSERT INTO `___preguntas_puestos` VALUES ('763', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Supervisa y evalúa los resultados de las campañas informativas de los eventos deportivos en búsqueda de la mejora continua.');
+INSERT INTO `___preguntas_puestos` VALUES ('764', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Vigila que las instalaciones y equipo para las actividades deportivas se conserven en estado óptimo de funcionamiento y uso.');
+INSERT INTO `___preguntas_puestos` VALUES ('765', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Colabora de manera activa y frecuentemente con el programa de becarios, con los alumnos asignados al área de deportes.');
+INSERT INTO `___preguntas_puestos` VALUES ('766', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Diseña e implementa programas y actividades que promuevan la participación deportiva de alumnos, profesores y colaboradores.');
+INSERT INTO `___preguntas_puestos` VALUES ('767', 'COORDINADOR DE SELECCIONES Y ACADEMIAS DEPORTIVAS (NIVEL MANDOS MEDIOS 1)', 'Coordina adecuadamente a los alumnos que realizan su servicio social dentro del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('768', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa y coordina satisfactoriamente el área académica y administrativa de los programas a su cargo.');
+INSERT INTO `___preguntas_puestos` VALUES ('769', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Diseña y renueva el plan de estudios de los programas de posgrado y extensión de acuerdo a las necesidades del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('770', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa eficazmente la contratación docente de acuerdo al nivel requerido y los tiempos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('771', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Realiza adecuadamente la promoción hacia los Egresados, Empresas, Instituciones privadas y gubernamentales, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('772', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Realiza en tiempo y forma la programación académica del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('773', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila la correcta integración de los expedientes de los alumnos para apoyarlos en su proceso de titulación.');
+INSERT INTO `___preguntas_puestos` VALUES ('774', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa continuamente la calidad académica de los cursos ofrecidos en su programa.');
+INSERT INTO `___preguntas_puestos` VALUES ('775', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio las necesidades y solicitudes de los estudiantes y docentes.');
+INSERT INTO `___preguntas_puestos` VALUES ('776', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Promueve activamente el desarrollo de nuestra \"identidad católica\" especialmente en las actividades relacionadas con la formación humana y académica de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('777', 'COORDINADOR DE OPERACIÓN DE  POSGRADOS Y EXTENSIÓN (NIVEL MANDOS MEDIOS 1)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente, monitorea la calidad académica y alinea aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('778', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Organiza,coordina y supervisa permanentemente la adecuada aplicación de los procedimientos establecidos en la ejecución de la operación académica.');
+INSERT INTO `___preguntas_puestos` VALUES ('779', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Cumple y hace cumplir las políticas y lineamientos definidos por superiores, así como el estatuto de la Universidad, su reglamento, planes y programas de trabajo y, en general, las dispocisiones y acuerdos que normen la estructura y funcionamiento de la universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('780', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Mantiene un registro actualizado de las actividades del personal académico que se llevan acabo en la Institución y coordina la aplicación de los exámenes departamentales.');
+INSERT INTO `___preguntas_puestos` VALUES ('781', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Se asegura de que la oferta académica de asignaturas sea la adecuada para la demanda de cursos de los estudiantes y acorde al avance de su plan de estudios.');
+INSERT INTO `___preguntas_puestos` VALUES ('782', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Analiza y propone soluciones a los alumnos que presentan problemas académicos.');
+INSERT INTO `___preguntas_puestos` VALUES ('783', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya las labores de programación anual de cada dirección de escuela y verifica la correcta aplicación de los planes de estudio.');
+INSERT INTO `___preguntas_puestos` VALUES ('784', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Coordina la Operación Académica, negocia requerimientos con otros sectores de la institución, elabora alteraciones del sistema en orden al mejoramiento de la eficiencia de la labor académica.');
+INSERT INTO `___preguntas_puestos` VALUES ('785', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Optimiza la utilización de los espacios físicos y realiza reportes para su análisis.');
+INSERT INTO `___preguntas_puestos` VALUES ('786', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya las labores de programación académica de todas las escuelas y verifica la correcta aplicación de los planes de estudio. Mantiene una abierta comunicación con las Escuelas.');
+INSERT INTO `___preguntas_puestos` VALUES ('787', 'COORDINADOR DE OPERACIÓN DE LICENCIATURA (MANDOS MEDIOS 1)', 'Apoya con eficiencia a la planeación y coordinación de eventos especiales y actividades de la licenciatura: Reconocimientos de excelencia académica, graduaciones, etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('788', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el desarrollo del Plan estratégico a corto, mediano y largo plazo.');
+INSERT INTO `___preguntas_puestos` VALUES ('789', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el seguimiento a objetivos y proyectos buscando su cumplimiento de todas las áreas y vicerrectorías que dependen del Rector.');
+INSERT INTO `___preguntas_puestos` VALUES ('790', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en el presupuesto anual de operación de Rectoría y supervisa el presupuesto de las áreas de los departamentos que dependen del Rector.');
+INSERT INTO `___preguntas_puestos` VALUES ('791', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio y continuamente a personas internas, alumnos, o padres de familia que requieren apoyo de la Rectoría.');
+INSERT INTO `___preguntas_puestos` VALUES ('792', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento a los asuntos, y en su caso, participa activamente haciendo propuestas de solución al Rector o a los responsables de las áreas.');
+INSERT INTO `___preguntas_puestos` VALUES ('793', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Participa en proyectos que el Rector encomiende, es proactivo y propositivo.');
+INSERT INTO `___preguntas_puestos` VALUES ('794', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya con eficiencia al Rector en la organización de reuniones que involucren tanto autoridades de la Universidad como personalidades de instituciones hermanas, empresas o entidades gubernamentales.');
+INSERT INTO `___preguntas_puestos` VALUES ('795', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'En general, facilita al Rector la operación de la dirección de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('796', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Apoya al Rector en la implementación, seguimiento y control de las iniciativas de la Red Anáhuac.');
+INSERT INTO `___preguntas_puestos` VALUES ('797', 'ASISTENTE EJECUTIVO DE RECTORÍA (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha comunicación con el Rector sobre todos los aspectos del cargo que influyen directa o indirectamente en el cumplimiento de la Misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('798', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Realiza con eficiencia los trámites ordinarios que mantienen el reconocimiento de estudios ante las instituciones oficiales.');
+INSERT INTO `___preguntas_puestos` VALUES ('799', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Prepara en los tiempos establecidos la información requerida sobre la operación escolar de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('800', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Da fe sin valor oficial, de los documentos que no requieren legalización, en los tiempos y casos requeridos.');
+INSERT INTO `___preguntas_puestos` VALUES ('801', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Realiza y supervisa los trámites de revalidación, legalización y registro de títulos, así como la obtención de cédulas profesionales en forma y tiempo.');
+INSERT INTO `___preguntas_puestos` VALUES ('802', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Por indicaciones del Director de administración escolar y normatividad, representa dignamente a la Universidad ante las instituciones gubernamentales certificadoras para la obtención de documentos de alumnos y egresados.');
+INSERT INTO `___preguntas_puestos` VALUES ('803', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Ejecuta eficientemente el proceso de certificados legalizados a la SEP.');
+INSERT INTO `___preguntas_puestos` VALUES ('804', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Efectúa el adecuado control y seguimiento de estudiantes extranjeros sobre la obtención y refrendo de su documentación migratoria que les permite estudiar en la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('805', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'En coordinación con las escuelas y facultades, lleva acabo con eficiencia los procedimientos de baja por: voluntaria, falta de documentos, documentación falsa o por efectos disciplinarios de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('806', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Elabora, analiza y controla con eficiencia la información estadística que se genera en su área.');
+INSERT INTO `___preguntas_puestos` VALUES ('807', 'JEFE DE SERVICIOS ESCOLARES EXTERNOS (NIVEL MANDOS MEDIOS 1)', 'Atiende continuamente y con actitud de servicio los procesos de consulta sobre documentos de estudiantes que formulan diversas instancias nacionales e internacionales.');
+INSERT INTO `___preguntas_puestos` VALUES ('808', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Investiga, Diseña y supervisa constantemente la calidad de los asuntos académicos relacionados con el proceso de enseñanza-aprendizaje.');
+INSERT INTO `___preguntas_puestos` VALUES ('809', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Asegura la calidad de las funciones universitarias empleando sistemas de evaluación y monitoreo constantes, innovadores y confiables.');
+INSERT INTO `___preguntas_puestos` VALUES ('810', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Diseña y administra satisfactoriamente los procesos de evaluación de alumnos, profesores y programas educativos.');
+INSERT INTO `___preguntas_puestos` VALUES ('811', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Porpone con frecuencia políticas y procedimientos que mejoran la calidad de los servicios académicos.');
+INSERT INTO `___preguntas_puestos` VALUES ('812', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y reporta semestralmente los resultados sobre la calidad del aprendizaje por parte de los alumnos y de los servicios de apoyo académico. Propone acciones de mejora con respecto a los resultados.');
+INSERT INTO `___preguntas_puestos` VALUES ('813', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Se preocupa, promueve y se asegura la puntualidad y asistencia de los docentes a sus asignaturas.');
+INSERT INTO `___preguntas_puestos` VALUES ('814', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Desarrolla, implementa, da seguimiento y reporta trimestralmente los resultados de los indicadores clave de desempeño institucional. Realiza propuestas de acción para mejorarlos.');
+INSERT INTO `___preguntas_puestos` VALUES ('815', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Coordina y da seguimiento al desarrollo de programas de intervención educativa conducentes a la mejora de la calidad de la docencia y del aprendizaje de los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('816', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y retroalimenta cada semestre el plan rector de investigación de la universidad y reporta resultados a la Dirección.');
+INSERT INTO `___preguntas_puestos` VALUES ('817', 'COORDINADOR DE CALIDAD ACADÉMICA (NIVEL MANDOS MEDIOS 1)', 'Evalúa y retroalimenta cada semestre el plan de tutorías y reporta resultados a la Dirección.');
+INSERT INTO `___preguntas_puestos` VALUES ('818', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Dirige adecuadamente la elaboración, implantación y evaluación de programas de investigación de la institución de acuerdo a la misión, valores y características del entorno.');
+INSERT INTO `___preguntas_puestos` VALUES ('819', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Orienta al profesorado de la institución para el logro de niveles de excelencia en el campo de la investigación.');
+INSERT INTO `___preguntas_puestos` VALUES ('820', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene relaciones con organismos nacionales e internacionales de acreditación.');
+INSERT INTO `___preguntas_puestos` VALUES ('821', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Participa constantemente en foros nacionales e internacionales en el campo de la educación superior representando dignamente a la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('822', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Promueve la publicación de los resultados de las investigaciones realizadas vigilando que cumplan con los lineamientos de edición e imagen Institucional.');
+INSERT INTO `___preguntas_puestos` VALUES ('823', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Desarrolla diversas estrategias y actividades que impulsan la investigación y enriquecen la curricula que logran avances en el conocimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('824', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Mantiene un registro confiable y actualizado de los proyectos de investigación y da seguimiento a los avances obtenidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('825', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Proporciona a las autoridades información objetiva y relevante sobre los resultados de la investigación y presenta indicadores de desempeño que permiten valorar los avances obtenidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('826', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Estimula la participación activa de profesores y estudiantes en congresos, conferencias de carácter científico y tecnológico y asociaciones educativas y de apoyo a la investigación (CONACYT, FIMPES, ANUIES, NSF, entre otras).');
+INSERT INTO `___preguntas_puestos` VALUES ('827', 'COORDINADOR DE INVESTIGACIÓN (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene vínculos con medios editoriales logrando la publicación de trabajos de investigación.');
+INSERT INTO `___preguntas_puestos` VALUES ('828', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Atiende con actitud de servicio a los candidatos de ingreso a la Institución a nivel licenciatura.');
+INSERT INTO `___preguntas_puestos` VALUES ('829', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Está en contacto continuo con los asesores preuniversitarios dando seguimiento a candidatos o prospectos.');
+INSERT INTO `___preguntas_puestos` VALUES ('830', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Recibe y procesa con eficiencia las solicitudes de admisión.');
+INSERT INTO `___preguntas_puestos` VALUES ('831', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Aplica y analiza satisfactoriamente los resultados de las pruebas de aptitud académica,habilidades y psicológicas realizadas a los candidatos.');
+INSERT INTO `___preguntas_puestos` VALUES ('832', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Integra en los tiempos establecidos la información de exámenes de habilidades y psicológicos en los formatos y sistemas correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('833', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Evalúa la idoneidad del candidato, propone el ingreso e incorpora nuevo alumnado a la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('834', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Aconseja asertivamente la autorización o rechazo de aspirantes y turna los casos especiales a las instancias correspondientes.');
+INSERT INTO `___preguntas_puestos` VALUES ('835', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Informa en tiempo y forma a los candidatos la resolución universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('836', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Elabora estadísticas útiles del proceso de admisión y facilita la información a las escuelas y facultades, en los tiempos requeridos.');
+INSERT INTO `___preguntas_puestos` VALUES ('837', 'JEFE DE ADMISIONES (NIVEL MANDOS MEDIOS 1)', 'Genera reportes de información para la Dirección de atención preuniversitaria y mercadotecnia, en la forma y tiempos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('838', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Integra eficientemente los expedientes de los participantes del Programa de Complementación Académica (PCA).');
+INSERT INTO `___preguntas_puestos` VALUES ('839', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Recaba permanentemente información académica, personal y de desempeño con las diferentes fuentes de información.');
+INSERT INTO `___preguntas_puestos` VALUES ('840', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Da un seguimiento adecuado al desempeño de los participantes del PCA.');
+INSERT INTO `___preguntas_puestos` VALUES ('841', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Actualiza continuamente los resultados de las diferentes instancias evaluadoras de los participantes del PCA.');
+INSERT INTO `___preguntas_puestos` VALUES ('842', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Canaliza y da seguimiento a cada participante con el personal que le brindará la ayuda necesaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('843', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Analiza detalladamente cada caso y conforma el equipo de personal adecuado para sus necesidades.');
+INSERT INTO `___preguntas_puestos` VALUES ('844', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento y hace propuestas a la evaluación del PCA.Da seguimiento y hace propuestas a la evaluación del PCA.');
+INSERT INTO `___preguntas_puestos` VALUES ('845', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Analiza los puntos detectados como áreas de oportunidad y fortalezas del programa, tomando las medidas pertinentes para mejores resultados.');
+INSERT INTO `___preguntas_puestos` VALUES ('846', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Genera las intervenciones que garantizan la mejora continua del PCA.');
+INSERT INTO `___preguntas_puestos` VALUES ('847', 'COORDINADOR DE TUTORÍAS Y APOYO ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha y constante relación con sus alumnos tutoriales y equipo de trabajo.');
+INSERT INTO `___preguntas_puestos` VALUES ('848', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Realiza en tiempo y forma la programación académica de cursos de idiomas y de bloque electivo.');
+INSERT INTO `___preguntas_puestos` VALUES ('849', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Desarrolla con éxito las estrategias necesarias para lograr el crecimiento del área desde un punto de vista económico y comercial.');
+INSERT INTO `___preguntas_puestos` VALUES ('850', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Prepara y promociona cursos de idiomas para los estudiantes cubriendo y manteniendo el número de alumnos requeridos por grupo.');
+INSERT INTO `___preguntas_puestos` VALUES ('851', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Establece y da seguimiento continuo a las políticas que determinan si un alumno se considera aprobado en cierto idioma.');
+INSERT INTO `___preguntas_puestos` VALUES ('852', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Crea y mantiene un archivo actualizado de todos los alumnos, así como de su situación escolar con respecto a los requisitos de idiomas.');
+INSERT INTO `___preguntas_puestos` VALUES ('853', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Publica y hace del conocimiento del alumno el resultado de sus exámenes, dándoles una adecuada retroalimentación.');
+INSERT INTO `___preguntas_puestos` VALUES ('854', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Investiga,desarrolla e implementa la capacitación y actualización necesaria para el personal docente.');
+INSERT INTO `___preguntas_puestos` VALUES ('855', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Actualiza continuamente los programas a través de investigación y convenios con otras instituciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('856', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Supervisa e implementa el desarrollo de material didáctico y técnicas de enseñanza innovadoras para los cursos.');
+INSERT INTO `___preguntas_puestos` VALUES ('857', 'COORDINADOR DEL CENTRO DE LENGUAS (NIVEL MANDOS MEDIOS 1)', 'Previene la demanda de cursos de idiomas y asegura ofrecer los cursos demandados.');
+INSERT INTO `___preguntas_puestos` VALUES ('858', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Promueve la utilización de tecnología de punta en la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('859', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Planea, programa y supervisa constantemente la integración de un acervo bibliográfico, audiovisual y los medios tecnológicos adecuados para su uso.');
+INSERT INTO `___preguntas_puestos` VALUES ('860', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Implementa nuevos servicios que permiten agilizar el acceso a la información para el alumnado y usuarios de la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('861', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Promueve continua y satisfactorimante la utilización óptima de los recursos bibliográficos y audiovisuales, especialmente en las labores relacionadas con la docencia y la investigación.');
+INSERT INTO `___preguntas_puestos` VALUES ('862', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Organiza cada inicio de período escolar actividades para informar a la comunidad universitaria sobre los recursos y servicios de la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('863', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Coordina en tiempo y forma las actividades de adquisiciones, procesos técnicos y servicios al público.');
+INSERT INTO `___preguntas_puestos` VALUES ('864', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Supervisa eficientemente el desempeño de las personas a su cargo buscando su capacitación y desarrollo constante.');
+INSERT INTO `___preguntas_puestos` VALUES ('865', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Lleva el adecuado control del uso de los recursos financieros que se han asignado a la biblioteca.');
+INSERT INTO `___preguntas_puestos` VALUES ('866', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'En forma conjunta con el Director del área, elabora el presupuesto anual de operación del área y presenta reportes periódicos de avance.');
+INSERT INTO `___preguntas_puestos` VALUES ('867', 'JEFE DE BIBLIOTECA (NIVEL MANDOS MEDIOS 1)', 'Mantiene una estrecha comunicación con el Director sobre todos los aspectos a su cargo que influyen directa o indirectamente en el cumplimiento de la misión de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('868', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Promueve continua y dignamente a la Institución en los distintos sectores de la sociedad (egresados, industria, gobierno,etc) tanto nacional como internacional.');
+INSERT INTO `___preguntas_puestos` VALUES ('869', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Recauda los fondos acordados en el presupuesto anual para el financiamiento del desarrollo de la Institución por mecanismos distintos a las colegiaturas.');
+INSERT INTO `___preguntas_puestos` VALUES ('870', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Supervisa la correcta aplicación de los fondos destinados al desarrollo de la Institución de acuerdo a la asignación inicial.');
+INSERT INTO `___preguntas_puestos` VALUES ('871', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Cuenta con una base de datos actualizada de los principales líderes y referencias nacionales e internacionales en los sectores de influencia.');
+INSERT INTO `___preguntas_puestos` VALUES ('872', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Desarrolla acciones de promoción y presencia sistemática con la personalidades nacionales,en especial con los que son egresados o han mantenido contacto cercano con la institucion.');
+INSERT INTO `___preguntas_puestos` VALUES ('873', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'En conjunto con los responsables de las escuelas selecciona líderes que sean representativos de nuestros valores con el fin de poder incluirlos dentro de nuestro grupo de invitados y/o colaboradores.');
+INSERT INTO `___preguntas_puestos` VALUES ('874', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Asegura la oportuna cobertura en los medios de comunicación masiva, de las visitas o eventos relevantes, que garantiza una presencia continua que identifica a la Institución como una sede de conocimeinto académico, científico y cultural.');
+INSERT INTO `___preguntas_puestos` VALUES ('875', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Aprovecha contínumente las actividades tales como:inaguraciones, congresos, foros,etc., para invitar a líderes a nuestra Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('876', 'COORDINADOR DE VINCULACIÓN Y RECAUDACIÓN DE FONDOS (NIVEL MANDOS MEDIOS 1)', 'Representa a la Institución en los distintos sectores de la sociedad, y promueve su imagen, su oferta educativa y sus servicios.');
+INSERT INTO `___preguntas_puestos` VALUES ('877', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Impulsa y supervisa adecuadamente los procesos de búsqueda, selección y reclutamiento del personal académico y administrativo de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('878', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Implementa y desarrolla adecuadamente la inducción, capacitación y formación del personal de la UAM.');
+INSERT INTO `___preguntas_puestos` VALUES ('879', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Vela por el cumplimiento del perfil de puesto correspondiente de cada uno de los puestos.');
+INSERT INTO `___preguntas_puestos` VALUES ('880', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Se asegura constantemente de que el personal tenga una adecuada integración profesional y humana a la identidad y misión de la universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('881', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Vela por el cumplimiento de la estructura orgánico-funcional y hace propuestas cuando se requiere.');
+INSERT INTO `___preguntas_puestos` VALUES ('882', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Velar por el cumplimiento de la disciplina laboral de acuerdo a normas y criterios vigentes y hace propuestas cuando se requiere.');
+INSERT INTO `___preguntas_puestos` VALUES ('883', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Propone e implementa normas y políticas que rijen  las relaciones del personal de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('884', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Dirige y supervisa debidamente todas las actividades de apoyo al área de sueldos y salarios (elaboración de nóminas y pagos diversos). Realiza estudios comparativos de sueldos y compensaciones con otras universidades para proponer mejoras en las prestaciones del personal.');
+INSERT INTO `___preguntas_puestos` VALUES ('885', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Coordina el proceso de evaluaciones de desempeño, clima laboral y 360°,  etc, analizando los resultados y propone acciones de la mejora continua de del ambiente y la cultura organizacional.');
+INSERT INTO `___preguntas_puestos` VALUES ('886', 'GERENTE DE RECURSOS HUMANOS (NIVEL MANDOS MEDIOS 1)', 'Ejecuta todas las medidas necesarias para dar cumplimiento a las disposiciones oficiales y legales en materia laboral y de seguridad social y custodia la documentación correspondiente');
+INSERT INTO `___preguntas_puestos` VALUES ('887', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Mantiene actualizada y en orden la base de datos de los alumnos a nivel licenciatura y posgrado, desde su ingreso hasta su egreso, resguardando los archivos de datos generales, inscripción e historia académica.');
+INSERT INTO `___preguntas_puestos` VALUES ('888', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Controla y certifica que la información en la base de datos sea confiable y que se suministre de manera oportuna para facilitar los procesos, asi como mantiene el sistema mecanizado para el control de avance escolar de los alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('889', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Coordina con eficacia con las diferentes áreas de la Universidad la implementación de los sistemas integrales (SIU) en base a los lineamientos, políticas y tiempos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('890', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Conoce la legislación universitaria y establece mecanismos que aseguran su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('891', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Reporta a la Dirección de administración escolar y normatividad sobre cualquier irregularidad en el proceso escolar y de casos de estudiantes que requieran un tratamiento especial y realiza propuestas para su resolución.');
+INSERT INTO `___preguntas_puestos` VALUES ('892', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Controla eficazmente el seguimiento de la entrega de documentos de alumnos de nuevo ingreso.');
+INSERT INTO `___preguntas_puestos` VALUES ('893', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Coordina oportunamente la ejecución de las tareas de certificación de los estudios de alumnos de nivel licenciatura y posgrados.');
+INSERT INTO `___preguntas_puestos` VALUES ('894', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Planea y dirige los procesos de inscripción y reinscripción de alumnos en cuanto a su fase de selección de cursos, de los periodos académicos.');
+INSERT INTO `___preguntas_puestos` VALUES ('895', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Ejecuta en tiempo y forma el procedimiento institucional de Reingreso y Bajas voluntarias y administrativas de los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('896', 'JEFE DE SERVICIOS ESCOLARES INTERNOS Y AUDITORIA (NIVEL MANDOS MEDIOS 1)', 'Elabora y controla con eficiencia la información estadística que se genera en su área.');
+INSERT INTO `___preguntas_puestos` VALUES ('897', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene contacto directo y constante con los diversos usuarios de la Institución, analiza sus dificultades y realiza propuestas para la mejora continua del servicio.');
+INSERT INTO `___preguntas_puestos` VALUES ('898', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Coordina y participa de manera constante en la definición e implementación de los diversos procesos y procedimientos de atención y servicio.');
+INSERT INTO `___preguntas_puestos` VALUES ('899', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Reporta en tiempo y forma los avances de los diversos proyectos del área.');
+INSERT INTO `___preguntas_puestos` VALUES ('900', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Coordina de forma permanente la instalación de los equipos que adquiera la institución y capacita al personal que hará uso de los mismos (computadoras,impresoras,scanner,etc).');
+INSERT INTO `___preguntas_puestos` VALUES ('901', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene contacto permanente con las empresas proveedoras de equipo y gestiona garantías y procesos de mantenimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('902', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Mantiene en óptimas condiciones los sistemas de información.');
+INSERT INTO `___preguntas_puestos` VALUES ('903', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Brinda con actitud de servicio y de manera permanente el soporte necesario a los usuarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('904', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'Implementa sistemas de información que agilizan los procedimientos académicos, administrativos y operativos de la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('905', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'En coordinación con el área de infraestructura tecnológica crea y administra a los grupos y usuarios, establece los permisos, protege la información interna como externa, internet,etc, en el tiempo y calidad requerida.');
+INSERT INTO `___preguntas_puestos` VALUES ('906', 'JEFE DE SERVICIOS COMPUTACIONALES (NIVEL MANDOS MEDIOS 1)', 'En coordinación con el área de infraestructura tecnológica verifica semanalmente el antivirus, así como la actualización de los mismos.');
+INSERT INTO `___preguntas_puestos` VALUES ('907', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Supervisa constantemente que todos los servicios de cómputo ofrecidos a través de servidores centrales hacia el personal administrativo, académico y alumnos sean de excelente calidad y con tecnología de punta.');
+INSERT INTO `___preguntas_puestos` VALUES ('908', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Procura y fomenta una excelente comunicación entre su equipo de trabajo y una mejora constante en la prestación de servicios que ofrece su jefatura.');
+INSERT INTO `___preguntas_puestos` VALUES ('909', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Procura la entera satisfacción de todos los usuarios, promoviendo la comunicación constante y estando atento a sus necesidades.');
+INSERT INTO `___preguntas_puestos` VALUES ('910', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Protege permanentemente de ataques externos e internos a la red.');
+INSERT INTO `___preguntas_puestos` VALUES ('911', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Investiga y propone constamente sobre nuevas tecnologías y avances en el área de redes proponiendo mejoras.');
+INSERT INTO `___preguntas_puestos` VALUES ('912', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Instala nuevos servidores y efectúa pruebas y reparación de los mismos en caso de ser necesario con un enfoque de servicio al cliente indicado por la Institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('913', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Lleva un adecuado y constante control y administración de los servicios de la página web de la Universidad,servicio de correo,control de impresión,etc.');
+INSERT INTO `___preguntas_puestos` VALUES ('914', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Monitorea y reporta el tráfico de la red contando con estadísticas que permitan conocer el performance de la misma y se asegura de la disponibilidad, accesibilidad, velocidad y usabilidad del servicio de internet.');
+INSERT INTO `___preguntas_puestos` VALUES ('915', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Apoya constantemente y con actitud de servicio a todas las áreas que lo requieren, en el mantenimiento y actualización de sus bases de datos.');
+INSERT INTO `___preguntas_puestos` VALUES ('916', 'JEFE DE INFRAESTRUCTURA TECNOLÓGICA (NIVEL MANDOS MEDIOS 1)', 'Coordina con eficiencia la configuración de los equipo inalámbricos de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('917', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Propone, coordina y supervisa con eficiencia eventos de integración que enriquezcan la vida estudiantil de la universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('918', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Establece adecuados canales de comunicación para escuchar a los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('919', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Monitorea los resultados de los proyectos de integración vigentes y propone a las autoridades modificaciones y/o nuevos planes.');
+INSERT INTO `___preguntas_puestos` VALUES ('920', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Verifica de manera consistente que las autoridades y programas colaboren en la formación de los estudiantes.');
+INSERT INTO `___preguntas_puestos` VALUES ('921', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Evalúa sistemáticamente los logros formativos de los programas ofrecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('922', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Estructura programas culturales de formación así como organiza y ofrece eventos culturales de calidad para la Comunidad Universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('923', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Establece y mantiene vínculos con organismos estatales, privados, embajadas y centros extranjeros de carácter cultural.');
+INSERT INTO `___preguntas_puestos` VALUES ('924', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Promueve actividades encaminadas al fortalecimiento de relaciones estudiales intrauniversitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('925', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Promueve eventos culturales externos de interés para el enriquecimiento de la Comunidad Universitaria.');
+INSERT INTO `___preguntas_puestos` VALUES ('926', 'COORDINADOR DE DIFUSIÓN CULTURAL (NIVEL MANDOS MEDIOS 1)', 'Coordina y apoya en los eventos de Bienvida así como en entrega de reconocimiento de alumnos.');
+INSERT INTO `___preguntas_puestos` VALUES ('927', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Cumple los lineamientos institucionales y de la RED en materia de: comunicación(interna y externa), promoción, manejo de imagen y mercadotecnia.');
+INSERT INTO `___preguntas_puestos` VALUES ('928', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando cubrir ya sea el público interno y/ó externo.');
+INSERT INTO `___preguntas_puestos` VALUES ('929', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'De forma permanente vigila que todo lo relacionado a comunicación, medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('930', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Colabora activamente y mantiene relaciones con otras instituciones, organismos,agencias de publicidad,diseño y relaciones públicas.');
+INSERT INTO `___preguntas_puestos` VALUES ('931', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila que la imagen de la Red Anáhuac se emplee de forma adecuada en todos los medios (escritos y electrónicos) asesorando adecuadamente a las áreas que desarrollen comunicaciónes internas.');
+INSERT INTO `___preguntas_puestos` VALUES ('932', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Apoya eficientemente a Divisiones,Escuelas y Facultades así como a áreas administrativas en la coordinación de campañas, eventos y programas especiales dirigidos a fomentar la imagen y las relaciones internas y externas de la institución.');
+INSERT INTO `___preguntas_puestos` VALUES ('933', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Publica periódicamente la información oficial de la Institución empleando los medios institucionales (internos, generales y para egresados) y cubriendo el mercado meta.');
+INSERT INTO `___preguntas_puestos` VALUES ('934', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Busca con frecuencia prestadores de servicios publicitarios e integra una cartera de proveedores confiables, que permiten utilizar productos y servicios de promoción y comunicación de calidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('935', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Supervisa que las herramientas electrónicas empleadas para la comunicación tanto interna como extrena se encuentren a la vanguardia en tecnología y diseño visual.');
+INSERT INTO `___preguntas_puestos` VALUES ('936', 'COORDINACIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Da seguimiento a las relaciones con la prensa y los medios de comunicación el cual apoya la entrega de productos y servicios solicitados con la calidad y en los tiempos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('937', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Propicia una comunicación efectiva entre los sectores internos y externos de la Universidad para el logro de los objetivos institucionales.');
+INSERT INTO `___preguntas_puestos` VALUES ('938', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Administra continuamente las estrategias de comunicación y mercadotecnia de acuerdo a las necesidades y objetivos de las áreas logrando el impacto requerido.');
+INSERT INTO `___preguntas_puestos` VALUES ('939', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Vigila que todo lo competente a comunicación Medios y mercadotecnia se encuentre alineado a los lineamientos institucionales establecidos por la División de Universidades.');
+INSERT INTO `___preguntas_puestos` VALUES ('940', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Representa a la Universidad ante los medios de comunicación social en dependencia del Rector.');
+INSERT INTO `___preguntas_puestos` VALUES ('941', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Se asegura de cuidar la imagen de la Universidad en el exterior (página web, eventos, medios masivos de comunicación, etc).');
+INSERT INTO `___preguntas_puestos` VALUES ('942', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Mantiene una fuerte y productiva relación con todos los directivos de la Institución para apoyar proyectos de comunicación y mercadotecnia institucional.');
+INSERT INTO `___preguntas_puestos` VALUES ('943', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Colabora con firmas externas, relaciones públicas, diseños y comunicación para ejecutar estrategias y acciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('944', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Asesora y coordina las estrategias específicas de los coordinadores del área buscando un adecuado desempeño.');
+INSERT INTO `___preguntas_puestos` VALUES ('945', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Busca continuamente tener presencia en medios que sumen a la buena imagen de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('946', 'DIRECCIÓN DE COMUNICACIÓN (NIVEL MANDOS MEDIOS 1)', 'Desarrolla y da seguimiento al Plan Estratégico y de Presupuesto del área a corto, mediano y largo plazo de acuerdo al Plan Estratégico de la Universidad asegurando su cumplimiento.');
+INSERT INTO `___preguntas_puestos` VALUES ('947', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Realiza eficientemente todas las funciones de coordinación académica y administrativa del programa(s) a su cargo,promoviendo la misión y valores universitarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('948', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Se coordina adecuadamente con el Director del área en la selección y contratación del personal académico de acuerdo al perfil y en los tiempos establecidos.');
+INSERT INTO `___preguntas_puestos` VALUES ('949', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Apoya constantemente las labores de promoción hacia los diversos públicos: preparatorias,egresados, empresas instituciones privadas y gubernamentales entre otros.');
+INSERT INTO `___preguntas_puestos` VALUES ('950', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Supervisa continuamente la calidad de las cátedras impartidas alineando los planes y programas a lo establecido en la División o escuela.');
+INSERT INTO `___preguntas_puestos` VALUES ('951', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Atiende continuamente y con actitud de servicio las necesidades de los estudiantes y docentes,proponiendo soluciones.');
+INSERT INTO `___preguntas_puestos` VALUES ('952', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Apoya las tutorías y vigila de manera constante que se apliquen a alumnos que manifiestan alguna inquietud y a los que presentan bajo desempeño.');
+INSERT INTO `___preguntas_puestos` VALUES ('953', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Revisa al término de cada período escolar los resultados arrojados por los procesos de evaluación docente para monitorear la calidad académica y alinear aspectos que sean necesarios.');
+INSERT INTO `___preguntas_puestos` VALUES ('954', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Cuida de manera consistente de la óptima utilización de los recursos tanto humanos como materiales asignados a sus programas.');
+INSERT INTO `___preguntas_puestos` VALUES ('955', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Cumple y hace cumplir las políticas y lineamientos definidos por los superiores y en general las disposiciones y acuerdos que normen la estructura y funcionamiento de la Universidad.');
+INSERT INTO `___preguntas_puestos` VALUES ('956', 'COORDINADOR DE PROGRAMA ACADÉMICO (NIVEL MANDOS MEDIOS 1)', 'Promueve de manera continua la integración efectiva del personal y de los alumnos.');
 
 -- ----------------------------
 -- View structure for cartas_envios_detalle
@@ -4259,7 +4337,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evalua
 -- View structure for evaluaciones_info
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluaciones_info`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_info` AS select `e`.`id` AS `id`,`e`.`titulo` AS `titulo`,`e`.`usuarioRegistrante` AS `usuarioRegistrante`,`e`.`fechaRegistro` AS `fechaRegistro`,(select count(1) from `evaluaciones_jefes` where (`evaluaciones_jefes`.`evaluacion` = `e`.`id`)) AS `jefesTotales`,(select count(1) from `jerarquias` where (`jerarquias`.`evaluacion` = `e`.`id`)) AS `empleadosTotales`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 0)) limit 1) AS `cartas_eval_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 0))) AS `cartas_eval_avance`,0 AS `reporte_eval_fecha`,0 AS `reporte_eval_contador`,(select count(1) from `respuestas_evaluacion` where (`respuestas_evaluacion`.`evaluacion` = `e`.`id`)) AS `eval_contador`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 1)) limit 1) AS `cartas_auto_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 1))) AS `cartas_auto_avance`,0 AS `reporte_auto_fecha`,0 AS `reporte_auto_contador`,(select count(1) from `respuestas_autoevaluacion` where (`respuestas_autoevaluacion`.`evaluacion` = `e`.`id`)) AS `auto_contador`,`e`.`texto_bienvenida_evaluacion` AS `texto_bienvenida_evaluacion`,`e`.`texto_bienvenida_autoevaluacion` AS `texto_bienvenida_autoevaluacion`,`e`.`status` AS `status`,`u1`.`nombre` AS `usuarioRegistranteNombre`,(case `e`.`status` when 0 then 'Cerrado' when 1 then 'Evaluación activa' when 2 then 'Autoevaluación activa' end) AS `statusValor` from (`evaluaciones` `e` join `usuarios` `u1` on((`e`.`usuarioRegistrante` = `u1`.`usuario`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluaciones_info` AS select `e`.`id` AS `id`,`e`.`titulo` AS `titulo`,`e`.`usuarioRegistrante` AS `usuarioRegistrante`,`e`.`fechaRegistro` AS `fechaRegistro`,(select count(1) from `evaluaciones_jefes` where (`evaluaciones_jefes`.`evaluacion` = `e`.`id`)) AS `jefesTotales`,(select count(1) from `jerarquias` where (`jerarquias`.`evaluacion` = `e`.`id`)) AS `empleadosTotales`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 0)) limit 1) AS `cartas_eval_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 0)) order by `cartas_envios`.`fechaRegistro` desc limit 1) AS `cartas_eval_avance`,0 AS `reporte_eval_fecha`,0 AS `reporte_eval_contador`,(select count(1) from `respuestas_evaluacion` where (`respuestas_evaluacion`.`evaluacion` = `e`.`id`)) AS `eval_contador`,(select `c`.`fechaRegistro` from `cartas_envios` `c` where (`c`.`evaluacion` = `e`.`id`) order by (`c`.`fechaRegistro` and (`c`.`tipo` = 1)) limit 1) AS `cartas_auto_fecha`,(select round(((`cartas_envios`.`avance` / `cartas_envios`.`empleadosTotales`) * 100),0) from `cartas_envios` where ((`cartas_envios`.`evaluacion` = `e`.`id`) and (`cartas_envios`.`tipo` = 1)) order by `cartas_envios`.`fechaRegistro` desc limit 1) AS `cartas_auto_avance`,0 AS `reporte_auto_fecha`,0 AS `reporte_auto_contador`,(select count(1) from `respuestas_autoevaluacion` where (`respuestas_autoevaluacion`.`evaluacion` = `e`.`id`)) AS `auto_contador`,`e`.`texto_bienvenida_evaluacion` AS `texto_bienvenida_evaluacion`,`e`.`texto_bienvenida_autoevaluacion` AS `texto_bienvenida_autoevaluacion`,`e`.`status` AS `status`,`u1`.`nombre` AS `usuarioRegistranteNombre`,(case `e`.`status` when 0 then 'Cerrado' when 1 then 'Evaluación activa' when 2 then 'Autoevaluación activa' end) AS `statusValor` from (`evaluaciones` `e` join `usuarios` `u1` on((`e`.`usuarioRegistrante` = `u1`.`usuario`))) ;
 
 -- ----------------------------
 -- View structure for evaluaciones_info_reportable
@@ -4298,6 +4376,12 @@ DROP VIEW IF EXISTS `evaluacion_cuestionario_listado`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_cuestionario_listado` AS select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `nivelPuesto`,`eco`.`vinculaPuestos` AS `vinculaPuestos` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,0 AS `0`,0 AS `My_exp_0` from (`evaluaciones_cuestionario_niveles` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_manual` = `eco`.`id`) and (`ecu`.`tipo` = 'manual') and (`eco`.`tipo` = 'manual') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) union select `ecu`.`id` AS `id`,`ecu`.`evaluacion` AS `evaluacion`,`ecu`.`nivel` AS `nivel`,`ecu`.`tipo` AS `tipo`,`ecu`.`id_competencia` AS `id_competencia`,`ecu`.`id_manual` AS `id_manual`,`eco`.`titulo` AS `titulo`,`eco`.`orden` AS `orden`,1 AS `1`,0 AS `0` from (`evaluaciones_cuestionario_puestos` `ecu` join `evaluacion_competencias` `eco` on(((`ecu`.`id_competencia` = `eco`.`id`) and (`ecu`.`tipo` = 'competencia') and (`eco`.`tipo` = 'competencia') and (`ecu`.`evaluacion` = `eco`.`evaluacion`)))) order by `evaluacion`,`nivel`,`orden` ;
 
 -- ----------------------------
+-- View structure for evaluacion_empleados_info
+-- ----------------------------
+DROP VIEW IF EXISTS `evaluacion_empleados_info`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `evaluacion_empleados_info` AS select `e`.`empleado` AS `empleado`,`e`.`n` AS `n`,`e`.`apellido_paterno` AS `apellido_paterno`,`e`.`apellido_materno` AS `apellido_materno`,`e`.`nivel` AS `nivel`,`n`.`titulo` AS `nivel_n`,`e`.`puesto` AS `puesto`,`p`.`titulo` AS `puesto_n`,`e`.`email` AS `email` from (((`empleados_formato` `e` join `jerarquias` `j` on((`j`.`subordinado` = `e`.`empleado`))) join `niveles` `n` on((`n`.`codigo` = `j`.`nivel`))) join `puestos` `p` on((`p`.`codigo` = `j`.`puesto`))) ;
+
+-- ----------------------------
 -- View structure for evaluacion_niveles
 -- ----------------------------
 DROP VIEW IF EXISTS `evaluacion_niveles`;
@@ -4325,7 +4409,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `respue
 -- View structure for respuestas_evaluacion_detalles
 -- ----------------------------
 DROP VIEW IF EXISTS `respuestas_evaluacion_detalles`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `respuestas_evaluacion_detalles` AS select `ef`.`empleado` AS `empleado`,`ef`.`nombre` AS `nombre`,`ef`.`n` AS `n`,md5(`ef`.`n`) AS `clave`,`j`.`evaluacion` AS `evaluacion`,`re`.`evaluadosTotales` AS `evaluadosTotales`,`re`.`avance` AS `avance`,`re`.`fechaRegistro` AS `fechaRegistro` from ((`empleados_formato` `ef` join `jerarquias` `j` on((`j`.`subordinado` = `ef`.`empleado`))) left join `respuestas_evaluacion` `re` on(((`ef`.`empleado` = `re`.`evaluador`) and (`j`.`evaluacion` = `re`.`evaluacion`)))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`mayab`@`%` SQL SECURITY DEFINER VIEW `respuestas_evaluacion_detalles` AS select `ef`.`empleado` AS `empleado`,`ef`.`n` AS `n`,`ef`.`apellido_paterno` AS `apellido_paterno`,`ef`.`apellido_materno` AS `apellido_materno`,`ef`.`nivel` AS `nivel`,`ef`.`nivel_n` AS `nivel_n`,`ef`.`puesto` AS `puesto`,`ef`.`puesto_n` AS `puesto_n`,`ef`.`email` AS `email`,md5(`ef`.`n`) AS `clave`,`j`.`evaluacion` AS `evaluacion`,`re`.`evaluadosTotales` AS `evaluadosTotales`,`re`.`avance` AS `avance`,`re`.`fechaRegistro` AS `fechaRegistro`,`ra`.`fechaRegistro` AS `autoFecha` from (((`evaluacion_empleados_info` `ef` join `jerarquias` `j` on((`j`.`subordinado` = `ef`.`empleado`))) left join `respuestas_evaluacion` `re` on(((`ef`.`empleado` = `re`.`evaluador`) and (`j`.`evaluacion` = `re`.`evaluacion`)))) left join `respuestas_autoevaluacion` `ra` on(((`ef`.`empleado` = `ra`.`empleado`) and (`j`.`evaluacion` = `ra`.`evaluacion`)))) ;
 
 -- ----------------------------
 -- View structure for subordinados
@@ -4341,9 +4425,27 @@ DELIMITER ;;
 CREATE DEFINER=`mayab`@`%` PROCEDURE `eliminarRespuestasCompetenciaNivel`(IN `_evaluacion` int,IN `_nivel` int,IN `_competencia` int)
 BEGIN
 	#Elimina respuestas de clave de una competencia en NIVELES
-	SET @seccion = (SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia);
-	DELETE FROM respuestas_clave_competencias_niveles WHERE evaluacion = _evaluacion AND nivel = _nivel
-	AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = @seccion);
+	DECLARE v_finished INTEGER DEFAULT 0;
+	DECLARE seccion INTEGER DEFAULT 0;
+
+	DEClARE curs CURSOR FOR
+	SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia LIMIT 1;
+
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+
+	OPEN curs;
+	secLoop: LOOP
+	FETCH curs INTO seccion;
+
+		IF v_finished = 1 THEN 
+			LEAVE secLoop;
+		END IF;
+
+		DELETE FROM respuestas_clave_competencias_niveles WHERE evaluacion = _evaluacion AND nivel = _nivel
+		AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = seccion);
+
+	END LOOP secLoop;
+	CLOSE curs;
 END
 ;;
 DELIMITER ;
@@ -4356,9 +4458,27 @@ DELIMITER ;;
 CREATE DEFINER=`mayab`@`%` PROCEDURE `eliminarRespuestasCompetenciaPuesto`(IN `_evaluacion` int,IN `_nivel` int,IN `_competencia` int)
 BEGIN
 	#Elimina respuestas de clave de una competencia en puestos
-	SET @seccion = (SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia);
-	DELETE FROM respuestas_clave_competencias_puestos WHERE evaluacion = _evaluacion AND nivel = _nivel
-	AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = @seccion);
+	DECLARE v_finished INTEGER DEFAULT 0;
+	DECLARE seccion INTEGER DEFAULT 0;
+
+	DEClARE curs CURSOR FOR
+	SELECT id FROM cuestionarios_competencias_secciones WHERE competencia = _competencia LIMIT 1;
+
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finished = 1;
+
+	OPEN curs;
+	secLoop: LOOP
+	FETCH curs INTO seccion;
+
+		IF v_finished = 1 THEN 
+			LEAVE secLoop;
+		END IF;
+
+		DELETE FROM respuestas_clave_competencias_puestos WHERE evaluacion = _evaluacion AND nivel = _nivel
+		AND id_conducta IN (SELECT id FROM cuestionarios_competencias_secciones_conductas WHERE seccion = seccion);
+
+	END LOOP secLoop;
+	CLOSE curs;
 END
 ;;
 DELIMITER ;
@@ -4479,7 +4599,7 @@ DROP TRIGGER IF EXISTS `eval_cue_res_clean`;
 DELIMITER ;;
 CREATE TRIGGER `eval_cue_res_clean` AFTER DELETE ON `evaluaciones_cuestionario_niveles` FOR EACH ROW BEGIN
 	IF OLD.tipo = 'competencia' THEN
-		CALL eliminarRespuestasCompetenciaPuesto(OLD.evaluacion, OLD.nivel, OLD.id_competencia);
+		CALL eliminarRespuestasCompetenciaNivel(OLD.evaluacion, OLD.nivel, OLD.id_competencia);
 	ELSEIF OLD.tipo = 'manual' THEN
 		DELETE FROM respuestas_clave_manual_abierto WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;
 		DELETE FROM respuestas_clave_manual_opciones WHERE evaluacion = OLD.evaluacion AND nivel = OLD.nivel;

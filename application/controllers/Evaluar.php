@@ -31,6 +31,7 @@ class Evaluar extends CI_Controller {
 		$evaluador->evaluacion($id);
 		$evaluador->evaluador($empleadoClave);
 		if($evaluacion->info->status == 1) $evaluador->evaluados(); //Cargar empleados si está abierto
+		unset($evaluador->info->clave);
 		
 		$d = array(
 			'evaluacion' => $evaluacion,
@@ -67,7 +68,6 @@ class Evaluar extends CI_Controller {
 		$evaluador = $this->moevaluar->init();
 		$evaluador->evaluacion($id);
 		$evaluador->evaluador($empleadoClave);
-		if($evaluacion->info->status == 1) $evaluador->evaluados(); //Cargar empleados si está abierto
 		
 		$d = array(
 			'evaluacion' => $evaluacion,
@@ -105,7 +105,7 @@ class Evaluar extends CI_Controller {
 		$data = json_decode(file_get_contents('php://input'));
 		$this->load->model('moevaluar');
 		$ev = $this->moevaluar->init();
-		$r = $ev->registrar($data->info, $data->evaluador, $data->evaluado);
+		$r = $ev->registrar($data);
 		$this->output->set_content_type('application/json')->set_output(json_encode($r, JSON_NUMERIC_CHECK));
 	}
 }

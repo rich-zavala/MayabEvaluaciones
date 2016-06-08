@@ -1,4 +1,5 @@
 <script>
+	var _modalidad_ = 'jefe';
 	var _evaluacion_ = <?=json_encode($evaluacion, JSON_NUMERIC_CHECK)?>;
 	var _evaluador_ = <?=json_encode($evaluador, JSON_NUMERIC_CHECK)?>;
 </script>
@@ -52,7 +53,7 @@
 									</div>
 									
 									<div class="info-box bg-green" ng-if="e.respuesta > 0">
-										<span class="info-box-icon" ng-click=""><i class="fa fa-check"></i></span>
+										<span class="info-box-icon"><i class="fa fa-check"></i></span>
 										<div class="info-box-content">
 											<div class="font12 text-warning pull-right">{{e.nivel_n}}</div>
 											<div class="info-box-text info-box-encuesta-empleado">

@@ -22,7 +22,6 @@ class Evaluacion extends CI_Model
 	/*
 	Información básica de la evaluación
 	Devuelve siempre el atributo "ok" que define la existencia del registro.
-	También establece $this->id
 	*/
 	public function info()
 	{

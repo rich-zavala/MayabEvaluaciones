@@ -39,80 +39,114 @@ class Moevaluar extends CI_Model
 		$this->evaluados = $q->result();
 	}
 	
-	//Registrar respuestas de un empleado
-	public function registrar($info, $evaluador, $evaluado)
+	//Obtener información de una autoevaluación
+	public function autoInfo($empleado)
 	{
+	}
+	
+	//Registrar respuestas de un empleado
+	public function registrar($data)
+	{
+		$info				= $data->info;
+		$evaluador 	= $data->evaluador;
+		$evaluado 	= $data->evaluado;
+		$tabla	= $data->modalidad == 'jefe' ? '' : 'auto'; //Sub-Cadena del nombre de las tablas de inserción según la modalidad
+		
 		$r['error'] = 0;
 		
 		//Verificaciones iniciales
-		$i = array(
-			'evaluacion' => $evaluador->evaluacion,
-			'evaluador' => $evaluador->empleado
-		);
-
-		$q = $this->db->select('id')->where($i)->get('respuestas_evaluacion');
-		if($q->num_rows() == 0)
+		if($data->modalidad == 'jefe')
 		{
-			$this->db->insert('respuestas_evaluacion', $i);
-			$respId = $this->db->insert_id();
-		}
-		else
-			$respId = $q->row()->id;
-		
-		//Actualizar totales
-		$this->db->simple_query('CALL respuestas_evaluacion_totales(' . $evaluador->evaluacion . ', ' . $evaluador->empleado . ')');
-		
-		$q = $this->db->select('id')->where('empleado', $evaluado->empleado)->get('respuestas_evaluacion_empleados');
-		if($q->num_rows() > 0)
-		{
-			$r['error']++;
-			$r['msg'] = "Este empleado ha sido evaluado anteriormente";
-		}
-		else
-		{
-			//Generar registro de respuesta de evaluado
 			$i = array(
 				'evaluacion' => $evaluador->evaluacion,
-				'evaluador' => $evaluador->empleado,
-				'empleado' => $evaluado->empleado,
-				'id_respuestas_evaluacion' => $respId
+				'evaluador' => $evaluador->empleado
 			);
-			if(!$this->db->insert('respuestas_evaluacion_empleados', $i))
+
+			$q = $this->db->select('id')->where($i)->get('respuestas_evaluacion');
+			if($q->num_rows() == 0)
+			{
+				$this->db->insert('respuestas_evaluacion', $i);
+				$respId = $this->db->insert_id();
+			}
+			else
+				$respId = $q->row()->id;
+			
+			if($data->modalidad == 'jefe') //Actualizar totales
+				$this->db->simple_query('CALL respuestas_evaluacion_totales(' . $evaluador->evaluacion . ', ' . $evaluador->empleado . ')');
+		
+		
+			$q = $this->db->select('id')->where('empleado', $evaluado->empleado)->get('respuestas_' . $tabla . 'evaluacion_empleados');
+			if($q->num_rows() > 0)
+			{
+				$r['error']++;
+				$r['msg'] = "Este empleado ha sido evaluado anteriormente";
+			}
+			else
+			{
+				//Generar registro de respuesta de evaluado
+				$i = array(
+					'evaluacion' => $evaluador->evaluacion,
+					'evaluador' => $evaluador->empleado,
+					'empleado' => $evaluado->empleado,
+					'id_respuestas_evaluacion' => $respId
+				);
+				if($data->modalidad != 'jefe') //Remover campos que no interesan en autoevaluación
+					unset($i['evaluador']);
+				
+				if(!$this->db->insert('respuestas_' . $tabla . 'evaluacion_empleados', $i))
+				{
+					$r['error']++;
+					$r['msg'] = "Error en inserción de índice de respuesta de evaluación de empleado";
+				}
+				else
+				{
+					$respEmpId = $this->db->insert_id();
+				}
+			}
+		}
+		else //Para autoevaluación
+		{
+			$i = array(
+				'evaluacion' => $evaluador->evaluacion,
+				'empleado' => $evaluador->empleado
+			);
+			
+			if(!$this->db->insert('respuestas_autoevaluacion', $i))
 			{
 				$r['error']++;
 				$r['msg'] = "Error en inserción de índice de respuesta de evaluación de empleado";
 			}
 			else
-			{
 				$respEmpId = $this->db->insert_id();
-					
-				//Comenzar inserciones de respuestas
-				if(isset($info->respuestas->competencias) and count((array)$info->respuestas->competencias) > 0
-				and !$this->db->insert_batch('respuestas_evaluacion_competencias', obj2ins(addResId($info->respuestas->competencias, $respEmpId))))
-				{
-					$r['error']++;
-					$r['msg'] = "Error en inserción de respuestas de competencias";
-				}
-				
-				if($r['error'] == 0 and isset($info->respuestas->manual)
-				and isset($info->respuestas->manual->abierto) and count((array)$info->respuestas->manual->abierto) > 0
-				and !$this->db->insert_batch('respuestas_evaluacion_manual_abierto', obj2ins(addResId($info->respuestas->manual->abierto, $respEmpId))))
-				{
-					$r['error']++;
-					$r['msg'] = "Error en inserción de respuestas manuales abiertas";
-				}
-				
-				if($r['error'] == 0 and isset($info->respuestas->manual)
-				and isset($info->respuestas->manual->opciones) and count((array)$info->respuestas->manual->opciones) > 0
-				and !$this->db->insert_batch('respuestas_evaluacion_manual_opciones', obj2ins(addResId($info->respuestas->manual->opciones, $respEmpId))))
-				{
-					$r['error']++;
-					$r['msg'] = "Error en inserción de respuestas manuales de opciones";
-				}
-				
+		}
+			
+		if($r['error'] == 0)
+		{
+			//Comenzar inserciones de respuestas
+			if(isset($info->respuestas->competencias) and count((array)$info->respuestas->competencias) > 0
+			and !$this->db->insert_batch('respuestas_' . $tabla . 'evaluacion_competencias', obj2ins(addResId($info->respuestas->competencias, $respEmpId))))
+			{
+				$r['error']++;
+				$r['msg'] = "Error en inserción de respuestas de competencias";
+			}
+			
+			if($r['error'] == 0 and isset($info->respuestas->manual)
+			and isset($info->respuestas->manual->abierto) and count((array)$info->respuestas->manual->abierto) > 0
+			and !$this->db->insert_batch('respuestas_' . $tabla . 'evaluacion_manual_abierto', obj2ins(addResId($info->respuestas->manual->abierto, $respEmpId))))
+			{
+				$r['error']++;
+				$r['msg'] = "Error en inserción de respuestas manuales abiertas";
+			}
+			
+			if($r['error'] == 0 and isset($info->respuestas->manual)
+			and isset($info->respuestas->manual->opciones) and count((array)$info->respuestas->manual->opciones) > 0
+			and !$this->db->insert_batch('respuestas_' . $tabla . 'evaluacion_manual_opciones', obj2ins(addResId($info->respuestas->manual->opciones, $respEmpId))))
+			{
+				$r['error']++;
+				$r['msg'] = "Error en inserción de respuestas manuales de opciones";
 			}
 		}
-		
+
 		return $r;
 	}
 }

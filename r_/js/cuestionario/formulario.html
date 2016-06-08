@@ -1,7 +1,7 @@
 <div>
 	<div class="row">
 		<div class="col-xs-12">
-			<h2 class="marginTop0"><i class="fa fa-fw fa-file-text-o"></i> {{data.titulo}}</h2>
+			<h2 class="marginTop0" ng-if="data.modalidad != 'autoevaluacion'"><i class="fa fa-fw fa-file-text-o"></i> {{data.titulo}}</h2>
 		
 			<div class="alert alert-warning marginTop20" ng-if="(gui.cargando || gui.cargandoRespuestas) && !gui.cargandoError"><i class="fa fa-fw fa-spinner fa-pulse marginRight10"></i> Cargando información...</div>
 			<div class="alert alert-danger marginTop20" ng-if="gui.cargandoError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error.</div>

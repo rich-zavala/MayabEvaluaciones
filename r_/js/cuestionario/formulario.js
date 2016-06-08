@@ -76,9 +76,8 @@ app.directive('templateFormulario', [function() {
 					cuestionarioUrl +=  '/clave';
 					break;
 				case 'jefe':
-					cuestionarioUrl +=  '/cuestionario'; ///' + data.evaluacion + '/' + data.empleado.nivel;
-					break;
 				case 'autoevaluacion':
+					cuestionarioUrl +=  '/cuestionario'; ///' + data.evaluacion + '/' + data.empleado.nivel;
 					break;
 			}
 			
