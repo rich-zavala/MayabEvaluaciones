@@ -87,7 +87,10 @@ app.directive('templateFormulario', [function() {
 				{
 					$scope.cuestionario = response.data.competencias;
 					$scope.competenciaActual = $scope.cuestionario[0].id;
-					$scope.seccionActual = $scope.cuestionario[0].secciones[0].id;
+					
+					if(typeof $scope.cuestionario[0].secciones[0] != 'undefined')
+						$scope.seccionActual = $scope.cuestionario[0].secciones[0].id;
+					
 					ordenCuestionarios();
 				}
 				else

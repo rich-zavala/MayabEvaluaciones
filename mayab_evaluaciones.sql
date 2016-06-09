@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-06-07 23:23:33
+Date: 2016-06-08 22:02:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,13 +55,17 @@ CREATE TABLE `cartas_envios` (
   KEY `car_usu` (`usuarioRegistrante`),
   CONSTRAINT `car_ev` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `car_usu` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios
 -- ----------------------------
-INSERT INTO `cartas_envios` VALUES ('1', '1', '0', 'admin', '2016-06-07 00:09:07', '72', '0');
-INSERT INTO `cartas_envios` VALUES ('2', '1', '0', 'admin', '2016-06-07 00:09:30', '72', '15');
+INSERT INTO `cartas_envios` VALUES ('3', '1', '1', 'admin', '2016-06-08 20:51:41', '388', '22');
+INSERT INTO `cartas_envios` VALUES ('4', '1', '0', 'admin', '2016-06-08 20:54:28', '72', '10');
+INSERT INTO `cartas_envios` VALUES ('5', '1', '0', 'admin', '2016-06-08 20:57:23', '72', '13');
+INSERT INTO `cartas_envios` VALUES ('6', '1', '0', 'admin', '2016-06-08 20:57:50', '72', '72');
+INSERT INTO `cartas_envios` VALUES ('7', '1', '0', 'admin', '2016-06-08 20:59:51', '72', '72');
+INSERT INTO `cartas_envios` VALUES ('8', '1', '0', 'admin', '2016-06-08 21:49:58', '72', '3');
 
 -- ----------------------------
 -- Table structure for cartas_envios_empleados
@@ -80,26 +84,203 @@ CREATE TABLE `cartas_envios_empleados` (
   KEY `caenem_emp` (`empleado`),
   CONSTRAINT `caenem_emp` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `caenem_env` FOREIGN KEY (`envio`) REFERENCES `cartas_envios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartas_envios_empleados
 -- ----------------------------
-INSERT INTO `cartas_envios_empleados` VALUES ('2', '2', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-07 00:09:31');
-INSERT INTO `cartas_envios_empleados` VALUES ('3', '2', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-07 00:09:32');
-INSERT INTO `cartas_envios_empleados` VALUES ('4', '2', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-07 00:09:33');
-INSERT INTO `cartas_envios_empleados` VALUES ('5', '2', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-07 00:09:34');
-INSERT INTO `cartas_envios_empleados` VALUES ('6', '2', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-07 00:09:36');
-INSERT INTO `cartas_envios_empleados` VALUES ('7', '2', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:37');
-INSERT INTO `cartas_envios_empleados` VALUES ('8', '2', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-07 00:09:38');
-INSERT INTO `cartas_envios_empleados` VALUES ('9', '2', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:39');
-INSERT INTO `cartas_envios_empleados` VALUES ('10', '2', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-07 00:09:40');
-INSERT INTO `cartas_envios_empleados` VALUES ('11', '2', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-07 00:09:44');
-INSERT INTO `cartas_envios_empleados` VALUES ('12', '2', '32149973', 'gary.murillo@anahuac.mx', '<p>Apreciable Gary Rusell Murillo Esquivel:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:45');
-INSERT INTO `cartas_envios_empleados` VALUES ('13', '2', '32124234', 'jazmine.peraza@anahuac.mx', '<p>Apreciable María Jazmine Del Carmen Peraza Rosas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo ', '2016-06-07 00:09:47');
-INSERT INTO `cartas_envios_empleados` VALUES ('14', '2', '32124224', 'florangely.herrera@anahuac.mx', '<p>Apreciable Florángely Herrera Baas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-07 00:09:48');
-INSERT INTO `cartas_envios_empleados` VALUES ('15', '2', '32143828', 'maribel.ojeda@anahuac.mx', '<p>Apreciable Georgina Maribel Ojeda Viana:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:49');
-INSERT INTO `cartas_envios_empleados` VALUES ('16', '2', '32144995', 'sally.avilez@anahuac.mx', '<p>Apreciable Sally Yolanda Avilez Briceño:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-07 00:09:50');
+INSERT INTO `cartas_envios_empleados` VALUES ('17', '3', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus car', '2016-06-08 20:51:42');
+INSERT INTO `cartas_envios_empleados` VALUES ('18', '3', '32124235', 'antonio.barrera@anahuac.mx', '<p>Apreciable Antonio Barrera Martínez:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus', '2016-06-08 20:51:44');
+INSERT INTO `cartas_envios_empleados` VALUES ('19', '3', '32153844', 'arturo.terrazas@anahuac.mx', '<p>Apreciable Arturo Alfonso Terrazas Brandt:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo', '2016-06-08 20:51:45');
+INSERT INTO `cartas_envios_empleados` VALUES ('20', '3', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus car', '2016-06-08 20:51:46');
+INSERT INTO `cartas_envios_empleados` VALUES ('21', '3', '32153664', 'abel.conde@anahuac.mx', '<p>Apreciable Abel Conde Burgos:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus caract', '2016-06-08 20:51:47');
+INSERT INTO `cartas_envios_empleados` VALUES ('22', '3', '32124344', 'maria.escobedo@anahuac.mx', '<p>Apreciable María Adela Escobedo García:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a ', '2016-06-08 20:51:48');
+INSERT INTO `cartas_envios_empleados` VALUES ('23', '3', '32124313', 'cecilia.martinez@anahuac.mx', '<p>Apreciable Maria Cecilia Martinez Rodriguez:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuer', '2016-06-08 20:51:49');
+INSERT INTO `cartas_envios_empleados` VALUES ('24', '3', '32124185', 'rubi.martin@anahuac.mx', '<p>Apreciable Rubí Candelaria Martín Gómez:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a', '2016-06-08 20:51:50');
+INSERT INTO `cartas_envios_empleados` VALUES ('25', '3', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo ', '2016-06-08 20:51:52');
+INSERT INTO `cartas_envios_empleados` VALUES ('26', '3', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo', '2016-06-08 20:51:53');
+INSERT INTO `cartas_envios_empleados` VALUES ('27', '3', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus ', '2016-06-08 20:51:54');
+INSERT INTO `cartas_envios_empleados` VALUES ('28', '3', '32157586', 'maria.lara@anahuac.mx', '<p>Apreciable Maria Simoneta Lara Lizarraga:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo ', '2016-06-08 20:51:55');
+INSERT INTO `cartas_envios_empleados` VALUES ('29', '3', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a', '2016-06-08 20:52:04');
+INSERT INTO `cartas_envios_empleados` VALUES ('30', '3', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a t', '2016-06-08 20:52:05');
+INSERT INTO `cartas_envios_empleados` VALUES ('31', '3', '32160003', 'sara.rafful@anahuac.mx', '<p>Apreciable Sara Nathali Rafful Soberanis:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo ', '2016-06-08 20:52:06');
+INSERT INTO `cartas_envios_empleados` VALUES ('32', '3', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a', '2016-06-08 20:52:07');
+INSERT INTO `cartas_envios_empleados` VALUES ('33', '3', '32162548', 'carlos.palma@anahuac.mx', '<p>Apreciable Carlos Alberto Palma Castillo:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo ', '2016-06-08 20:52:08');
+INSERT INTO `cartas_envios_empleados` VALUES ('34', '3', '32144190', 'juan.puc@anahuac.mx', '<p>Apreciable Juan Gualberto Puc Martin:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tu', '2016-06-08 20:52:13');
+INSERT INTO `cartas_envios_empleados` VALUES ('35', '3', '32124178', 'maricruz.rejon@anahuac.mx', '<p>Apreciable Lidia Maricruz Rejón Martínez:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo ', '2016-06-08 20:52:14');
+INSERT INTO `cartas_envios_empleados` VALUES ('36', '3', '32124222', 'marisol.vera@anahuac.mx', '<p>Apreciable Marisol Guadalupe Vera Cardeña:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo', '2016-06-08 20:52:15');
+INSERT INTO `cartas_envios_empleados` VALUES ('37', '3', '32124336', 'patricia.dzib@anahuac.mx', '<p>Apreciable Martha Patricia Dzib Chan:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tu', '2016-06-08 20:52:16');
+INSERT INTO `cartas_envios_empleados` VALUES ('38', '3', '32124365', 'jessica.ramos@anahuac.mx', '<p>Apreciable Jessica Guadalupe Ramos Medina:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo', '2016-06-08 20:52:17');
+INSERT INTO `cartas_envios_empleados` VALUES ('39', '4', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:54:29');
+INSERT INTO `cartas_envios_empleados` VALUES ('40', '4', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:54:30');
+INSERT INTO `cartas_envios_empleados` VALUES ('41', '4', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:54:31');
+INSERT INTO `cartas_envios_empleados` VALUES ('42', '4', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:54:32');
+INSERT INTO `cartas_envios_empleados` VALUES ('43', '4', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:54:33');
+INSERT INTO `cartas_envios_empleados` VALUES ('44', '4', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:54:34');
+INSERT INTO `cartas_envios_empleados` VALUES ('45', '4', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:54:36');
+INSERT INTO `cartas_envios_empleados` VALUES ('46', '4', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:54:37');
+INSERT INTO `cartas_envios_empleados` VALUES ('47', '4', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:54:38');
+INSERT INTO `cartas_envios_empleados` VALUES ('48', '4', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:54:39');
+INSERT INTO `cartas_envios_empleados` VALUES ('49', '5', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:57:24');
+INSERT INTO `cartas_envios_empleados` VALUES ('50', '5', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:57:25');
+INSERT INTO `cartas_envios_empleados` VALUES ('51', '5', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:57:26');
+INSERT INTO `cartas_envios_empleados` VALUES ('52', '5', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:57:27');
+INSERT INTO `cartas_envios_empleados` VALUES ('53', '5', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:57:28');
+INSERT INTO `cartas_envios_empleados` VALUES ('54', '5', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:57:29');
+INSERT INTO `cartas_envios_empleados` VALUES ('55', '5', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:57:30');
+INSERT INTO `cartas_envios_empleados` VALUES ('56', '5', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:57:31');
+INSERT INTO `cartas_envios_empleados` VALUES ('57', '5', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:57:33');
+INSERT INTO `cartas_envios_empleados` VALUES ('58', '5', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:57:34');
+INSERT INTO `cartas_envios_empleados` VALUES ('59', '5', '32149973', 'gary.murillo@anahuac.mx', '<p>Apreciable Gary Rusell Murillo Esquivel:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:57:41');
+INSERT INTO `cartas_envios_empleados` VALUES ('60', '5', '32124234', 'jazmine.peraza@anahuac.mx', '<p>Apreciable María Jazmine Del Carmen Peraza Rosas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo ', '2016-06-08 20:57:42');
+INSERT INTO `cartas_envios_empleados` VALUES ('61', '5', '32124224', 'florangely.herrera@anahuac.mx', '<p>Apreciable Florángely Herrera Baas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:57:43');
+INSERT INTO `cartas_envios_empleados` VALUES ('62', '6', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:57:51');
+INSERT INTO `cartas_envios_empleados` VALUES ('63', '6', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:57:52');
+INSERT INTO `cartas_envios_empleados` VALUES ('64', '6', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:57:53');
+INSERT INTO `cartas_envios_empleados` VALUES ('65', '6', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:57:54');
+INSERT INTO `cartas_envios_empleados` VALUES ('66', '6', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:57:55');
+INSERT INTO `cartas_envios_empleados` VALUES ('67', '6', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:57:56');
+INSERT INTO `cartas_envios_empleados` VALUES ('68', '6', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:57:57');
+INSERT INTO `cartas_envios_empleados` VALUES ('69', '6', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:57:58');
+INSERT INTO `cartas_envios_empleados` VALUES ('70', '6', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:58:00');
+INSERT INTO `cartas_envios_empleados` VALUES ('71', '6', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:58:01');
+INSERT INTO `cartas_envios_empleados` VALUES ('72', '6', '32149973', 'gary.murillo@anahuac.mx', '<p>Apreciable Gary Rusell Murillo Esquivel:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:02');
+INSERT INTO `cartas_envios_empleados` VALUES ('73', '6', '32124234', 'jazmine.peraza@anahuac.mx', '<p>Apreciable María Jazmine Del Carmen Peraza Rosas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo ', '2016-06-08 20:58:03');
+INSERT INTO `cartas_envios_empleados` VALUES ('74', '6', '32124224', 'florangely.herrera@anahuac.mx', '<p>Apreciable Florángely Herrera Baas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:58:04');
+INSERT INTO `cartas_envios_empleados` VALUES ('75', '6', '32143828', 'maribel.ojeda@anahuac.mx', '<p>Apreciable Georgina Maribel Ojeda Viana:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:05');
+INSERT INTO `cartas_envios_empleados` VALUES ('76', '6', '32144995', 'sally.avilez@anahuac.mx', '<p>Apreciable Sally Yolanda Avilez Briceño:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:06');
+INSERT INTO `cartas_envios_empleados` VALUES ('77', '6', '32124321', 'rodrigo.franco@anahuac.mx', '<p>Apreciable José Rodrigo Franco Calvillo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:07');
+INSERT INTO `cartas_envios_empleados` VALUES ('78', '6', '32142649', 'aida.munoz@anahuac.mx', '<p>Apreciable Aida Rosa Muñoz Bello:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compet', '2016-06-08 20:58:08');
+INSERT INTO `cartas_envios_empleados` VALUES ('79', '6', '32162062', 'ayerim.vallejo@anahuac.mx', '<p>Apreciable Ayerím Del Rosario Vallejo Álvarez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 20:58:09');
+INSERT INTO `cartas_envios_empleados` VALUES ('80', '6', '32153874', 'ernesto.saldana@anahuac.mx', '<p>Apreciable Ernesto Saldaña Aportela:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:58:10');
+INSERT INTO `cartas_envios_empleados` VALUES ('81', '6', '32150470', 'linabel.novelo@anahuac.mx', '<p>Apreciable Linabel Novelo Alcocer:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 20:58:11');
+INSERT INTO `cartas_envios_empleados` VALUES ('82', '6', '32124186', 'lia.narvaez@anahuac.mx', '<p>Apreciable Lia Regina Narváez Galaz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:58:12');
+INSERT INTO `cartas_envios_empleados` VALUES ('83', '6', '32142628', 'maria.bolio@anahuac.mx', '<p>Apreciable María José Bolio Romero:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:58:14');
+INSERT INTO `cartas_envios_empleados` VALUES ('84', '6', '32146467', 'olga.pinzon@anahuac.mx', '<p>Apreciable Olga Paulina Pinzón Balam:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:58:15');
+INSERT INTO `cartas_envios_empleados` VALUES ('85', '6', '32123111', 'luis.gutierrez@anahuac.mx', '<p>Apreciable Luis Ernesto Gutierrez Martinez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus', '2016-06-08 20:58:16');
+INSERT INTO `cartas_envios_empleados` VALUES ('86', '6', '32148709', 'ana.aysa@anahuac.mx', '<p>Apreciable Ana Lucía Aysa Rodríguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:58:17');
+INSERT INTO `cartas_envios_empleados` VALUES ('87', '6', '32146961', 'tatiana.castillo@anahuac.mx', '<p>Apreciable Tatiana Macarena Castillo Salazar:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 20:58:18');
+INSERT INTO `cartas_envios_empleados` VALUES ('88', '6', '32147708', 'anunciata.lopez@anahuac.mx', '<p>Apreciable María Anunciata López Vales:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:58:19');
+INSERT INTO `cartas_envios_empleados` VALUES ('89', '6', '32153479', 'paulina.gonzalez@anahuac.mx', '<p>Apreciable Ana Paulina González Anaya:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:58:20');
+INSERT INTO `cartas_envios_empleados` VALUES ('90', '6', '32151164', 'luisa.payeras@anahuac.mx', '<p>Apreciable Luisa Maria Payeras Sanchez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:58:21');
+INSERT INTO `cartas_envios_empleados` VALUES ('91', '6', '32151603', 'maricela.marqueda@anahuac.mx', '<p>Apreciable Maricela Marqueda Alcocer:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:58:22');
+INSERT INTO `cartas_envios_empleados` VALUES ('92', '6', '32142632', 'narciso.acuna@anahuac.mx', '<p>Apreciable Narciso Antonio Acuña González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:23');
+INSERT INTO `cartas_envios_empleados` VALUES ('93', '6', '32124350', 'absalon.alvarez@anahuac.mx', '<p>Apreciable Absalón Álvarez Escalante:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:58:24');
+INSERT INTO `cartas_envios_empleados` VALUES ('94', '6', '32124181', 'alejandra.mendoza@anahuac.mx', '<p>Apreciable Alejandra Mendoza Villalobos:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:25');
+INSERT INTO `cartas_envios_empleados` VALUES ('95', '6', '32124278', 'fernando.acevedo@anahuac.mx', '<p>Apreciable Fernando Enrique Acevedo Marentes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 20:58:27');
+INSERT INTO `cartas_envios_empleados` VALUES ('96', '6', '32155724', 'laura.ortega@anahuac.mx', '<p>Apreciable Laura Elena Ortega Rosado:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 20:58:28');
+INSERT INTO `cartas_envios_empleados` VALUES ('97', '6', '32147656', 'diana.luna@anahuac.mx', '<p>Apreciable Diana Patricia Luna Mccarthy:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:29');
+INSERT INTO `cartas_envios_empleados` VALUES ('98', '6', '32124238', 'fernando.torreblanca@anahuac.mx', '<p>Apreciable Fernando Antonio Torreblanca Rios:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 20:58:30');
+INSERT INTO `cartas_envios_empleados` VALUES ('99', '6', '32124183', 'francisco.otero@anahuac.mx', '<p>Apreciable Francisco Javier Otero Rejón:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:31');
+INSERT INTO `cartas_envios_empleados` VALUES ('100', '6', '32148701', 'jaime.zaldivar@anahuac.mx', '<p>Apreciable Jaime Antonio Zaldívar Rae:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:58:32');
+INSERT INTO `cartas_envios_empleados` VALUES ('101', '6', '32124225', 'alejandro.gonzalezn@anahuac.mx', '<p>Apreciable José Alejandro González Novelo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:33');
+INSERT INTO `cartas_envios_empleados` VALUES ('102', '6', '32149211', 'jose.silveira@anahuac.mx', '<p>Apreciable José Antonio Silveira Bolio:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:58:34');
+INSERT INTO `cartas_envios_empleados` VALUES ('103', '6', '32124192', 'benjamin.negroe@anahuac.mx', '<p>Apreciable Benjamín Ramón Negroe Monforte:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:35');
+INSERT INTO `cartas_envios_empleados` VALUES ('104', '6', '32142658', 'hansel.ortiz@anahuac.mx', '<p>Apreciable Hansel Francisco Ortiz Heredia:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:36');
+INSERT INTO `cartas_envios_empleados` VALUES ('105', '6', '32161047', 'ileana.ortega@anahuac.mx', '<p>Apreciable Ileana Guadalupe Ortega González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:58:37');
+INSERT INTO `cartas_envios_empleados` VALUES ('106', '6', '32142667', 'maria.castro@anahuac.mx', '<p>Apreciable María Alicia Castro Landeros:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:38');
+INSERT INTO `cartas_envios_empleados` VALUES ('107', '6', '32142651', 'jose.echeverria@anahuac.mx', '<p>Apreciable José Manuel Echeverría Y Eguiluz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:58:40');
+INSERT INTO `cartas_envios_empleados` VALUES ('108', '6', '32149706', 'eduardo.espinosa@anahuac.mx', '<p>Apreciable Eduardo Espinosa Y Macin:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:58:41');
+INSERT INTO `cartas_envios_empleados` VALUES ('109', '6', '32124342', 'jose.lunam@anahuac.mx', '<p>Apreciable Jose Luis Luna Martínez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:58:42');
+INSERT INTO `cartas_envios_empleados` VALUES ('110', '6', '32148067', 'lili.estrada@anahuac.mx', '<p>Apreciable Lili Marlene Estrada Avilés:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:58:43');
+INSERT INTO `cartas_envios_empleados` VALUES ('111', '6', '32124226', 'antonio.anaya@anahuac.mx', '<p>Apreciable Juan Antonio Anaya Sandoval:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:58:44');
+INSERT INTO `cartas_envios_empleados` VALUES ('112', '6', '32147525', 'carlos.wabi@anahuac.mx', '<p>Apreciable Carlos Andrés Wabi Peniche:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:58:45');
+INSERT INTO `cartas_envios_empleados` VALUES ('113', '6', '32142661', 'jorge.rivera@anahuac.mx', '<p>Apreciable Jorge Rivera Rovelo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competen', '2016-06-08 20:58:46');
+INSERT INTO `cartas_envios_empleados` VALUES ('114', '6', '32144114', 'jose.escalante@anahuac.mx', '<p>Apreciable José Luis Escalante Macías Valadez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 20:58:47');
+INSERT INTO `cartas_envios_empleados` VALUES ('115', '6', '32124229', 'marisol.achach@anahuac.mx', '<p>Apreciable Marisol Achach Solís:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:58:48');
+INSERT INTO `cartas_envios_empleados` VALUES ('116', '6', '32124209', 'marisol.tello@anahuac.mx', '<p>Apreciable Marisol Tello Rodriguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:58:49');
+INSERT INTO `cartas_envios_empleados` VALUES ('117', '6', '32124257', 'martha.barrera@anahuac.mx', '<p>Apreciable Martha Eugenia Barrera Bustillos:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 20:58:50');
+INSERT INTO `cartas_envios_empleados` VALUES ('118', '6', '32124195', 'martha.tello@anahuac.mx', '<p>Apreciable Martha María Tello Rodriguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:58:51');
+INSERT INTO `cartas_envios_empleados` VALUES ('119', '6', '32154629', 'rolando.peniche@anahuac.mx', '<p>Apreciable Rolando Gonzalo Peniche Marcin:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:52');
+INSERT INTO `cartas_envios_empleados` VALUES ('120', '6', '32124245', 'susana.guzman@anahuac.mx', '<p>Apreciable Susana Enriqueta Guzmán Silva:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:58:54');
+INSERT INTO `cartas_envios_empleados` VALUES ('121', '6', '32124236', 'anna.cruz@anahuac.mx', '<p>Apreciable Anna Karina Cruz López:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 20:58:55');
+INSERT INTO `cartas_envios_empleados` VALUES ('122', '6', '32162093', 'erika.enriquezv@anahuac.mx', '<p>Apreciable Erika Del Socorro Enríquez Vázquez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 20:58:56');
+INSERT INTO `cartas_envios_empleados` VALUES ('123', '6', '32137041', 'judith.towle@anahuac.mx', '<p>Apreciable Judith Margarete Towle Wachenheim:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 20:58:57');
+INSERT INTO `cartas_envios_empleados` VALUES ('124', '6', '32156835', 'yermak.duarte@anahuac.mx', '<p>Apreciable Yermak Alexandro Duarte Rosado:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:58:58');
+INSERT INTO `cartas_envios_empleados` VALUES ('125', '6', '32143434', 'regina.garza@anahuac.mx', '<p>Apreciable Regina Garza Roche:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competenc', '2016-06-08 20:58:59');
+INSERT INTO `cartas_envios_empleados` VALUES ('126', '6', '2', 'ulises.penunuri@anahuac.mx', '<p>Apreciable Ulises Peñúñuri 	Munguía:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:59:00');
+INSERT INTO `cartas_envios_empleados` VALUES ('127', '6', '32124202', 'antonio.zaldivar@anahuac.mx', '<p>Apreciable Antonio Zaldivar Álvarez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 20:59:01');
+INSERT INTO `cartas_envios_empleados` VALUES ('128', '6', '32148648', 'dafne.dominguez@anahuac.mx', '<p>Apreciable Dafne Domínguez Nolasco:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:59:02');
+INSERT INTO `cartas_envios_empleados` VALUES ('129', '6', '32124289', 'jhoanna.echazarreta@anahuac.mx', '<p>Apreciable Jhoanna Echazarreta Montero:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 20:59:03');
+INSERT INTO `cartas_envios_empleados` VALUES ('130', '6', '32124189', 'julio.ontiveros@anahuac.mx', '<p>Apreciable Julio Antonio Ontiveros Velázquez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 20:59:04');
+INSERT INTO `cartas_envios_empleados` VALUES ('131', '6', '32124341', 'leonor.martinez@anahuac.mx', '<p>Apreciable Leonor Beatriz Del Socorro Martínez González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desa', '2016-06-08 20:59:05');
+INSERT INTO `cartas_envios_empleados` VALUES ('132', '6', '32148074', 'dora.martinez@anahuac.mx', '<p>Apreciable Dora Elia Martínez Faz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 20:59:07');
+INSERT INTO `cartas_envios_empleados` VALUES ('133', '6', '32124243', 'eugenia.euan@anahuac.mx', '<p>Apreciable Eugenia Beatriz Euan Calderón:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:59:08');
+INSERT INTO `cartas_envios_empleados` VALUES ('134', '7', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:59:52');
+INSERT INTO `cartas_envios_empleados` VALUES ('135', '7', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 20:59:53');
+INSERT INTO `cartas_envios_empleados` VALUES ('136', '7', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 20:59:54');
+INSERT INTO `cartas_envios_empleados` VALUES ('137', '7', '32124315', 'astrid.peniche@anahuac.mx', '<p>Apreciable Astrid Marvin Peniche Sanguino:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 20:59:55');
+INSERT INTO `cartas_envios_empleados` VALUES ('138', '7', '32154232', 'isabel.lizarraga@anahuac.mx', '<p>Apreciable Isabel Lizarraga Castro:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 20:59:56');
+INSERT INTO `cartas_envios_empleados` VALUES ('139', '7', '32124188', 'rocio.chavez@anahuac.mx', '<p>Apreciable María Del Rocío Chávez Reyes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:59:57');
+INSERT INTO `cartas_envios_empleados` VALUES ('140', '7', '32142851', 'karla.falcon@anahuac.mx', '<p>Apreciable Karla Yamile Falcón Rivera:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 20:59:58');
+INSERT INTO `cartas_envios_empleados` VALUES ('141', '7', '32124975', 'mayte.rodriguez@anahuac.mx', '<p>Apreciable Mayte Eugenia Rodríguez Pech:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 20:59:59');
+INSERT INTO `cartas_envios_empleados` VALUES ('142', '7', '32160092', 'luis.gonzalezc@anahuac.mx', '<p>Apreciable Luis Alberto González Cincúnegui:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 21:00:00');
+INSERT INTO `cartas_envios_empleados` VALUES ('143', '7', '32124304', 'anilu.mendoza@anahuac.mx', '<p>Apreciable Beatriz Anilú Mendoza Noh:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 21:00:01');
+INSERT INTO `cartas_envios_empleados` VALUES ('144', '7', '32149973', 'gary.murillo@anahuac.mx', '<p>Apreciable Gary Rusell Murillo Esquivel:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:03');
+INSERT INTO `cartas_envios_empleados` VALUES ('145', '7', '32124234', 'jazmine.peraza@anahuac.mx', '<p>Apreciable María Jazmine Del Carmen Peraza Rosas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo ', '2016-06-08 21:00:04');
+INSERT INTO `cartas_envios_empleados` VALUES ('146', '7', '32124224', 'florangely.herrera@anahuac.mx', '<p>Apreciable Florángely Herrera Baas:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 21:00:05');
+INSERT INTO `cartas_envios_empleados` VALUES ('147', '7', '32143828', 'maribel.ojeda@anahuac.mx', '<p>Apreciable Georgina Maribel Ojeda Viana:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:06');
+INSERT INTO `cartas_envios_empleados` VALUES ('148', '7', '32144995', 'sally.avilez@anahuac.mx', '<p>Apreciable Sally Yolanda Avilez Briceño:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:07');
+INSERT INTO `cartas_envios_empleados` VALUES ('149', '7', '32124321', 'rodrigo.franco@anahuac.mx', '<p>Apreciable José Rodrigo Franco Calvillo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:08');
+INSERT INTO `cartas_envios_empleados` VALUES ('150', '7', '32142649', 'aida.munoz@anahuac.mx', '<p>Apreciable Aida Rosa Muñoz Bello:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compet', '2016-06-08 21:00:09');
+INSERT INTO `cartas_envios_empleados` VALUES ('151', '7', '32162062', 'ayerim.vallejo@anahuac.mx', '<p>Apreciable Ayerím Del Rosario Vallejo Álvarez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 21:00:10');
+INSERT INTO `cartas_envios_empleados` VALUES ('152', '7', '32153874', 'ernesto.saldana@anahuac.mx', '<p>Apreciable Ernesto Saldaña Aportela:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:00:11');
+INSERT INTO `cartas_envios_empleados` VALUES ('153', '7', '32150470', 'linabel.novelo@anahuac.mx', '<p>Apreciable Linabel Novelo Alcocer:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 21:00:12');
+INSERT INTO `cartas_envios_empleados` VALUES ('154', '7', '32124186', 'lia.narvaez@anahuac.mx', '<p>Apreciable Lia Regina Narváez Galaz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:00:13');
+INSERT INTO `cartas_envios_empleados` VALUES ('155', '7', '32142628', 'maria.bolio@anahuac.mx', '<p>Apreciable María José Bolio Romero:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 21:00:14');
+INSERT INTO `cartas_envios_empleados` VALUES ('156', '7', '32146467', 'olga.pinzon@anahuac.mx', '<p>Apreciable Olga Paulina Pinzón Balam:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 21:00:16');
+INSERT INTO `cartas_envios_empleados` VALUES ('157', '7', '32123111', 'luis.gutierrez@anahuac.mx', '<p>Apreciable Luis Ernesto Gutierrez Martinez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus', '2016-06-08 21:00:17');
+INSERT INTO `cartas_envios_empleados` VALUES ('158', '7', '32148709', 'ana.aysa@anahuac.mx', '<p>Apreciable Ana Lucía Aysa Rodríguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:00:18');
+INSERT INTO `cartas_envios_empleados` VALUES ('159', '7', '32146961', 'tatiana.castillo@anahuac.mx', '<p>Apreciable Tatiana Macarena Castillo Salazar:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 21:00:19');
+INSERT INTO `cartas_envios_empleados` VALUES ('160', '7', '32147708', 'anunciata.lopez@anahuac.mx', '<p>Apreciable María Anunciata López Vales:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:00:20');
+INSERT INTO `cartas_envios_empleados` VALUES ('161', '7', '32153479', 'paulina.gonzalez@anahuac.mx', '<p>Apreciable Ana Paulina González Anaya:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 21:00:21');
+INSERT INTO `cartas_envios_empleados` VALUES ('162', '7', '32151164', 'luisa.payeras@anahuac.mx', '<p>Apreciable Luisa Maria Payeras Sanchez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:00:22');
+INSERT INTO `cartas_envios_empleados` VALUES ('163', '7', '32151603', 'maricela.marqueda@anahuac.mx', '<p>Apreciable Maricela Marqueda Alcocer:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 21:00:23');
+INSERT INTO `cartas_envios_empleados` VALUES ('164', '7', '32142632', 'narciso.acuna@anahuac.mx', '<p>Apreciable Narciso Antonio Acuña González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:24');
+INSERT INTO `cartas_envios_empleados` VALUES ('165', '7', '32124350', 'absalon.alvarez@anahuac.mx', '<p>Apreciable Absalón Álvarez Escalante:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 21:00:25');
+INSERT INTO `cartas_envios_empleados` VALUES ('166', '7', '32124181', 'alejandra.mendoza@anahuac.mx', '<p>Apreciable Alejandra Mendoza Villalobos:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:26');
+INSERT INTO `cartas_envios_empleados` VALUES ('167', '7', '32124278', 'fernando.acevedo@anahuac.mx', '<p>Apreciable Fernando Enrique Acevedo Marentes:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 21:00:28');
+INSERT INTO `cartas_envios_empleados` VALUES ('168', '7', '32155724', 'laura.ortega@anahuac.mx', '<p>Apreciable Laura Elena Ortega Rosado:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>co', '2016-06-08 21:00:29');
+INSERT INTO `cartas_envios_empleados` VALUES ('169', '7', '32147656', 'diana.luna@anahuac.mx', '<p>Apreciable Diana Patricia Luna Mccarthy:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:30');
+INSERT INTO `cartas_envios_empleados` VALUES ('170', '7', '32124238', 'fernando.torreblanca@anahuac.mx', '<p>Apreciable Fernando Antonio Torreblanca Rios:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 21:00:31');
+INSERT INTO `cartas_envios_empleados` VALUES ('171', '7', '32124183', 'francisco.otero@anahuac.mx', '<p>Apreciable Francisco Javier Otero Rejón:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:32');
+INSERT INTO `cartas_envios_empleados` VALUES ('172', '7', '32148701', 'jaime.zaldivar@anahuac.mx', '<p>Apreciable Jaime Antonio Zaldívar Rae:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 21:00:33');
+INSERT INTO `cartas_envios_empleados` VALUES ('173', '7', '32124225', 'alejandro.gonzalezn@anahuac.mx', '<p>Apreciable José Alejandro González Novelo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:34');
+INSERT INTO `cartas_envios_empleados` VALUES ('174', '7', '32149211', 'jose.silveira@anahuac.mx', '<p>Apreciable José Antonio Silveira Bolio:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:00:35');
+INSERT INTO `cartas_envios_empleados` VALUES ('175', '7', '32124192', 'benjamin.negroe@anahuac.mx', '<p>Apreciable Benjamín Ramón Negroe Monforte:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:36');
+INSERT INTO `cartas_envios_empleados` VALUES ('176', '7', '32142658', 'hansel.ortiz@anahuac.mx', '<p>Apreciable Hansel Francisco Ortiz Heredia:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:37');
+INSERT INTO `cartas_envios_empleados` VALUES ('177', '7', '32161047', 'ileana.ortega@anahuac.mx', '<p>Apreciable Ileana Guadalupe Ortega González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 21:00:38');
+INSERT INTO `cartas_envios_empleados` VALUES ('178', '7', '32142667', 'maria.castro@anahuac.mx', '<p>Apreciable María Alicia Castro Landeros:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:39');
+INSERT INTO `cartas_envios_empleados` VALUES ('179', '7', '32142651', 'jose.echeverria@anahuac.mx', '<p>Apreciable José Manuel Echeverría Y Eguiluz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 21:00:41');
+INSERT INTO `cartas_envios_empleados` VALUES ('180', '7', '32149706', 'eduardo.espinosa@anahuac.mx', '<p>Apreciable Eduardo Espinosa Y Macin:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:00:42');
+INSERT INTO `cartas_envios_empleados` VALUES ('181', '7', '32124342', 'jose.lunam@anahuac.mx', '<p>Apreciable Jose Luis Luna Martínez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 21:00:43');
+INSERT INTO `cartas_envios_empleados` VALUES ('182', '7', '32148067', 'lili.estrada@anahuac.mx', '<p>Apreciable Lili Marlene Estrada Avilés:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:00:44');
+INSERT INTO `cartas_envios_empleados` VALUES ('183', '7', '32124226', 'antonio.anaya@anahuac.mx', '<p>Apreciable Juan Antonio Anaya Sandoval:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:00:45');
+INSERT INTO `cartas_envios_empleados` VALUES ('184', '7', '32147525', 'carlos.wabi@anahuac.mx', '<p>Apreciable Carlos Andrés Wabi Peniche:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>c', '2016-06-08 21:00:46');
+INSERT INTO `cartas_envios_empleados` VALUES ('185', '7', '32142661', 'jorge.rivera@anahuac.mx', '<p>Apreciable Jorge Rivera Rovelo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competen', '2016-06-08 21:00:47');
+INSERT INTO `cartas_envios_empleados` VALUES ('186', '7', '32144114', 'jose.escalante@anahuac.mx', '<p>Apreciable José Luis Escalante Macías Valadez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 21:00:48');
+INSERT INTO `cartas_envios_empleados` VALUES ('187', '7', '32124229', 'marisol.achach@anahuac.mx', '<p>Apreciable Marisol Achach Solís:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 21:00:49');
+INSERT INTO `cartas_envios_empleados` VALUES ('188', '7', '32124209', 'marisol.tello@anahuac.mx', '<p>Apreciable Marisol Tello Rodriguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 21:00:50');
+INSERT INTO `cartas_envios_empleados` VALUES ('189', '7', '32124257', 'martha.barrera@anahuac.mx', '<p>Apreciable Martha Eugenia Barrera Bustillos:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de su', '2016-06-08 21:00:51');
+INSERT INTO `cartas_envios_empleados` VALUES ('190', '7', '32124195', 'martha.tello@anahuac.mx', '<p>Apreciable Martha María Tello Rodriguez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b', '2016-06-08 21:00:52');
+INSERT INTO `cartas_envios_empleados` VALUES ('191', '7', '32154629', 'rolando.peniche@anahuac.mx', '<p>Apreciable Rolando Gonzalo Peniche Marcin:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:53');
+INSERT INTO `cartas_envios_empleados` VALUES ('192', '7', '32124245', 'susana.guzman@anahuac.mx', '<p>Apreciable Susana Enriqueta Guzmán Silva:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 21:00:55');
+INSERT INTO `cartas_envios_empleados` VALUES ('193', '7', '32124236', 'anna.cruz@anahuac.mx', '<p>Apreciable Anna Karina Cruz López:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 21:00:56');
+INSERT INTO `cartas_envios_empleados` VALUES ('194', '7', '32162093', 'erika.enriquezv@anahuac.mx', '<p>Apreciable Erika Del Socorro Enríquez Vázquez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de ', '2016-06-08 21:00:57');
+INSERT INTO `cartas_envios_empleados` VALUES ('195', '7', '32137041', 'judith.towle@anahuac.mx', '<p>Apreciable Judith Margarete Towle Wachenheim:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 21:00:58');
+INSERT INTO `cartas_envios_empleados` VALUES ('196', '7', '32156835', 'yermak.duarte@anahuac.mx', '<p>Apreciable Yermak Alexandro Duarte Rosado:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus ', '2016-06-08 21:00:59');
+INSERT INTO `cartas_envios_empleados` VALUES ('197', '7', '32143434', 'regina.garza@anahuac.mx', '<p>Apreciable Regina Garza Roche:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competenc', '2016-06-08 21:01:00');
+INSERT INTO `cartas_envios_empleados` VALUES ('198', '7', '2', 'ulises.penunuri@anahuac.mx', '<p>Apreciable Ulises Peñúñuri 	Munguía:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:01:01');
+INSERT INTO `cartas_envios_empleados` VALUES ('199', '7', '32124202', 'antonio.zaldivar@anahuac.mx', '<p>Apreciable Antonio Zaldivar Álvarez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>com', '2016-06-08 21:01:02');
+INSERT INTO `cartas_envios_empleados` VALUES ('200', '7', '32148648', 'dafne.dominguez@anahuac.mx', '<p>Apreciable Dafne Domínguez Nolasco:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>comp', '2016-06-08 21:01:03');
+INSERT INTO `cartas_envios_empleados` VALUES ('201', '7', '32124289', 'jhoanna.echazarreta@anahuac.mx', '<p>Apreciable Jhoanna Echazarreta Montero:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>', '2016-06-08 21:01:04');
+INSERT INTO `cartas_envios_empleados` VALUES ('202', '7', '32124189', 'julio.ontiveros@anahuac.mx', '<p>Apreciable Julio Antonio Ontiveros Velázquez:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de s', '2016-06-08 21:01:05');
+INSERT INTO `cartas_envios_empleados` VALUES ('203', '7', '32124341', 'leonor.martinez@anahuac.mx', '<p>Apreciable Leonor Beatriz Del Socorro Martínez González:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desa', '2016-06-08 21:01:06');
+INSERT INTO `cartas_envios_empleados` VALUES ('204', '7', '32148074', 'dora.martinez@anahuac.mx', '<p>Apreciable Dora Elia Martínez Faz:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compe', '2016-06-08 21:01:08');
+INSERT INTO `cartas_envios_empleados` VALUES ('205', '7', '32124243', 'eugenia.euan@anahuac.mx', '<p>Apreciable Eugenia Beatriz Euan Calderón:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 21:01:09');
+INSERT INTO `cartas_envios_empleados` VALUES ('206', '8', '1', 'rafael.pardo@anahuac.mx', '<p>Apreciable Rafael Pardo 	Hervás:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 21:49:59');
+INSERT INTO `cartas_envios_empleados` VALUES ('207', '8', '32142652', 'eduardo.castro@anahuac.mx', '<p>Apreciable Eduardo Castro Avila:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>compete', '2016-06-08 21:50:00');
+INSERT INTO `cartas_envios_empleados` VALUES ('208', '8', '32124267', 'fermin.cardos@anahuac.mx', '<p>Apreciable Fermín Orlando Cardós Santoyo:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <', '2016-06-08 21:50:01');
 
 -- ----------------------------
 -- Table structure for cartas_templates
@@ -116,7 +297,7 @@ CREATE TABLE `cartas_templates` (
 -- ----------------------------
 -- Records of cartas_templates
 -- ----------------------------
-INSERT INTO `cartas_templates` VALUES ('1', '<p>Apreciable [empleado_nombre]:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competencias</b> de acuerdo a sus características personales y las requeridas  para el puesto.</p>\r\n \r\n<p>Es una oportunidad de tener un <b>contacto directo</b> con cada uno y juntos analizar sus fortalezas y áreas de oportunidad a seguir desarrollando en beneficio del área y de acuerdo a nuestra <b>misión</b> institucional.</p>\r\n\r\n<p>La evaluación se llevará acabo en las siguientes fechas:</p>\r\n<ul>\r\n	<li>Inicio: <b>Lunes 25 de abril de 2016</b>.</li>\r\n	<li>Cierre: <b>Miércoles 3 de mayo de 2016 a las 20:00 horas</b>.</li>\r\n	<li>Resultados:\r\n		<ul>\r\n			<li>El <b>lunes 6 y martes 7 de junio de 2016</b> se entregarán a <b>cada Evaluador</b> los <b>resultados impresos</b>.</li>\r\n			<li>El <b>lunes 27 de junio de 2016</b> se enviarán por correo electrónico a cada colaborador.</li>\r\n		</ul>\r\n	</li>\r\n</ul>\r\n<p>Recomendaciones:</p>\r\n<ol>\r\n  <li>Una vez iniciada la sesión de evaluación intenta terminarla (no te tomara más de 15 minutos).</li>\r\n  <li>El proceso de evaluación consta de 4 partes, las cuales se deben de contestar al 100%:\r\n		<ol type=\"a\">\r\n			<li><b>Valoración de las competencias institucionales:</b> asistencia y puntualidad, actitud de servicio,comunicación asertiva,responsabilidad/compromiso institucional, creatividad e innovación,proactividad e identidad institucional (para todo el personal).</li>\r\n			<li><b>Valoración de las competencias directivas:</b> liderazgo, toma de decisiones y manejo de estrés (sólo para puestos directivos).</li>\r\n			<li><b>Valoración de competencias del nivel:</b> Las cuales abarcan las funciones generales de cada nivel y algunas especificaciones del puesto (para todo el personal).</li>\r\n			<li><b>Redacción libre:</b> fortalezas, áreas de oportunidad, cursos de capacitación y comentarios.</li>\r\n		</ol>\r\n	</li>\r\n	<li>En caso de tener alguna duda, por favor, dirígete al correo <br><a href=\"maailto:evaluacion.desempeno@anahuac.mx\">evaluacion.desempeno@anahuac.mx</a></li>\r\n</ol>\r\n\r\n<p>Finalmente, te invitamos a ingresar al siguiente link desde tu pc o dispositivo móvil, en cualquier lugar que cuente con conexión a internet:<br>\r\n<a href=\"[vinculo]\">[vinculo]</a></p>\r\n<p>\r\n	Muchas gracias por tu interés y colaboración.<br><br>\r\n	Atentamente,<br><br>\r\n	<b>Alejandrina Acevedo Vales.</b>\r\n</p>', '<p>No hay un texto definido...</p>\r\n<p><a href=\"[vinculo]\">[vinculo]</a></p>');
+INSERT INTO `cartas_templates` VALUES ('1', '<p>Apreciable [empleado_nombre]:</p>\r\n<p>Ha llegado el momento de valorar el desempeño de nuestros colaboradores (a cargo) en la realización de sus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de sus <b>competencias</b> de acuerdo a sus características personales y las requeridas  para el puesto.</p>\r\n \r\n<p>Es una oportunidad de tener un <b>contacto directo</b> con cada uno y juntos analizar sus fortalezas y áreas de oportunidad a seguir desarrollando en beneficio del área y de acuerdo a nuestra <b>misión</b> institucional.</p>\r\n\r\n<p>La evaluación se llevará acabo en las siguientes fechas:</p>\r\n<ul>\r\n	<li>Inicio: <b>Lunes 13 de junio de 2016</b>.</li>\r\n	<li>Cierre: <b>Viernes 24 de junio de 2016 a las 20:00 horas</b>.</li>\r\n	<li>Resultados:\r\n		<ul>\r\n			<li>El <b>lunes 1 y martes 2 de agosto de 2016</b> se enviará a cada <b>Evaluador</b> los resultados vía electrónica.</li>\r\n			<li>Del <b>lunes 29 al miércoles 31 de agosto de 2016</b> se enviará a cada <b>Colaborador</b> sus resultados vía electrónica.</li>\r\n		</ul>\r\n	</li>\r\n</ul>\r\n<p>Recomendaciones:</p>\r\n<ol>\r\n  <li>Una vez iniciada la sesión de evaluación intenta terminarla (no te tomara más de 15 minutos).</li>\r\n  <li>El proceso de evaluación consta de 4 partes, las cuales se deben de contestar al 100%:\r\n		<ol type=\"a\">\r\n			<li><b>Valoración de las Competencias Institucionales:</b> asistencia y puntualidad, actitud de servicio,comunicación asertiva,responsabilidad/compromiso institucional, creatividad e innovación,proactividad e identidad institucional (para todo el personal).</li>\r\n			<li><b>Valoración de las Competencias Directivas:</b> liderazgo, toma de decisiones y manejo de estrés (sólo para puestos directivos).</li>\r\n			<li><b>Valoración de Competencias del Puesto:</b> Las cuales abarcan las funciones generales de cada puesto y algunas especificaciones del nivel.</li>\r\n			<li><b>Redacción libre:</b> fortalezas, áreas de oportunidad, cursos de capacitación y comentarios.</li>\r\n		</ol>\r\n	</li>\r\n	<li>En caso de tener alguna duda, por favor, dirígete al correo <br><a href=\"mailto:evaluacion.desempeno@anahuac.mx\">evaluacion.desempeno@anahuac.mx</a></li>\r\n</ol>\r\n\r\n<p>Finalmente, te invitamos a ingresar al siguiente link desde tu pc o dispositivo móvil, en cualquier lugar que cuente con conexión a internet:<br>\r\n<a href=\"[vinculo]\">[vinculo]</a></p>\r\n<p>\r\n	Muchas gracias por tu interés y colaboración.<br><br>\r\n	Atentamente,<br><br>\r\n	<b>Alejandrina Acevedo Vales.</b>\r\n</p>', '<p>Apreciable [empleado_nombre]:</p>\r\n<p>Ha llegado el momento de  que valores tu desempeño  en la realización de tus <b>funciones</b>  cotidianas, <b>actitudes</b> predominantes y  el grado de desarrollo de tus <b>competencias</b> de acuerdo a tus características personales y las requeridas  para el puesto.</p>\r\n \r\n<p>Es una oportunidad de analizar tus fortalezas y áreas  a seguir desarrollando en beneficio del departamento y de acuerdo a nuestra <b>Misión Institucional</b>.</p>\r\n\r\n<p>La evaluación se llevará acabo en las siguientes fechas:</p>\r\n<ul>\r\n	<li>Inicio: <b>Lunes 13 de junio de 2016</b>.</li>\r\n	<li>Cierre: <b>Viernes 24 de junio de 2016 a las 20:00 horas</b>.</li>\r\n	<li>Resultados:\r\n		<ul>\r\n			<li>El <b>lunes 1 y martes 2 de agosto de 2016</b> se enviará a cada <b>Evaluador</b> los resultados vía electrónica.</li>\r\n			<li>Del <b>lunes 29 al miércoles 31 de agosto de 2016</b> se enviará a cada <b>Colaborador</b> sus resultados vía electrónica.</li>\r\n		</ul>\r\n	</li>\r\n</ul>\r\n<p>Recomendaciones:</p>\r\n<ol>\r\n  <li>Una vez iniciada la sesión de evaluación intenta terminarla (no te tomara más de 15 minutos).</li>\r\n  <li>El proceso de evaluación consta de 3 partes, las cuales se deben de contestar al 100%:\r\n		<ol type=\"a\">\r\n			<li><b>Valoración de las Competencias Institucionales:</b> asistencia y puntualidad, actitud de servicio,comunicación asertiva,responsabilidad/compromiso institucional, creatividad e innovación,proactividad e identidad institucional (para todo el personal).</li>\r\n			<li><b>Valoración de las Competencias Directivas:</b> liderazgo, toma de decisiones y manejo de estrés (sólo para puestos directivos).</li>\r\n			<li><b>Valoración de Funciones del Puesto:</b> Las cuales abarcan las funciones generales de cada puesto y algunas especificaciones del nivel.</li>\r\n		</ol>\r\n	</li>\r\n	<li>En caso de tener alguna duda, por favor, dirígete al correo <br><a href=\"mailto:evaluacion.desempeno@anahuac.mx\">evaluacion.desempeno@anahuac.mx</a></li>\r\n</ol>\r\n\r\n<p>Finalmente, te invitamos a ingresar al siguiente link desde tu pc o dispositivo móvil, en cualquier lugar que cuente con conexión a internet:<br>\r\n<a href=\"[vinculo]\">[vinculo]</a></p>\r\n<p>\r\n	Muchas gracias por tu interés y colaboración.<br><br>\r\n	Atentamente,<br><br>\r\n	<b>Alejandrina Acevedo Vales.</b>\r\n</p>');
 
 -- ----------------------------
 -- Table structure for ci_sessions
@@ -134,6 +315,7 @@ CREATE TABLE `ci_sessions` (
 -- ----------------------------
 -- Records of ci_sessions
 -- ----------------------------
+INSERT INTO `ci_sessions` VALUES ('104a4ed3900817a39fa434e8f705b22b82b8b3cd', '127.0.0.1', '1465441110', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353433303038373B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30392030313A35343A3439223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 INSERT INTO `ci_sessions` VALUES ('d574eec3aa02b1fb95cfce969737b3a0609fea69', '127.0.0.1', '1465354999', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353237343834363B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30372030363A34373A3237223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 INSERT INTO `ci_sessions` VALUES ('52c24c8a0cc002e7af7625ae63644b1984989c66', '127.0.0.1', '1465275475', 0x5F5F63695F6C6173745F726567656E65726174657C693A313436353237343837353B61636365736F7C623A313B686F72614C6F6775656F7C733A31393A22323031362D30362D30372030363A34383A3238223B7573756172696F7C733A353A2261646D696E223B706173737C733A34303A2264303333653232616533343861656235363630666332313430616563333538353063346461393937223B6E6F6D6272657C733A32343A2241646D696E6973747261646F722064652073697374656D61223B656D61696C7C733A31383A2261646D696E4062636F72652E636F6D2E6D78223B6665636861526567697374726F7C733A31393A22323031352D30392D30372032303A35383A3333223B7374617475737C733A313A2230223B);
 
@@ -2491,7 +2673,7 @@ CREATE TABLE `evaluaciones` (
   `fechaRegistro` datetime DEFAULT NULL,
   `texto_bienvenida_evaluacion` text,
   `texto_bienvenida_autoevaluacion` text,
-  `status` int(11) DEFAULT '0' COMMENT '0: Cerrado\r\n1: Abierto para evaluación\r\n2: Abierto para autoevaluación',
+  `status` int(11) DEFAULT '0' COMMENT '0: Cerrado\r\n1: Abierto',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ap_id` (`id`) USING BTREE,
   UNIQUE KEY `app_titulo` (`titulo`),
@@ -2504,7 +2686,7 @@ CREATE TABLE `evaluaciones` (
 -- ----------------------------
 -- Records of evaluaciones
 -- ----------------------------
-INSERT INTO `evaluaciones` VALUES ('1', '2016', 'admin', '2016-03-12 13:34:12', '<p>Es un gusto contar con tu compromiso y dedicación al responder los reactivos de manera objetiva para continuar fortaleciendo\r\n	a tu departamento  y  a  nuestra Universidad.\r\n</p>\r\n<p>\r\n	Recuerda que el cierre de las evaluaciones será el <b>Miércoles 3 de mayo de 2016 a las 20:00 horas</b>.<br>\r\n	Los resultados serán enviados en las siguientes fechas:\r\n	<ul>\r\n		<li>El <b>lunes 6 y martes 7 de junio de 2016</b> se entregarán a <b>cada Evaluador</b> los <b>resultados impresos</b>.</li>\r\n		<li>El <b>lunes 27 de junio de 2016</b> se enviarán por correo electrónico a cada colaborador.</li>\r\n	</ul>\r\n	<b>¡GRACIAS por tu tiempo!</b>\r\n</p>', '<p>Es un gusto contar con tu compromiso y dedicación al responder los reactivos de manera objetiva para continuar fortaleciendo\r\n	a tu departamento  y  a  nuestra Universidad.\r\n</p>\r\n<p>\r\n	Recuerda que el cierre de las evaluaciones será el <b>Miércoles 3 de mayo de 2016 a las 20:00 horas</b>.<br>\r\n	<b>¡GRACIAS por tu tiempo!</b>\r\n</p>', '1');
+INSERT INTO `evaluaciones` VALUES ('1', '2016', 'admin', '2016-03-12 13:34:12', '<p>Es un gusto contar con tu compromiso y dedicación al responder los reactivos de manera objetiva para continuar fortaleciendo\r\n	a tu departamento  y  a  nuestra Universidad.\r\n	<br>\r\n	Recuerda que el cierre de las evaluaciones será el <b>viernes 24 de junio de 2016 a las 20:00 horas</b>.\r\n</p>\r\n\r\n<p>\r\n\r\n	<b>¡GRACIAS por tu tiempo!</b>\r\n</p>', '<p>Es un gusto contar con tu compromiso y dedicación al responder los reactivos de manera objetiva para continuar fortaleciendo\r\n	a tu departamento  y  a  nuestra Universidad.<br>\r\n	Recuerda que el cierre de las evaluaciones será el <b>viernes 24 de junio de 2016 a las 20:00 horas</b>.\r\n<br>\r\n\r\n <p class=\"text-warning\">\r\n\r\n<b>&quot;<i>Ir juntos es comenzar, mantenerse juntos es progresar, trabajar juntos es triunfar</i>&quot;</b><br>- Henry Ford\r\n</p>\r\n	<b>¡GRACIAS por tu tiempo!</b>\r\n</p>', '1');
 
 -- ----------------------------
 -- Table structure for evaluaciones_cuestionario_niveles
@@ -2578,7 +2760,6 @@ CREATE TABLE `evaluaciones_cuestionario_puestos` (
 -- ----------------------------
 -- Records of evaluaciones_cuestionario_puestos
 -- ----------------------------
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('0', '1', '8', 'competencia', '17', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('1', '1', '3', 'competencia', '10', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('2', '1', '4', 'competencia', '11', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('3', '1', '5', 'competencia', '12', null);
@@ -2647,10 +2828,118 @@ INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('65', '1', '79', 'compet
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('66', '1', '80', 'competencia', '66', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('67', '1', '81', 'competencia', '66', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('68', '1', '82', 'competencia', '65', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('69', '1', '83', 'competencia', '65', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('70', '1', '84', 'competencia', '65', null);
 INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('71', '1', '85', 'competencia', '65', null);
-INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('72', '1', '86', 'competencia', '69', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('73', '1', '3', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('74', '1', '4', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('75', '1', '5', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('76', '1', '6', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('77', '1', '7', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('78', '1', '7', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('79', '1', '8', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('80', '1', '9', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('81', '1', '10', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('82', '1', '11', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('83', '1', '12', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('84', '1', '13', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('85', '1', '14', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('86', '1', '15', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('87', '1', '16', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('88', '1', '17', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('89', '1', '17', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('90', '1', '18', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('91', '1', '19', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('92', '1', '20', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('93', '1', '20', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('94', '1', '21', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('95', '1', '22', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('96', '1', '22', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('97', '1', '23', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('98', '1', '23', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('99', '1', '25', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('100', '1', '25', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('101', '1', '26', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('102', '1', '26', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('103', '1', '30', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('104', '1', '30', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('105', '1', '31', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('106', '1', '31', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('107', '1', '34', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('108', '1', '34', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('109', '1', '35', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('110', '1', '35', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('111', '1', '36', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('112', '1', '37', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('113', '1', '37', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('114', '1', '38', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('115', '1', '38', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('116', '1', '39', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('117', '1', '39', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('118', '1', '40', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('119', '1', '40', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('120', '1', '42', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('121', '1', '42', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('122', '1', '43', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('123', '1', '43', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('124', '1', '44', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('125', '1', '44', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('126', '1', '45', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('127', '1', '45', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('128', '1', '46', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('129', '1', '46', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('130', '1', '47', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('131', '1', '47', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('132', '1', '48', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('133', '1', '48', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('134', '1', '49', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('135', '1', '49', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('136', '1', '50', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('137', '1', '50', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('138', '1', '51', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('139', '1', '51', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('140', '1', '53', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('141', '1', '55', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('142', '1', '56', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('143', '1', '57', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('144', '1', '58', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('145', '1', '59', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('146', '1', '60', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('147', '1', '63', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('148', '1', '63', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('149', '1', '64', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('150', '1', '65', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('151', '1', '65', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('152', '1', '66', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('153', '1', '66', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('154', '1', '67', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('155', '1', '68', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('156', '1', '69', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('157', '1', '70', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('158', '1', '70', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('159', '1', '71', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('160', '1', '72', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('162', '1', '71', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('164', '1', '72', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('165', '1', '73', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('166', '1', '73', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('167', '1', '74', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('168', '1', '75', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('169', '1', '76', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('170', '1', '77', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('171', '1', '79', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('172', '1', '80', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('173', '1', '81', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('174', '1', '82', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('175', '1', '83', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('176', '1', '83', 'competencia', '68', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('177', '1', '84', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('178', '1', '85', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('179', '1', '86', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('180', '1', '86', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('183', '1', '86', 'competencia', '69', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('184', '1', '1', 'competencia', '1', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('185', '1', '1', 'competencia', '2', null);
+INSERT INTO `evaluaciones_cuestionario_puestos` VALUES ('186', '1', '1', 'competencia', '3', null);
 
 -- ----------------------------
 -- Table structure for jerarquias
@@ -3217,12 +3506,13 @@ CREATE TABLE `respuestas_autoevaluacion` (
   KEY `respuestas_autoevaluacion_ibfk_2` (`empleado`),
   CONSTRAINT `respuestas_autoevaluacion_ibfk_1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_autoevaluacion_ibfk_2` FOREIGN KEY (`empleado`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion
 -- ----------------------------
 INSERT INTO `respuestas_autoevaluacion` VALUES ('8', '1', '32153664', '2016-06-07 22:03:14');
+INSERT INTO `respuestas_autoevaluacion` VALUES ('9', '1', '32124185', '2016-06-08 20:49:27');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion_competencias
@@ -3248,7 +3538,7 @@ CREATE TABLE `respuestas_autoevaluacion_competencias` (
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_autoevaluacion_competencias_ibfk_5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_autoevaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_autoevaluacion_competencias
@@ -3273,6 +3563,47 @@ INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('68', '1', '7', '40
 INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('70', '1', '7', '410', '301', '8');
 INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('71', '1', '7', '411', '349', '8');
 INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('80', '1', '7', '420', '349', '8');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('100', '1', '8', '23', '2', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('101', '1', '8', '24', '2', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('93', '1', '8', '16', '4', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('99', '1', '8', '22', '4', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('106', '1', '8', '31', '4', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('81', '1', '8', '1', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('84', '1', '8', '7', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('85', '1', '8', '8', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('88', '1', '8', '11', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('89', '1', '8', '12', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('94', '1', '8', '17', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('98', '1', '8', '21', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('107', '1', '8', '32', '6', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('82', '1', '8', '2', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('86', '1', '8', '9', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('87', '1', '8', '10', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('90', '1', '8', '13', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('92', '1', '8', '15', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('95', '1', '8', '18', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('97', '1', '8', '20', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('103', '1', '8', '28', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('104', '1', '8', '29', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('105', '1', '8', '30', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('108', '1', '8', '34', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('120', '1', '8', '739', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('121', '1', '8', '740', '8', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('83', '1', '8', '3', '10', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('91', '1', '8', '14', '10', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('96', '1', '8', '19', '10', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('102', '1', '8', '27', '10', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('109', '1', '8', '35', '10', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('110', '1', '8', '421', '161', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('118', '1', '8', '429', '161', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('111', '1', '8', '422', '224', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('117', '1', '8', '428', '224', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('119', '1', '8', '430', '224', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('112', '1', '8', '423', '287', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('116', '1', '8', '427', '287', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('113', '1', '8', '424', '350', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('115', '1', '8', '426', '350', '9');
+INSERT INTO `respuestas_autoevaluacion_competencias` VALUES ('114', '1', '8', '425', '413', '9');
 
 -- ----------------------------
 -- Table structure for respuestas_autoevaluacion_manual_abierto
@@ -3388,11 +3719,52 @@ CREATE TABLE `respuestas_clave_competencias_puestos` (
   CONSTRAINT `rccp2` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp3` FOREIGN KEY (`nivel`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rccp4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_clave_competencias_puestos
 -- ----------------------------
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('10', '1', '3', '13', '2');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('18', '1', '3', '21', '2');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('26', '1', '3', '31', '2');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('8', '1', '3', '11', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('9', '1', '3', '12', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('11', '1', '3', '14', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('15', '1', '3', '18', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('16', '1', '3', '19', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('19', '1', '3', '22', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('27', '1', '3', '32', '4');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('3', '1', '3', '3', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('4', '1', '3', '7', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('20', '1', '3', '23', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('28', '1', '3', '34', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('29', '1', '3', '35', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('41', '1', '3', '740', '6');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('2', '1', '3', '2', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('5', '1', '3', '8', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('6', '1', '3', '9', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('7', '1', '3', '10', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('12', '1', '3', '15', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('14', '1', '3', '17', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('17', '1', '3', '20', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('21', '1', '3', '24', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('23', '1', '3', '28', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('24', '1', '3', '29', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('40', '1', '3', '739', '8');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('1', '1', '3', '1', '10');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('13', '1', '3', '16', '10');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('22', '1', '3', '27', '10');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('25', '1', '3', '30', '10');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('30', '1', '3', '221', '105');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('31', '1', '3', '222', '105');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('32', '1', '3', '223', '168');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('36', '1', '3', '227', '231');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('37', '1', '3', '228', '231');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('34', '1', '3', '225', '294');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('33', '1', '3', '224', '357');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('35', '1', '3', '226', '357');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('38', '1', '3', '229', '357');
+INSERT INTO `respuestas_clave_competencias_puestos` VALUES ('39', '1', '3', '230', '357');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_historico_niveles
@@ -3438,14 +3810,12 @@ CREATE TABLE `respuestas_clave_historico_puestos` (
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_2` FOREIGN KEY (`puesto`) REFERENCES `puestos` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respuestas_clave_historico_puestos_ibfk_3` FOREIGN KEY (`usuarioRegistrante`) REFERENCES `usuarios` (`usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_clave_historico_puestos
 -- ----------------------------
-INSERT INTO `respuestas_clave_historico_puestos` VALUES ('11', '1', '80', 'admin', '2016-06-04 15:58:07');
-INSERT INTO `respuestas_clave_historico_puestos` VALUES ('13', '1', '3', 'admin', '2016-06-04 16:02:53');
-INSERT INTO `respuestas_clave_historico_puestos` VALUES ('14', '1', '3', 'admin', '2016-06-04 16:04:17');
+INSERT INTO `respuestas_clave_historico_puestos` VALUES ('15', '1', '3', 'admin', '2016-06-08 20:47:04');
 
 -- ----------------------------
 -- Table structure for respuestas_clave_manual_abierto
@@ -3517,12 +3887,13 @@ CREATE TABLE `respuestas_evaluacion` (
   KEY `resev` (`evaluador`) USING BTREE,
   CONSTRAINT `respev1` FOREIGN KEY (`evaluacion`) REFERENCES `evaluaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `respev2` FOREIGN KEY (`evaluador`) REFERENCES `empleados` (`empleado`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion
 -- ----------------------------
-INSERT INTO `respuestas_evaluacion` VALUES ('1', '1', '32153664', '0', '0', '2016-06-07 20:53:15');
+INSERT INTO `respuestas_evaluacion` VALUES ('1', '1', '32153664', '4', '0', '2016-06-07 20:53:15');
+INSERT INTO `respuestas_evaluacion` VALUES ('2', '1', '32142652', '4', '1', '2016-06-08 20:48:22');
 
 -- ----------------------------
 -- Table structure for respuestas_evaluacion_competencias
@@ -3548,11 +3919,52 @@ CREATE TABLE `respuestas_evaluacion_competencias` (
   CONSTRAINT `rec3` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec4` FOREIGN KEY (`id_valor`) REFERENCES `cuestionarios_competencias_secciones_valores_posibles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rec5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='Los valores numéricos no se guardan.\r\nEn cambio se almacenan los IDS de los "valores posibles" según la conducta para un nivel específico.\r\nPara obtener el valor se debe refenciar a:\r\ncuestionarios_competencias_secciones_valores_posibles > cuestionarios_valores_posibles.\r\nEs ahí donde se contiene el valor numérico.';
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_competencias
 -- ----------------------------
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('13', '1', '8', '16', '2', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('18', '1', '8', '21', '2', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('6', '1', '8', '9', '4', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('15', '1', '8', '18', '4', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('19', '1', '8', '22', '4', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('23', '1', '8', '28', '4', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('29', '1', '8', '35', '4', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('5', '1', '8', '8', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('10', '1', '8', '13', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('12', '1', '8', '15', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('17', '1', '8', '20', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('20', '1', '8', '23', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('22', '1', '8', '27', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('24', '1', '8', '29', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('28', '1', '8', '34', '6', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('1', '1', '8', '1', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('2', '1', '8', '2', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('3', '1', '8', '3', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('4', '1', '8', '7', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('9', '1', '8', '12', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('21', '1', '8', '24', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('25', '1', '8', '30', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('27', '1', '8', '32', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('40', '1', '8', '739', '8', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('7', '1', '8', '10', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('8', '1', '8', '11', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('11', '1', '8', '14', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('14', '1', '8', '17', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('16', '1', '8', '19', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('26', '1', '8', '31', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('41', '1', '8', '740', '10', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('30', '1', '8', '421', '161', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('38', '1', '8', '429', '161', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('31', '1', '8', '422', '224', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('37', '1', '8', '428', '224', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('39', '1', '8', '430', '224', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('32', '1', '8', '423', '287', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('36', '1', '8', '427', '287', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('33', '1', '8', '424', '350', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('35', '1', '8', '426', '350', '1');
+INSERT INTO `respuestas_evaluacion_competencias` VALUES ('34', '1', '8', '425', '413', '1');
 
 -- ----------------------------
 -- Table structure for respuestas_evaluacion_empleados
@@ -3574,11 +3986,12 @@ CREATE TABLE `respuestas_evaluacion_empleados` (
   CONSTRAINT `reejefe` FOREIGN KEY (`evaluador`) REFERENCES `jerarquias` (`jefe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reesubo` FOREIGN KEY (`empleado`) REFERENCES `jerarquias` (`subordinado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reesubore` FOREIGN KEY (`id_respuestas_evaluacion`) REFERENCES `respuestas_evaluacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_empleados
 -- ----------------------------
+INSERT INTO `respuestas_evaluacion_empleados` VALUES ('1', '1', '32142652', '32124185', '2', '2016-06-08 20:48:22');
 
 -- ----------------------------
 -- Table structure for respuestas_evaluacion_manual_abierto
@@ -3602,11 +4015,17 @@ CREATE TABLE `respuestas_evaluacion_manual_abierto` (
   CONSTRAINT `rema2` FOREIGN KEY (`nivel`) REFERENCES `niveles` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema3` FOREIGN KEY (`id_manual_input_pregunta`) REFERENCES `cuestionarios_manual_input_preguntas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `rema5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_abierto
 -- ----------------------------
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('1', '1', '8', '1', '1', '0', '1');
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('2', '1', '8', '1', '1', '1', '2');
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('3', '1', '8', '2', '1', '0', '3');
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('4', '1', '8', '2', '1', '1', '4');
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('5', '1', '8', '4', '1', '0', '7');
+INSERT INTO `respuestas_evaluacion_manual_abierto` VALUES ('6', '1', '8', '4', '1', '1', '8');
 
 -- ----------------------------
 -- Table structure for respuestas_evaluacion_manual_opciones
@@ -3632,11 +4051,13 @@ CREATE TABLE `respuestas_evaluacion_manual_opciones` (
   CONSTRAINT `remo3` FOREIGN KEY (`id_opcion_respuesta`) REFERENCES `cuestionarios_manual_input_preguntas_opciones_respuestas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo4` FOREIGN KEY (`id_opciones_input_manual`) REFERENCES `cuestionarios_manual_input_preguntas_opciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `remo5` FOREIGN KEY (`id_evaluacion_empleado`) REFERENCES `respuestas_evaluacion_empleados` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of respuestas_evaluacion_manual_opciones
 -- ----------------------------
+INSERT INTO `respuestas_evaluacion_manual_opciones` VALUES ('1', '1', '8', '2', '1', '1', '5');
+INSERT INTO `respuestas_evaluacion_manual_opciones` VALUES ('2', '1', '8', '3', '2', '1', '6');
 
 -- ----------------------------
 -- Table structure for usuarios

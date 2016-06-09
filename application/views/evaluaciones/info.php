@@ -4,14 +4,14 @@
 			<h3 class="marginTop0">Información inicial</h3>			
 			<div class="box box-widget widget-user widget-info">
 			
-				<div class="widget-user-header" ng-class="{ 'bg-aqua-active': status.val > 0,  'bg-gray-active': status.val == 0 }">
-					<h3 class="widget-user-username"><i class="fa fa-fw fa-lock"></i> Apertura</h3>
+				<div class="widget-user-header" ng-class="{ 'bg-green-active': status.val > 0,  'bg-gray-active': status.val == 0 }">
+					<h3 class="widget-user-username"><i class="fa fa-fw" ng-class="{ 'fa-unlock': status.val > 0,  'fa-lock': status.val == 0 }"></i> Accesibilidad</h3>
 					<select class="small-box-footer" ng-model="status" ng-options="option.descripcion for option in statusOptions track by option.val">
 					</select>
 				</div>
 				
 				<div class="box-footer">
-					<h4 class="text-info text-center"><i class="fa fa-fw fa-users"></i> Jerarquía</h4>
+					<h4 class="text-info text-center"><i class="fa fa-fw fa-users"></i> Colaboradores</h4>
 					<div class="row">
 						<div class="col-sm-6 border-right">
 							<div class="description-block">

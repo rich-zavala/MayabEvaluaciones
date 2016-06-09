@@ -20,8 +20,8 @@
 			<div>
 				<div class="content-wrapper">
 					<section class="content-header">
-						<h1>Bienvenido,</h1>
-						<h2>{{evaluador.info.n}}</h2>
+						<h1>Bienvenid@,</h1>
+						<h2>{{data.empleado.n}}</h2>
 					</section>
 					
 					<div class="content">

@@ -15,7 +15,7 @@ app.controller('appController', ['$scope', '$rootScope', '$http', '$filter', '$t
 	};
 	
 	//Cambio de status
-	$scope.statusOptions = [ objStatusCrear(0, 'Cerrado'), objStatusCrear(1, 'Evaluación activa'), objStatusCrear(3, 'Autoevaluación activa')];
+	$scope.statusOptions = [ objStatusCrear(0, 'Acceso cerrado'), objStatusCrear(1, 'Evaluación activa')];
 	$scope.status = $scope.statusOptions.filter(function(o){ return (o.val == _info_.status) })[0];
 	var changeStatus = true;
 	$scope.$watch('status', function(ne, ol){

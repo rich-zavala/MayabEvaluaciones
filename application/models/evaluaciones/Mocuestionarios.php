@@ -29,6 +29,7 @@ class Mocuestionarios extends CI_Model
 	public $niveles = array();
 	public $competencias = array();
 	public $cuestionarios = array();
+	public $infoCuestionarios =  array();
 	
 	//Devuelve el objeto de la clase.
 	public function init($id)
@@ -263,8 +264,10 @@ class Mocuestionarios extends CI_Model
 				break;
 			}
 		
-		$nivelCompetencias->competencias = array_values($nivelCompetencias->competencias); //Resetear índices
-		return $nivelCompetencias;
+		// $nivelCompetencias->competencias = array_values($nivelCompetencias->competencias); //Resetear índices
+		$this->infoCuestionarios = $nivelCompetencias;
+		$this->resetearCompetenciasIndices();
+		// return $nivelCompetencias;
 	}
 	
 	/* REGISTRO Y MANIPULACION DE BDD */
@@ -443,5 +446,31 @@ class Mocuestionarios extends CI_Model
 		}
 		
 		return $r;
+	}
+
+	//Remover respuestas abiertas (Para autoevaluaciones)
+	public function removerPreguntasAbiertas()
+	{
+		$manualIndex = -1;
+		foreach($this->infoCuestionarios->competencias as $k => $v)
+		{
+			if($v->tipo == "manual")
+			{
+				$manualIndex = $k;
+				break;
+			}
+		}
+		
+		if($manualIndex >= 0)
+		{
+			unset($this->infoCuestionarios->competencias[$manualIndex]);
+			$this->resetearCompetenciasIndices();
+		}
+	}
+	
+	//Reordenar índices de competencias obtenidas
+	private function resetearCompetenciasIndices()
+	{
+		$this->infoCuestionarios->competencias = array_values($this->infoCuestionarios->competencias); //Resetear índices
 	}
 }

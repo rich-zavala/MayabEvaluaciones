@@ -117,10 +117,11 @@ app.controller('modalEnviarCartas', [ '$scope', '$http', '$uibModalInstance', 'd
 	
 	//Enviar desde cero
 	var empleados = [];
-	$scope.enviar = function() {
-		var reseteo = $scope.gui.enviadoPreviamente;
-		var continuar = true;
+	$scope.enviar = function(reseteo) {
+		if(arguments.length == 0)
+			var reseteo = $scope.gui.enviadoPreviamente;
 		
+		var continuar = true;
 		if(reseteo)
 			continuar = confirm("Se han realizado envíos con anterioridad.\nSi elige continuar los destinatarios recibirán los mensajes nuevamente.\n¿Desea continuar?");
 	

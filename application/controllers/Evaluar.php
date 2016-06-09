@@ -95,9 +95,13 @@ class Evaluar extends CI_Controller {
 		$mc->setNivel($input->nivel);
 		$mc->puestos();
 		$mc->setPuesto($input->puesto);
-		$info = $mc->getCompetenciasNivelPuesto();
+		$mc->getCompetenciasNivelPuesto();
 		
-		$this->output->set_content_type('application/json')->set_output(json_encode($info, JSON_NUMERIC_CHECK));
+		//Si es autoevaluación remover preguntas abiertas
+		if($input->modalidad == 'autoevaluacion')
+			$mc->removerPreguntasAbiertas();
+		
+		$this->output->set_content_type('application/json')->set_output(json_encode($mc->infoCuestionarios, JSON_NUMERIC_CHECK));
 	}
 	
 	public function responder()
