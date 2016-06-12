@@ -4,7 +4,7 @@ SELECT
 ef.*,
 MD5(n) clave,
 j.evaluacion,
-re.evaluadosTotales,
+re.evaluadosTotales,s
 re.avance,
 re.fechaRegistro,
 ra.fechaRegistro autoFecha

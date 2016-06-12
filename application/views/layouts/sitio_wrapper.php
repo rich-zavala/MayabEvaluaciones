@@ -45,7 +45,6 @@
 						</li>
 						<li><a href="<?=base('empleados')?>"><i class="fa fa-fw fa-users"></i> <span>Empleados</span></a></li>
 						<li><a href="<?=base('usuarios')?>"><i class="fa fa-fw fa-user-secret"></i> <span>Usuarios</span></a></li>
-						<li><a href="<?=base('reportes')?>"><i class="fa fa-fw fa-bar-chart"></i> <span>Reportes</span></a></li>
 					</ul><!-- /.sidebar-menu -->
 				</section>
 				<!-- /.sidebar -->

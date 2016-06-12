@@ -154,4 +154,27 @@ class Evaluaciones extends CI_Controller {
 		$r = $this->helper->nuevo($obj);
 		$this->output->set_content_type('application/json')->set_output(json_encode($r));
 	}
+
+	//11 junio 2016 > Reporte de respuestas
+	public function respuestas($evaluacion)
+	{
+		$this->load->model('evaluaciones/evaluacion');
+		// $e = $this->evaluacion->init($evaluacion);
+		
+		$this->librerias['js'][] = 'js/evaluaciones/reportes/respuestas.js';
+		$d = array(
+			'evaluacion' => $evaluacion//,
+			// 'info' => $e->respuestas()
+		);
+		$this->helper->view($d, $this->librerias);
+	}
+	
+	//Registros para el reporte de respuestas
+	public function respuestas_registros()
+	{
+		$evaluacion = json_decode(file_get_contents('php://input'))->evaluacion;
+		$this->load->model('evaluaciones/evaluacion');
+		$e = $this->evaluacion->init($evaluacion);		
+		$this->output->set_content_type('application/json')->set_output(json_encode($e->respuestas(), JSON_NUMERIC_CHECK));
+	}
 }

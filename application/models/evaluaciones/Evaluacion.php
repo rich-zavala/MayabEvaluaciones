@@ -37,4 +37,15 @@ class Evaluacion extends CI_Model
 		$this->info = $r;
 		return $r;
 	}
+
+	//Reporte de respuestas
+	public function respuestas()
+	{
+		$r = array();
+		$q = $this->db->order_by('empleado_n')->get_where('reporte_respuestas_evaluacion', array( 'evaluacion' => $this->id ) );
+		if($q->num_rows() > 0)
+			$r = $q->result();
+		
+		return $r;
+	}
 }

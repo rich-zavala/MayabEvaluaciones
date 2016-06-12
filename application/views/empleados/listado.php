@@ -16,8 +16,7 @@
 				<div class="alert alert-danger marginBottom0" ng-if="gui.cargandoError"><i class="fa fa-warning marginRight10"></i> Ha ocurrido un error. Reinicie su sesión e intente nuevamente.</div>
 				<div class="alert alert-info marginBottom0" ng-if="!gui.cargando && !gui.cargandoError && registros.length == 0"><i class="fa fa-info-circle marginRight10"></i> No hay registros actualmente. <a href="#" ng-click="formulario.nuevo()">Haga click aquí para iniciar</a>.</div>
 				
-				<!-- TABLA -->
-				<div class="" ng-if="!gui.cargando && registros.length > 0">
+				<div ng-if="!gui.cargando && registros.length > 0">
 					<form class="form-inline marginBottom20 filter">
 						<div class="form-group marginRight10">
 							<label for="buscador">Buscar</label>
@@ -62,7 +61,6 @@
 							<th class="bg-primary">Área</th>
 							<th class="bg-primary">Puesto</th>
 							<th class="bg-primary">Nivel</th>
-							<th class="bg-primary nowrap">Fecha registro</th>
 							<th class="bg-primary"></th>
 						</tr>
 						<tr ng-repeat="r in registros | filter : tabla.filtro | orderBy: tabla.orden : tabla.direccion != 'asc' | limitTo : tabla.registros" ng-dblclick="formulario.editar($event, r)">

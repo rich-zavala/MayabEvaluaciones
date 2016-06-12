@@ -14,8 +14,7 @@ app.controller('listado', ['$scope', '$rootScope', '$http', '$filter', '$uibModa
 	
 	$scope.tabla = {
 		filtro: '',
-		registros: '10',
-		status: '-1',
+		registros: '20',
 		orden: 'n',
 		direccion: 'asc'
 	}

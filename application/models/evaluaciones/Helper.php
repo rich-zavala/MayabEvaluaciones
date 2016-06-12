@@ -34,7 +34,7 @@ class Helper extends CI_Model
 		),
 		'respuestas' => array(
 			'titulo' => 'Respuestas',
-			'fa' => 'line-chart'
+			'fa' => 'database'
 		),
 		'reportes' => array(
 			'titulo' => 'Reportes',
