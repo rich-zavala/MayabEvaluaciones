@@ -65,15 +65,19 @@
 						<i class="fa fa-fw fa-close"></i>
 					</td>
 					<td class="nowrap bg-success" ng-if="r.ev_fecha != null" title="Evaluación realizada">
-						<i class="fa fa-fw fa-check marginRight10"></i> <small>{{r.ev_evaluador_n}}</small><br>
-						<i class="text-muted">{{moment(r.ev_fecha).format('D MMM YYYY - HH:mm')}}</i>
+						<a ng-href="<?=base()?>evaluaciones/reseval/{{r.subordinado}}<?=suffix()?>" target="_resauto{{r.subordinado}}">
+							<i class="fa fa-fw fa-check marginRight10"></i> <small>{{r.ev_evaluador_n}}</small><br>
+							<i class="text-muted">{{moment(r.ev_fecha).format('D MMM YYYY - HH:mm')}}</i>
+						</a>
 					</td>
 					<td class="nowrap bg-danger" ng-if="r.aev_fecha == null" title="Autoevaluación pendiente">
 						<i class="fa fa-fw fa-close"></i>
 					</td>
 					<td class="nowrap bg-success" ng-if="r.aev_fecha != null" title="Autoevaluación realizada">
-						<i class="fa fa-fw fa-check marginRight10"></i>
-						<span class="text-muted">{{moment(r.aev_fecha).format('D MMM YYYY - HH:mm')}}</span>
+						<a ng-href="<?=base()?>evaluaciones/resauto/{{r.subordinado}}<?=suffix()?>" target="_resauto{{r.subordinado}}">
+							<i class="fa fa-fw fa-check marginRight10"></i>
+							<span class="text-muted">{{moment(r.aev_fecha).format('D MMM YYYY - HH:mm')}}</span>
+						</a>
 					</td>
 				</tr>
 			</table>

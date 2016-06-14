@@ -174,7 +174,25 @@ class Evaluaciones extends CI_Controller {
 	{
 		$evaluacion = json_decode(file_get_contents('php://input'))->evaluacion;
 		$this->load->model('evaluaciones/evaluacion');
-		$e = $this->evaluacion->init($evaluacion);		
+		$e = $this->evaluacion->init($evaluacion);
 		$this->output->set_content_type('application/json')->set_output(json_encode($e->respuestas(), JSON_NUMERIC_CHECK));
+	}
+
+	//Vista temporal de respuestas (Evaluación)
+	public function reseval($empleado)
+	{
+		$this->load->model('evaluaciones/evaluacion');
+		$this->evaluacion->empleado($empleado);
+		$this->evaluacion->respuestas_detalle_eval();
+		$this->evaluacion->csv();
+	}
+
+	//Vista temporal de respuestas (Auto)
+	public function resauto($empleado)
+	{
+		$this->load->model('evaluaciones/evaluacion');
+		$this->evaluacion->empleado($empleado);
+		$this->evaluacion->respuestas_detalle_auto();
+		$this->evaluacion->csv();
 	}
 }

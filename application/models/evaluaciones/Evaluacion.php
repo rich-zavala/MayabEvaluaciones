@@ -10,6 +10,8 @@ class Evaluacion extends CI_Model
 	var $id = 0;
 	public $info; //Información básica de una evaluación
 	public $jerarquias; //Modelo de jerarquías
+	private $empleado;
+	private $respuestas_registros_query;
 	
 	//Devuelve el objeto de la clase.
 	public function init($id){
@@ -47,5 +49,35 @@ class Evaluacion extends CI_Model
 			$r = $q->result();
 		
 		return $r;
+	}
+
+	//Setear empleado
+	public function empleado($empleado)
+	{
+		$this->empleado = $empleado;
+	}
+	
+	//Listado de respuestas de un empleado: Evaluación
+	public function respuestas_detalle_eval()
+	{
+		$this->respuestas_registros_query = $this->db->get_where('respuestas_evaluacion_detalle', array( 'empleado' => $this->empleado ));
+	}
+	
+	//Listado de respuestas de un empleado: Autoevaluación
+	public function respuestas_detalle_auto()
+	{
+		$this->respuestas_registros_query = $this->db->get_where('respuestas_autoevaluacion_detalle', array( 'empleado' => $this->empleado ));
+	}
+	
+	//Generar CSV
+	public function csv()
+	{
+		$this->load->dbutil();
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$delimiter = ",";
+		$newline = "\r\n";
+		$data = utf8_decode($this->dbutil->csv_from_result($this->respuestas_registros_query, $delimiter, $newline));
+		force_download($this->tabla . '.csv', $data);
 	}
 }
