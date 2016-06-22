@@ -14,6 +14,7 @@ app.directive('treeRender', ['$compile', function($compile) {
 			return directiveCompile(element,  $compile);
 		},
     controller: ['$scope', '$rootScope', '$http', '$uibModal', function($scope, $rootScope, $http, $uibModal) {
+			$scope.modalidad = modalidad;
 			$scope._sitePath_ = _sitePath_;
 			$scope._suffix_ = _suffix_;
 			$scope._eval_ = _eval_;

@@ -1,3 +1,4 @@
+<script>var modalidad = '<?=$modalidad?>';</script>
 <div class="nav-tabs-custom" ng-controller="appController">
   <ul class="nav nav-tabs">
 		<li ng-repeat="tab in tabs" ng-class="{ active: tabActual == tab }"><a ng-click="activarTab(tab)">{{tab.titulo}}</a></li>

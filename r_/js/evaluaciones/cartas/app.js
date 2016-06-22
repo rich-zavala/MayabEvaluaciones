@@ -1,11 +1,27 @@
+/*
+21 de junio 2016 | Ricardo Zavala
+Controlador para envío de cartas de bienvenida y de reportes
+*/
+
 'use strict';
 var controlador = 'cartas';
 
 //Controlador de tabs
 app.controller('appController', ['$scope', '$rootScope', '$timeout', function($scope, $rootScope, $timeout) {
+	var m = modalidad == 'cartas'; //Auxiliar para definir la modalidad de la aplicación: Cartas o Reportes
 	$scope.tabs = [
-		{ tipo: 0, titulo: 'Evaluaciones', intro: 'jefes para evaluación' },
-		{ tipo: 1, titulo: 'Autoevaluaciones', intro: 'empleados para autoevaluación' }
+		{
+			tipo: 0,
+			titulo: 'Evaluaciones',
+			tituloComplemento: m ? '' : ' <b>de reportes</b>',
+			intro: 'jefes para evaluación'
+		},
+		{
+			tipo: 1,
+			titulo: 'Autoevaluaciones',
+			tituloComplemento: m ? '' : ' <b>de reportes</b>',
+			intro: 'empleados para autoevaluación'
+		}
 	];
 	
 	//Cambio de tab
@@ -58,7 +74,7 @@ app.directive('cartasController', ['$compile', function($compile) {
 			
 			//Obtener catálogo
 			var cargarInfo = function(){
-				$http.post( _sitePath_ + 'cartas/info' + _suffix_, {
+				$http.post( _sitePath_ + modalidad + '/info' + _suffix_, {
 					info: {
 						evaluacion: _eval_,
 						tipo: $scope.tab.tipo
@@ -172,7 +188,7 @@ app.controller('modalEnviarCartas', [ '$scope', '$http', '$uibModalInstance', 'd
 	var nuevoEnvio = function(callback, callback_error){
 		data.data.enviando = true;
 		$scope.empleadoEnviando = false;
-		$http.post( _sitePath_ + 'cartas/nuevo_envio' + _suffix_, {
+		$http.post( _sitePath_ + modalidad + '/nuevo_envio' + _suffix_, {
 			data: {
 				evaluacion: _eval_,
 				tipo: $scope.tab.tipo,
@@ -213,7 +229,7 @@ app.controller('modalEnviarCartas', [ '$scope', '$http', '$uibModalInstance', 'd
 		{
 			$scope.empleadoEnviando = empleado;
 			data.data.enviando = true;
-			$http.post( _sitePath_ + 'cartas/enviar' + _suffix_, {
+			$http.post( _sitePath_ + modalidad + '/enviar' + _suffix_, {
 				data: {
 					evaluacion: _eval_,
 					tipo: $scope.tab.tipo,

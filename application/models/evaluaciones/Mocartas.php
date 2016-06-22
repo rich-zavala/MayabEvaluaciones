@@ -1,4 +1,9 @@
 <?php
+/*
+Este modelo se encarga de informar y enviar las cartas de bienvenida y de reportes.
+Identifica el controlador y aplica los switches correspondientes.
+*/
+
 class Mocartas extends CI_Model
 {
 	var $evaluacion = 0;
@@ -7,6 +12,13 @@ class Mocartas extends CI_Model
 	public $empleado;
 	public $envio;
 	public $empleadosTotales;
+	private $m; //Identificador de modalidad
+	
+	//Init: Identifica el contolador y discierne entre Cartas y Reportes
+	function __construct() {
+		$ci =& get_instance();
+		$this->m = $ci->router->class;
+	}
 	
 	//Devuelve el objeto de la clase.
 	public function init(){
@@ -47,7 +59,7 @@ class Mocartas extends CI_Model
 			'tipo' => $this->tipo
 		);
 		
-		$q = $this->db->where($w)->order_by('id', 'DESC')->limit(1)->get('cartas_envios_detalle');
+		$q = $this->db->where($w)->order_by('id', 'DESC')->limit(1)->get($this->m . '_envios_detalle');
 		if($q->num_rows() > 0) //Existe un registro
 		{
 			foreach($q->row() as $k => $v)
@@ -58,7 +70,7 @@ class Mocartas extends CI_Model
 			
 			//Obtener información de las cartas enviadas
 			$w['envio'] = $r->id;
-			$envios = $this->db->where($w)->get('cartas_envios_relacion')->result();
+			$envios = $this->db->where($w)->get($this->m . '_envios_relacion')->result();
 			
 			//Agregar información de envío a aquellos empleados que estén enlistados
 			foreach($r->jerarquia as $k => $v)
@@ -99,7 +111,7 @@ class Mocartas extends CI_Model
 	{
 		$columna = 'tipo_' . $this->tipo;
 		$w = array( 'evaluacion' => $this->evaluacion );
-		$template = $this->db->where($w)->get('cartas_templates')->row()->$columna;
+		$template = $this->db->where($w)->get($this->m . '_templates')->row()->$columna;
 		
 		//Generar vínculo dependiendo del tipo
 		$empleadoInfo = $this->db->select('n, email, MD5(n) clave')->where('empleado', $this->empleado)->order_by('n')->get('empleados_formato')->row();
@@ -127,7 +139,7 @@ class Mocartas extends CI_Model
 			'usuarioRegistrante' => $this->moguardia->data()['usuario'],
 			'empleadosTotales' => $this->empleadosTotales
 		);
-		$this->db->insert('cartas_envios', $i);
+		$this->db->insert($this->m . '_envios', $i);
 		$this->envio($this->db->insert_id());
 	}
 
@@ -144,7 +156,7 @@ class Mocartas extends CI_Model
 			'email' => $contenido['email'],
 			'carta' => $contenido['texto']
 		);
-		$this->db->insert('cartas_envios_empleados', $i);
+		$this->db->insert($this->m . '_envios_empleados', $i);
 		$envioId = $this->db->insert_id();
 		
 		$this->load->library('emailuam');
@@ -160,7 +172,7 @@ class Mocartas extends CI_Model
 		}
 		else
 		{
-			$this->db->where('id', $envioId)->delete('cartas_envios_empleados');
+			$this->db->where('id', $envioId)->delete($this->m . '_envios_empleados');
 			$r['error']++;
 		}
 		

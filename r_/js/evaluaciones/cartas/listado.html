@@ -3,7 +3,7 @@
 	<div class="alert alert-danger marginBottom0" ng-if="gui.cargandoError"><i class="fa fa-fw fa-warning marginRight10"></i> Ha ocurrido un error. Intente nuevamente.</div>
 
 	<div ng-if="!gui.cargando && !gui.cargandoError">
-		<h3 class="marginTop0">Envío de cartas a {{tab.intro}}</h3>
+		<h3 ng-bind-html="'Envío de cartas' + tab.tituloComplemento +' a ' + tab.intro | to_trusted"></h3>
 		<div class="row">
 			<div class="col-sm-12">
 				<div ng-if="!data.enviando">

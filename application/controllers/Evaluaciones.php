@@ -108,7 +108,26 @@ class Evaluaciones extends CI_Controller {
 			'js/' . $this->controlador . '/cartas/tree_render.js'
 		);
 		$this->librerias['js'] = array_merge($this->librerias['js'], $librerias);
-		$d = array( 'evaluacion' => $evaluacion );
+		$d = array(
+			'evaluacion' => $evaluacion,
+			'modalidad' => 'cartas'
+		);
+		$this->helper->view($d, $this->librerias);
+	}
+	
+	//Gestor de reportes
+	public function reportes($evaluacion)
+	{	
+		$librerias = array(
+			'js/recursive_directive_compile.js',
+			'js/' . $this->controlador . '/cartas/app.js',
+			'js/' . $this->controlador . '/cartas/tree_render.js'
+		);
+		$this->librerias['js'] = array_merge($this->librerias['js'], $librerias);
+		$d = array(
+			'evaluacion' => $evaluacion,
+			'modalidad' => 'reportes'
+		);
 		$this->helper->view($d, $this->librerias);
 	}
 	

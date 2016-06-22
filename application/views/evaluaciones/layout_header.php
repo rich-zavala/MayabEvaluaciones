@@ -9,7 +9,7 @@ var _eval_ = parseInt(<?=$evaluacion?>);
 	</section>
 	
 	<section class="content">
-		<div class"nav-tabs-custom jerarquias">
+		<div class="nav-tabs-custom jerarquias">
 			<ul class="nav nav-pills navMayab marginBottom10">
 				<?php foreach($secciones as $seccion => $seccion_info){ ?>
 				<li <?=($actual == $seccion) ? 'class="active"' : ''?>>

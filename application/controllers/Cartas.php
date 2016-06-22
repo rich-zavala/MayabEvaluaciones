@@ -62,11 +62,6 @@ class Cartas extends CI_Controller {
 		$this->mocartas->tipo($data->tipo);
 		$this->mocartas->empleado($data->empleado->empleado);
 		$this->mocartas->envio($data->envio);
-	// public function enviar($evaluacion, $tipo, $empleado)
-	// {
-		// $this->mocartas->evaluacion($evaluacion);
-		// $this->mocartas->tipo($tipo);
-		// $this->mocartas->empleado($empleado);
 		$envio = $this->mocartas->enviar();
 		$this->output->set_content_type('application/json')->set_output(json_encode($envio, JSON_NUMERIC_CHECK));
 	}
