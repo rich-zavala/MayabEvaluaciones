@@ -112,8 +112,7 @@ app.controller('formularioAgregarCtrl', [ '$scope', '$http', '$uibModalInstance'
 	};
 	
 	//TypeAhead item selected
-	$scope.selected = function($item, $event)
-	{
+	$scope.selected = function($item, $event){
 		$scope.typeResult = tmpEmpleados[tmpNombres.indexOf($scope.typeSelected)];
 	}
 

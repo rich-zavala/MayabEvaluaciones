@@ -19,6 +19,9 @@
 					<div class="col-sm-4"><?=$campos['puesto']?></div>
 					<div class="col-sm-4"><?=$campos['area']?></div>
 				</div>
+				<div class="row">
+					<div class="col-sm-4"><?=$campos['fechaAlta']?></div>
+				</div>
 		<input type="hidden" ng-model="formulario.empleado" >
 		
 		<div class="marginTop10">

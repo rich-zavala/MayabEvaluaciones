@@ -4,25 +4,38 @@ Controlador para envío de cartas de bienvenida y de reportes
 */
 
 'use strict';
-var controlador = 'cartas';
 
 //Controlador de tabs
 app.controller('appController', ['$scope', '$rootScope', '$timeout', function($scope, $rootScope, $timeout) {
-	var m = modalidad == 'cartas'; //Auxiliar para definir la modalidad de la aplicación: Cartas o Reportes
 	$scope.tabs = [
 		{
 			tipo: 0,
 			titulo: 'Evaluaciones',
-			tituloComplemento: m ? '' : ' <b>de reportes</b>',
 			intro: 'jefes para evaluación'
 		},
 		{
 			tipo: 1,
 			titulo: 'Autoevaluaciones',
-			tituloComplemento: m ? '' : ' <b>de reportes</b>',
-			intro: 'empleados para autoevaluación'
+			intro: 'colaboradores para autoevaluación'
 		}
 	];
+	
+	//Para envío de reportes
+	if(modalidad == 'reportes')
+	{
+		$scope.tabs = [
+			{
+				tipo: 0,
+				titulo: 'Envío de PDF a jefes',
+				intro: 'jefes'
+			},
+			{
+				tipo: 1,
+				titulo: 'Envío de PDF a colaboradores',
+				intro: 'colaboradores'
+			}
+		];
+	}
 	
 	//Cambio de tab
 	$scope.activarTab = function(tab){
@@ -83,6 +96,8 @@ app.directive('cartasController', ['$compile', function($compile) {
 				.then(function (response) {
 					//Obtener jerarquía
 					$scope.data = response.data;
+					if(typeof $scope.data.usuario_n == 'undefined' || $scope.data.usuario_n.length == 0)
+						$scope.data.usuario_n = usuario_n;
 				}, function (response) {
 					$scope.gui.cargandoError = true;
 				}).finally(function(){
@@ -95,6 +110,8 @@ app.directive('cartasController', ['$compile', function($compile) {
 					templateUrl: _sitePath_ + 'r_/js/evaluaciones/cartas/enviar' + _suffix_,
 					controller: 'modalEnviarCartas',
 					size: 'md',
+					keyboard: false,
+					backdrop: false,
 					resolve: {
 						data: {
 							data: $scope.data,
@@ -103,8 +120,6 @@ app.directive('cartasController', ['$compile', function($compile) {
 					}
 				});
 			};
-			
-			
 		}]
   }	
 }]);
@@ -151,7 +166,10 @@ app.controller('modalEnviarCartas', [ '$scope', '$http', '$uibModalInstance', 'd
 			if(reseteo)
 			{
 				empleados.forEach(function(empleado){
-					empleado.carta.envio = 0
+					if(typeof empleado.carta == 'undefined')
+						empleado.carta = { envio: 0 };
+					else
+						empleado.carta.envio = 0
 				});
 				data.data.id = 0;
 				data.data.avance = 0;

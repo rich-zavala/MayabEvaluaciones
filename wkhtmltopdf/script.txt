@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\wkhtmltopdf\bin\wkhtmltopdf" -L 7 -R 7 -T 8 -B 8 --page-size Letter  --footer-right [page]/[topage] --footer-left "16 jul 2016" --footer-font-size 6 http://mayab/pdf/template/1/0/jefe/32124234 x1.pdf

@@ -57,6 +57,12 @@ class Campo {
 				$campo = form_textarea($attrs);
 				break;
 				
+			case 'date':
+				$attrs['type'] = 'text';
+				$attrs['class'] .= ' date';
+				$campo = form_input($attrs);
+				break;
+				
 			case 'select':
 				//Definir atributos
 				$atributos = array();

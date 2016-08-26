@@ -7,7 +7,7 @@ app.controller('listado', ['$scope', '$rootScope', '$http', '$filter', '$uibModa
 	//Variables auxiliares para la vista
 	$scope.gui = {
 		titulo: 'Empleados',
-		icono: 'fa-user-secret',
+		icono: 'fa-users',
 		cargando: false,
 		cargandoError: false
 	}

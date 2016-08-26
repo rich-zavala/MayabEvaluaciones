@@ -88,7 +88,7 @@
 	background: url(../images/ajax-loader.gif) 98% 50%;
   background-repeat: no-repeat;
 }
-a[ng-click]{ cursor: pointer; }
+a[ng-click], a.clickable{ cursor: pointer; }
 
 /* Específicos del portal */
 .navMayab{ background-color: white; }
@@ -201,4 +201,11 @@ a[ng-click]{ cursor: pointer; }
 li.list-group-item:hover {
     background: rgb(229, 235, 239);
     transition: all .5s;
+}
+.tree.dropdown li a {
+ padding: 1px 10px;
+ font-size: .95em;
+}
+.tree.dropdown:hover * {
+  color: #444 !important;
 }

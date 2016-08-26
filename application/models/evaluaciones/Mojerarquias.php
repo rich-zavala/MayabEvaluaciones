@@ -7,7 +7,6 @@ class Mojerarquias extends CI_Model
 	//Devuelve el objeto de la clase.
 	public function init($id, $get = true){
 		$this->id = $id;
-		// if($get) $this->jerarquia();
 		return $this;
 	}
 	
@@ -30,8 +29,8 @@ class Mojerarquias extends CI_Model
 		return $this->db->order_by('n')->get_where('jefes_iniciales', $w)->result();
 	}
 	
-	//Buscar subordinados de un jefe
-	public function generar($jefe)
+	//Buscar subordinados de un jefe. "recursivo" permite elegir entre subordinados inmediatos o jerarquía completa
+	public function generar($jefe, $recursivo = true)
 	{
 		//Consulta
 		$w = array(
@@ -44,7 +43,12 @@ class Mojerarquias extends CI_Model
 		{
 			$jefe->subordinados = array();
 			foreach($subordinados as $subordinado)
-				$jefe->subordinados[] = $this->generar($subordinado);
+			{
+				if($recursivo)
+					$jefe->subordinados[] = $this->generar($subordinado);
+				else
+					$jefe->subordinados = $subordinados;
+			}
 		}
 		
 		return $jefe;
@@ -53,9 +57,9 @@ class Mojerarquias extends CI_Model
 	//Dejar sólo jefes
 	public function soloJefes()
 	{
-		// p($this->registros);
 		foreach($this->registros as $k => $v)
-			$this->registros[$k] = $this->soloJefesRecursivo($v);
+			if(isset($v->subordinados))
+				$this->registros[$k] = $this->soloJefesRecursivo($v);
 	}
 	
 	//Función auxiliar para "soloJefes"
@@ -131,5 +135,30 @@ class Mojerarquias extends CI_Model
 			$this->db->simple_query("CALL remover_jefe(" . $obj->evaluacion . ", " . $obj->empleado . ")");
 		}
 		return $r;
+	}
+	
+	/* Obtener info de un empleado en particular (Para PDF) */
+	public function info($empleado)
+	{
+		$select = 'j.evaluacion,
+							ef1.empleado jefe_empleado,
+							ef1.n jefe,
+							ef2.n nombre,
+							ef2.departamento_n,
+							ef2.puesto,
+							ef2.puesto_n,
+							ef2.nivel,
+							ef2.antiguedad';
+		
+		$this->db->select($select);
+		$this->db->from('jerarquias j');
+		$this->db->join('empleados_formato ef1', 'j.jefe = ef1.empleado');
+		$this->db->join('empleados_formato ef2', 'j.subordinado = ef2.empleado');
+		$this->db->where(array(
+			'evaluacion' => $this->id,
+			'j.subordinado' => $empleado
+		));
+		
+		return $this->db->get()->row();
 	}
 }

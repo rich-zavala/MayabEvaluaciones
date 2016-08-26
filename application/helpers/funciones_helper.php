@@ -100,8 +100,6 @@ function FormatoHora($f){
 function FormatoFechaHora($f){
 	list($fecha, $hora) = explode(" ", $f);
 	list($anio, $mes, $dia) = explode("-", $fecha);
-	// echo $fecha;
-	// echo $hora;
 	$ff = $dia." de ".Meses((int) $mes)." del ".$anio." a la(s) ".FormatoHora($f);
 	return $ff;
 }
@@ -228,4 +226,71 @@ function addResId($obj, $id)
 		$obj->$k->id_evaluacion_empleado = $id;
 	
 	return $obj;
+}
+
+/* Definir color para PDF */
+function cl($current, $max)
+{
+	if($current == 0)
+	{
+		return 'lv-min';
+	}
+	else if($max == 5)
+	{
+		switch($current)
+		{
+			case 1:
+				return 'lv-min-a';
+			break;
+			case 2:
+				return 'lv-mid';
+			break;
+			case 3:
+				return 'lv-mid-a';
+			break;
+			case 4:
+				return 'lv-max';
+			break;
+		}
+	}
+	else if($max == 4)
+	{
+		switch($current)
+		{
+			case 1:
+				return 'lv-min-b';
+			break;
+			case 2:
+				return 'lv-mid-b';
+			break;
+			case 3:
+				return 'lv-max';
+			break;
+		}
+	}
+}
+
+function romanic_number($integer, $upcase = true)
+{ 
+	$table = array('M'=>1000, 'CM'=>900, 'D'=>500, 'CD'=>400, 'C'=>100, 'XC'=>90, 'L'=>50, 'XL'=>40, 'X'=>10, 'IX'=>9, 'V'=>5, 'IV'=>4, 'I'=>1);
+	$return = '';
+	while($integer > 0)
+	{
+		foreach($table as $rom=>$arb)
+		{
+			if($integer >= $arb)
+			{
+				$integer -= $arb;
+				$return .= $rom;
+				break;
+			}
+		}
+	}
+
+	return $return;
+}
+
+function romanic_title($title, $num)
+{
+	return romanic_number($num) . '.-  ' . $title;
 }

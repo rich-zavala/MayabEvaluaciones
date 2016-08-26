@@ -1,0 +1,7 @@
+SELECT `re`.`evaluacion`, `re`.`evaluador`, `ree`.`empleado`, `n`
+FROM `respuestas_evaluacion` `re`
+JOIN `respuestas_evaluacion_empleados` `ree` ON `ree`.`id_respuestas_evaluacion` = `re`.`id`<br />
+JOIN `empleados_formato` `ef` ON `ef`.`empleado` = `ree`.`empleado`
+WHERE `re`.`evaluacion` = 1
+AND `re`.`evaluador` = 32160003
+AND `ree`.`empleado` = 32160003

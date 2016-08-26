@@ -13,7 +13,7 @@ e.fechaRegistro AS fechaRegistro,
 (SELECT ROUND((avance / empleadosTotales) * 100) FROM cartas_envios WHERE evaluacion = e.id AND tipo = 0 ORDER BY fechaRegistro DESC LIMIT 1) cartas_eval_avance,
 0 reporte_eval_fecha,
 0 AS reporte_eval_contador,
-(SELECT COUNT(1) FROM respuestas_evaluacion WHERE evaluacion = e.id)  AS eval_contador,
+(SELECT COUNT(1) FROM respuestas_evaluacion_empleados WHERE evaluacion = e.id)  AS eval_contador,
 
 (SELECT c.fechaRegistro FROM cartas_envios AS c WHERE evaluacion = e.id ORDER BY c.fechaRegistro AND tipo = 1 ASC LIMIT 1) cartas_auto_fecha,
 (SELECT ROUND((avance / empleadosTotales) * 100) FROM cartas_envios WHERE evaluacion = e.id AND tipo = 1 ORDER BY fechaRegistro DESC LIMIT 1) cartas_auto_avance,

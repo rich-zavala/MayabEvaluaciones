@@ -264,10 +264,8 @@ class Mocuestionarios extends CI_Model
 				break;
 			}
 		
-		// $nivelCompetencias->competencias = array_values($nivelCompetencias->competencias); //Resetear índices
 		$this->infoCuestionarios = $nivelCompetencias;
 		$this->resetearCompetenciasIndices();
-		// return $nivelCompetencias;
 	}
 	
 	/* REGISTRO Y MANIPULACION DE BDD */

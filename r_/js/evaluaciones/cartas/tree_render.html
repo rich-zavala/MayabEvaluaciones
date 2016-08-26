@@ -1,14 +1,44 @@
 <li class="marginBottom10" ng-class="{ 'bg-gray': obj.new }">
-	<i class="fa fa-li fa-square-o" title="Su carta no ha sido enviada" ng-if="!obj.carta.envio || obj.carta.envio == 0" ></i>
-	<i class="fa fa-li fa-check-square-o text-success" title="Carta enviada el {{moment(carta.fechaRegistro).format('D MMM, YYYY - HH:mm')}}" ng-if="obj.carta.envio > 0"></i>
-	<div class="ln1">
-		<div>
-			<a ng-href="{{_sitePath_ + modalidad}}/contenido/{{_eval_}}/{{tab.tipo}}/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará">{{obj.n}}</a>
+	<!-- Para reportes la jerarquía llega completa, pero sólo se muestran jefes en el primer TAB -->
+	<!--<div ng-if="modalidad != 'reportes' || tab.tipo == 1 || (modalidad == 'reportes' && tab.tipo == 0)">-->
+	<div>
+		<span ng-if="obj.status == 0">
+			<i class="fa fa-li fa-square-o" title="Su carta no ha sido enviada" ng-if="!obj.carta.envio || obj.carta.envio == 0"></i>
+			<i class="fa fa-li fa-check-square-o text-success" title="Carta enviada el {{moment(carta.fechaRegistro).format('D MMM, YYYY - HH:mm')}}" ng-if="obj.carta.envio > 0"></i>
+		</span>
+		<i class="fa fa-li fa-minus-square-o text-muted" ng-if="obj.status == 1"></i>
+		<div class="ln1">
+		
+			<div ng-if="obj.status == 0">
+				<!-- Para cartas -->
+				<div ng-if="modalidad == 'cartas'">
+					<a ng-href="{{_sitePath_ + modalidad}}/contenido/{{_eval_}}/{{tab.tipo}}/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará">{{obj.n}}</a>
+				</div>
+				
+				<!-- Para reportes. Se muestra en forma de menú -->
+				<div class="tree dropdown" ng-if="modalidad == 'reportes'">
+					<a class="clickable dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Opciones de reporte">
+						{{obj.n}}
+						<span class="caret"></span>
+					</a>
+					
+					<ul class="dropdown-menu">
+						<li ng-if="tab.tipo == 0"><a ng-href="{{_sitePath_ + modalidad}}/contenido/{{_eval_}}/{{tab.tipo}}/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará con los reportes de sus subordinados"><i class="fa fa-fw fa-envelope"></i> Contenido de carta con reportes de evaluados</a></li>
+						<li ng-if="tab.tipo == 0"><a ng-href="{{_sitePath_ + modalidad}}/comprimido/{{_eval_}}/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Descargar los PDF de los evaluados. Incluye evaluación y autoevaluación."><i class="fa fa-fw fa-download"></i> Descargar reportes de evaluados</a></li>
+						<li ng-if="tab.tipo == 1"><a ng-href="{{_sitePath_ + modalidad}}/contenido/{{_eval_}}/{{tab.tipo}}/{{obj.empleado}}/personal{{_suffix_}}" target="_{{obj.empleado}}" title="Vista previa de la carta que se enviará"><i class="fa fa-fw fa-envelope"></i> Contenido de carta a colaborador</a></li>
+						<li ng-if="tab.tipo == 1"><a ng-href="{{_sitePath_}}pdf/reporte/{{_eval_}}/0/colaborador/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Reporte de los valores de su evaluación"><i class="fa fa-fw fa-file-pdf-o"></i> Reporte de evaluación en PDF</a></li>
+						<li ng-if="tab.tipo == 1"><a ng-href="{{_sitePath_}}pdf/reporte/{{_eval_}}/1/colaborador/{{obj.empleado + _suffix_}}" target="_{{obj.empleado}}" title="Reporte de los valores de su autoevaluación"><i class="fa fa-fw fa-file-pdf-o"></i> Reporte de autoevaluación en PDF</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div ng-if="obj.status == 1" class="text-muted">
+				<span title="Este empleado se encuentra inactivo">{{obj.n}}</a>
+			</div>
 		</div>
-		<small class="text-muted">{{obj.departamento_n}} - {{obj.puesto_n}}</small>
+		
+		<ul class="fa-ul marginTop10 marginBottom0">
+			<tree-render ng-repeat="data in obj.subordinados" info="data" data="data" tab="tab"></tree-render>
+		</ul>
 	</div>
-	
-	<ul class="fa-ul marginTop10 marginBottom0" ng-if="obj.subordinados.length">
-		<tree-render ng-repeat="data in obj.subordinados" info="data" data="data" tab="tab"></tree-render>
-	</ul>
 </li>

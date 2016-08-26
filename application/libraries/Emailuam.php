@@ -13,12 +13,19 @@ class Emailuam
 		'crlf' => "\r\n",
 		'newline' => "\r\n"
 	);
-	var $from = "no-reply@anahuac.mx";
-	var $fromName = "Evaluación de Desempeño, Anáhuac Mayab";
+	
+	var $from = "evaluaciones@anahuac.mx";
+	var $fromName = "Evaluacion de Desempeno, Anáhuac Mayab";
 	var $to;
 	var $cc;
 	var $subject;
 	var $message;
+	var $ci;
+	
+	function __construct() {
+		$this->ci = & get_instance();
+		$this->ci->load->library('email');
+	}
 	
 	public function from($i, $nombre)
 	{
@@ -52,6 +59,11 @@ class Emailuam
 		$this->message = trim($i);
 	}
 	
+	public function attach($path)
+	{
+		$this->ci->email->attach($path);
+	}
+	
 	public function print_debugger()
 	{
 		return false;
@@ -59,15 +71,13 @@ class Emailuam
 	
 	public function send()
 	{
-		$ci = & get_instance();
-		$ci->load->library('email');
-		$ci->email->initialize($this->config);
-		$ci->email->from($this->from, $this->fromName);
-		$ci->email->to($this->to);
-		$ci->email->cc($this->cc);
-		$ci->email->subject($this->subject);
-		$ci->email->message($this->message);
-		return $ci->email->send();
+		$this->ci->email->initialize($this->config);
+		$this->ci->email->from($this->from, $this->fromName);
+		$this->ci->email->to($this->to);
+		$this->ci->email->cc($this->cc);
+		$this->ci->email->subject($this->subject);
+		$this->ci->email->message($this->message);
+		return $this->ci->email->send();
 	}
 }
 ?>

@@ -178,13 +178,8 @@ class Evaluaciones extends CI_Controller {
 	public function respuestas($evaluacion)
 	{
 		$this->load->model('evaluaciones/evaluacion');
-		// $e = $this->evaluacion->init($evaluacion);
-		
 		$this->librerias['js'][] = 'js/evaluaciones/reportes/respuestas.js';
-		$d = array(
-			'evaluacion' => $evaluacion//,
-			// 'info' => $e->respuestas()
-		);
+		$d = array( 'evaluacion' => $evaluacion );
 		$this->helper->view($d, $this->librerias);
 	}
 	
@@ -198,9 +193,10 @@ class Evaluaciones extends CI_Controller {
 	}
 
 	//Vista temporal de respuestas (Evaluación)
-	public function reseval($empleado)
+	public function reseval($evaluacion, $empleado)
 	{
 		$this->load->model('evaluaciones/evaluacion');
+		$this->evaluacion->init($evaluacion);
 		$this->evaluacion->empleado($empleado);
 		$this->evaluacion->respuestas_detalle_eval();
 		$this->evaluacion->csv();

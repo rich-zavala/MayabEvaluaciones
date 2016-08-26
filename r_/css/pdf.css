@@ -1,0 +1,127 @@
+html, body, .container{
+	margin: 0 !important;
+	font-size: .9em;
+	padding: 0;
+}
+#encabezado {
+	border-bottom: 1px solid #EEEEEE;
+	display: inline-block;
+	width: 100%;
+}
+#logo {
+	background: url(../images/logopdf.png) left center no-repeat;
+	height: 78px;
+	width: 378px;
+}
+#encabezado h1 {
+	width: 520px;
+	color: #692F00;
+	line-height: 1;
+	font-size: 24px !important;
+	padding-right: 20px;
+  margin-top: 0;
+}
+#encabezado h1 span{
+	color: #bd815d;
+	text-decoration: underline;
+  font-weight: normal;
+}
+
+hr { margin: 4px 0; }
+h2{
+	font-size: 18px;
+  margin-top: 4px;
+}
+th h3{ font-size: 16px !important; }
+h3.subtitulo{
+	margin: 0 0 4px 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+.f12{ font-size: 12px !important; }
+.middle{ vertical-align: middle !important; }
+.w70p{ width: 70%; }
+.justify { text-align: justify; }
+.midde{ vertical-align: middle !important; }
+.header-table th{ padding-right: 10px; }
+
+.pull-right.prom {
+	margin: 2px 2px 0px 0px;
+	color: black;
+}
+
+.tabla-colores { margin-bottom: 6px; }
+.tabla-colores,
+.tabla-colores th,
+.tabla-colores td,
+.tabla-colores tr { border: 1px solid #9a9a9a !important; }
+.tabla-colores th, .tabla-colores td, .table th, .table td{
+	padding: 1px 4px !important;
+  line-height: 1.2 !important;
+}
+
+/* Colores de calificaciones */
+.lv-min{ background-color: #ffa3a3; }
+.lv-min-a{ background-color: #ff9d46; }
+.lv-min-b{ background-color: #FF7700 }
+.lv-mid{ background-color: #f5ee29; }
+.lv-mid-a{ background-color: #c9de9f; }
+.lv-mid-b{ background-color: #88FF00; }
+.lv-max{ background-color: #34d634; }
+
+.bgAnahuac{
+	background-color: #f7aa50;
+	color: white;
+}
+.seccion-titulo{}
+.titulo-bloque {
+	color: #e68304;
+	font-weight: lighter;
+	margin: 10px 0 4px 0;
+	font-family: sans-serif;
+}
+.inline { display: inline-block; }
+.recuadro {
+	border: 1px solid #cecece;
+	width: 50px;
+	height: 18px;
+	display: inline-block;
+	margin: 0 10px -6px 0;
+}
+
+.table .valores-tabla {
+  padding: 2px 0 !important;
+  line-height: 1 !important;
+}
+.valor-esperado, .tabla-colores .valor-esperado { border: 2px solid #00a3c5 !important; }
+.etiqueta.valor-esperado{ border-bottom: 1px solid #cecece !important; }
+.valor.valor-esperado{ border-bottom-width: 2px; }
+
+table, tr, td, th, tbody, thead, tfoot, .box, .pb { page-break-inside: avoid !important; }
+.graph{ height: 220px; }
+.graph.mini{ height: 140px; }
+h3.box-title {
+	font-size: 14px !important;
+	font-weight: bold;
+}
+ul{
+	margin: 0;
+	font-size: 14px;
+}
+.firmas {
+  border-spacing: 20px;
+  border-collapse: separate;
+  width: 60%;
+  margin-top: 50px;
+}
+.firmas th {
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+	width: 50%;
+}
+.box-header.with-border {
+	padding: 6px 10px 4px 10px;
+}
+.box-body {
+	padding: 4px 10px;
+}

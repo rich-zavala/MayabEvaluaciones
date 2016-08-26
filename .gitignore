@@ -1,1 +1,5 @@
 documentos/
+application/models/evaluaciones/__info.php
+*.pdf
+*.7z
+*.zip

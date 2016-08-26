@@ -1,6 +1,7 @@
 DROP VIEW IF EXISTS respuestas_autoevaluacion_detalle;
 CREATE VIEW respuestas_autoevaluacion_detalle AS
 SELECT
+ra.evaluacion,
 ef.empleado,
 ef.n empleado_nombre,
 ra.fechaRegistro,

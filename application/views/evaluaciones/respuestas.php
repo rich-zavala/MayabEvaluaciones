@@ -59,13 +59,13 @@
 				<tr ng-repeat="r in registros | filter : tabla.filtro | orderBy: [tabla.orden, 'empleado_n'] : tabla.direccion != 'asc' | limitTo : tabla.registros" ng-dblclick="formulario.editar($event, r)">
 					<td nowrap>
 						{{r.empleado_n}}<br>
-						<span class="text-warning">{{r.empleado}}</span>
+						<span class="text-warning">ID: {{r.subordinado}}</span>
 					</td>
 					<td class="nowrap bg-danger" ng-if="r.ev_fecha == null" title="Evaluación pendiente">
 						<i class="fa fa-fw fa-close"></i>
 					</td>
 					<td class="nowrap bg-success" ng-if="r.ev_fecha != null" title="Evaluación realizada">
-						<a ng-href="<?=base()?>evaluaciones/reseval/{{r.subordinado}}<?=suffix()?>" target="_resauto{{r.subordinado}}">
+						<a ng-href="<?=base()?>pdf/reporte/{{r.evaluacion}}/0/colaborador/{{r.subordinado}}/1<?=suffix()?>" target="_pdf">
 							<i class="fa fa-fw fa-check marginRight10"></i> <small>{{r.ev_evaluador_n}}</small><br>
 							<i class="text-muted">{{moment(r.ev_fecha).format('D MMM YYYY - HH:mm')}}</i>
 						</a>
@@ -74,7 +74,7 @@
 						<i class="fa fa-fw fa-close"></i>
 					</td>
 					<td class="nowrap bg-success" ng-if="r.aev_fecha != null" title="Autoevaluación realizada">
-						<a ng-href="<?=base()?>evaluaciones/resauto/{{r.subordinado}}<?=suffix()?>" target="_resauto{{r.subordinado}}">
+						<a ng-href="<?=base()?>pdf/reporte/{{r.evaluacion}}/1/colaborador/{{r.subordinado}}/1<?=suffix()?>" target="_pdf">
 							<i class="fa fa-fw fa-check marginRight10"></i>
 							<span class="text-muted">{{moment(r.aev_fecha).format('D MMM YYYY - HH:mm')}}</span>
 						</a>

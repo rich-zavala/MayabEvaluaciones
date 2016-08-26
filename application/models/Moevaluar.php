@@ -19,7 +19,7 @@ class Moevaluar extends CI_Model
 			'evaluacion' => $this->evaluacion,
 			'clave' => $i
 		);
-		$q = $this->db->where($w)->get('respuestas_evaluacion_detalles');
+		$q = $this->db->where($w)->get('respuestas_evaluador');
 		if($q->num_rows() > 0)
 		{
 			$this->info = $q->row();
@@ -37,11 +37,6 @@ class Moevaluar extends CI_Model
 			$this->info->evaluadosTotales = $q->num_rows();
 		
 		$this->evaluados = $q->result();
-	}
-	
-	//Obtener información de una autoevaluación
-	public function autoInfo($empleado)
-	{
 	}
 	
 	//Registrar respuestas de un empleado

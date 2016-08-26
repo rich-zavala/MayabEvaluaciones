@@ -10,10 +10,7 @@ class Cartas extends CI_Controller {
 			$this->load->model('evaluaciones/mocartas');
 	}
 
-	public function index()
-	{
-		show_error();
-	}
+	public function index(){ show_error(); }
 	
 	//Información del envío de cartas
 	public function info()
@@ -26,12 +23,12 @@ class Cartas extends CI_Controller {
 	}
 	
 	//Mostrar carta de un empleado
-	public function contenido($evaluacion, $tipo, $empleado)
+	public function contenido($evaluacion, $tipo, $empleado, $modalidad = false)
 	{
 		$this->mocartas->evaluacion($evaluacion);
 		$this->mocartas->tipo($tipo);
 		$this->mocartas->empleado($empleado);
-		$contenido = $this->mocartas->contenido();
+		$contenido = ($modalidad != 'personal') ? $this->mocartas->contenido() : $this->mocartas->contenido(1);
 		echo '<!DOCTYPE html>
 					<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 					<head>
@@ -62,7 +59,23 @@ class Cartas extends CI_Controller {
 		$this->mocartas->tipo($data->tipo);
 		$this->mocartas->empleado($data->empleado->empleado);
 		$this->mocartas->envio($data->envio);
-		$envio = $this->mocartas->enviar();
+		$envio = str_replace('Exit with code 1 due to network error: UnknownContentError', '', $this->mocartas->enviar()); //A veces sale un error desconocido
 		$this->output->set_content_type('application/json')->set_output(json_encode($envio, JSON_NUMERIC_CHECK));
+	}
+
+	//Para reportes, enviar PDF comprimidos descargables
+	public function comprimido($evaluacion, $empleado)
+	{
+		set_time_limit(0);
+		$this->mocartas->evaluacion($evaluacion);
+		$this->mocartas->empleado($empleado);
+		$zip = $this->mocartas->comprimido($empleado);
+		if(file_exists($zip['path']))
+		{		
+			header("HTTP/1.1 303 See Other");
+			header("Location: " . $zip['url']);
+		}
+		else
+			show_error('No se encontraron respuestas relacionadas con este evaluador.');
 	}
 }

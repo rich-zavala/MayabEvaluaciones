@@ -2,7 +2,6 @@
 class Moempleados extends CI_Model
 {
 	//Variables del modelo.
-	var $id = 0;
 	var $formName = '';
 	var $tabla = 'empleados';
 	
@@ -64,6 +63,11 @@ class Moempleados extends CI_Model
 				'options' => $this->get_form_options('niveles'),
 				'required' => 'required',
 				'placeholder' => 'Nivel'
+			),
+			'fechaAlta' => array(
+				'type' => 'date',
+				'required' => 'required',
+				'placeholder' => 'Fecha de alta'
 			)
 		);
 		
