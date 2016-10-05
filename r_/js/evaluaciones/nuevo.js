@@ -8,29 +8,6 @@ app.controller('nuevaEvaluacion', ['$scope', '$rootScope', '$http', '$filter', '
 		cuestionarios: null
 	};
 	
-	//Catálogos de evaluaciones pasadas
-	$scope.catalogo = [
-		{
-			id: 1,
-			titulo: '2015',
-		},
-		{
-			id: 2,
-			titulo: '2014'
-		},
-		{
-			id: 3,
-			titulo: '2013',
-		},
-		{
-			id: 4,
-			titulo: '2012',
-		},
-		{
-			id: 5,
-			titulo: '2011'
-		}];
-	
 	//Objetos del GUI
 	$scope.gui = {
 		cargando: true,
@@ -65,7 +42,6 @@ app.controller('nuevaEvaluacion', ['$scope', '$rootScope', '$http', '$filter', '
 			
 			if($scope.fNuevo.$valid) //Es válido > Enviar
 			{
-				$('[name="fNuevo"] *').prop('disabled', true);
 				$scope.gui.cargando = true;
 				
 				$http.post(_sitePath_ + controlador + '/nuevo_registrar' + _suffix_, $scope.form).
@@ -86,7 +62,6 @@ app.controller('nuevaEvaluacion', ['$scope', '$rootScope', '$http', '$filter', '
 				})
 				.finally(function(){
 					$scope.gui.cargando = false;
-					$('[name="fNuevo"] *').prop('disabled', false);
 				});
 			}
 			else //Algo anda mal...

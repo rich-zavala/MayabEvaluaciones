@@ -109,11 +109,142 @@ class Helper extends CI_Model
 		}
 		else //Continuar
 		{
-			$r['id'] = $this->db->insert_id();
+			$r['id'] = $ev = $this->db->insert_id();
 			
 			/*
 			EJECUTAR CLONACIONES!!!
 			*/
+			// 1. Jerarquía
+			if(isset($obj->jerarquias) and $obj->jerarquias->id > 0)
+			{
+				$s = "INSERT INTO jerarquias (evaluacion, jefe, subordinado, nivel, puesto, usuarioRegistrante) SELECT {$ev}, jefe, subordinado, nivel, puesto, '" . $this->moguardia->data()['usuario'] . "' FROM jerarquias WHERE evaluacion = " . $obj->jerarquias->id;
+				$this->db->query($s);
+			}
+			
+			// 2. Competencias
+			if(isset($obj->cuestionarios) and $obj->cuestionarios->id > 0)
+			{
+				/*
+				== Valores posibles de competencia ==
+				Se crea un catálogo de equivalencias de ids originales y nuevos para poder actualizar en "cuestionarios_competencias_secciones_valores_posibles"
+				*/
+				$caseValores = $valoresPosibles = [];
+				$valoresPosiblesOriginales = $this->db->where('evaluacion', $obj->cuestionarios->id)->get('cuestionarios_valores_posibles')->result();
+				foreach($valoresPosiblesOriginales as $vpo)
+				{
+					//Insertar competencia
+					$idVpo = $vpo->id;
+					unset($vpo->id);
+					$vpo->evaluacion = $ev;
+					$this->db->insert('cuestionarios_valores_posibles', $vpo);
+					$caseValores[] = "WHEN {$idVpo} THEN " . $this->db->insert_id();
+				}
+				
+				//Preparar equivalencias para niveles y puestos
+				$caseCompetencia = $caseManual = [];
+				
+				// Por cada competencia clonar niveles y puestos
+				$competencias = $this->db->where('evaluacion', $obj->cuestionarios->id)->get('cuestionarios_competencias')->result();
+				foreach($competencias as $competencia)
+				{
+					//Insertar competencia
+					$idCompetenciaOriginal = $competencia->id;
+					unset($competencia->id);
+					$competencia->evaluacion = $ev;
+					$this->db->insert('cuestionarios_competencias', $competencia);
+					$competencia->id = $this->db->insert_id();
+					
+					//Agregar a catálogo de case
+					$caseCompetencia[] = "WHEN {$idCompetenciaOriginal} THEN " . $competencia->id;
+					
+					//Insertar secciones de competencia
+					$secciones = $this->db->where('competencia', $idCompetenciaOriginal)->get('cuestionarios_competencias_secciones')->result();
+					foreach($secciones as $seccion)
+					{
+						$idSeccionOriginal= $seccion->id;
+						unset($seccion->id);
+						$seccion->competencia = $competencia->id;
+						$this->db->insert('cuestionarios_competencias_secciones', $seccion);
+						$seccion->id = $this->db->insert_id();
+						
+						//Insertar conductas
+						$s = "INSERT INTO cuestionarios_competencias_secciones_conductas
+									SELECT NULL, {$seccion->id}, descripcion, orden
+									FROM cuestionarios_competencias_secciones_conductas
+									WHERE seccion = {$idSeccionOriginal}";
+						$this->db->query($s);
+					}
+					
+					//Insertar valores posibles de esta competencia
+					$s = "INSERT INTO cuestionarios_competencias_secciones_valores_posibles
+								SELECT NULL, {$competencia->id}, CASE valor " . join(" ", $caseValores) . " END
+								FROM cuestionarios_competencias_secciones_valores_posibles
+								WHERE competencia = {$idCompetenciaOriginal}";
+					$this->db->query($s);
+				}
+				
+				// 3. Preguntas abiertas
+				// Por cada pregunta clonar niveles y puestos
+				$manuales = $this->db->where('evaluacion', $obj->cuestionarios->id)->get('cuestionarios_manual_input')->result();
+				foreach($manuales as $manual)
+				{
+					//Insertar manual
+					$idManualOriginal = $manual->id;
+					unset($manual->id);
+					$manual->evaluacion = $ev;
+					$this->db->insert('cuestionarios_manual_input', $manual);
+					$manual->id = $this->db->insert_id();
+					
+					//Agregar a catálogo de case
+					$caseManual[] = "WHEN {$idManualOriginal} THEN " . $manual->id;
+					
+					//Insertar preguntas
+					$preguntas = $this->db->where('contenedor', $idManualOriginal)->get('cuestionarios_manual_input_preguntas')->result();
+					foreach($preguntas as $pregunta)
+					{
+						$idPreguntaOriginal = $pregunta->id;
+						unset($pregunta->id);
+						$pregunta->contenedor = $manual->id;
+						$this->db->insert('cuestionarios_manual_input_preguntas', $pregunta);
+						$pregunta->id = $this->db->insert_id();
+						
+						//Insertar opciones de pregunta
+						$opciones = $this->db->where('input', $idPreguntaOriginal)->get('cuestionarios_manual_input_preguntas_opciones')->result();
+						foreach($opciones as $opcion)
+						{
+							$idOpcionOriginal = $opcion->id;
+							unset($opcion->id);
+							$opcion->input = $pregunta->id;
+							$this->db->insert('cuestionarios_manual_input_preguntas_opciones', $opcion);
+							$opcion->id = $this->db->insert_id();
+						
+							//Insertar respuestas de una opción
+							$respuestas = $this->db->where('input_opciones', $idOpcionOriginal)->get('cuestionarios_manual_input_preguntas_opciones_respuestas')->result();
+							foreach($respuestas as $respuesta)
+							{
+								// $idRespuestaOriginal = $respuesta->id;
+								unset($respuesta->id);
+								$respuesta->input_opciones = $opcion->id;
+								$this->db->insert('cuestionarios_manual_input_preguntas_opciones_respuestas', $respuesta);
+							}
+						}
+					}
+				}
+				
+				//Insertar asignaciones por nivel
+				$s = "INSERT INTO evaluaciones_cuestionario_niveles SELECT NULL, {$ev}, nivel, tipo,
+							CASE id_competencia " . join(" ", $caseCompetencia) . " END,
+							CASE id_manual " . join(" ", $caseManual) . " END
+							FROM evaluaciones_cuestionario_niveles WHERE evaluacion = " . $obj->cuestionarios->id;
+				$this->db->query($s);
+				
+				//Insertar asignaciones por puesto
+				$s = "INSERT INTO evaluaciones_cuestionario_puestos SELECT NULL, {$ev}, nivel, tipo,
+							CASE id_competencia " . join(" ", $caseCompetencia) . " END,
+							CASE id_manual " . join(" ", $caseManual) . " END
+							FROM evaluaciones_cuestionario_puestos WHERE evaluacion = " . $obj->cuestionarios->id;
+				$this->db->query($s);
+			}
 		}
 		
 		//Verificar el error

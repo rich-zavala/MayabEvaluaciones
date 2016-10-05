@@ -342,6 +342,7 @@ class Mocartas extends CI_Model
 		if(!file_exists($filePath))
 		{
 			try {
+				sleep(1);
 				$command = ' -q -L 7 -R 7 -T 8 -B 8 --page-size Letter --image-quality 100 --footer-right [page]/[topage] --footer-left "' . $fecha . '" --footer-font-size 6';
 				$command .= ' ' . $url . ' ' . escapeshellarg($this->workPath. $tmpFile) . ' ' . ' 2>&1';
 				$command = "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf\"" . $command;
@@ -349,7 +350,6 @@ class Mocartas extends CI_Model
 				system($command, $retval);
 				$returnValue = ob_get_contents();
 				ob_end_clean();
-				echo $returnValue;
 				if($retval == 1) $error++;
 			} catch (Exception $e) {
 				$error++;

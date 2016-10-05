@@ -12,19 +12,19 @@
 					<h3 class="box-title">Asistente de creación de evaluación</h3>
         </div>
 				<div class="box-body">
-					<div class="form-group" ng-class="{ 'has-error': fNuevo.titulo.$touched && fNuevo.titulo.$invalid }">
+					<div class="form-group" ng-class="{ 'has-error': (fNuevo.$submitted || fNuevo.titulo.$dirty) && fNuevo.titulo.$invalid }">
 						<label for="titulo">Título</label>
-						<input id="titulo" name="titulo" type="text" class="form-control" placeholder="Año u otro nombre" ng-model="form.titulo" required>
+						<input id="titulo" name="titulo" type="text" class="form-control" placeholder="Año u otro nombre" ng-model="form.titulo" ng-disabled="gui.cargando" required>
 					</div>
 					<div class="form-group">
 						<label for="jerarquias">Copiar jerarquías de</label>
-						<select id="jerarquias" name="jerarquias" class="form-control" ng-options="item.titulo for item in catalogo" ng-model="form.jerarquias">
+						<select id="jerarquias" name="jerarquias" class="form-control" ng-options="item.titulo for item in catalogo" ng-model="form.jerarquias" ng-disabled="gui.cargando">
 							<option value="">-- Ninguno --</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="cuestionarios">Copiar cuestionarios de</label>
-						<select id="cuestionarios" name="cuestionarios" class="form-control" ng-options="item.titulo for item in catalogo" ng-model="form.cuestionarios">
+						<select id="cuestionarios" name="cuestionarios" class="form-control" ng-options="item.titulo for item in catalogo" ng-model="form.cuestionarios" ng-disabled="gui.cargando">
 							<option value="">-- Ninguno --</option>
 						</select>
 					</div>
@@ -33,7 +33,7 @@
 					<i class="fa fa-refresh fa-spin"></i>
         </div>
 				<div class="box-footer">
-					<div class="alert alert-warning" ng-if="fNuevo.$dirty && fNuevo.$invalid">
+					<div class="alert alert-warning" ng-if="fNuevo.$submitted && fNuevo.$invalid">
 						<i class="fa fa-warning marginRight10"></i> Existen campos requeridos inválidos. Verifique su información.
 					</div>
 					<div class="alert alert-danger" ng-if="gui.error">
