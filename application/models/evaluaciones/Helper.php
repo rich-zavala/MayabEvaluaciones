@@ -137,7 +137,7 @@ class Helper extends CI_Model
 					unset($vpo->id);
 					$vpo->evaluacion = $ev;
 					$this->db->insert('cuestionarios_valores_posibles', $vpo);
-					$caseValores[] = "WHEN {$idVpo} THEN " . $this->db->insert_id();
+					$caseValores[$idVpo] = $this->db->insert_id();
 				}
 				
 				//Preparar equivalencias para niveles y puestos
@@ -167,20 +167,35 @@ class Helper extends CI_Model
 						$this->db->insert('cuestionarios_competencias_secciones', $seccion);
 						$seccion->id = $this->db->insert_id();
 						
-						//Insertar conductas
-						$s = "INSERT INTO cuestionarios_competencias_secciones_conductas
-									SELECT NULL, {$seccion->id}, descripcion, orden
-									FROM cuestionarios_competencias_secciones_conductas
-									WHERE seccion = {$idSeccionOriginal}";
-						$this->db->query($s);
+						//Insertar conductas de esta sección
+						$conductas = $this->db->where('seccion', $idSeccionOriginal)->get('cuestionarios_competencias_secciones_conductas')->result();
+						foreach($conductas as $conducta)
+						{
+							//Insertar competencia
+							$idConductaOriginal = $conducta->id;
+							unset($conducta->id);
+							$conducta->seccion = $seccion->id;
+							$this->db->insert('cuestionarios_competencias_secciones_conductas', $conducta);
+					
+							//Agregar a catálogo de case
+							$nuevo_conductas[] = "WHEN {$idConductaOriginal} THEN " . $this->db->insert_id();
+						}
 					}
 					
 					//Insertar valores posibles de esta competencia
-					$s = "INSERT INTO cuestionarios_competencias_secciones_valores_posibles
-								SELECT NULL, {$competencia->id}, CASE valor " . join(" ", $caseValores) . " END
-								FROM cuestionarios_competencias_secciones_valores_posibles
-								WHERE competencia = {$idCompetenciaOriginal}";
-					$this->db->query($s);
+					$valores = $this->db->where('competencia', $idCompetenciaOriginal)->get('cuestionarios_competencias_secciones_valores_posibles')->result();
+					foreach($valores as $valor)
+					{
+						//Insertar competencia
+						$idValorOricinal = $valor->id;
+						unset($valor->id);
+						$valor->competencia = $competencia->id;
+						$valor->valor = $caseValores[$valor->valor];
+						$this->db->insert('cuestionarios_competencias_secciones_valores_posibles', $valor);
+				
+						//Agregar a catálogo de case
+						$nuevo_valores_posibles[] = "WHEN {$idValorOricinal} THEN " . $this->db->insert_id();
+					}
 				}
 				
 				// 3. Preguntas abiertas
@@ -222,7 +237,6 @@ class Helper extends CI_Model
 							$respuestas = $this->db->where('input_opciones', $idOpcionOriginal)->get('cuestionarios_manual_input_preguntas_opciones_respuestas')->result();
 							foreach($respuestas as $respuesta)
 							{
-								// $idRespuestaOriginal = $respuesta->id;
 								unset($respuesta->id);
 								$respuesta->input_opciones = $opcion->id;
 								$this->db->insert('cuestionarios_manual_input_preguntas_opciones_respuestas', $respuesta);
@@ -231,14 +245,27 @@ class Helper extends CI_Model
 					}
 				}
 				
-				//Insertar asignaciones por nivel
+				// 4. Clonar respuestas de claves
+				$s = "INSERT INTO respuestas_clave_competencias_niveles SELECT NULL, {$ev}, nivel,
+							CASE id_conducta " . join(" ", $nuevo_conductas) . " END,
+							CASE id_valor " . join(" ", $nuevo_valores_posibles) . " END
+							FROM respuestas_clave_competencias_niveles WHERE evaluacion = " . $obj->cuestionarios->id;
+				$this->db->query($s);
+				
+				$s = "INSERT INTO respuestas_clave_competencias_puestos SELECT NULL, {$ev}, nivel,
+							CASE id_conducta " . join(" ", $nuevo_conductas) . " END,
+							CASE id_valor " . join(" ", $nuevo_valores_posibles) . " END
+							FROM respuestas_clave_competencias_puestos WHERE evaluacion = " . $obj->cuestionarios->id;
+				$this->db->query($s);
+				
+				// 5. Insertar asignaciones por nivel
 				$s = "INSERT INTO evaluaciones_cuestionario_niveles SELECT NULL, {$ev}, nivel, tipo,
 							CASE id_competencia " . join(" ", $caseCompetencia) . " END,
 							CASE id_manual " . join(" ", $caseManual) . " END
 							FROM evaluaciones_cuestionario_niveles WHERE evaluacion = " . $obj->cuestionarios->id;
 				$this->db->query($s);
 				
-				//Insertar asignaciones por puesto
+				// 6. Insertar asignaciones por puesto
 				$s = "INSERT INTO evaluaciones_cuestionario_puestos SELECT NULL, {$ev}, nivel, tipo,
 							CASE id_competencia " . join(" ", $caseCompetencia) . " END,
 							CASE id_manual " . join(" ", $caseManual) . " END
